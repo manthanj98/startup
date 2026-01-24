@@ -1,0 +1,103 @@
+/* Claude AI Chrome Extension - Content Styles */
+
+/* Floating Notification */
+.claude-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border: 1px solid #404040;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  animation: claude-slide-in 0.3s ease-out;
+}
+
+.claude-notification-info {
+  border-left: 3px solid #D97706;
+}
+
+.claude-notification-success {
+  border-left: 3px solid #10B981;
+}
+
+.claude-notification-error {
+  border-left: 3px solid #EF4444;
+}
+
+.claude-notification-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.claude-notification-message {
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.4;
+  max-width: 300px;
+}
+
+.claude-notification-close {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #6b6b6b;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+  margin-left: 8px;
+}
+
+.claude-notification-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.claude-notification-hiding {
+  animation: claude-slide-out 0.3s ease-in forwards;
+}
+
+@keyframes claude-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes claude-slide-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+/* Selection highlight style (optional enhancement) */
+::selection {
+  /* This won't override the existing selection, just a fallback */
+}
+
+/* Ensure notification is always visible */
+.claude-notification * {
+  box-sizing: border-box;
+}

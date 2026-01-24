@@ -1,0 +1,20 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="60" fill="#D97706"/>
+
+  <!-- Inner design representing Claude -->
+  <circle cx="64" cy="64" r="48" fill="#1a1a1a" fill-opacity="0.2"/>
+
+  <!-- Spiral/orbital design -->
+  <path d="M32 64C32 46.3269 46.3269 32 64 32C81.6731 32 96 46.3269 96 64C96 81.6731 81.6731 96 64 96"
+        stroke="white"
+        stroke-width="8"
+        stroke-linecap="round"
+        fill="none"/>
+
+  <!-- Center dot -->
+  <circle cx="64" cy="64" r="12" fill="white"/>
+
+  <!-- Small accent circle -->
+  <circle cx="64" cy="96" r="6" fill="white"/>
+</svg>

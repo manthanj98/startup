@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generate Claude Extension Icons</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #1a1a1a;
+      color: white;
+    }
+    h1 { color: #D97706; }
+    .icon-preview {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .icon-item {
+      text-align: center;
+      background: #2d2d2d;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .icon-item canvas {
+      border: 1px solid #404040;
+      border-radius: 8px;
+    }
+    button {
+      background: #D97706;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    button:hover { background: #B45309; }
+    .instructions {
+      background: #2d2d2d;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    code {
+      background: #404040;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Claude Extension Icon Generator</h1>
+  <p>Click the button below to generate and download all required icon sizes.</p>
+
+  <div class="icon-preview" id="preview"></div>
+
+  <button onclick="downloadAllIcons()">Download All Icons</button>
+
+  <div class="instructions">
+    <h3>Instructions:</h3>
+    <ol>
+      <li>Click "Download All Icons" to download the PNG files</li>
+      <li>Move the downloaded files to the <code>icons/</code> folder</li>
+      <li>Rename them to: <code>icon16.png</code>, <code>icon32.png</code>, <code>icon48.png</code>, <code>icon128.png</code></li>
+    </ol>
+  </div>
+
+  <script>
+    const sizes = [16, 32, 48, 128];
+
+    function drawIcon(ctx, size) {
+      const scale = size / 128;
+
+      // Background
+      ctx.fillStyle = '#D97706';
+      ctx.beginPath();
+      ctx.arc(size/2, size/2, size/2 - 2*scale, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Semi-transparent overlay
+      ctx.fillStyle = 'rgba(26, 26, 26, 0.2)';
+      ctx.beginPath();
+      ctx.arc(size/2, size/2, (size/2 - 2*scale) * 0.8, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Arc/spiral
+      ctx.strokeStyle = 'white';
+      ctx.lineWidth = Math.max(2, 8 * scale);
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.arc(size/2, size/2, size/2 * 0.5, -Math.PI, Math.PI * 0.5);
+      ctx.stroke();
+
+      // Center dot
+      ctx.fillStyle = 'white';
+      ctx.beginPath();
+      ctx.arc(size/2, size/2, Math.max(2, 12 * scale), 0, Math.PI * 2);
+      ctx.fill();
+
+      // Bottom accent dot
+      ctx.beginPath();
+      ctx.arc(size/2, size/2 + size * 0.25, Math.max(1, 6 * scale), 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Generate previews
+    const preview = document.getElementById('preview');
+    sizes.forEach(size => {
+      const item = document.createElement('div');
+      item.className = 'icon-item';
+
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      canvas.id = `icon-${size}`;
+
+      const ctx = canvas.getContext('2d');
+      drawIcon(ctx, size);
+
+      const label = document.createElement('p');
+      label.textContent = `${size}x${size}`;
+
+      item.appendChild(canvas);
+      item.appendChild(label);
+      preview.appendChild(item);
+    });
+
+    function downloadAllIcons() {
+      sizes.forEach(size => {
+        const canvas = document.getElementById(`icon-${size}`);
+        const link = document.createElement('a');
+        link.download = `icon${size}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    }
+  </script>
+</body>
+</html>
