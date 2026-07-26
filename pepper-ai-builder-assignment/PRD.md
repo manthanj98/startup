@@ -16,11 +16,63 @@ Competitor pressure confirms this is a solved-but-not-solved problem: agencies r
 and dedicated reporting platforms (AgencyAnalytics, Whatagraph, TapClicks) already claim to cut
 that to single-digit hours with automated data pulls and, increasingly, AI-written narrative
 sections (Whatagraph IQ, Semrush's 2025 AI summaries). Atlas's advantage is that it *already*
-tracks the one category none of those generalist tools do natively at the same depth: AI search /
-GEO visibility (ChatGPT, Perplexity, Google AI Overviews, Copilot, Claude) via Semrush AI Toolkit —
-the same territory as point solutions like [Peec AI](https://peec.ai/) and
-[Profound](https://www.tryprofound.com/). A CS reporting product built inside Atlas can lead with
-that differentiator instead of bolting AI visibility on as an afterthought.
+tracks the one category none of those generalist reporting tools do natively at the same depth:
+AI search / GEO visibility (ChatGPT, Perplexity, Google AI Overviews, Copilot, Claude) via Semrush
+AI Toolkit. A CS reporting product built inside Atlas can lead with that differentiator instead of
+bolting AI visibility on as an afterthought — see the competitive landscape below for why that
+matters and where the real white space is.
+
+### Competitive landscape
+
+The market splits into two camps, and neither one is building what this PRD proposes.
+
+**AI-native GEO point solutions** — narrow, deep tools built for a brand or marketing team to
+monitor and improve their own AI-search presence:
+- [**Profound**](https://www.tryprofound.com/) — enterprise AEO platform; "Answer Engine Insights"
+  tracks citation authority and sentiment across 10 answer engines, plus "Agents" that generate
+  AI-optimized content and "Agent Analytics" for AI-crawler traffic.
+- [**Scrunch AI**](https://scrunch.com/) — positions itself as the only AI-native platform pairing
+  multi-LLM monitoring with auditing, optimization, *and* AI content delivery in one place, including
+  hallucination detection and customer-journey mapping through AI conversations.
+- [**Bluefish AI**](https://www.bluefishai.com/) — enterprise GEO plus conversational AI marketing
+  agents that engage prospects directly; tracks positioning, accuracy, visibility, and favorability.
+- [**Relixir**](https://relixir.ai/) — automated GEO content generation, claiming to move brands
+  from 5th to 1st position in AI rankings within 30 days across 500+ customers.
+- [**Peec AI**](https://peec.ai/) — GEO monitoring and competitive benchmarking, similar territory
+  to Semrush AI Toolkit.
+- **The Prompting Company** — early-stage GEO startup ([$6.5M raised, Oct 2025](https://techcrunch.com/2025/10/30/the-prompting-company-snags-6-5m-to-help-products-get-mentioned-in-chatgpt-and-other-ai-apps/)),
+  narrowly focused on getting products mentioned in ChatGPT and similar apps.
+- **Writesonic** — AI-visibility tracking across 10+ AI search platforms aimed at SMB/DTC brands,
+  with the differentiator being direct-publish rewrites to Shopify/BigCommerce/WordPress product pages.
+- **XFunnel** — was an independent AEO tool, **acquired by HubSpot in 2025** and folded into its
+  suite — an early signal that GEO monitoring is consolidating into platforms that already own a
+  recurring customer workflow, rather than surviving as a standalone product.
+
+**Incumbent suites bolting AI-visibility onto an existing product** — the more direct warning sign
+for Atlas, since it shows what happens when a company with an existing customer workflow adds this
+capability:
+- [**Adobe LLM Optimizer / Brand Visibility**](https://business.adobe.com/products/llm-optimizer.html) —
+  Adobe acquired Semrush (completed April 2026) and layers Semrush's AI Optimization data (a
+  289-million-prompt database) on top of LLM Optimizer, tracking ChatGPT, Google AI Mode, Copilot,
+  and Perplexity inside Adobe's existing CX Enterprise suite.
+- [**Sprinklr "LLM Insights"**](https://martech360.com/news/stack-platforms/guarding-the-voice-of-ai-sprinklr-launches-llm-insights-to-bridge-the-enterprise-visibility-gap/) —
+  the first Voice-of-Customer platform to bring AEO into its existing enterprise stack, addressing
+  LLMs defaulting to inaccurate/outdated brand narratives at buying moments.
+- [**Meltwater AI Visibility** ("GenAI Lens")](https://www.meltwater.com/en/capabilities/ai-visibility) —
+  PR/media-monitoring incumbent framing GEO as a *reputation* strategy, not just a search
+  strategy; analyzes 8M+ citations/month across 8 LLMs.
+- [**SimilarWeb GenAI Intelligence Toolkit**](https://aisearch.similarweb.com/ai-brand-visibility/) —
+  web-analytics incumbent pairing AI Brand Visibility with *AI Traffic* — the one competitor here
+  that ties visibility back to actual downstream site traffic, not just a mention.
+
+**What this means for Atlas:** none of the above — point solution or bolted-on suite — targets the
+specific workflow this PRD is about: a CS/agency team producing a *recurring client deliverable*.
+They're all built for a brand's own marketing/comms team to monitor and act on their own AI
+visibility, not for an agency stitching that signal into a report someone else is paying to
+receive. The consolidation pattern (HubSpot → XFunnel, Adobe → Semrush) also validates the
+underlying PRD bet: AI-visibility data is more valuable bundled into a platform that already owns
+a recurring customer workflow than sold as a standalone monitoring dashboard — which is exactly
+Atlas's position with Semrush AI Toolkit already in-house.
 
 ## 2. Goals / Non-goals
 
