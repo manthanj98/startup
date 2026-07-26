@@ -1,0 +1,237 @@
+{
+  "gsc": {
+    "clicks": 9755,
+    "clicks_delta_pct": -42.8,
+    "impressions": 203295,
+    "impressions_delta_pct": -34.1,
+    "ctr": 0.048,
+    "avg_position": 16.1,
+    "position_delta": -4.7
+  },
+  "ga4": {
+    "sessions": 50599,
+    "sessions_delta_pct": 18.5,
+    "conversions": 908,
+    "conversions_delta_pct": 2.5,
+    "revenue": 38604.31
+  },
+  "rankings": {
+    "top_gainers": [
+      {
+        "Ph": "merino wool base layer",
+        "Po": 38,
+        "Pp": 44,
+        "Pd": -6,
+        "Nq": 4400,
+        "Cp": 2.24,
+        "Ur": "https://northwindoutdoor.com/merino-wool-base-layer",
+        "Tr": 0.0474,
+        "Tc": 191.08,
+        "Fp": "featured_snippet",
+        "Fk": 2
+      },
+      {
+        "Ph": "hiking poles carbon",
+        "Po": 40,
+        "Pp": 46,
+        "Pd": -6,
+        "Nq": 1900,
+        "Cp": 2.72,
+        "Ur": "https://northwindoutdoor.com/hiking-poles-carbon",
+        "Tr": 0.0476,
+        "Tc": 17.37,
+        "Fp": "featured_snippet",
+        "Fk": 2
+      },
+      {
+        "Ph": "bear canister rental",
+        "Po": 27,
+        "Pp": 31,
+        "Pd": -4,
+        "Nq": 720,
+        "Cp": 1.12,
+        "Ur": "https://northwindoutdoor.com/bear-canister-rental",
+        "Tr": 0.0685,
+        "Tc": 24.85,
+        "Fp": "people_also_ask",
+        "Fk": 1
+      }
+    ],
+    "top_losers": [
+      {
+        "Ph": "insulated water bottle",
+        "Po": 21,
+        "Pp": 15,
+        "Pd": 6,
+        "Nq": 9900,
+        "Cp": 1.31,
+        "Ur": "https://northwindoutdoor.com/insulated-water-bottle",
+        "Tr": 0.0875,
+        "Tc": 260.57,
+        "Fp": "featured_snippet",
+        "Fk": 1
+      },
+      {
+        "Ph": "trail running vest",
+        "Po": 35,
+        "Pp": 29,
+        "Pd": 6,
+        "Nq": 1300,
+        "Cp": 0.93,
+        "Ur": "https://northwindoutdoor.com/trail-running-vest",
+        "Tr": 0.0403,
+        "Tc": 44.46,
+        "Fp": "ai_overview",
+        "Fk": 0
+      },
+      {
+        "Ph": "rain shell jacket men",
+        "Po": 32,
+        "Pp": 26,
+        "Pd": 6,
+        "Nq": 5400,
+        "Cp": 0.62,
+        "Ur": "https://northwindoutdoor.com/rain-shell-jacket-men",
+        "Tr": 0.0862,
+        "Tc": 304.54,
+        "Fp": "ai_overview",
+        "Fk": 0
+      }
+    ]
+  },
+  "backlinks": {
+    "ascore": 51,
+    "ascore_delta": 6,
+    "total": 7890
+  },
+  "ai_visibility": {
+    "score": 27.4,
+    "score_delta": 7.3,
+    "share_of_voice": 0.142,
+    "top_competitor": {
+      "name": "TrailForge",
+      "share_of_voice": 0.29,
+      "change_vs_previous": 0.03,
+      "top_engine": "chatgpt"
+    },
+    "per_engine": [
+      {
+        "engine": "chatgpt",
+        "visibility_score": 34.7,
+        "share_of_voice": 0.119,
+        "mention_rate": 0.113,
+        "avg_position": 1.7,
+        "change_vs_previous": 7.5
+      },
+      {
+        "engine": "perplexity",
+        "visibility_score": 19.1,
+        "share_of_voice": 0.103,
+        "mention_rate": 0.116,
+        "avg_position": 3.8,
+        "change_vs_previous": -0.6
+      },
+      {
+        "engine": "google_aio",
+        "visibility_score": 32.6,
+        "share_of_voice": 0.216,
+        "mention_rate": 0.309,
+        "avg_position": 4.6,
+        "change_vs_previous": 7.4
+      },
+      {
+        "engine": "copilot",
+        "visibility_score": 32.4,
+        "share_of_voice": 0.152,
+        "mention_rate": 0.212,
+        "avg_position": 4.1,
+        "change_vs_previous": -2.5
+      },
+      {
+        "engine": "claude",
+        "visibility_score": 18.3,
+        "share_of_voice": 0.119,
+        "mention_rate": 0.173,
+        "avg_position": 3.3,
+        "change_vs_previous": 4.9
+      }
+    ],
+    "best_mention": {
+      "prompt_text": "what's the most durable 4 person tent for backpacking?",
+      "ai_engine": "perplexity",
+      "mentioned": true,
+      "position": 2,
+      "response_excerpt": "...Northwind's Summit 4 is a strong pick for durability, with reinforced stake points and a 3000mm rainfly rating that outperforms cheaper tents...",
+      "sentiment": "positive",
+      "citation_urls": [
+        "https://northwindoutdoor.com/tents/summit-4"
+      ],
+      "competitor_brands_mentioned": [
+        "TrailForge",
+        "REI Co-op"
+      ]
+    }
+  },
+  "ai_citations": [
+    {
+      "url": "https://northwindoutdoor.com/guides/tent-buying-guide",
+      "page_title": "The Complete Tent Buying Guide (2026)",
+      "citations_count": 26,
+      "avg_citation_position": 2.5,
+      "change_vs_previous": {
+        "citations_count_delta": 8,
+        "percent_change": 0.41,
+        "trend": "positive"
+      }
+    },
+    {
+      "url": "https://northwindoutdoor.com/guides/layering-101",
+      "page_title": "Layering 101: Base, Mid, Shell",
+      "citations_count": 22,
+      "avg_citation_position": 2.2,
+      "change_vs_previous": {
+        "citations_count_delta": 3,
+        "percent_change": -0.09,
+        "trend": "neutral"
+      }
+    }
+  ],
+  "content_published": [
+    {
+      "id": 4821,
+      "title": {
+        "rendered": "5 Layering Mistakes Beginners Make"
+      },
+      "date": "2026-07-08T09:00:00",
+      "modified": "2026-07-08T09:00:00",
+      "status": "publish",
+      "link": "https://northwindoutdoor.com/blog/layering-mistakes",
+      "categories": [
+        12
+      ]
+    },
+    {
+      "id": 4790,
+      "title": {
+        "rendered": "Gear Checklist: 3-Day Backcountry Trip"
+      },
+      "date": "2026-07-01T09:00:00",
+      "modified": "2026-07-15T14:20:00",
+      "status": "publish",
+      "link": "https://northwindoutdoor.com/blog/gear-checklist",
+      "categories": [
+        8
+      ]
+    }
+  ],
+  "stale_content": [
+    {
+      "id": 2210,
+      "title": {
+        "rendered": "Best Tents Under $200 (2022)"
+      },
+      "modified": "2022-11-02T00:00:00",
+      "link": "https://northwindoutdoor.com/blog/tents-under-200"
+    }
+  ]
+}

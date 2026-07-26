@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Atlas Auto-Reporter — UX Flow</title>
+<style>
+  :root {
+    --ink: #1c1a17;
+    --ink-soft: #57524a;
+    --paper: #f7f4ef;
+    --paper-raised: #ffffff;
+    --line: #e4ddd1;
+    --accent: #b5461f;
+    --accent-soft: #f1e2d8;
+    --accent-ink: #7c2e12;
+    --good: #2f6b3a;
+    --good-bg: #e6efe4;
+    --bad: #a3311a;
+    --bad-bg: #f6e5e0;
+    --focus: #b5461f;
+    --shadow: 0 1px 2px rgba(28,26,23,0.06), 0 8px 24px rgba(28,26,23,0.06);
+  }
+  :root[data-theme="dark"] {
+    --ink: #f0ece3;
+    --ink-soft: #b6ada0;
+    --paper: #1a1815;
+    --paper-raised: #24211d;
+    --line: #3a352d;
+    --accent: #e0793f;
+    --accent-soft: #3a2a1e;
+    --accent-ink: #f3b184;
+    --good: #7bc48a;
+    --good-bg: #1f2e20;
+    --bad: #e08066;
+    --bad-bg: #33211c;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #f0ece3;
+      --ink-soft: #b6ada0;
+      --paper: #1a1815;
+      --paper-raised: #24211d;
+      --line: #3a352d;
+      --accent: #e0793f;
+      --accent-soft: #3a2a1e;
+      --accent-ink: #f3b184;
+      --good: #7bc48a;
+      --good-bg: #1f2e20;
+      --bad: #e08066;
+      --bad-bg: #33211c;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", "IBM Plex Sans", Helvetica, Arial, sans-serif;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+  }
+  .app { max-width: 1080px; margin: 0 auto; padding: 28px 24px 80px; }
+
+  .masthead { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px; gap: 12px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: baseline; gap: 10px; }
+  .brand .mark { width: 22px; height: 22px; border-radius: 6px; background: var(--accent); display: inline-block; }
+  .brand h1 { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; margin: 0; }
+  .brand .tag { font-size: 12px; color: var(--ink-soft); }
+  .persona { font-size: 12.5px; color: var(--ink-soft); }
+
+  nav.steps { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 28px; overflow-x: auto; }
+  nav.steps button {
+    appearance: none; border: none; background: none; cursor: pointer;
+    font-family: inherit; color: var(--ink-soft); font-size: 13px; font-weight: 600;
+    padding: 10px 14px 12px; border-bottom: 2px solid transparent; white-space: nowrap;
+  }
+  nav.steps button .n { display: inline-block; width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--line); font-size: 10px; line-height: 14px; text-align: center; margin-right: 6px; }
+  nav.steps button.active { color: var(--ink); border-bottom-color: var(--accent); }
+  nav.steps button.active .n { background: var(--accent); border-color: var(--accent); color: #fff; }
+  nav.steps button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  .screen { display: none; }
+  .screen.active { display: block; animation: fade .25s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .screen.active { animation: none; } }
+
+  h2.screen-title { font-size: 20px; margin: 0 0 4px; letter-spacing: -0.01em; text-wrap: balance; }
+  p.screen-sub { margin: 0 0 22px; color: var(--ink-soft); font-size: 13.5px; max-width: 62ch; }
+
+  .card { background: var(--paper-raised); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); }
+  .pad { padding: 20px; }
+
+  /* --- Dashboard --- */
+  .client-list { display: flex; flex-direction: column; gap: 10px; }
+  .client-row { display: flex; align-items: center; gap: 16px; padding: 14px 16px; }
+  .client-row .name { font-weight: 600; font-size: 14px; flex: 1 1 220px; }
+  .client-row .domain { color: var(--ink-soft); font-size: 12px; }
+  .pill { font-size: 11.5px; font-weight: 600; padding: 4px 10px; border-radius: 100px; white-space: nowrap; }
+  .pill.due { background: var(--accent-soft); color: var(--accent-ink); }
+  .pill.ready { background: var(--good-bg); color: var(--good); }
+  .pill.sent { background: var(--line); color: var(--ink-soft); }
+  .btn { font-family: inherit; font-size: 12.5px; font-weight: 600; border-radius: 7px; border: 1px solid var(--line); background: var(--paper-raised); color: var(--ink); padding: 8px 14px; cursor: pointer; }
+  .btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover { filter: brightness(1.06); }
+  .btn.ghost { background: transparent; border-color: transparent; color: var(--ink-soft); }
+
+  /* --- Config --- */
+  .config-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 11.5px; font-weight: 600; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.04em; }
+  .field .val { font-size: 13.5px; padding: 9px 11px; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: 12px; padding: 5px 10px; border-radius: 100px; border: 1px solid var(--line); background: var(--paper); }
+  .source-check { display: flex; align-items: center; gap: 8px; font-size: 13px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+  .source-check:last-child { border-bottom: none; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--good); flex: none; }
+
+  /* --- Generating --- */
+  .pipeline { display: flex; flex-direction: column; gap: 2px; }
+  .pstep { display: flex; align-items: center; gap: 12px; padding: 11px 4px; font-size: 13.5px; }
+  .pstep .stat { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--line); flex: none; position: relative; }
+  .pstep.done .stat { border-color: var(--good); background: var(--good); }
+  .pstep.done .stat::after { content: "✓"; color: #fff; font-size: 11px; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .pstep.active .stat { border-color: var(--accent); }
+  .pstep.active .stat::after { content: ""; position: absolute; inset: 3px; border-radius: 50%; background: var(--accent); animation: pulse 1s infinite ease-in-out; }
+  @keyframes pulse { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+  .pstep .label { flex: 1; }
+  .pstep .meta { color: var(--ink-soft); font-size: 12px; }
+
+  /* --- Draft review --- */
+  .review-layout { display: grid; grid-template-columns: 1fr 260px; gap: 18px; align-items: start; }
+  .report-doc h3 { font-size: 15px; margin: 22px 0 8px; }
+  .report-doc h3:first-child { margin-top: 0; }
+  .report-doc p { font-size: 13.5px; line-height: 1.65; margin: 0 0 10px; }
+  .insight { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; line-height: 1.55; }
+  .insight:last-child { border-bottom: none; }
+  .insight .src { flex: none; font-size: 10.5px; font-weight: 700; color: var(--accent-ink); background: var(--accent-soft); border-radius: 5px; padding: 2px 6px; height: fit-content; }
+  table.metrics { width: 100%; border-collapse: collapse; font-size: 13px; margin: 6px 0 4px; }
+  table.metrics th, table.metrics td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); }
+  table.metrics th { color: var(--ink-soft); font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.03em; }
+  .delta-up { color: var(--good); font-weight: 600; }
+  .delta-down { color: var(--bad); font-weight: 600; }
+  .quote { border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0; font-size: 13px; color: var(--ink-soft); font-style: italic; }
+  .editable { outline: none; border-radius: 6px; padding: 2px 4px; margin: -2px -4px; }
+  .editable:focus { background: var(--accent-soft); box-shadow: 0 0 0 1px var(--accent); }
+  .sidebar .card { padding: 14px; margin-bottom: 12px; }
+  .sidebar h4 { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft); margin: 0 0 10px; }
+  .action-list { display: flex; flex-direction: column; gap: 8px; }
+  .action-list button { width: 100%; text-align: left; }
+  .comment-box { width: 100%; font-family: inherit; font-size: 13px; border: 1px solid var(--line); border-radius: 7px; padding: 8px; resize: vertical; background: var(--paper); color: var(--ink); min-height: 56px; }
+  .sticky-actions { position: sticky; top: 12px; display: flex; flex-direction: column; gap: 10px; }
+  .send-row { display: flex; gap: 8px; }
+  .send-row .btn { flex: 1; }
+
+  /* --- Sent / history --- */
+  .toast { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; background: var(--good-bg); border: 1px solid var(--good); border-radius: 8px; color: var(--good); font-size: 13.5px; margin-bottom: 20px; }
+  .toast strong { display: block; color: var(--ink); font-size: 14px; margin-bottom: 2px; }
+  .history-row { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-bottom: 1px solid var(--line); font-size: 13px; }
+  .history-row:last-child { border-bottom: none; }
+  .history-row .when { color: var(--ink-soft); width: 130px; flex: none; }
+  .history-row .what { flex: 1; }
+  .history-row .who { color: var(--ink-soft); }
+
+  footer.note { margin-top: 28px; font-size: 12px; color: var(--ink-soft); }
+
+  @media (max-width: 720px) {
+    .config-grid { grid-template-columns: 1fr; }
+    .review-layout { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="masthead">
+    <div class="brand">
+      <span class="mark"></span>
+      <h1>Atlas Auto-Reporter</h1>
+      <span class="tag">— client reporting, drafted for you</span>
+    </div>
+    <div class="persona">Signed in as <strong>Priya, CS Manager</strong></div>
+  </div>
+
+  <nav class="steps" id="steps">
+    <button data-screen="dashboard" class="active"><span class="n">1</span>Dashboard</button>
+    <button data-screen="config"><span class="n">2</span>Configure</button>
+    <button data-screen="generating"><span class="n">3</span>Generating</button>
+    <button data-screen="review"><span class="n">4</span>Review &amp; edit</button>
+    <button data-screen="sent"><span class="n">5</span>Sent &amp; history</button>
+  </nav>
+
+  <!-- 1. DASHBOARD -->
+  <section class="screen active" id="dashboard">
+    <h2 class="screen-title">Reports due this week</h2>
+    <p class="screen-sub">Every client on a reporting cadence shows up here the day their period closes. Nothing sends without your review.</p>
+    <div class="card">
+      <div class="client-list pad">
+        <div class="client-row">
+          <div><div class="name">Northwind Outdoor Co.</div><div class="domain">northwindoutdoor.com · monthly</div></div>
+          <span class="pill due">Due today</span>
+          <button class="btn primary" onclick="go('config')">Generate report</button>
+        </div>
+        <div class="client-row">
+          <div><div class="name">Basecamp Gear</div><div class="domain">basecampgear.com · monthly</div></div>
+          <span class="pill ready">Draft ready</span>
+          <button class="btn" onclick="go('review')">Review draft</button>
+        </div>
+        <div class="client-row">
+          <div><div class="name">Alpine Supply Co.</div><div class="domain">alpinesupply.co · weekly</div></div>
+          <span class="pill sent">Sent Jul 19</span>
+          <button class="btn ghost" onclick="go('sent')">View history</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CONFIG -->
+  <section class="screen" id="config">
+    <h2 class="screen-title">Northwind Outdoor Co. — report configuration</h2>
+    <p class="screen-sub">Set up once per client. Atlas reuses this every cycle, so the CS manager configures scope and intent, not plumbing.</p>
+    <div class="card pad">
+      <div class="config-grid">
+        <div class="field"><label>Reporting period</label><div class="val">Jun 22 – Jul 19, 2026 (monthly, auto-rolling)</div></div>
+        <div class="field"><label>Recipients</label><div class="val">dana@northwindoutdoor.com, +2 cc</div></div>
+        <div class="field"><label>Tracked competitors</label>
+          <div class="chip-row"><span class="chip">trailforge.com</span><span class="chip">basecampgear.com</span><span class="chip">summitware.com</span></div>
+        </div>
+        <div class="field"><label>Client KPIs of record</label>
+          <div class="chip-row"><span class="chip">Organic conversions</span><span class="chip">AI share of voice</span><span class="chip">Domain authority</span></div>
+        </div>
+      </div>
+      <div class="field" style="margin-top:18px;">
+        <label>Connected sources</label>
+        <div class="source-check"><span class="dot"></span> Google Search Console — sc-domain:northwindoutdoor.com</div>
+        <div class="source-check"><span class="dot"></span> GA4 — properties/384712201</div>
+        <div class="source-check"><span class="dot"></span> Semrush — organic, tracking, backlinks, AI Toolkit</div>
+        <div class="source-check"><span class="dot"></span> WordPress — content calendar &amp; stale-page scan</div>
+      </div>
+      <div style="margin-top:20px; display:flex; justify-content:flex-end; gap:8px;">
+        <button class="btn ghost" onclick="go('dashboard')">Back</button>
+        <button class="btn primary" onclick="go('generating')">Generate report →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. GENERATING -->
+  <section class="screen" id="generating">
+    <h2 class="screen-title">Building the draft</h2>
+    <p class="screen-sub">Atlas fetches every connected source for the period and the prior period, computes deltas, then synthesizes the narrative. Typically under two minutes.</p>
+    <div class="card pad">
+      <div class="pipeline">
+        <div class="pstep done"><span class="stat"></span><span class="label">Fetch Search Console — clicks, impressions, position</span><span class="meta">2.1s</span></div>
+        <div class="pstep done"><span class="stat"></span><span class="label">Fetch GA4 — sessions, conversions, revenue</span><span class="meta">1.4s</span></div>
+        <div class="pstep done"><span class="stat"></span><span class="label">Fetch Semrush — rankings, backlinks, tracking</span><span class="meta">3.8s</span></div>
+        <div class="pstep done"><span class="stat"></span><span class="label">Fetch Semrush AI Toolkit — visibility, mentions, citations</span><span class="meta">4.2s</span></div>
+        <div class="pstep done"><span class="stat"></span><span class="label">Fetch WordPress — published &amp; stale content</span><span class="meta">0.9s</span></div>
+        <div class="pstep active"><span class="stat"></span><span class="label">Synthesizing narrative &amp; recommendations</span><span class="meta">running…</span></div>
+        <div class="pstep"><span class="stat"></span><span class="label">Assembling client-ready draft</span><span class="meta">—</span></div>
+      </div>
+    </div>
+    <div style="margin-top:16px; display:flex; justify-content:flex-end;">
+      <button class="btn primary" onclick="go('review')">Skip to draft →</button>
+    </div>
+  </section>
+
+  <!-- 4. REVIEW -->
+  <section class="screen" id="review">
+    <h2 class="screen-title">Draft — Northwind Outdoor Co., Jun 22–Jul 19</h2>
+    <p class="screen-sub">Every sentence in the summary is grounded in a source metric — click a <span class="src" style="position:relative;top:-1px;">GSC</span>-style tag to see where it came from. Edit inline; nothing reaches the client until you approve.</p>
+    <div class="review-layout">
+      <div class="report-doc card pad">
+        <h3>Executive summary</h3>
+        <div class="insight"><span class="src">GSC</span><span class="editable" contenteditable="true">Organic clicks fell 42.8% vs the prior period — worth a CTR/title-tag review on the top pages below.</span></div>
+        <div class="insight"><span class="src">GA4</span><span class="editable" contenteditable="true">Organic-driven conversions are up 2.5% ($38,604 in attributed revenue this period).</span></div>
+        <div class="insight"><span class="src">Semrush</span><span class="editable" contenteditable="true">Domain Authority Score climbed to 51 (+6).</span></div>
+        <div class="insight"><span class="src">AI Toolkit</span><span class="editable" contenteditable="true">AI search visibility rose to 27.4 (+7.3) — Northwind now holds 14% share of voice vs TrailForge at 29%.</span></div>
+
+        <h3>Organic search (Google Search Console)</h3>
+        <table class="metrics">
+          <tr><th>Metric</th><th>This period</th><th>vs prior</th></tr>
+          <tr><td>Clicks</td><td>9,755</td><td class="delta-down">−42.8%</td></tr>
+          <tr><td>Impressions</td><td>203,295</td><td class="delta-down">−34.1%</td></tr>
+          <tr><td>Avg. position</td><td>16.1</td><td class="delta-up">−4.7 (better)</td></tr>
+        </table>
+
+        <h3>AI search visibility</h3>
+        <p>Visibility score <strong>27.4</strong> (<span class="delta-up">+7.3</span>) · Share of voice <strong>14%</strong>, up from TrailForge's lead at 29%.</p>
+        <div class="quote">"...Northwind's Summit 4 is a strong pick for durability, with reinforced stake points and a 3000mm rainfly rating that outperforms cheaper tents..." — Perplexity, positive</div>
+
+        <h3>Recommended next actions</h3>
+        <p class="editable" contenteditable="true">1. Refresh the stale tent-buying guide and add an FAQ block targeting AI-cited queries.<br>2. Publish a comparison page for "rain shell jacket men" to recover lost position.<br>3. Watch TrailForge's AI share-of-voice gains next cycle.</p>
+      </div>
+
+      <div class="sidebar">
+        <div class="sticky-actions">
+          <div class="card">
+            <div class="pad">
+              <h4>Section actions</h4>
+              <div class="action-list">
+                <button class="btn">↻ Regenerate summary</button>
+                <button class="btn">↻ Regenerate recommendations</button>
+                <button class="btn">+ Add manual note</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="pad">
+              <h4>Note to client (optional)</h4>
+              <textarea class="comment-box" placeholder="e.g. Heads up on the click dip — see call notes from Tuesday.">Heads up — the click dip lines up with the June algorithm update we discussed on our last call.</textarea>
+            </div>
+          </div>
+          <div class="card">
+            <div class="pad">
+              <h4>Send</h4>
+              <div class="send-row">
+                <button class="btn ghost" onclick="go('dashboard')">Save draft</button>
+                <button class="btn primary" onclick="go('sent')">Approve &amp; send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. SENT -->
+  <section class="screen" id="sent">
+    <h2 class="screen-title">Sent &amp; history</h2>
+    <div class="toast">
+      <div>✓</div>
+      <div><strong>Report sent to Northwind Outdoor Co.</strong>Delivered to dana@northwindoutdoor.com + 2 — Jul 19, 2026, 9:14 AM. Priya spent 6 minutes reviewing before send.</div>
+    </div>
+    <div class="card">
+      <div class="history-row"><div class="when">Jul 19, 2026</div><div class="what">Northwind Outdoor Co. — monthly report</div><div class="who">Sent by Priya</div></div>
+      <div class="history-row"><div class="when">Jun 21, 2026</div><div class="what">Northwind Outdoor Co. — monthly report</div><div class="who">Sent by Priya</div></div>
+      <div class="history-row"><div class="when">Jul 19, 2026</div><div class="what">Alpine Supply Co. — weekly report</div><div class="who">Sent by Priya</div></div>
+      <div class="history-row"><div class="when">Jul 12, 2026</div><div class="what">Alpine Supply Co. — weekly report</div><div class="who">Auto-approved (no edits, opted in)</div></div>
+    </div>
+  </section>
+
+  <footer class="note">Prototype UX flow for the Pepper AI Builder assignment — every screen uses sample data shaped like the documented GSC / GA4 / Semrush / Semrush AI / CMS endpoints. See PRD.md for the full spec.</footer>
+</div>
+
+<script>
+  function go(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.toggle('active', s.id === id));
+    document.querySelectorAll('nav.steps button').forEach(b => b.classList.toggle('active', b.dataset.screen === id));
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('steps').addEventListener('click', e => {
+    const btn = e.target.closest('button[data-screen]');
+    if (btn) go(btn.dataset.screen);
+  });
+</script>
+</body>
+</html>
