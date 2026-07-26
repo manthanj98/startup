@@ -6,6 +6,10 @@ deltas, and produces a client-ready report. This is the "working prototype"
 deliverable: it produces a real markdown report from mock-but-realistic data,
 following the exact structure the PRD (../PRD.md) specifies.
 
+Runs for all three sample clients defined in mock_sources.CLIENTS, so the
+dashboard/config/review screens in ux-flow.html each show genuinely
+different data per brand instead of one dataset reused everywhere.
+
 In production, STEP 4 (narrative synthesis) is an LLM call (prompt template
 included below as NARRATIVE_PROMPT_TEMPLATE). Here it's replaced by a
 deterministic rule-based narrator so the script runs with zero API keys —
@@ -14,11 +18,8 @@ prose + citations out.
 """
 import json
 import re
-from datetime import date
 from pathlib import Path
 import mock_sources as src
-
-CLIENT = src.CLIENT
 
 
 def pct_change(new, old):
@@ -30,25 +31,25 @@ def pct_change(new, old):
 # ---------------------------------------------------------------------------
 # STEP 1: Fetch — pull current + prior period from every connected source
 # ---------------------------------------------------------------------------
-def fetch_all():
+def fetch_all(client):
     cur = {
-        "gsc": src.gsc_search_analytics(seed_offset=0),
-        "ga4": src.ga4_run_report(seed_offset=0),
-        "semrush_organic": src.semrush_domain_organic(seed_offset=0),
-        "semrush_backlinks": src.semrush_backlinks_overview(seed_offset=0),
-        "semrush_tracking": src.semrush_position_tracking(seed_offset=0),
-        "ai_visibility": src.semrush_ai_visibility_overview(seed_offset=0),
-        "ai_prompts": src.semrush_ai_prompt_mentions(seed_offset=0),
-        "ai_citations": src.semrush_ai_citation_tracking(seed_offset=0),
-        "wp_posts": src.wordpress_list_posts(),
-        "wp_stale": src.wordpress_stale_posts(),
-        "contentful": src.contentful_entries(),
+        "gsc": src.gsc_search_analytics(client, seed_offset=0),
+        "ga4": src.ga4_run_report(client, seed_offset=0),
+        "semrush_organic": src.semrush_domain_organic(client, seed_offset=0),
+        "semrush_backlinks": src.semrush_backlinks_overview(client, seed_offset=0),
+        "semrush_tracking": src.semrush_position_tracking(client, seed_offset=0),
+        "ai_visibility": src.semrush_ai_visibility_overview(client, seed_offset=0),
+        "ai_prompts": src.semrush_ai_prompt_mentions(client, seed_offset=0),
+        "ai_citations": src.semrush_ai_citation_tracking(client, seed_offset=0),
+        "wp_posts": src.wordpress_list_posts(client),
+        "wp_stale": src.wordpress_stale_posts(client),
+        "contentful": src.contentful_entries(client),
     }
     prior = {
-        "gsc": src.gsc_search_analytics(seed_offset=1),
-        "ga4": src.ga4_run_report(seed_offset=1),
-        "semrush_backlinks": src.semrush_backlinks_overview(seed_offset=1),
-        "ai_visibility": src.semrush_ai_visibility_overview(seed_offset=1),
+        "gsc": src.gsc_search_analytics(client, seed_offset=1),
+        "ga4": src.ga4_run_report(client, seed_offset=1),
+        "semrush_backlinks": src.semrush_backlinks_overview(client, seed_offset=1),
+        "ai_visibility": src.semrush_ai_visibility_overview(client, seed_offset=1),
     }
     return cur, prior
 
@@ -115,7 +116,7 @@ def aggregate(cur, prior):
 # ---------------------------------------------------------------------------
 # STEP 3: Insight rules — flag what's worth the CS manager's / client's attention
 # ---------------------------------------------------------------------------
-def build_insights(m):
+def build_insights(client, m):
     insights = []
     if m["gsc"]["clicks_delta_pct"] and m["gsc"]["clicks_delta_pct"] > 5:
         insights.append(f"Organic clicks grew {m['gsc']['clicks_delta_pct']}% vs the prior period, "
@@ -137,7 +138,7 @@ def build_insights(m):
     ai = m["ai_visibility"]
     if ai["score_delta"] > 0:
         insights.append(f"AI search visibility score rose to {ai['score']} ({ai['score_delta']:+.1f}) — "
-                         f"{CLIENT['name']} now holds {ai['share_of_voice']*100:.0f}% share of voice across "
+                         f"{client['name']} now holds {ai['share_of_voice']*100:.0f}% share of voice across "
                          f"tracked ChatGPT/Perplexity/Google AI Overview/Copilot/Claude prompts, vs "
                          f"{ai['top_competitor']['name']} at {ai['top_competitor']['share_of_voice']*100:.0f}%.")
     else:
@@ -154,7 +155,7 @@ def build_insights(m):
     return insights
 
 
-NARRATIVE_PROMPT_TEMPLATE = """You are drafting the executive summary for a monthly SEO/AI-search \
+NARRATIVE_PROMPT_TEMPLATE = """You are drafting the executive summary for a {cadence} SEO/AI-search \
 performance report for {client_name}. Write 3-4 sentences, plain language, for a marketing \
 director audience (not an SEO specialist). Lead with the single most important trend. Every \
 number you cite must come from the JSON below — never invent a figure. Flag one risk and one \
@@ -168,11 +169,11 @@ PRIOR REPORT ACTION ITEMS (for continuity, mention if resolved):
 """
 
 
-def render_markdown(m, insights):
+def render_markdown(client, m, insights):
     lines = []
-    lines.append(f"# {CLIENT['name']} — Search & AI Visibility Report")
+    lines.append(f"# {client['name']} — Search & AI Visibility Report")
     lines.append(f"**Period:** {src.PERIOD_START:%b %d} – {src.PERIOD_END:%b %d, %Y}  |  "
-                 f"**Domain:** {CLIENT['domain']}\n")
+                 f"**Domain:** {client['domain']}\n")
 
     lines.append("## Executive Summary")
     for s in insights:
@@ -246,12 +247,14 @@ def render_markdown(m, insights):
 # ---------------------------------------------------------------------------
 # STEP 5: Sync — feed the same computed data into the UX flow artifact, so
 # renderReport() in ux-flow.html shows numbers this run actually produced
-# instead of a hand-copied snapshot.
+# instead of a hand-copied snapshot. One entry per client, keyed by slug.
 # ---------------------------------------------------------------------------
-def build_review_json(m):
+def build_review_json(client, m):
     g, a, bl, ai = m["gsc"], m["ga4"], m["backlinks"], m["ai_visibility"]
     return {
-        "client_name": CLIENT["name"],
+        "client_name": client["name"],
+        "domain": client["domain"],
+        "cadence": client["cadence"],
         "period_label": f"{src.PERIOD_START:%b %d}–{src.PERIOD_END:%b %d}",
         "summary": [
             {"src": "GSC", "text": f"Organic clicks {'grew' if g['clicks_delta_pct'] and g['clicks_delta_pct'] > 0 else 'fell'} "
@@ -261,12 +264,15 @@ def build_review_json(m):
             {"src": "Semrush", "text": f"Domain Authority Score {'climbed' if bl['ascore_delta'] >= 0 else 'slipped'} to {bl['ascore']} "
                                        f"({bl['ascore_delta']:+d})."},
             {"src": "AI Toolkit", "text": f"AI search visibility {'rose' if ai['score_delta'] > 0 else 'dipped'} to {ai['score']} "
-                                          f"({ai['score_delta']:+.1f}) — {CLIENT['name']} holds {ai['share_of_voice']*100:.0f}% share of voice "
+                                          f"({ai['score_delta']:+.1f}) — {client['name']} holds {ai['share_of_voice']*100:.0f}% share of voice "
                                           f"vs {ai['top_competitor']['name']} at {ai['top_competitor']['share_of_voice']*100:.0f}%."},
         ],
         "gsc": {"clicks": g["clicks"], "clicks_delta_pct": g["clicks_delta_pct"],
                 "impressions": g["impressions"], "impressions_delta_pct": g["impressions_delta_pct"],
                 "avg_position": g["avg_position"], "position_delta": abs(g["position_delta"])},
+        "ga4": {"sessions": a["sessions"], "sessions_delta_pct": a["sessions_delta_pct"],
+                "conversions": a["conversions"], "conversions_delta_pct": a["conversions_delta_pct"],
+                "revenue": a["revenue"]},
         "backlinks": {"ascore": bl["ascore"], "ascore_delta": bl["ascore_delta"]},
         "ai_visibility": {
             "score": ai["score"], "score_delta": ai["score_delta"], "share_of_voice": ai["share_of_voice"],
@@ -285,10 +291,14 @@ def build_review_json(m):
             f"to recover lost position.",
             f"Monitor {ai['top_competitor']['name']}'s AI share-of-voice gains — consider a prompt-level content gap analysis next cycle.",
         ],
+        # Insights section: per-topic-pillar AI-visibility breakdown + linked recommendations,
+        # sourced from Semrush AI's ai_prompt_mentions shape (authored per client in mock_sources.py
+        # since these are narrative/qualitative, not period-over-period deltas).
+        "insights": client.get("insight_pillars", []),
     }
 
 
-def sync_ux_flow(review_json):
+def sync_ux_flow(review_json_by_client):
     ux_path = Path(__file__).parent.parent / "ux-flow.html"
     html = ux_path.read_text()
     pattern = re.compile(
@@ -296,38 +306,48 @@ def sync_ux_flow(review_json):
         re.DOTALL,
     )
     new_html, n = pattern.subn(
-        lambda m_: m_.group(1) + json.dumps(review_json, indent=2) + m_.group(3),
+        lambda m_: m_.group(1) + json.dumps(review_json_by_client, indent=2) + m_.group(3),
         html,
     )
     if n == 0:
         print("Warning: could not find #report-data block in ux-flow.html — skipped sync.")
         return
     ux_path.write_text(new_html)
-    print(f"--- Synced live metrics into {ux_path} ---")
+    print(f"--- Synced live metrics for {len(review_json_by_client)} client(s) into {ux_path} ---")
 
 
 def main():
-    cur, prior = fetch_all()
-    metrics = aggregate(cur, prior)
-    insights = build_insights(metrics)
-    report_md = render_markdown(metrics, insights)
+    review_json_by_client = {}
+    for slug, client in src.CLIENTS.items():
+        cur, prior = fetch_all(client)
+        metrics = aggregate(cur, prior)
+        insights = build_insights(client, metrics)
+        report_md = render_markdown(client, metrics, insights)
 
-    with open("sample_report_output.md", "w") as f:
-        f.write(report_md)
+        with open(f"sample_report_output_{slug}.md", "w") as f:
+            f.write(report_md)
+        with open(f"sample_metrics_{slug}.json", "w") as f:
+            json.dump(metrics, f, indent=2, default=str)
 
-    with open("sample_metrics.json", "w") as f:
-        json.dump(metrics, f, indent=2, default=str)
+        review_json_by_client[slug] = build_review_json(client, metrics)
 
-    sync_ux_flow(build_review_json(metrics))
+        if slug == "northwind":
+            # Keep the original filenames pointing at the primary walkthrough client.
+            with open("sample_report_output.md", "w") as f:
+                f.write(report_md)
+            with open("sample_metrics.json", "w") as f:
+                json.dump(metrics, f, indent=2, default=str)
+            print(NARRATIVE_PROMPT_TEMPLATE.format(
+                cadence=client["cadence"],
+                client_name=client["name"],
+                metrics_json=json.dumps({k: v for k, v in metrics.items() if k not in ("rankings",)},
+                                         indent=2, default=str)[:800] + " ...(truncated)",
+                prior_action_items="1. Refresh sleeping-bag guide (DONE — published Jul 8)\n"
+                                    "2. Improve mobile page speed on /tents/* (IN PROGRESS)",
+            ))
 
-    print(NARRATIVE_PROMPT_TEMPLATE.format(
-        client_name=CLIENT["name"],
-        metrics_json=json.dumps({k: v for k, v in metrics.items() if k not in ("rankings",)},
-                                 indent=2, default=str)[:800] + " ...(truncated)",
-        prior_action_items="1. Refresh sleeping-bag guide (DONE — published Jul 8)\n"
-                            "2. Improve mobile page speed on /tents/* (IN PROGRESS)",
-    ))
-    print("\n--- Report written to sample_report_output.md ---")
+    sync_ux_flow(review_json_by_client)
+    print("\n--- Reports written for: " + ", ".join(src.CLIENTS[s]["name"] for s in src.CLIENTS) + " ---")
 
 
 if __name__ == "__main__":

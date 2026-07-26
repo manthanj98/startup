@@ -1,0 +1,232 @@
+{
+  "gsc": {
+    "clicks": 11996,
+    "clicks_delta_pct": 40.3,
+    "impressions": 278771,
+    "impressions_delta_pct": 45.6,
+    "ctr": 0.043,
+    "avg_position": 13.5,
+    "position_delta": -0.2
+  },
+  "ga4": {
+    "sessions": 38828,
+    "sessions_delta_pct": 26.3,
+    "conversions": 764,
+    "conversions_delta_pct": 76.4,
+    "revenue": 46463.38
+  },
+  "rankings": {
+    "top_gainers": [
+      {
+        "Ph": "carabiner set aluminum",
+        "Po": 38,
+        "Pp": 44,
+        "Pd": -6,
+        "Nq": 3200,
+        "Cp": 1.16,
+        "Ur": "https://basecampgear.com/carabiner-set-aluminum",
+        "Tr": 0.0638,
+        "Tc": 146.35,
+        "Fp": "people_also_ask",
+        "Fk": 1
+      },
+      {
+        "Ph": "climbing harness beginner",
+        "Po": 21,
+        "Pp": 25,
+        "Pd": -4,
+        "Nq": 8100,
+        "Cp": 0.67,
+        "Ur": "https://basecampgear.com/climbing-harness-beginner",
+        "Tr": 0.0732,
+        "Tc": 292.93,
+        "Fp": "featured_snippet",
+        "Fk": 2
+      },
+      {
+        "Ph": "rope bag climbing",
+        "Po": 6,
+        "Pp": 8,
+        "Pd": -2,
+        "Nq": 880,
+        "Cp": 2.15,
+        "Ur": "https://basecampgear.com/rope-bag-climbing",
+        "Tr": 0.0337,
+        "Tc": 31.35,
+        "Fp": "people_also_ask",
+        "Fk": 3
+      }
+    ],
+    "top_losers": [
+      {
+        "Ph": "approach shoes review",
+        "Po": 11,
+        "Pp": 6,
+        "Pd": 5,
+        "Nq": 4100,
+        "Cp": 3.15,
+        "Ur": "https://basecampgear.com/approach-shoes-review",
+        "Tr": 0.0203,
+        "Tc": 177.35,
+        "Fp": "none",
+        "Fk": 3
+      },
+      {
+        "Ph": "bouldering crash pad",
+        "Po": 14,
+        "Pp": 8,
+        "Pd": 6,
+        "Nq": 2200,
+        "Cp": 2.8,
+        "Ur": "https://basecampgear.com/bouldering-crash-pad",
+        "Tr": 0.0488,
+        "Tc": 114.01,
+        "Fp": "none",
+        "Fk": 1
+      },
+      {
+        "Ph": "ice axe self arrest",
+        "Po": 34,
+        "Pp": 28,
+        "Pd": 6,
+        "Nq": 590,
+        "Cp": 2.18,
+        "Ur": "https://basecampgear.com/ice-axe-self-arrest",
+        "Tr": 0.0745,
+        "Tc": 18.36,
+        "Fp": "ai_overview",
+        "Fk": 1
+      }
+    ]
+  },
+  "backlinks": {
+    "ascore": 28,
+    "ascore_delta": -22,
+    "total": 5578
+  },
+  "ai_visibility": {
+    "score": 21.2,
+    "score_delta": -1.5,
+    "share_of_voice": 0.1,
+    "top_competitor": {
+      "name": "Northwind Outdoor Co.",
+      "share_of_voice": 0.24,
+      "change_vs_previous": 0.03,
+      "top_engine": "google_aio"
+    },
+    "per_engine": [
+      {
+        "engine": "chatgpt",
+        "visibility_score": 17.8,
+        "share_of_voice": 0.171,
+        "mention_rate": 0.071,
+        "avg_position": 1.6,
+        "change_vs_previous": 6.9
+      },
+      {
+        "engine": "perplexity",
+        "visibility_score": 39.7,
+        "share_of_voice": 0.07,
+        "mention_rate": 0.259,
+        "avg_position": 2.8,
+        "change_vs_previous": -1.0
+      },
+      {
+        "engine": "google_aio",
+        "visibility_score": 14.5,
+        "share_of_voice": 0.077,
+        "mention_rate": 0.267,
+        "avg_position": 1.3,
+        "change_vs_previous": 7.1
+      },
+      {
+        "engine": "copilot",
+        "visibility_score": 9.5,
+        "share_of_voice": 0.099,
+        "mention_rate": 0.179,
+        "avg_position": 4.3,
+        "change_vs_previous": 7.8
+      },
+      {
+        "engine": "claude",
+        "visibility_score": 24.4,
+        "share_of_voice": 0.081,
+        "mention_rate": 0.298,
+        "avg_position": 4.6,
+        "change_vs_previous": 4.1
+      }
+    ],
+    "best_mention": {
+      "prompt_text": "best belay device for a beginner climber?",
+      "ai_engine": "chatgpt",
+      "mentioned": true,
+      "position": 1,
+      "response_excerpt": "...Basecamp Gear's Halo assisted-braking device is frequently recommended for beginners because of its intuitive lever action and lower price point...",
+      "sentiment": "positive",
+      "citation_urls": [
+        "https://basecampgear.com/"
+      ],
+      "competitor_brands_mentioned": [
+        "Petzl",
+        "Black Diamond"
+      ]
+    }
+  },
+  "ai_citations": [
+    {
+      "url": "https://basecampgear.com/guides/belay-devices-compared",
+      "page_title": "Assisted-Braking Belay Devices Compared",
+      "citations_count": 11,
+      "avg_citation_position": 1.2,
+      "change_vs_previous": {
+        "citations_count_delta": 16,
+        "percent_change": 0.14,
+        "trend": "positive"
+      }
+    },
+    {
+      "url": "https://basecampgear.com/guides/harness-sizing",
+      "page_title": "How to Size a Climbing Harness",
+      "citations_count": 38,
+      "avg_citation_position": 1.1,
+      "change_vs_previous": {
+        "citations_count_delta": 17,
+        "percent_change": 0.5,
+        "trend": "positive"
+      }
+    }
+  ],
+  "content_published": [
+    {
+      "id": 4000,
+      "title": {
+        "rendered": "Trad vs Sport Climbing: Gear Differences"
+      },
+      "date": "2026-07-11T09:00:00",
+      "modified": "2026-07-11T09:00:00",
+      "status": "publish",
+      "link": "https://basecampgear.com/blog/trad-vs-sport-gear",
+      "categories": [
+        12
+      ]
+    }
+  ],
+  "stale_content": [
+    {
+      "id": 2000,
+      "title": {
+        "rendered": "Top 5 Crash Pads of 2021"
+      },
+      "modified": "2021-09-14T00:00:00",
+      "link": "https://basecampgear.com/blog/crash-pads-2021"
+    },
+    {
+      "id": 2001,
+      "title": {
+        "rendered": "Ice Axe Buying Guide (2020)"
+      },
+      "modified": "2020-12-01T00:00:00",
+      "link": "https://basecampgear.com/blog/ice-axe-guide-2020"
+    }
+  ]
+}

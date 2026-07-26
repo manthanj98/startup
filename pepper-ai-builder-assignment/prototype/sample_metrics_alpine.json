@@ -1,0 +1,241 @@
+{
+  "gsc": {
+    "clicks": 18204,
+    "clicks_delta_pct": 19.8,
+    "impressions": 333486,
+    "impressions_delta_pct": 31.8,
+    "ctr": 0.0546,
+    "avg_position": 14.7,
+    "position_delta": -1.5
+  },
+  "ga4": {
+    "sessions": 29159,
+    "sessions_delta_pct": -23.8,
+    "conversions": 326,
+    "conversions_delta_pct": -9.4,
+    "revenue": 17565.3
+  },
+  "rankings": {
+    "top_gainers": [
+      {
+        "Ph": "backcountry ski boots",
+        "Po": 10,
+        "Pp": 16,
+        "Pd": -6,
+        "Nq": 4300,
+        "Cp": 3.18,
+        "Ur": "https://alpinesupply.co/backcountry-ski-boots",
+        "Tr": 0.0123,
+        "Tc": 138.02,
+        "Fp": "ai_overview",
+        "Fk": 2
+      },
+      {
+        "Ph": "snowshoes for deep powder",
+        "Po": 40,
+        "Pp": 45,
+        "Pd": -5,
+        "Nq": 2100,
+        "Cp": 1.93,
+        "Ur": "https://alpinesupply.co/snowshoes-for-deep-powder",
+        "Tr": 0.0678,
+        "Tc": 22.21,
+        "Fp": "people_also_ask",
+        "Fk": 2
+      },
+      {
+        "Ph": "ski touring bindings",
+        "Po": 30,
+        "Pp": 33,
+        "Pd": -3,
+        "Nq": 3400,
+        "Cp": 1.66,
+        "Ur": "https://alpinesupply.co/ski-touring-bindings",
+        "Tr": 0.0115,
+        "Tc": 137.5,
+        "Fp": "people_also_ask",
+        "Fk": 1
+      }
+    ],
+    "top_losers": [
+      {
+        "Ph": "heated socks battery",
+        "Po": 12,
+        "Pp": 9,
+        "Pd": 3,
+        "Nq": 1900,
+        "Cp": 2.0,
+        "Ur": "https://alpinesupply.co/heated-socks-battery",
+        "Tr": 0.0286,
+        "Tc": 91.39,
+        "Fp": "people_also_ask",
+        "Fk": 3
+      },
+      {
+        "Ph": "ski pole length chart",
+        "Po": 26,
+        "Pp": 21,
+        "Pd": 5,
+        "Nq": 970,
+        "Cp": 1.95,
+        "Ur": "https://alpinesupply.co/ski-pole-length-chart",
+        "Tr": 0.0557,
+        "Tc": 53.05,
+        "Fp": "featured_snippet",
+        "Fk": 2
+      },
+      {
+        "Ph": "thermal base layer women",
+        "Po": 7,
+        "Pp": 1,
+        "Pd": 6,
+        "Nq": 5900,
+        "Cp": 2.12,
+        "Ur": "https://alpinesupply.co/thermal-base-layer-women",
+        "Tr": 0.0092,
+        "Tc": 268.87,
+        "Fp": "ai_overview",
+        "Fk": 1
+      }
+    ]
+  },
+  "backlinks": {
+    "ascore": 37,
+    "ascore_delta": -4,
+    "total": 8136
+  },
+  "ai_visibility": {
+    "score": 28.8,
+    "score_delta": 9.4,
+    "share_of_voice": 0.129,
+    "top_competitor": {
+      "name": "TrailForge",
+      "share_of_voice": 0.31,
+      "change_vs_previous": 0.03,
+      "top_engine": "perplexity"
+    },
+    "per_engine": [
+      {
+        "engine": "chatgpt",
+        "visibility_score": 21.0,
+        "share_of_voice": 0.102,
+        "mention_rate": 0.155,
+        "avg_position": 3.1,
+        "change_vs_previous": 5.4
+      },
+      {
+        "engine": "perplexity",
+        "visibility_score": 29.2,
+        "share_of_voice": 0.16,
+        "mention_rate": 0.331,
+        "avg_position": 1.6,
+        "change_vs_previous": -5.0
+      },
+      {
+        "engine": "google_aio",
+        "visibility_score": 29.0,
+        "share_of_voice": 0.153,
+        "mention_rate": 0.059,
+        "avg_position": 3.1,
+        "change_vs_previous": -2.8
+      },
+      {
+        "engine": "copilot",
+        "visibility_score": 37.6,
+        "share_of_voice": 0.049,
+        "mention_rate": 0.063,
+        "avg_position": 2.2,
+        "change_vs_previous": -0.5
+      },
+      {
+        "engine": "claude",
+        "visibility_score": 27.4,
+        "share_of_voice": 0.18,
+        "mention_rate": 0.29,
+        "avg_position": 3.5,
+        "change_vs_previous": 6.3
+      }
+    ],
+    "best_mention": {
+      "prompt_text": "best goggles for flat light conditions skiing?",
+      "ai_engine": "google_aio",
+      "mentioned": true,
+      "position": 1,
+      "response_excerpt": "...Alpine Supply Co.'s Contrast+ lens line is built specifically for flat-light days, with a rose-based tint that several reviewers say outperforms rivals...",
+      "sentiment": "positive",
+      "citation_urls": [
+        "https://alpinesupply.co/"
+      ],
+      "competitor_brands_mentioned": [
+        "Smith",
+        "Oakley"
+      ]
+    }
+  },
+  "ai_citations": [
+    {
+      "url": "https://alpinesupply.co/guides/goggle-lens-tints",
+      "page_title": "Choosing Ski Goggle Lens Tints",
+      "citations_count": 45,
+      "avg_citation_position": 1.8,
+      "change_vs_previous": {
+        "citations_count_delta": -5,
+        "percent_change": 0.07,
+        "trend": "positive"
+      }
+    },
+    {
+      "url": "https://alpinesupply.co/guides/avalanche-safety-checklist",
+      "page_title": "Avalanche Safety Gear Checklist",
+      "citations_count": 53,
+      "avg_citation_position": 3.3,
+      "change_vs_previous": {
+        "citations_count_delta": 5,
+        "percent_change": 0.41,
+        "trend": "positive"
+      }
+    }
+  ],
+  "content_published": [
+    {
+      "id": 4000,
+      "title": {
+        "rendered": "Early-Season Snow Report: What to Bring"
+      },
+      "date": "2026-07-16T09:00:00",
+      "modified": "2026-07-16T09:00:00",
+      "status": "publish",
+      "link": "https://alpinesupply.co/blog/early-season-snow-report",
+      "categories": [
+        12
+      ]
+    },
+    {
+      "id": 4001,
+      "title": {
+        "rendered": "Backcountry Boot Fit Guide"
+      },
+      "date": "2026-07-13T09:00:00",
+      "modified": "2026-07-13T09:00:00",
+      "status": "publish",
+      "link": "https://alpinesupply.co/blog/boot-fit-guide",
+      "categories": [
+        12
+      ]
+    },
+    {
+      "id": 4002,
+      "title": {
+        "rendered": "Layering for -20F Days"
+      },
+      "date": "2026-07-09T09:00:00",
+      "modified": "2026-07-09T09:00:00",
+      "status": "publish",
+      "link": "https://alpinesupply.co/blog/layering-extreme-cold",
+      "categories": [
+        12
+      ]
+    }
+  ],
+  "stale_content": []
+}

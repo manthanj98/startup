@@ -19,6 +19,9 @@
     --bad-bg: #f6e5e0;
     --focus: #b5461f;
     --shadow: 0 1px 2px rgba(28,26,23,0.06), 0 8px 24px rgba(28,26,23,0.06);
+    --chart-grid: #e4ddd1;
+    --chart-muted: #cabfaf;
+    --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a; --series-4: #eda100; --series-5: #e87ba4;
   }
   :root[data-theme="dark"] {
     --ink: #f0ece3;
@@ -34,6 +37,9 @@
     --bad: #e08066;
     --bad-bg: #33211c;
     --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    --chart-grid: #3a352d;
+    --chart-muted: #55503a;
+    --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500; --series-5: #d55181;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -50,6 +56,9 @@
       --bad: #e08066;
       --bad-bg: #33211c;
       --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+      --chart-grid: #3a352d;
+      --chart-muted: #55503a;
+      --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500; --series-5: #d55181;
     }
   }
 
@@ -167,9 +176,56 @@
 
   footer.note { margin-top: 28px; font-size: 12px; color: var(--ink-soft); }
 
+  /* --- KPI stat tiles --- */
+  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin: 2px 0 20px; }
+  .kpi-tile { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; background: var(--paper); }
+  .kpi-tile .kpi-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft); margin-bottom: 6px; }
+  .kpi-tile .kpi-value { font-size: 21px; font-weight: 700; letter-spacing: -0.01em; }
+  .kpi-tile .kpi-delta { font-size: 12px; font-weight: 600; margin-top: 3px; }
+
+  /* --- Bar charts --- */
+  .chart-card { border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px 6px; margin: 10px 0 16px; background: var(--paper-raised); }
+  .chart-card h4 { margin: 0 0 12px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft); font-weight: 700; }
+  .bar-chart { display: flex; flex-direction: column; gap: 12px; padding-bottom: 6px; }
+  .bar-row { display: grid; grid-template-columns: 96px 1fr; align-items: center; gap: 10px; }
+  .bar-row .bar-label { font-size: 12px; color: var(--ink-soft); text-transform: capitalize; }
+  .bar-track { position: relative; height: 20px; background: var(--chart-grid); border-radius: 4px; }
+  .bar-fill { position: absolute; left: 0; top: 0; height: 100%; border-radius: 4px; min-width: 2px; }
+  .bar-value { position: absolute; top: 50%; transform: translateY(-50%); font-size: 12px; font-weight: 600; color: var(--ink); white-space: nowrap; }
+  .bar-value.inside { right: 8px; }
+  .bar-value.outside { top: 50%; }
+  .table-toggle { margin: 4px 0 8px; font-size: 12px; }
+  .table-toggle summary { cursor: pointer; color: var(--ink-soft); }
+  .table-toggle summary:hover { color: var(--ink); }
+  .table-toggle table.metrics { margin-top: 8px; }
+
+  /* --- Insight cards --- */
+  .insight-card { border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; }
+  .insight-card .updated { font-size: 11px; color: var(--ink-soft); margin-bottom: 6px; }
+  .insight-card h4 { font-size: 13.5px; margin: 0 0 8px; text-wrap: balance; }
+  .insight-card ul { margin: 8px 0 0; padding-left: 18px; font-size: 12.5px; line-height: 1.6; color: var(--ink-soft); }
+  .insight-card ul li strong { color: var(--ink); }
+  .insight-card .card-actions { display: flex; gap: 8px; margin-top: 12px; justify-content: flex-end; }
+
+  /* --- Recommendations slide-over --- */
+  .recs-overlay { position: fixed; inset: 0; background: rgba(20,17,14,0.4); z-index: 50; opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+  .recs-overlay.open { opacity: 1; pointer-events: auto; }
+  .recs-panel { position: fixed; top: 0; right: 0; height: 100%; width: min(420px, 92vw); background: var(--paper-raised); box-shadow: var(--shadow); z-index: 51; transform: translateX(100%); transition: transform .25s ease; display: flex; flex-direction: column; }
+  .recs-panel.open { transform: translateX(0); }
+  .recs-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 18px; border-bottom: 1px solid var(--line); }
+  .recs-head h3 { margin: 0; font-size: 15px; }
+  .recs-body { padding: 16px 18px; overflow-y: auto; flex: 1; }
+  .rec-card { border: 1px solid var(--line); border-radius: 8px; padding: 14px; margin-bottom: 12px; }
+  .rec-card h5 { font-size: 13px; margin: 0 0 6px; }
+  .rec-card p { font-size: 12.5px; color: var(--ink-soft); line-height: 1.55; margin: 0 0 8px; }
+  .rec-card .citation { font-size: 11.5px; }
+  .rec-card .citation a { color: var(--accent-ink); }
+  @media (prefers-reduced-motion: reduce) { .recs-panel, .recs-overlay { transition: none; } }
+
   @media (max-width: 720px) {
     .config-grid { grid-template-columns: 1fr; }
     .review-layout { grid-template-columns: 1fr; }
+    .bar-row { grid-template-columns: 76px 1fr; }
   }
 </style>
 </head>
@@ -202,17 +258,17 @@
         <div class="client-row">
           <div><div class="name">Northwind Outdoor Co.</div><div class="domain">northwindoutdoor.com · monthly</div></div>
           <span class="pill due">Due today</span>
-          <button class="btn primary" onclick="go('config')">Generate report</button>
+          <button class="btn primary" onclick="go('config', 'northwind')">Generate report</button>
         </div>
         <div class="client-row">
           <div><div class="name">Basecamp Gear</div><div class="domain">basecampgear.com · monthly</div></div>
           <span class="pill ready">Draft ready</span>
-          <button class="btn" onclick="go('review')">Review draft</button>
+          <button class="btn" onclick="go('review', 'basecamp')">Review draft</button>
         </div>
         <div class="client-row">
           <div><div class="name">Alpine Supply Co.</div><div class="domain">alpinesupply.co · weekly</div></div>
           <span class="pill sent">Sent Jul 19</span>
-          <button class="btn ghost" onclick="go('sent')">View history</button>
+          <button class="btn ghost" onclick="go('sent', 'alpine')">View history</button>
         </div>
       </div>
     </div>
@@ -220,14 +276,14 @@
 
   <!-- 2. CONFIG -->
   <section class="screen" id="config">
-    <h2 class="screen-title">Northwind Outdoor Co. — report configuration</h2>
+    <h2 class="screen-title" id="config-title">Northwind Outdoor Co. — report configuration</h2>
     <p class="screen-sub">Set up once per client. Atlas reuses this every cycle, so the CS manager configures scope and intent, not plumbing.</p>
     <div class="card pad">
       <div class="config-grid">
-        <div class="field"><label>Reporting period</label><div class="val">Jun 22 – Jul 19, 2026 (monthly, auto-rolling)</div></div>
-        <div class="field"><label>Recipients</label><div class="val">dana@northwindoutdoor.com, +2 cc</div></div>
+        <div class="field"><label>Reporting period</label><div class="val" id="config-period">Jun 22 – Jul 19, 2026 (monthly, auto-rolling)</div></div>
+        <div class="field"><label>Recipients</label><div class="val" id="config-recipients">dana@northwindoutdoor.com, +2 cc</div></div>
         <div class="field"><label>Tracked competitors</label>
-          <div class="chip-row"><span class="chip">trailforge.com</span><span class="chip">basecampgear.com</span><span class="chip">summitware.com</span></div>
+          <div class="chip-row" id="config-competitors"><span class="chip">trailforge.com</span><span class="chip">basecampgear.com</span><span class="chip">summitware.com</span></div>
         </div>
         <div class="field"><label>Client KPIs of record</label>
           <div class="chip-row"><span class="chip">Organic conversions</span><span class="chip">AI share of voice</span><span class="chip">Domain authority</span></div>
@@ -235,8 +291,8 @@
       </div>
       <div class="field" style="margin-top:18px;">
         <label>Connected sources</label>
-        <div class="source-check"><span class="dot"></span> Google Search Console — sc-domain:northwindoutdoor.com</div>
-        <div class="source-check"><span class="dot"></span> GA4 — properties/384712201</div>
+        <div class="source-check"><span class="dot"></span> Google Search Console — <span id="config-gsc">sc-domain:northwindoutdoor.com</span></div>
+        <div class="source-check"><span class="dot"></span> GA4 — <span id="config-ga4">properties/384712201</span></div>
         <div class="source-check"><span class="dot"></span> Semrush — organic, tracking, backlinks, AI Toolkit</div>
         <div class="source-check"><span class="dot"></span> WordPress — content calendar &amp; stale-page scan</div>
       </div>
@@ -249,7 +305,7 @@
 
   <!-- 3. GENERATING -->
   <section class="screen" id="generating">
-    <h2 class="screen-title">Building the draft</h2>
+    <h2 class="screen-title" id="generating-title">Building the draft</h2>
     <p class="screen-sub">Atlas fetches every connected source for the period and the prior period, computes deltas, then synthesizes the narrative. Typically under two minutes.</p>
     <div class="card pad">
       <div class="pipeline">
@@ -326,116 +382,601 @@
   <footer class="note">Prototype UX flow for the Pepper AI Builder assignment — every screen uses sample data shaped like the documented GSC / GA4 / Semrush / Semrush AI / CMS endpoints. See PRD.md for the full spec.</footer>
 </div>
 
+<div class="recs-overlay" id="recs-overlay" onclick="closeRecommendations()"></div>
+<aside class="recs-panel" id="recs-panel" aria-hidden="true">
+  <div class="recs-head">
+    <h3 id="recs-title">Recommendations</h3>
+    <button class="btn ghost" onclick="closeRecommendations()" aria-label="Close">✕</button>
+  </div>
+  <div class="recs-body" id="recs-body"></div>
+</aside>
+
 <script type="application/json" id="report-data">
 {
-  "client_name": "Northwind Outdoor Co.",
-  "period_label": "Jun 22\u2013Jul 19",
-  "summary": [
-    {
-      "src": "GSC",
-      "text": "Organic clicks grew 14.7% vs the prior period."
-    },
-    {
-      "src": "GA4",
-      "text": "Organic-driven conversions are up 1.1% ($42,988 in attributed revenue this period)."
-    },
-    {
-      "src": "Semrush",
-      "text": "Domain Authority Score slipped to 34 (-12)."
-    },
-    {
-      "src": "AI Toolkit",
-      "text": "AI search visibility rose to 26.0 (+3.4) \u2014 Northwind Outdoor Co. holds 10% share of voice vs TrailForge at 29%."
-    }
-  ],
-  "gsc": {
-    "clicks": 11912,
-    "clicks_delta_pct": 14.7,
-    "impressions": 207012,
-    "impressions_delta_pct": -3.0,
-    "avg_position": 17.6,
-    "position_delta": 4.0
-  },
-  "backlinks": {
-    "ascore": 34,
-    "ascore_delta": -12
-  },
-  "ai_visibility": {
-    "score": 26.0,
-    "score_delta": 3.4,
-    "share_of_voice": 0.099,
-    "top_competitor": {
-      "name": "TrailForge",
-      "share_of_voice": 0.29
-    },
-    "per_engine": [
+  "northwind": {
+    "client_name": "Northwind Outdoor Co.",
+    "domain": "northwindoutdoor.com",
+    "cadence": "monthly",
+    "period_label": "Jun 22\u2013Jul 19",
+    "summary": [
       {
-        "engine": "chatgpt",
-        "visibility_score": 27.2,
-        "share_of_voice": 0.074,
-        "avg_position": 3.1,
-        "change_vs_previous": -2.5
+        "src": "GSC",
+        "text": "Organic clicks fell 7.0% vs the prior period."
       },
       {
-        "engine": "perplexity",
-        "visibility_score": 20.9,
-        "share_of_voice": 0.139,
-        "avg_position": 4.2,
-        "change_vs_previous": -2.5
+        "src": "GA4",
+        "text": "Organic-driven conversions are down 14.1% ($47,601 in attributed revenue this period)."
       },
       {
-        "engine": "google_aio",
-        "visibility_score": 26.0,
-        "share_of_voice": 0.051,
-        "avg_position": 3.6,
-        "change_vs_previous": 2.2
+        "src": "Semrush",
+        "text": "Domain Authority Score slipped to 37 (-4)."
       },
       {
-        "engine": "copilot",
-        "visibility_score": 17.3,
-        "share_of_voice": 0.193,
-        "avg_position": 4.3,
-        "change_vs_previous": -0.4
-      },
-      {
-        "engine": "claude",
-        "visibility_score": 38.7,
-        "share_of_voice": 0.037,
-        "avg_position": 3.8,
-        "change_vs_previous": 0.1
+        "src": "AI Toolkit",
+        "text": "AI search visibility dipped to 23.1 (-6.9) \u2014 Northwind Outdoor Co. holds 13% share of voice vs TrailForge at 29%."
       }
     ],
-    "best_mention": {
-      "ai_engine": "perplexity",
-      "sentiment": "positive",
-      "response_excerpt": "...Northwind's Summit 4 is a strong pick for durability, with reinforced stake points and a 3000mm rainfly rating that outperforms cheaper tents..."
-    }
-  },
-  "ai_citations": [
-    {
-      "page_title": "The Complete Tent Buying Guide (2026)",
-      "url": "https://northwindoutdoor.com/guides/tent-buying-guide",
-      "citations_count": 45,
-      "percent_change": 0.1
+    "gsc": {
+      "clicks": 12688,
+      "clicks_delta_pct": -7.0,
+      "impressions": 236388,
+      "impressions_delta_pct": -5.5,
+      "avg_position": 12.0,
+      "position_delta": 3.5
     },
-    {
-      "page_title": "Layering 101: Base, Mid, Shell",
-      "url": "https://northwindoutdoor.com/guides/layering-101",
-      "citations_count": 13,
-      "percent_change": 0.03
-    }
-  ],
-  "recommendations": [
-    "Refresh the stale guide flagged above and add an FAQ block targeting the AI-cited queries.",
-    "Publish a comparison page targeting \"trail running vest\" to recover lost position.",
-    "Monitor TrailForge's AI share-of-voice gains \u2014 consider a prompt-level content gap analysis next cycle."
-  ]
+    "ga4": {
+      "sessions": 26926,
+      "sessions_delta_pct": 30.1,
+      "conversions": 938,
+      "conversions_delta_pct": -14.1,
+      "revenue": 47600.67
+    },
+    "backlinks": {
+      "ascore": 37,
+      "ascore_delta": -4
+    },
+    "ai_visibility": {
+      "score": 23.1,
+      "score_delta": -6.9,
+      "share_of_voice": 0.13,
+      "top_competitor": {
+        "name": "TrailForge",
+        "share_of_voice": 0.29
+      },
+      "per_engine": [
+        {
+          "engine": "chatgpt",
+          "visibility_score": 34.7,
+          "share_of_voice": 0.127,
+          "avg_position": 4.4,
+          "change_vs_previous": -4.6
+        },
+        {
+          "engine": "perplexity",
+          "visibility_score": 9.5,
+          "share_of_voice": 0.146,
+          "avg_position": 1.8,
+          "change_vs_previous": 5.8
+        },
+        {
+          "engine": "google_aio",
+          "visibility_score": 21.5,
+          "share_of_voice": 0.128,
+          "avg_position": 2.6,
+          "change_vs_previous": -2.1
+        },
+        {
+          "engine": "copilot",
+          "visibility_score": 39.4,
+          "share_of_voice": 0.032,
+          "avg_position": 1.9,
+          "change_vs_previous": -3.9
+        },
+        {
+          "engine": "claude",
+          "visibility_score": 10.3,
+          "share_of_voice": 0.217,
+          "avg_position": 2.5,
+          "change_vs_previous": 0.0
+        }
+      ],
+      "best_mention": {
+        "ai_engine": "perplexity",
+        "sentiment": "positive",
+        "response_excerpt": "...Northwind's Summit 4 is a strong pick for durability, with reinforced stake points and a 3000mm rainfly rating that outperforms cheaper tents..."
+      }
+    },
+    "ai_citations": [
+      {
+        "page_title": "The Complete Tent Buying Guide (2026)",
+        "url": "https://northwindoutdoor.com/guides/tent-buying-guide",
+        "citations_count": 9,
+        "percent_change": 0.38
+      },
+      {
+        "page_title": "Layering 101: Base, Mid, Shell",
+        "url": "https://northwindoutdoor.com/guides/layering-101",
+        "citations_count": 13,
+        "percent_change": 0.52
+      }
+    ],
+    "recommendations": [
+      "Refresh the stale guide flagged above and add an FAQ block targeting the AI-cited queries.",
+      "Publish a comparison page targeting \"rain shell jacket men\" to recover lost position.",
+      "Monitor TrailForge's AI share-of-voice gains \u2014 consider a prompt-level content gap analysis next cycle."
+    ],
+    "insights": [
+      {
+        "id": "waterproof-durability",
+        "pillar": "Waterproofing & Durability Claims",
+        "title": "Durability claims are landing, but waterproof-rating detail is thin for Northwind",
+        "mentions": 3,
+        "mentions_total": 10,
+        "sentiment": {
+          "positive": 3,
+          "neutral": 0,
+          "negative": 0
+        },
+        "bullets": [
+          {
+            "label": "What's happening",
+            "text": "Northwind is mentioned in 3 of 10 tracked answers about 4-person tent durability, all positive, anchored on the Summit 4's 3000mm rainfly rating."
+          },
+          {
+            "label": "Why it matters",
+            "text": "Durability is the #1 reason cited in AI answers for recommending a tent over a cheaper alternative \u2014 it's the deciding factor, not price."
+          },
+          {
+            "label": "Competitive contrast",
+            "text": "TrailForge appears in 6 of 10 answers with a published waterproof-rating comparison chart; Northwind has no equivalent page."
+          },
+          {
+            "label": "Source mechanism",
+            "text": "Citing sources skew toward OutdoorGearLab and SectionHiker \u2014 both cite spec-sheet comparison tables, which Northwind's product pages lack."
+          }
+        ],
+        "recommendations": [
+          {
+            "title": "Publish a waterproof-rating comparison table on the tent-buying guide",
+            "body": "OutdoorGearLab's tent roundup ranks well because it presents a side-by-side waterproof-rating (mm) and hydrostatic-head table across competitors. Northwind's guide currently only states its own rating in prose. Add a structured comparison table (rainfly mm, floor mm, seam-taping method) so AI engines have a citable, structured source that isn't a third party.",
+            "citation": {
+              "text": "OutdoorGearLab \u2014 Best Tents",
+              "url": "https://outdoorgearlab.com/best-tents"
+            }
+          },
+          {
+            "title": "Add a durability FAQ block to the Summit 4 product page",
+            "body": "SectionHiker's citations come from direct answers to \"how long does this tent last in high wind\" style questions. A product-page FAQ with specific, testable claims (denier count, pole material, field-test conditions) gives AI engines a first-party answer to cite instead of a review site.",
+            "citation": {
+              "text": "SectionHiker \u2014 Northwind Summit 4 Review",
+              "url": "https://sectionhiker.com/summit-4-review"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sizing-fit",
+        "pillar": "Sizing & Fit Guidance",
+        "title": "Boot sizing questions skip Northwind entirely",
+        "mentions": 0,
+        "mentions_total": 10,
+        "sentiment": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "bullets": [
+          {
+            "label": "What's happening",
+            "text": "For \"waterproof hiking boots wide feet\" style prompts, Northwind shows up in 0 of 10 answers \u2014 Merrell, Salomon, and Oboz dominate."
+          },
+          {
+            "label": "Why it matters",
+            "text": "Sizing/fit is one of the highest-intent questions before a purchase; being absent here means losing the recommendation at the final decision step."
+          },
+          {
+            "label": "Source mechanism",
+            "text": "Answers consistently cite REI's fit-guide article and Reddit r/hiking threads \u2014 neither is a brand's own page, meaning the gap is winnable."
+          }
+        ],
+        "recommendations": [
+          {
+            "title": "Publish a wide-fit sizing guide for the boot line",
+            "body": "REI's fit-guide ranks because it gives concrete last-width measurements and a \"if you wear X in brand Y, try size Z\" conversion table. Northwind has no sizing content beyond a generic size chart \u2014 adding brand-to-brand conversions would give AI engines a reason to cite Northwind directly for wide-fit queries.",
+            "citation": {
+              "text": "REI Co-op \u2014 Hiking Boot Fit Guide",
+              "url": "https://rei.com/learn/expert-advice/hiking-boots"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "basecamp": {
+    "client_name": "Basecamp Gear",
+    "domain": "basecampgear.com",
+    "cadence": "monthly",
+    "period_label": "Jun 22\u2013Jul 19",
+    "summary": [
+      {
+        "src": "GSC",
+        "text": "Organic clicks grew 40.3% vs the prior period."
+      },
+      {
+        "src": "GA4",
+        "text": "Organic-driven conversions are up 76.4% ($46,463 in attributed revenue this period)."
+      },
+      {
+        "src": "Semrush",
+        "text": "Domain Authority Score slipped to 28 (-22)."
+      },
+      {
+        "src": "AI Toolkit",
+        "text": "AI search visibility dipped to 21.2 (-1.5) \u2014 Basecamp Gear holds 10% share of voice vs Northwind Outdoor Co. at 24%."
+      }
+    ],
+    "gsc": {
+      "clicks": 11996,
+      "clicks_delta_pct": 40.3,
+      "impressions": 278771,
+      "impressions_delta_pct": 45.6,
+      "avg_position": 13.5,
+      "position_delta": 0.2
+    },
+    "ga4": {
+      "sessions": 38828,
+      "sessions_delta_pct": 26.3,
+      "conversions": 764,
+      "conversions_delta_pct": 76.4,
+      "revenue": 46463.38
+    },
+    "backlinks": {
+      "ascore": 28,
+      "ascore_delta": -22
+    },
+    "ai_visibility": {
+      "score": 21.2,
+      "score_delta": -1.5,
+      "share_of_voice": 0.1,
+      "top_competitor": {
+        "name": "Northwind Outdoor Co.",
+        "share_of_voice": 0.24
+      },
+      "per_engine": [
+        {
+          "engine": "chatgpt",
+          "visibility_score": 17.8,
+          "share_of_voice": 0.171,
+          "avg_position": 1.6,
+          "change_vs_previous": 6.9
+        },
+        {
+          "engine": "perplexity",
+          "visibility_score": 39.7,
+          "share_of_voice": 0.07,
+          "avg_position": 2.8,
+          "change_vs_previous": -1.0
+        },
+        {
+          "engine": "google_aio",
+          "visibility_score": 14.5,
+          "share_of_voice": 0.077,
+          "avg_position": 1.3,
+          "change_vs_previous": 7.1
+        },
+        {
+          "engine": "copilot",
+          "visibility_score": 9.5,
+          "share_of_voice": 0.099,
+          "avg_position": 4.3,
+          "change_vs_previous": 7.8
+        },
+        {
+          "engine": "claude",
+          "visibility_score": 24.4,
+          "share_of_voice": 0.081,
+          "avg_position": 4.6,
+          "change_vs_previous": 4.1
+        }
+      ],
+      "best_mention": {
+        "ai_engine": "chatgpt",
+        "sentiment": "positive",
+        "response_excerpt": "...Basecamp Gear's Halo assisted-braking device is frequently recommended for beginners because of its intuitive lever action and lower price point..."
+      }
+    },
+    "ai_citations": [
+      {
+        "page_title": "Assisted-Braking Belay Devices Compared",
+        "url": "https://basecampgear.com/guides/belay-devices-compared",
+        "citations_count": 11,
+        "percent_change": 0.14
+      },
+      {
+        "page_title": "How to Size a Climbing Harness",
+        "url": "https://basecampgear.com/guides/harness-sizing",
+        "citations_count": 38,
+        "percent_change": 0.5
+      }
+    ],
+    "recommendations": [
+      "Refresh the stale guide flagged above and add an FAQ block targeting the AI-cited queries.",
+      "Publish a comparison page targeting \"ice axe self arrest\" to recover lost position.",
+      "Monitor Northwind Outdoor Co.'s AI share-of-voice gains \u2014 consider a prompt-level content gap analysis next cycle."
+    ],
+    "insights": [
+      {
+        "id": "beginner-safety",
+        "pillar": "Safety & Certification Claims",
+        "title": "Basecamp leads beginner belay questions, but harness certification detail is missing",
+        "mentions": 4,
+        "mentions_total": 10,
+        "sentiment": {
+          "positive": 4,
+          "neutral": 0,
+          "negative": 0
+        },
+        "bullets": [
+          {
+            "label": "What's happening",
+            "text": "Basecamp's Halo belay device is mentioned in 4 of 10 answers about beginner-friendly belay gear, all positive."
+          },
+          {
+            "label": "Why it matters",
+            "text": "Safety-adjacent gear questions are high-trust moments \u2014 an AI engine naming a brand here carries more weight than a generic \"best gear\" list."
+          },
+          {
+            "label": "Competitive contrast",
+            "text": "Petzl and Black Diamond dominate harness-certification questions specifically (UIAA/CE standards) \u2014 Basecamp isn't cited there at all."
+          },
+          {
+            "label": "Source mechanism",
+            "text": "Citing sources for harness questions lean on manufacturer spec sheets \u2014 a gap Basecamp's product pages don't currently fill."
+          }
+        ],
+        "recommendations": [
+          {
+            "title": "Publish UIAA/CE certification details on every harness product page",
+            "body": "Petzl's product pages are cited because they state certification standards and test-load figures directly on the page. Basecamp's harness pages currently omit this \u2014 adding a standardized certification block would make them citable for safety-specific prompts.",
+            "citation": {
+              "text": "Petzl \u2014 Harness Safety Standards",
+              "url": "https://petzl.com/US/en/Sport/harnesses"
+            }
+          }
+        ]
+      },
+      {
+        "id": "weight-packability",
+        "pillar": "Weight & Packability",
+        "title": "Pack-weight comparisons skip Basecamp's 60L line",
+        "mentions": 1,
+        "mentions_total": 10,
+        "sentiment": {
+          "positive": 1,
+          "neutral": 0,
+          "negative": 0
+        },
+        "bullets": [
+          {
+            "label": "What's happening",
+            "text": "For \"lightest 60L backpacking pack\" prompts, Basecamp appears once, versus Osprey and Gregory appearing in most answers."
+          },
+          {
+            "label": "Source mechanism",
+            "text": "Answers cite a recurring \"pack weight class\" table format (base weight, max load, fabric denier) that Basecamp's own pages don't publish."
+          }
+        ],
+        "recommendations": [
+          {
+            "title": "Add a base-weight comparison table to the 60L pack product page",
+            "body": "Competing product pages state base weight, max recommended load, and fabric denier in a scannable table. Publishing the same structured data for Basecamp's 60L line gives AI engines a first-party number to cite instead of defaulting to Osprey/Gregory.",
+            "citation": {
+              "text": "Osprey \u2014 Pack Weight Comparison",
+              "url": "https://osprey.com/us/en/packweight"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "alpine": {
+    "client_name": "Alpine Supply Co.",
+    "domain": "alpinesupply.co",
+    "cadence": "weekly",
+    "period_label": "Jun 22\u2013Jul 19",
+    "summary": [
+      {
+        "src": "GSC",
+        "text": "Organic clicks grew 19.8% vs the prior period."
+      },
+      {
+        "src": "GA4",
+        "text": "Organic-driven conversions are down 9.4% ($17,565 in attributed revenue this period)."
+      },
+      {
+        "src": "Semrush",
+        "text": "Domain Authority Score slipped to 37 (-4)."
+      },
+      {
+        "src": "AI Toolkit",
+        "text": "AI search visibility rose to 28.8 (+9.4) \u2014 Alpine Supply Co. holds 13% share of voice vs TrailForge at 31%."
+      }
+    ],
+    "gsc": {
+      "clicks": 18204,
+      "clicks_delta_pct": 19.8,
+      "impressions": 333486,
+      "impressions_delta_pct": 31.8,
+      "avg_position": 14.7,
+      "position_delta": 1.5
+    },
+    "ga4": {
+      "sessions": 29159,
+      "sessions_delta_pct": -23.8,
+      "conversions": 326,
+      "conversions_delta_pct": -9.4,
+      "revenue": 17565.3
+    },
+    "backlinks": {
+      "ascore": 37,
+      "ascore_delta": -4
+    },
+    "ai_visibility": {
+      "score": 28.8,
+      "score_delta": 9.4,
+      "share_of_voice": 0.129,
+      "top_competitor": {
+        "name": "TrailForge",
+        "share_of_voice": 0.31
+      },
+      "per_engine": [
+        {
+          "engine": "chatgpt",
+          "visibility_score": 21.0,
+          "share_of_voice": 0.102,
+          "avg_position": 3.1,
+          "change_vs_previous": 5.4
+        },
+        {
+          "engine": "perplexity",
+          "visibility_score": 29.2,
+          "share_of_voice": 0.16,
+          "avg_position": 1.6,
+          "change_vs_previous": -5.0
+        },
+        {
+          "engine": "google_aio",
+          "visibility_score": 29.0,
+          "share_of_voice": 0.153,
+          "avg_position": 3.1,
+          "change_vs_previous": -2.8
+        },
+        {
+          "engine": "copilot",
+          "visibility_score": 37.6,
+          "share_of_voice": 0.049,
+          "avg_position": 2.2,
+          "change_vs_previous": -0.5
+        },
+        {
+          "engine": "claude",
+          "visibility_score": 27.4,
+          "share_of_voice": 0.18,
+          "avg_position": 3.5,
+          "change_vs_previous": 6.3
+        }
+      ],
+      "best_mention": {
+        "ai_engine": "google_aio",
+        "sentiment": "positive",
+        "response_excerpt": "...Alpine Supply Co.'s Contrast+ lens line is built specifically for flat-light days, with a rose-based tint that several reviewers say outperforms rivals..."
+      }
+    },
+    "ai_citations": [
+      {
+        "page_title": "Choosing Ski Goggle Lens Tints",
+        "url": "https://alpinesupply.co/guides/goggle-lens-tints",
+        "citations_count": 45,
+        "percent_change": 0.07
+      },
+      {
+        "page_title": "Avalanche Safety Gear Checklist",
+        "url": "https://alpinesupply.co/guides/avalanche-safety-checklist",
+        "citations_count": 53,
+        "percent_change": 0.41
+      }
+    ],
+    "recommendations": [
+      "Refresh the stale guide flagged above and add an FAQ block targeting the AI-cited queries.",
+      "Publish a comparison page targeting \"thermal base layer women\" to recover lost position.",
+      "Monitor TrailForge's AI share-of-voice gains \u2014 consider a prompt-level content gap analysis next cycle."
+    ],
+    "insights": [
+      {
+        "id": "flat-light-goggles",
+        "pillar": "Lens & Tint Guidance",
+        "title": "Alpine Supply owns the flat-light goggle conversation",
+        "mentions": 6,
+        "mentions_total": 10,
+        "sentiment": {
+          "positive": 6,
+          "neutral": 0,
+          "negative": 0
+        },
+        "bullets": [
+          {
+            "label": "What's happening",
+            "text": "Alpine Supply's Contrast+ lens is named in 6 of 10 flat-light-goggle answers, ahead of Smith and Oakley."
+          },
+          {
+            "label": "Why it matters",
+            "text": "Flat-light conditions are a recurring, specific pain point \u2014 owning this niche question builds durable share of voice, not just one-off mentions."
+          },
+          {
+            "label": "Competitive contrast",
+            "text": "Smith and Oakley are mentioned more often overall, but not specifically for flat-light \u2014 Alpine Supply's specificity is the edge."
+          },
+          {
+            "label": "Source mechanism",
+            "text": "Citations trace back to Alpine Supply's own lens-tint guide \u2014 a rare case of a first-party page winning the citation, worth reinforcing."
+          }
+        ],
+        "recommendations": [
+          {
+            "title": "Expand the lens-tint guide with more condition-specific detail",
+            "body": "The existing guide is already the top-cited source for flat-light lens questions. Add sections for other specific conditions (bluebird days, night skiing, mixed cloud cover) to extend the same first-party-citation advantage to adjacent queries.",
+            "citation": {
+              "text": "Alpine Supply Co. \u2014 Goggle Lens Tint Guide",
+              "url": "https://alpinesupply.co/guides/goggle-lens-tints"
+            }
+          }
+        ]
+      },
+      {
+        "id": "avalanche-safety",
+        "pillar": "Cold-Weather Safety Gear",
+        "title": "Avalanche beacon rental questions favor local shops over Alpine Supply",
+        "mentions": 0,
+        "mentions_total": 10,
+        "sentiment": {
+          "positive": 0,
+          "neutral": 0,
+          "negative": 0
+        },
+        "bullets": [
+          {
+            "label": "What's happening",
+            "text": "\"Avalanche beacon rental\" prompts return local gear shop chains, not Alpine Supply, in every tracked answer."
+          },
+          {
+            "label": "Source mechanism",
+            "text": "Answers cite location-based rental listings \u2014 a different intent (rent-nearby) than Alpine Supply's buy-online model, which is likely unwinnable without a rental/partner-locator page."
+          }
+        ],
+        "recommendations": [
+          {
+            "title": "Publish a rental-partner locator page",
+            "body": "AI engines are answering a \"where can I rent this near me\" question, which an e-commerce-only site structurally can't win outright. A page listing partner shops that rent Alpine Supply-brand beacons would at least make the brand citable inside that local-intent answer.",
+            "citation": {
+              "text": "REI \u2014 Avalanche Safety Gear Rental",
+              "url": "https://rei.com/rentals/avalanche-safety"
+            }
+          }
+        ]
+      }
+    ]
+  }
 }
 </script>
 <script>
-  function go(id) {
+  const REPORT_DATA = JSON.parse(document.getElementById('report-data').textContent);
+  let currentClient = 'northwind';
+
+  function go(id, clientKey) {
+    if (clientKey) currentClient = clientKey;
     document.querySelectorAll('.screen').forEach(s => s.classList.toggle('active', s.id === id));
     document.querySelectorAll('nav.steps button').forEach(b => b.classList.toggle('active', b.dataset.screen === id));
+    if (id === 'config' || id === 'generating' || id === 'review') renderClientContext(currentClient);
     window.scrollTo({top:0, behavior:'smooth'});
   }
   document.getElementById('steps').addEventListener('click', e => {
@@ -446,64 +987,173 @@
   function pct(n, digits) { return (n >= 0 ? '+' : '') + n.toFixed(digits ?? 1) + '%'; }
   function deltaClass(n) { return n >= 0 ? 'delta-up' : 'delta-down'; }
   function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+  const ENGINE_COLOR = { chatgpt: 'var(--series-1)', perplexity: 'var(--series-2)', google_aio: 'var(--series-3)',
+                         copilot: 'var(--series-4)', claude: 'var(--series-5)' };
+
+  function kpiTile(label, value, deltaPct, deltaGoodWhenPositive = true) {
+    const hasDelta = deltaPct !== null && deltaPct !== undefined;
+    const goodDirection = deltaGoodWhenPositive ? deltaPct > 0 : deltaPct < 0;
+    const cls = !hasDelta ? '' : (goodDirection ? 'delta-up' : 'delta-down');
+    return `
+      <div class="kpi-tile">
+        <div class="kpi-label">${esc(label)}</div>
+        <div class="kpi-value">${value}</div>
+        ${hasDelta ? `<div class="kpi-delta ${cls}">${pct(deltaPct)} vs prior</div>` : ''}
+      </div>`;
+  }
+
+  function barChart(title, rows, valueFormatter) {
+    const max = Math.max(...rows.map(r => r.value), 1);
+    const bars = rows.map(r => {
+      const widthPct = Math.max((r.value / max) * 100, 3);
+      const valueText = valueFormatter ? valueFormatter(r.value) : r.value;
+      const inside = widthPct > 80; // not enough room after the bar tip — label rides inside instead
+      return `
+        <div class="bar-row">
+          <div class="bar-label">${esc(r.label)}</div>
+          <div class="bar-track" title="${esc(r.tooltip || (r.label + ': ' + r.value))}">
+            <div class="bar-fill" style="width:${widthPct}%; background:${r.color};">
+              ${inside ? `<span class="bar-value inside">${valueText}</span>` : ''}
+            </div>
+            ${!inside ? `<span class="bar-value outside" style="left:calc(${widthPct}% + 8px);">${valueText}</span>` : ''}
+          </div>
+        </div>`;
+    }).join('');
+    const tableRows = rows.map(r => `<tr><td>${esc(r.label)}</td><td>${valueFormatter ? valueFormatter(r.value) : r.value}</td></tr>`).join('');
+    return `
+      <div class="chart-card">
+        <h4>${esc(title)}</h4>
+        <div class="bar-chart">${bars}</div>
+        <details class="table-toggle"><summary>View as table</summary>
+          <table class="metrics"><tr><th>Label</th><th>Value</th></tr>${tableRows}</table>
+        </details>
+      </div>`;
+  }
+
+  function renderClientContext(clientKey) {
+    const data = REPORT_DATA[clientKey];
+    if (!data) return;
+
+    const configTitle = document.getElementById('config-title');
+    if (configTitle) configTitle.textContent = `${data.client_name} — report configuration`;
+    const configPeriod = document.getElementById('config-period');
+    if (configPeriod) configPeriod.textContent = `${data.period_label}, 2026 (${data.cadence}, auto-rolling)`;
+    const configGsc = document.getElementById('config-gsc');
+    if (configGsc) configGsc.textContent = `sc-domain:${data.domain}`;
+    const genTitle = document.getElementById('generating-title');
+    if (genTitle) genTitle.textContent = `Building the draft — ${data.client_name}`;
+
+    if (document.getElementById('review').classList.contains('active')) renderReport(data);
+  }
 
   function renderReport(data) {
     document.getElementById('review-title').textContent =
       `Draft — ${data.client_name}, ${data.period_label}`;
 
+    const g = data.gsc, a = data.ga4, bl = data.backlinks, ai = data.ai_visibility;
+
+    const kpiHtml = [
+      kpiTile('Clicks', g.clicks.toLocaleString(), g.clicks_delta_pct),
+      kpiTile('Sessions', a.sessions.toLocaleString(), a.sessions_delta_pct),
+      kpiTile('Conversions', a.conversions.toLocaleString(), a.conversions_delta_pct),
+      kpiTile('Domain authority', bl.ascore, bl.ascore_delta ? (bl.ascore_delta / (bl.ascore - bl.ascore_delta) * 100) : null),
+      kpiTile('AI visibility', ai.score, ai.score_delta ? (ai.score_delta / (ai.score - ai.score_delta) * 100) : null),
+      kpiTile('Share of voice', Math.round(ai.share_of_voice * 100) + '%', null),
+    ].join('');
+
     const summaryHtml = data.summary.map(s => `
       <div class="insight"><span class="src">${esc(s.src)}</span><span class="editable" contenteditable="true">${esc(s.text)}</span></div>
     `).join('');
 
-    const g = data.gsc;
-    const gscHtml = `
-      <table class="metrics">
-        <tr><th>Metric</th><th>This period</th><th>vs prior</th></tr>
-        <tr><td>Clicks</td><td>${g.clicks.toLocaleString()}</td><td class="${deltaClass(g.clicks_delta_pct)}">${pct(g.clicks_delta_pct)}</td></tr>
-        <tr><td>Impressions</td><td>${g.impressions.toLocaleString()}</td><td class="${deltaClass(g.impressions_delta_pct)}">${pct(g.impressions_delta_pct)}</td></tr>
-        <tr><td>Avg. position</td><td>${g.avg_position}</td><td class="delta-up">−${g.position_delta} (better)</td></tr>
-      </table>`;
+    const gscDetailHtml = `
+      <details class="table-toggle" open><summary>Organic search detail</summary>
+        <table class="metrics">
+          <tr><th>Metric</th><th>This period</th><th>vs prior</th></tr>
+          <tr><td>Impressions</td><td>${g.impressions.toLocaleString()}</td><td class="${deltaClass(g.impressions_delta_pct)}">${pct(g.impressions_delta_pct)}</td></tr>
+          <tr><td>Avg. position</td><td>${g.avg_position}</td><td class="delta-up">−${g.position_delta} (better)</td></tr>
+          <tr><td>Attributed revenue</td><td>$${a.revenue.toLocaleString(undefined, {maximumFractionDigits: 0})}</td><td>—</td></tr>
+        </table>
+      </details>`;
 
-    const ai = data.ai_visibility;
-    const engineRows = ai.per_engine.map(e => `
-      <tr>
-        <td style="text-transform:capitalize;">${esc(e.engine.replace('_', ' '))}</td>
-        <td>${e.visibility_score}</td>
-        <td>${Math.round(e.share_of_voice * 100)}%</td>
-        <td>${e.avg_position}</td>
-        <td class="${deltaClass(e.change_vs_previous)}">${pct(e.change_vs_previous)}</td>
-      </tr>`).join('');
+    const engineChart = barChart('AI visibility score by engine', ai.per_engine.map(e => ({
+      label: e.engine.replace('_', ' '),
+      value: e.visibility_score,
+      color: ENGINE_COLOR[e.engine] || 'var(--accent)',
+      tooltip: `${e.engine}: visibility ${e.visibility_score}, ${Math.round(e.share_of_voice * 100)}% share of voice, avg. position ${e.avg_position}, ${pct(e.change_vs_previous)} vs prior`,
+    })), v => v.toFixed(1));
+
+    const sovChart = barChart('Share of voice: us vs top competitor', [
+      { label: data.client_name, value: Math.round(ai.share_of_voice * 100), color: 'var(--accent)',
+        tooltip: `${data.client_name}: ${Math.round(ai.share_of_voice * 100)}% share of voice` },
+      { label: ai.top_competitor.name, value: Math.round(ai.top_competitor.share_of_voice * 100), color: 'var(--chart-muted)',
+        tooltip: `${ai.top_competitor.name}: ${Math.round(ai.top_competitor.share_of_voice * 100)}% share of voice` },
+    ], v => v + '%');
+
     const aiHtml = `
-      <p>Visibility score <strong>${ai.score}</strong> (<span class="${deltaClass(ai.score_delta)}">${pct(ai.score_delta, 1)}</span>) ·
-      Share of voice <strong>${Math.round(ai.share_of_voice * 100)}%</strong>, vs ${esc(ai.top_competitor.name)}'s
-      ${Math.round(ai.top_competitor.share_of_voice * 100)}%.</p>
-      <table class="metrics">
-        <tr><th>Engine</th><th>Visibility</th><th>Share of voice</th><th>Avg. position</th><th>Change</th></tr>
-        ${engineRows}
-      </table>
       <div class="quote">"${esc(ai.best_mention.response_excerpt)}" — ${esc(ai.best_mention.ai_engine)}, ${esc(ai.best_mention.sentiment)}</div>
       <h4 style="font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);margin:14px 0 6px;">Most-cited pages in AI answers</h4>
       <ul style="margin:0;padding-left:18px;font-size:13.5px;">
         ${data.ai_citations.map(c => `<li><a href="${esc(c.url)}">${esc(c.page_title)}</a> — ${c.citations_count} citations (${pct(c.percent_change * 100, 0)})</li>`).join('')}
       </ul>`;
 
-    const bl = data.backlinks;
+    const insightsHtml = (data.insights || []).map(ins => `
+      <div class="insight-card">
+        <div class="updated">Pillar: ${esc(ins.pillar)} · ${ins.mentions} of ${ins.mentions_total} tracked answers</div>
+        <h4>${esc(ins.title)}</h4>
+        <ul>
+          ${ins.bullets.map(b => `<li><strong>${esc(b.label)}:</strong> ${esc(b.text)}</li>`).join('')}
+        </ul>
+        <div class="card-actions">
+          <button class="btn" onclick="openRecommendations('${data.client_name.replace(/'/g, "\\'")}', '${esc(ins.id)}')">View recommendations</button>
+        </div>
+      </div>`).join('');
+
     const recsHtml = data.recommendations.map((r, i) => `${i + 1}. ${esc(r)}`).join('<br>');
 
     document.getElementById('report-doc').innerHTML = `
+      <h3>Key metrics</h3>
+      <div class="kpi-row">${kpiHtml}</div>
       <h3>Executive summary</h3>
       ${summaryHtml}
-      <h3>Organic search (Google Search Console)</h3>
-      ${gscHtml}
+      ${gscDetailHtml}
       <p style="margin-top:8px;">Domain Authority Score: <strong>${bl.ascore}</strong> (${bl.ascore_delta >= 0 ? '+' : ''}${bl.ascore_delta})</p>
       <h3>AI search visibility</h3>
+      ${engineChart}
+      ${sovChart}
       ${aiHtml}
+      <h3>Insights</h3>
+      <p style="color:var(--ink-soft); font-size:12.5px; margin-top:-4px;">Turn AI-visibility mentions into actionable content moves, by topic.</p>
+      ${insightsHtml || '<p>No topic-level insights tracked yet for this client.</p>'}
       <h3>Recommended next actions</h3>
       <p class="editable" contenteditable="true">${recsHtml}</p>
     `;
+
+    // stash for the recommendations panel
+    window.__currentInsights = data.insights || [];
   }
 
-  renderReport(JSON.parse(document.getElementById('report-data').textContent));
+  function openRecommendations(clientName, insightId) {
+    const insight = (window.__currentInsights || []).find(i => i.id === insightId);
+    if (!insight) return;
+    document.getElementById('recs-title').textContent = `Recommendations — ${insight.pillar}`;
+    document.getElementById('recs-body').innerHTML = insight.recommendations.map(r => `
+      <div class="rec-card">
+        <h5>${esc(r.title)}</h5>
+        <p>${esc(r.body)}</p>
+        <div class="citation">Source: <a href="${esc(r.citation.url)}" target="_blank" rel="noopener">${esc(r.citation.text)}</a></div>
+      </div>`).join('');
+    document.getElementById('recs-overlay').classList.add('open');
+    document.getElementById('recs-panel').classList.add('open');
+    document.getElementById('recs-panel').setAttribute('aria-hidden', 'false');
+  }
+
+  function closeRecommendations() {
+    document.getElementById('recs-overlay').classList.remove('open');
+    document.getElementById('recs-panel').classList.remove('open');
+    document.getElementById('recs-panel').setAttribute('aria-hidden', 'true');
+  }
+
+  renderClientContext(currentClient);
 </script>
 </body>
 </html>
