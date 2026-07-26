@@ -2,57 +2,56 @@
 **Period:** Jun 22 – Jul 19, 2026  |  **Domain:** northwindoutdoor.com
 
 ## Executive Summary
-- Organic clicks fell 42.8% vs the prior period — worth a CTR/title-tag review on the top pages below.
-- Organic-driven conversions are up 2.5% ($38,604 in attributed revenue this period).
-- Domain Authority Score climbed to 51 (+6).
-- AI search visibility score rose to 27.4 (+7.3) — Northwind Outdoor Co. now holds 14% share of voice across tracked ChatGPT/Perplexity/Google AI Overview/Copilot/Claude prompts, vs TrailForge at 29%.
-- Biggest keyword mover: "merino wool base layer" jumped from position 44 to 38 (4,400 monthly searches).
+- Organic clicks grew 14.7% vs the prior period, outpacing the -3.0% growth in impressions — listings are converting better, not just showing up more.
+- Organic-driven conversions are up 1.1% ($42,988 in attributed revenue this period).
+- Domain Authority Score slipped to 34 (-12).
+- AI search visibility score rose to 26.0 (+3.4) — Northwind Outdoor Co. now holds 10% share of voice across tracked ChatGPT/Perplexity/Google AI Overview/Copilot/Claude prompts, vs TrailForge at 29%.
+- Biggest keyword mover: "gore-tex boots women" jumped from position 26 to 22 (3,600 monthly searches).
 - 1 page(s) haven't been updated in 12+ months, including "Best Tents Under $200 (2022)" — a refresh candidate.
 
 ## Organic Search (Google Search Console)
 | Metric | This Period | vs Prior |
 |---|---|---|
-| Clicks | 9,755 | -42.8% |
-| Impressions | 203,295 | -34.1% |
-| CTR | 4.80% | — |
-| Avg. Position | 16.1 | -4.7 |
+| Clicks | 11,912 | +14.7% |
+| Impressions | 207,012 | -3.0% |
+| CTR | 5.75% | — |
+| Avg. Position | 17.6 | -4.0 |
 
 ## Web Analytics (GA4 — Organic Channel)
 | Metric | This Period | vs Prior |
 |---|---|---|
-| Sessions | 50,599 | +18.5% |
-| Conversions | 908 | +2.5% |
-| Attributed Revenue | $38,604 | — |
+| Sessions | 41,723 | +4.1% |
+| Conversions | 840 | +1.1% |
+| Attributed Revenue | $42,988 | — |
 
 ## Keyword Rankings (Semrush)
 **Top gainers**
-- "merino wool base layer": 44 → 38 (4,400 searches/mo)
-- "hiking poles carbon": 46 → 40 (1,900 searches/mo)
-- "bear canister rental": 31 → 27 (720 searches/mo)
+- "gore-tex boots women": 26 → 22 (3,600 searches/mo)
+- "4 person tent": 31 → 30 (6,600 searches/mo)
 
 **Top losers**
-- "insulated water bottle": 15 → 21 (9,900 searches/mo)
-- "trail running vest": 29 → 35 (1,300 searches/mo)
-- "rain shell jacket men": 26 → 32 (5,400 searches/mo)
+- "hiking poles carbon": 15 → 18 (1,900 searches/mo)
+- "bear canister rental": 2 → 5 (720 searches/mo)
+- "trail running vest": 29 → 33 (1,300 searches/mo)
 
-Domain Authority Score: **51** (+6), 7,890 total backlinks.
+Domain Authority Score: **34** (-12), 8,521 total backlinks.
 
 ## AI Search Visibility (Semrush AI Toolkit — ChatGPT, Perplexity, Google AIO, Copilot, Claude)
-Visibility score: **27.4** (+7.3) · Share of voice: **14%**
+Visibility score: **26.0** (+3.4) · Share of voice: **10%**
 
 | Engine | Visibility | Share of Voice | Avg. Position | Change |
 |---|---|---|---|---|
-| chatgpt | 34.7 | 12% | 1.7 | +7.5 |
-| perplexity | 19.1 | 10% | 3.8 | -0.6 |
-| google_aio | 32.6 | 22% | 4.6 | +7.4 |
-| copilot | 32.4 | 15% | 4.1 | -2.5 |
-| claude | 18.3 | 12% | 3.3 | +4.9 |
+| chatgpt | 27.2 | 7% | 3.1 | -2.5 |
+| perplexity | 20.9 | 14% | 4.2 | -2.5 |
+| google_aio | 26.0 | 5% | 3.6 | +2.2 |
+| copilot | 17.3 | 19% | 4.3 | -0.4 |
+| claude | 38.7 | 4% | 3.8 | +0.1 |
 
 > *Example mention (perplexity, positive):* "...Northwind's Summit 4 is a strong pick for durability, with reinforced stake points and a 3000mm rainfly rating that outperforms cheaper tents..."
 
 ### Most-cited pages in AI answers
-- [The Complete Tent Buying Guide (2026)](https://northwindoutdoor.com/guides/tent-buying-guide) — 26 citations (+41%)
-- [Layering 101: Base, Mid, Shell](https://northwindoutdoor.com/guides/layering-101) — 22 citations (-9%)
+- [The Complete Tent Buying Guide (2026)](https://northwindoutdoor.com/guides/tent-buying-guide) — 45 citations (+10%)
+- [Layering 101: Base, Mid, Shell](https://northwindoutdoor.com/guides/layering-101) — 13 citations (+3%)
 
 ## Content Published This Period
 - [5 Layering Mistakes Beginners Make](https://northwindoutdoor.com/blog/layering-mistakes) — 2026-07-08
@@ -63,7 +62,7 @@ Visibility score: **27.4** (+7.3) · Share of voice: **14%**
 
 ## Recommended Next Actions
 1. Refresh the stale guide flagged above and add an FAQ block targeting the AI-cited queries.
-2. Publish a comparison page targeting "rain shell jacket men" to recover lost position.
+2. Publish a comparison page targeting "trail running vest" to recover lost position.
 3. Monitor TrailForge's AI share-of-voice gains — consider a prompt-level content gap analysis next cycle.
 
 ---

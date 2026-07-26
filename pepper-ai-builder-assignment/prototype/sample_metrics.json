@@ -1,113 +1,100 @@
 {
   "gsc": {
-    "clicks": 9755,
-    "clicks_delta_pct": -42.8,
-    "impressions": 203295,
-    "impressions_delta_pct": -34.1,
-    "ctr": 0.048,
-    "avg_position": 16.1,
-    "position_delta": -4.7
+    "clicks": 11912,
+    "clicks_delta_pct": 14.7,
+    "impressions": 207012,
+    "impressions_delta_pct": -3.0,
+    "ctr": 0.0575,
+    "avg_position": 17.6,
+    "position_delta": -4.0
   },
   "ga4": {
-    "sessions": 50599,
-    "sessions_delta_pct": 18.5,
-    "conversions": 908,
-    "conversions_delta_pct": 2.5,
-    "revenue": 38604.31
+    "sessions": 41723,
+    "sessions_delta_pct": 4.1,
+    "conversions": 840,
+    "conversions_delta_pct": 1.1,
+    "revenue": 42987.57
   },
   "rankings": {
     "top_gainers": [
       {
-        "Ph": "merino wool base layer",
-        "Po": 38,
-        "Pp": 44,
-        "Pd": -6,
-        "Nq": 4400,
-        "Cp": 2.24,
-        "Ur": "https://northwindoutdoor.com/merino-wool-base-layer",
-        "Tr": 0.0474,
-        "Tc": 191.08,
-        "Fp": "featured_snippet",
-        "Fk": 2
-      },
-      {
-        "Ph": "hiking poles carbon",
-        "Po": 40,
-        "Pp": 46,
-        "Pd": -6,
-        "Nq": 1900,
-        "Cp": 2.72,
-        "Ur": "https://northwindoutdoor.com/hiking-poles-carbon",
-        "Tr": 0.0476,
-        "Tc": 17.37,
-        "Fp": "featured_snippet",
-        "Fk": 2
-      },
-      {
-        "Ph": "bear canister rental",
-        "Po": 27,
-        "Pp": 31,
+        "Ph": "gore-tex boots women",
+        "Po": 22,
+        "Pp": 26,
         "Pd": -4,
-        "Nq": 720,
-        "Cp": 1.12,
-        "Ur": "https://northwindoutdoor.com/bear-canister-rental",
-        "Tr": 0.0685,
-        "Tc": 24.85,
-        "Fp": "people_also_ask",
-        "Fk": 1
+        "Nq": 3600,
+        "Cp": 1.5,
+        "Ur": "https://northwindoutdoor.com/gore-tex-boots-women",
+        "Tr": 0.0129,
+        "Tc": 71.4,
+        "Fp": "ai_overview",
+        "Fk": 0
+      },
+      {
+        "Ph": "4 person tent",
+        "Po": 30,
+        "Pp": 31,
+        "Pd": -1,
+        "Nq": 6600,
+        "Cp": 0.79,
+        "Ur": "https://northwindoutdoor.com/4-person-tent",
+        "Tr": 0.0662,
+        "Tc": 163.48,
+        "Fp": "ai_overview",
+        "Fk": 2
       }
     ],
     "top_losers": [
       {
-        "Ph": "insulated water bottle",
-        "Po": 21,
+        "Ph": "hiking poles carbon",
+        "Po": 18,
         "Pp": 15,
-        "Pd": 6,
-        "Nq": 9900,
-        "Cp": 1.31,
-        "Ur": "https://northwindoutdoor.com/insulated-water-bottle",
-        "Tr": 0.0875,
-        "Tc": 260.57,
+        "Pd": 3,
+        "Nq": 1900,
+        "Cp": 2.69,
+        "Ur": "https://northwindoutdoor.com/hiking-poles-carbon",
+        "Tr": 0.09,
+        "Tc": 109.28,
         "Fp": "featured_snippet",
         "Fk": 1
       },
       {
-        "Ph": "trail running vest",
-        "Po": 35,
-        "Pp": 29,
-        "Pd": 6,
-        "Nq": 1300,
-        "Cp": 0.93,
-        "Ur": "https://northwindoutdoor.com/trail-running-vest",
-        "Tr": 0.0403,
-        "Tc": 44.46,
-        "Fp": "ai_overview",
-        "Fk": 0
+        "Ph": "bear canister rental",
+        "Po": 5,
+        "Pp": 2,
+        "Pd": 3,
+        "Nq": 720,
+        "Cp": 1.18,
+        "Ur": "https://northwindoutdoor.com/bear-canister-rental",
+        "Tr": 0.0535,
+        "Tc": 28.92,
+        "Fp": "people_also_ask",
+        "Fk": 1
       },
       {
-        "Ph": "rain shell jacket men",
-        "Po": 32,
-        "Pp": 26,
-        "Pd": 6,
-        "Nq": 5400,
-        "Cp": 0.62,
-        "Ur": "https://northwindoutdoor.com/rain-shell-jacket-men",
-        "Tr": 0.0862,
-        "Tc": 304.54,
-        "Fp": "ai_overview",
-        "Fk": 0
+        "Ph": "trail running vest",
+        "Po": 33,
+        "Pp": 29,
+        "Pd": 4,
+        "Nq": 1300,
+        "Cp": 2.19,
+        "Ur": "https://northwindoutdoor.com/trail-running-vest",
+        "Tr": 0.0052,
+        "Tc": 21.4,
+        "Fp": "people_also_ask",
+        "Fk": 1
       }
     ]
   },
   "backlinks": {
-    "ascore": 51,
-    "ascore_delta": 6,
-    "total": 7890
+    "ascore": 34,
+    "ascore_delta": -12,
+    "total": 8521
   },
   "ai_visibility": {
-    "score": 27.4,
-    "score_delta": 7.3,
-    "share_of_voice": 0.142,
+    "score": 26.0,
+    "score_delta": 3.4,
+    "share_of_voice": 0.099,
     "top_competitor": {
       "name": "TrailForge",
       "share_of_voice": 0.29,
@@ -117,43 +104,43 @@
     "per_engine": [
       {
         "engine": "chatgpt",
-        "visibility_score": 34.7,
-        "share_of_voice": 0.119,
-        "mention_rate": 0.113,
-        "avg_position": 1.7,
-        "change_vs_previous": 7.5
-      },
-      {
-        "engine": "perplexity",
-        "visibility_score": 19.1,
-        "share_of_voice": 0.103,
-        "mention_rate": 0.116,
-        "avg_position": 3.8,
-        "change_vs_previous": -0.6
-      },
-      {
-        "engine": "google_aio",
-        "visibility_score": 32.6,
-        "share_of_voice": 0.216,
-        "mention_rate": 0.309,
-        "avg_position": 4.6,
-        "change_vs_previous": 7.4
-      },
-      {
-        "engine": "copilot",
-        "visibility_score": 32.4,
-        "share_of_voice": 0.152,
-        "mention_rate": 0.212,
-        "avg_position": 4.1,
+        "visibility_score": 27.2,
+        "share_of_voice": 0.074,
+        "mention_rate": 0.118,
+        "avg_position": 3.1,
         "change_vs_previous": -2.5
       },
       {
+        "engine": "perplexity",
+        "visibility_score": 20.9,
+        "share_of_voice": 0.139,
+        "mention_rate": 0.244,
+        "avg_position": 4.2,
+        "change_vs_previous": -2.5
+      },
+      {
+        "engine": "google_aio",
+        "visibility_score": 26.0,
+        "share_of_voice": 0.051,
+        "mention_rate": 0.116,
+        "avg_position": 3.6,
+        "change_vs_previous": 2.2
+      },
+      {
+        "engine": "copilot",
+        "visibility_score": 17.3,
+        "share_of_voice": 0.193,
+        "mention_rate": 0.106,
+        "avg_position": 4.3,
+        "change_vs_previous": -0.4
+      },
+      {
         "engine": "claude",
-        "visibility_score": 18.3,
-        "share_of_voice": 0.119,
-        "mention_rate": 0.173,
-        "avg_position": 3.3,
-        "change_vs_previous": 4.9
+        "visibility_score": 38.7,
+        "share_of_voice": 0.037,
+        "mention_rate": 0.101,
+        "avg_position": 3.8,
+        "change_vs_previous": 0.1
       }
     ],
     "best_mention": {
@@ -176,22 +163,22 @@
     {
       "url": "https://northwindoutdoor.com/guides/tent-buying-guide",
       "page_title": "The Complete Tent Buying Guide (2026)",
-      "citations_count": 26,
-      "avg_citation_position": 2.5,
+      "citations_count": 45,
+      "avg_citation_position": 1.9,
       "change_vs_previous": {
-        "citations_count_delta": 8,
-        "percent_change": 0.41,
+        "citations_count_delta": 1,
+        "percent_change": 0.1,
         "trend": "positive"
       }
     },
     {
       "url": "https://northwindoutdoor.com/guides/layering-101",
       "page_title": "Layering 101: Base, Mid, Shell",
-      "citations_count": 22,
-      "avg_citation_position": 2.2,
+      "citations_count": 13,
+      "avg_citation_position": 3.3,
       "change_vs_previous": {
-        "citations_count_delta": 3,
-        "percent_change": -0.09,
+        "citations_count_delta": -3,
+        "percent_change": 0.03,
         "trend": "neutral"
       }
     }

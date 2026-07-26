@@ -13,7 +13,9 @@ the input/output contract is identical either way: structured JSON in,
 prose + citations out.
 """
 import json
+import re
 from datetime import date
+from pathlib import Path
 import mock_sources as src
 
 CLIENT = src.CLIENT
@@ -241,6 +243,69 @@ def render_markdown(m, insights):
     return "\n".join(lines)
 
 
+# ---------------------------------------------------------------------------
+# STEP 5: Sync — feed the same computed data into the UX flow artifact, so
+# renderReport() in ux-flow.html shows numbers this run actually produced
+# instead of a hand-copied snapshot.
+# ---------------------------------------------------------------------------
+def build_review_json(m):
+    g, a, bl, ai = m["gsc"], m["ga4"], m["backlinks"], m["ai_visibility"]
+    return {
+        "client_name": CLIENT["name"],
+        "period_label": f"{src.PERIOD_START:%b %d}–{src.PERIOD_END:%b %d}",
+        "summary": [
+            {"src": "GSC", "text": f"Organic clicks {'grew' if g['clicks_delta_pct'] and g['clicks_delta_pct'] > 0 else 'fell'} "
+                                    f"{abs(g['clicks_delta_pct']):.1f}% vs the prior period."},
+            {"src": "GA4", "text": f"Organic-driven conversions are {'up' if a['conversions_delta_pct'] and a['conversions_delta_pct'] > 0 else 'down'} "
+                                    f"{abs(a['conversions_delta_pct']):.1f}% (${a['revenue']:,.0f} in attributed revenue this period)."},
+            {"src": "Semrush", "text": f"Domain Authority Score {'climbed' if bl['ascore_delta'] >= 0 else 'slipped'} to {bl['ascore']} "
+                                       f"({bl['ascore_delta']:+d})."},
+            {"src": "AI Toolkit", "text": f"AI search visibility {'rose' if ai['score_delta'] > 0 else 'dipped'} to {ai['score']} "
+                                          f"({ai['score_delta']:+.1f}) — {CLIENT['name']} holds {ai['share_of_voice']*100:.0f}% share of voice "
+                                          f"vs {ai['top_competitor']['name']} at {ai['top_competitor']['share_of_voice']*100:.0f}%."},
+        ],
+        "gsc": {"clicks": g["clicks"], "clicks_delta_pct": g["clicks_delta_pct"],
+                "impressions": g["impressions"], "impressions_delta_pct": g["impressions_delta_pct"],
+                "avg_position": g["avg_position"], "position_delta": abs(g["position_delta"])},
+        "backlinks": {"ascore": bl["ascore"], "ascore_delta": bl["ascore_delta"]},
+        "ai_visibility": {
+            "score": ai["score"], "score_delta": ai["score_delta"], "share_of_voice": ai["share_of_voice"],
+            "top_competitor": {"name": ai["top_competitor"]["name"], "share_of_voice": ai["top_competitor"]["share_of_voice"]},
+            "per_engine": [{"engine": e["engine"], "visibility_score": e["visibility_score"],
+                            "share_of_voice": e["share_of_voice"], "avg_position": e["avg_position"],
+                            "change_vs_previous": e["change_vs_previous"]} for e in ai["per_engine"]],
+            "best_mention": {"ai_engine": ai["best_mention"]["ai_engine"], "sentiment": ai["best_mention"]["sentiment"],
+                              "response_excerpt": ai["best_mention"]["response_excerpt"]},
+        },
+        "ai_citations": [{"page_title": c["page_title"], "url": c["url"], "citations_count": c["citations_count"],
+                          "percent_change": c["change_vs_previous"]["percent_change"]} for c in m["ai_citations"]],
+        "recommendations": [
+            "Refresh the stale guide flagged above and add an FAQ block targeting the AI-cited queries.",
+            f"Publish a comparison page targeting \"{m['rankings']['top_losers'][-1]['Ph'] if m['rankings']['top_losers'] else 'a declining query'}\" "
+            f"to recover lost position.",
+            f"Monitor {ai['top_competitor']['name']}'s AI share-of-voice gains — consider a prompt-level content gap analysis next cycle.",
+        ],
+    }
+
+
+def sync_ux_flow(review_json):
+    ux_path = Path(__file__).parent.parent / "ux-flow.html"
+    html = ux_path.read_text()
+    pattern = re.compile(
+        r'(<script type="application/json" id="report-data">\n)(.*?)(\n</script>)',
+        re.DOTALL,
+    )
+    new_html, n = pattern.subn(
+        lambda m_: m_.group(1) + json.dumps(review_json, indent=2) + m_.group(3),
+        html,
+    )
+    if n == 0:
+        print("Warning: could not find #report-data block in ux-flow.html — skipped sync.")
+        return
+    ux_path.write_text(new_html)
+    print(f"--- Synced live metrics into {ux_path} ---")
+
+
 def main():
     cur, prior = fetch_all()
     metrics = aggregate(cur, prior)
@@ -252,6 +317,8 @@ def main():
 
     with open("sample_metrics.json", "w") as f:
         json.dump(metrics, f, indent=2, default=str)
+
+    sync_ux_flow(build_review_json(metrics))
 
     print(NARRATIVE_PROMPT_TEMPLATE.format(
         client_name=CLIENT["name"],

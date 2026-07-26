@@ -269,30 +269,11 @@
 
   <!-- 4. REVIEW -->
   <section class="screen" id="review">
-    <h2 class="screen-title">Draft — Northwind Outdoor Co., Jun 22–Jul 19</h2>
+    <h2 class="screen-title" id="review-title">Draft — Northwind Outdoor Co., Jun 22–Jul 19</h2>
     <p class="screen-sub">Every sentence in the summary is grounded in a source metric — click a <span class="src" style="position:relative;top:-1px;">GSC</span>-style tag to see where it came from. Edit inline; nothing reaches the client until you approve.</p>
     <div class="review-layout">
-      <div class="report-doc card pad">
-        <h3>Executive summary</h3>
-        <div class="insight"><span class="src">GSC</span><span class="editable" contenteditable="true">Organic clicks fell 42.8% vs the prior period — worth a CTR/title-tag review on the top pages below.</span></div>
-        <div class="insight"><span class="src">GA4</span><span class="editable" contenteditable="true">Organic-driven conversions are up 2.5% ($38,604 in attributed revenue this period).</span></div>
-        <div class="insight"><span class="src">Semrush</span><span class="editable" contenteditable="true">Domain Authority Score climbed to 51 (+6).</span></div>
-        <div class="insight"><span class="src">AI Toolkit</span><span class="editable" contenteditable="true">AI search visibility rose to 27.4 (+7.3) — Northwind now holds 14% share of voice vs TrailForge at 29%.</span></div>
-
-        <h3>Organic search (Google Search Console)</h3>
-        <table class="metrics">
-          <tr><th>Metric</th><th>This period</th><th>vs prior</th></tr>
-          <tr><td>Clicks</td><td>9,755</td><td class="delta-down">−42.8%</td></tr>
-          <tr><td>Impressions</td><td>203,295</td><td class="delta-down">−34.1%</td></tr>
-          <tr><td>Avg. position</td><td>16.1</td><td class="delta-up">−4.7 (better)</td></tr>
-        </table>
-
-        <h3>AI search visibility</h3>
-        <p>Visibility score <strong>27.4</strong> (<span class="delta-up">+7.3</span>) · Share of voice <strong>14%</strong>, up from TrailForge's lead at 29%.</p>
-        <div class="quote">"...Northwind's Summit 4 is a strong pick for durability, with reinforced stake points and a 3000mm rainfly rating that outperforms cheaper tents..." — Perplexity, positive</div>
-
-        <h3>Recommended next actions</h3>
-        <p class="editable" contenteditable="true">1. Refresh the stale tent-buying guide and add an FAQ block targeting AI-cited queries.<br>2. Publish a comparison page for "rain shell jacket men" to recover lost position.<br>3. Watch TrailForge's AI share-of-voice gains next cycle.</p>
+      <div class="report-doc card pad" id="report-doc">
+        <!-- Rendered by renderReport() from #report-data at load time -->
       </div>
 
       <div class="sidebar">
@@ -345,6 +326,112 @@
   <footer class="note">Prototype UX flow for the Pepper AI Builder assignment — every screen uses sample data shaped like the documented GSC / GA4 / Semrush / Semrush AI / CMS endpoints. See PRD.md for the full spec.</footer>
 </div>
 
+<script type="application/json" id="report-data">
+{
+  "client_name": "Northwind Outdoor Co.",
+  "period_label": "Jun 22\u2013Jul 19",
+  "summary": [
+    {
+      "src": "GSC",
+      "text": "Organic clicks grew 14.7% vs the prior period."
+    },
+    {
+      "src": "GA4",
+      "text": "Organic-driven conversions are up 1.1% ($42,988 in attributed revenue this period)."
+    },
+    {
+      "src": "Semrush",
+      "text": "Domain Authority Score slipped to 34 (-12)."
+    },
+    {
+      "src": "AI Toolkit",
+      "text": "AI search visibility rose to 26.0 (+3.4) \u2014 Northwind Outdoor Co. holds 10% share of voice vs TrailForge at 29%."
+    }
+  ],
+  "gsc": {
+    "clicks": 11912,
+    "clicks_delta_pct": 14.7,
+    "impressions": 207012,
+    "impressions_delta_pct": -3.0,
+    "avg_position": 17.6,
+    "position_delta": 4.0
+  },
+  "backlinks": {
+    "ascore": 34,
+    "ascore_delta": -12
+  },
+  "ai_visibility": {
+    "score": 26.0,
+    "score_delta": 3.4,
+    "share_of_voice": 0.099,
+    "top_competitor": {
+      "name": "TrailForge",
+      "share_of_voice": 0.29
+    },
+    "per_engine": [
+      {
+        "engine": "chatgpt",
+        "visibility_score": 27.2,
+        "share_of_voice": 0.074,
+        "avg_position": 3.1,
+        "change_vs_previous": -2.5
+      },
+      {
+        "engine": "perplexity",
+        "visibility_score": 20.9,
+        "share_of_voice": 0.139,
+        "avg_position": 4.2,
+        "change_vs_previous": -2.5
+      },
+      {
+        "engine": "google_aio",
+        "visibility_score": 26.0,
+        "share_of_voice": 0.051,
+        "avg_position": 3.6,
+        "change_vs_previous": 2.2
+      },
+      {
+        "engine": "copilot",
+        "visibility_score": 17.3,
+        "share_of_voice": 0.193,
+        "avg_position": 4.3,
+        "change_vs_previous": -0.4
+      },
+      {
+        "engine": "claude",
+        "visibility_score": 38.7,
+        "share_of_voice": 0.037,
+        "avg_position": 3.8,
+        "change_vs_previous": 0.1
+      }
+    ],
+    "best_mention": {
+      "ai_engine": "perplexity",
+      "sentiment": "positive",
+      "response_excerpt": "...Northwind's Summit 4 is a strong pick for durability, with reinforced stake points and a 3000mm rainfly rating that outperforms cheaper tents..."
+    }
+  },
+  "ai_citations": [
+    {
+      "page_title": "The Complete Tent Buying Guide (2026)",
+      "url": "https://northwindoutdoor.com/guides/tent-buying-guide",
+      "citations_count": 45,
+      "percent_change": 0.1
+    },
+    {
+      "page_title": "Layering 101: Base, Mid, Shell",
+      "url": "https://northwindoutdoor.com/guides/layering-101",
+      "citations_count": 13,
+      "percent_change": 0.03
+    }
+  ],
+  "recommendations": [
+    "Refresh the stale guide flagged above and add an FAQ block targeting the AI-cited queries.",
+    "Publish a comparison page targeting \"trail running vest\" to recover lost position.",
+    "Monitor TrailForge's AI share-of-voice gains \u2014 consider a prompt-level content gap analysis next cycle."
+  ]
+}
+</script>
 <script>
   function go(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.toggle('active', s.id === id));
@@ -355,6 +442,68 @@
     const btn = e.target.closest('button[data-screen]');
     if (btn) go(btn.dataset.screen);
   });
+
+  function pct(n, digits) { return (n >= 0 ? '+' : '') + n.toFixed(digits ?? 1) + '%'; }
+  function deltaClass(n) { return n >= 0 ? 'delta-up' : 'delta-down'; }
+  function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+  function renderReport(data) {
+    document.getElementById('review-title').textContent =
+      `Draft — ${data.client_name}, ${data.period_label}`;
+
+    const summaryHtml = data.summary.map(s => `
+      <div class="insight"><span class="src">${esc(s.src)}</span><span class="editable" contenteditable="true">${esc(s.text)}</span></div>
+    `).join('');
+
+    const g = data.gsc;
+    const gscHtml = `
+      <table class="metrics">
+        <tr><th>Metric</th><th>This period</th><th>vs prior</th></tr>
+        <tr><td>Clicks</td><td>${g.clicks.toLocaleString()}</td><td class="${deltaClass(g.clicks_delta_pct)}">${pct(g.clicks_delta_pct)}</td></tr>
+        <tr><td>Impressions</td><td>${g.impressions.toLocaleString()}</td><td class="${deltaClass(g.impressions_delta_pct)}">${pct(g.impressions_delta_pct)}</td></tr>
+        <tr><td>Avg. position</td><td>${g.avg_position}</td><td class="delta-up">−${g.position_delta} (better)</td></tr>
+      </table>`;
+
+    const ai = data.ai_visibility;
+    const engineRows = ai.per_engine.map(e => `
+      <tr>
+        <td style="text-transform:capitalize;">${esc(e.engine.replace('_', ' '))}</td>
+        <td>${e.visibility_score}</td>
+        <td>${Math.round(e.share_of_voice * 100)}%</td>
+        <td>${e.avg_position}</td>
+        <td class="${deltaClass(e.change_vs_previous)}">${pct(e.change_vs_previous)}</td>
+      </tr>`).join('');
+    const aiHtml = `
+      <p>Visibility score <strong>${ai.score}</strong> (<span class="${deltaClass(ai.score_delta)}">${pct(ai.score_delta, 1)}</span>) ·
+      Share of voice <strong>${Math.round(ai.share_of_voice * 100)}%</strong>, vs ${esc(ai.top_competitor.name)}'s
+      ${Math.round(ai.top_competitor.share_of_voice * 100)}%.</p>
+      <table class="metrics">
+        <tr><th>Engine</th><th>Visibility</th><th>Share of voice</th><th>Avg. position</th><th>Change</th></tr>
+        ${engineRows}
+      </table>
+      <div class="quote">"${esc(ai.best_mention.response_excerpt)}" — ${esc(ai.best_mention.ai_engine)}, ${esc(ai.best_mention.sentiment)}</div>
+      <h4 style="font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);margin:14px 0 6px;">Most-cited pages in AI answers</h4>
+      <ul style="margin:0;padding-left:18px;font-size:13.5px;">
+        ${data.ai_citations.map(c => `<li><a href="${esc(c.url)}">${esc(c.page_title)}</a> — ${c.citations_count} citations (${pct(c.percent_change * 100, 0)})</li>`).join('')}
+      </ul>`;
+
+    const bl = data.backlinks;
+    const recsHtml = data.recommendations.map((r, i) => `${i + 1}. ${esc(r)}`).join('<br>');
+
+    document.getElementById('report-doc').innerHTML = `
+      <h3>Executive summary</h3>
+      ${summaryHtml}
+      <h3>Organic search (Google Search Console)</h3>
+      ${gscHtml}
+      <p style="margin-top:8px;">Domain Authority Score: <strong>${bl.ascore}</strong> (${bl.ascore_delta >= 0 ? '+' : ''}${bl.ascore_delta})</p>
+      <h3>AI search visibility</h3>
+      ${aiHtml}
+      <h3>Recommended next actions</h3>
+      <p class="editable" contenteditable="true">${recsHtml}</p>
+    `;
+  }
+
+  renderReport(JSON.parse(document.getElementById('report-data').textContent));
 </script>
 </body>
 </html>
