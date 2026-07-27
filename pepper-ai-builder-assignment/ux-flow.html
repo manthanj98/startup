@@ -176,6 +176,45 @@
 
   footer.note { margin-top: 28px; font-size: 12px; color: var(--ink-soft); }
 
+  /* --- Form inputs (Configure screen) --- */
+  .inp { font-family: inherit; font-size: 13.5px; color: var(--ink); background: var(--paper);
+         border: 1px solid var(--line); border-radius: 7px; padding: 9px 11px; width: 100%; }
+  .inp:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+  select.inp { cursor: pointer; }
+  .inp-inline { width: auto; padding: 5px 9px; font-size: 12.5px; }
+  textarea.inp { resize: vertical; line-height: 1.5; }
+  .hint { font-size: 11.5px; color: var(--ink-soft); margin: 6px 0 0; }
+  .chip-input { display: flex; flex-direction: column; gap: 8px; }
+  .chip-add { display: flex; gap: 8px; }
+  .chip-add .inp { flex: 1; }
+  .chip .x { margin-left: 6px; cursor: pointer; color: var(--ink-soft); font-weight: 700; }
+  .chip .x:hover { color: var(--bad); }
+
+  /* --- Report tabs (Competitive / Category) --- */
+  .report-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin: 4px 0 16px; }
+  .report-tabs button { appearance: none; border: none; background: none; cursor: pointer;
+    font-family: inherit; font-size: 13px; font-weight: 600; color: var(--ink-soft);
+    padding: 9px 14px 11px; border-bottom: 2px solid transparent; }
+  .report-tabs button.active { color: var(--ink); border-bottom-color: var(--accent); }
+  .report-tabs button:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* --- Pillar / competitor rows --- */
+  .badge { font-size: 10.5px; font-weight: 700; padding: 2px 7px; border-radius: 100px; white-space: nowrap; }
+  .badge.win { background: var(--good-bg); color: var(--good); }
+  .badge.loss { background: var(--bad-bg); color: var(--bad); }
+  .badge.cms { background: var(--accent-soft); color: var(--accent-ink); }
+  .pillar-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
+                    gap: 8px; margin: 10px 0 4px; }
+  .pillar-metric { border: 1px solid var(--line); border-radius: 7px; padding: 8px 10px; background: var(--paper); }
+  .pillar-metric .pm-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em;
+                             color: var(--ink-soft); margin-bottom: 3px; }
+  .pillar-metric .pm-value { font-size: 15px; font-weight: 700; }
+  .pillar-metric .pm-sub { font-size: 11px; color: var(--ink-soft); margin-top: 2px; }
+  .flow-arrow { color: var(--ink-soft); font-size: 11px; text-align: center; margin: 2px 0 8px;
+                letter-spacing: 0.04em; text-transform: uppercase; }
+
   /* --- KPI stat tiles --- */
   .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin: 2px 0 20px; }
   .kpi-tile { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; background: var(--paper); }
@@ -280,22 +319,84 @@
     <p class="screen-sub">Set up once per client. Atlas reuses this every cycle, so the CS manager configures scope and intent, not plumbing.</p>
     <div class="card pad">
       <div class="config-grid">
-        <div class="field"><label>Reporting period</label><div class="val" id="config-period">Jun 22 – Jul 19, 2026 (monthly, auto-rolling)</div></div>
-        <div class="field"><label>Recipients</label><div class="val" id="config-recipients">dana@northwindoutdoor.com, +2 cc</div></div>
-        <div class="field"><label>Tracked competitors</label>
-          <div class="chip-row" id="config-competitors"><span class="chip">trailforge.com</span><span class="chip">basecampgear.com</span><span class="chip">summitware.com</span></div>
+        <div class="field">
+          <label for="in-brand">Brand</label>
+          <input class="inp" type="text" id="in-brand" value="Northwind Outdoor Co." />
         </div>
-        <div class="field"><label>Client KPIs of record</label>
-          <div class="chip-row"><span class="chip">Organic conversions</span><span class="chip">AI share of voice</span><span class="chip">Domain authority</span></div>
+        <div class="field">
+          <label for="in-industry">Industry / category</label>
+          <select class="inp" id="in-industry">
+            <option>Outdoor &amp; camping gear</option>
+            <option>Climbing &amp; mountaineering gear</option>
+            <option>Ski &amp; snow sports equipment</option>
+            <option>Running &amp; endurance</option>
+            <option>Cycling</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in-cadence">Reporting cadence</label>
+          <select class="inp" id="in-cadence">
+            <option value="monthly">Monthly (auto-rolling)</option>
+            <option value="weekly">Weekly (auto-rolling)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in-recipients">Recipients</label>
+          <input class="inp" type="text" id="in-recipients" value="dana@northwindoutdoor.com, +2 cc" />
         </div>
       </div>
+
+      <div class="field" style="margin-top:18px;">
+        <label for="in-competitor">Key competitor brands</label>
+        <div class="chip-input">
+          <div class="chip-row" id="in-competitors"></div>
+          <div class="chip-add">
+            <input class="inp" type="text" id="in-competitor" placeholder="Brand name, e.g. TrailForge"
+                   onkeydown="if(event.key==='Enter'){event.preventDefault();addCompetitor();}" />
+            <button class="btn" type="button" onclick="addCompetitor()">Add competitor</button>
+          </div>
+        </div>
+        <p class="hint">These drive the head-to-head comparison in the Competitive tab.</p>
+      </div>
+
+      <div class="config-grid" style="margin-top:18px;">
+        <div class="field">
+          <label for="in-prompts">Priority prompts</label>
+          <textarea class="inp" id="in-prompts" rows="4"
+                    placeholder="One prompt per line — the questions you believe matter most"></textarea>
+          <p class="hint">Tracked against ChatGPT, Perplexity, Google AIO, Copilot &amp; Claude.</p>
+        </div>
+        <div class="field">
+          <label for="in-keyword">Priority keywords</label>
+          <div class="chip-input">
+            <div class="chip-row" id="in-keywords"></div>
+            <div class="chip-add">
+              <input class="inp" type="text" id="in-keyword" placeholder="e.g. waterproof hiking boots"
+                     onkeydown="if(event.key==='Enter'){event.preventDefault();addKeyword();}" />
+              <button class="btn" type="button" onclick="addKeyword()">Add keyword</button>
+            </div>
+          </div>
+          <p class="hint">Weighted first in the traditional-search and category pillars.</p>
+        </div>
+      </div>
+
       <div class="field" style="margin-top:18px;">
         <label>Connected sources</label>
         <div class="source-check"><span class="dot"></span> Google Search Console — <span id="config-gsc">sc-domain:northwindoutdoor.com</span></div>
         <div class="source-check"><span class="dot"></span> GA4 — <span id="config-ga4">properties/384712201</span></div>
         <div class="source-check"><span class="dot"></span> Semrush — organic, tracking, backlinks, AI Toolkit</div>
-        <div class="source-check"><span class="dot"></span> WordPress — content calendar &amp; stale-page scan</div>
+        <div class="source-check">
+          <span class="dot"></span>
+          <span>CMS —</span>
+          <select class="inp inp-inline" id="in-cms" onchange="updateCmsHint()">
+            <option value="wordpress">WordPress</option>
+            <option value="webflow">Webflow</option>
+            <option value="contentful">Contentful</option>
+          </select>
+          <span class="hint" id="cms-hint" style="margin:0;"></span>
+        </div>
       </div>
+
       <div style="margin-top:20px; display:flex; justify-content:flex-end; gap:8px;">
         <button class="btn ghost" onclick="go('dashboard')">Back</button>
         <button class="btn primary" onclick="go('generating')">Generate report →</button>
@@ -401,83 +502,83 @@
     "summary": [
       {
         "src": "GSC",
-        "text": "Organic clicks fell 7.0% vs the prior period."
+        "text": "Organic clicks fell 12.2% vs the prior period."
       },
       {
         "src": "GA4",
-        "text": "Organic-driven conversions are down 14.1% ($47,601 in attributed revenue this period)."
+        "text": "Organic-driven conversions are down 57.0% ($18,365 in attributed revenue this period)."
       },
       {
         "src": "Semrush",
-        "text": "Domain Authority Score slipped to 37 (-4)."
+        "text": "Domain Authority Score climbed to 43 (+1)."
       },
       {
         "src": "AI Toolkit",
-        "text": "AI search visibility dipped to 23.1 (-6.9) \u2014 Northwind Outdoor Co. holds 13% share of voice vs TrailForge at 29%."
+        "text": "AI search visibility dipped to 22.5 (-0.8) \u2014 Northwind Outdoor Co. holds 15% share of voice vs Summitware at 14%."
       }
     ],
     "gsc": {
-      "clicks": 12688,
-      "clicks_delta_pct": -7.0,
-      "impressions": 236388,
-      "impressions_delta_pct": -5.5,
-      "avg_position": 12.0,
-      "position_delta": 3.5
+      "clicks": 14737,
+      "clicks_delta_pct": -12.2,
+      "impressions": 295233,
+      "impressions_delta_pct": -6.6,
+      "avg_position": 16.0,
+      "position_delta": 1.8
     },
     "ga4": {
-      "sessions": 26926,
-      "sessions_delta_pct": 30.1,
-      "conversions": 938,
-      "conversions_delta_pct": -14.1,
-      "revenue": 47600.67
+      "sessions": 45192,
+      "sessions_delta_pct": 122.4,
+      "conversions": 375,
+      "conversions_delta_pct": -57.0,
+      "revenue": 18365.29
     },
     "backlinks": {
-      "ascore": 37,
-      "ascore_delta": -4
+      "ascore": 43,
+      "ascore_delta": 1
     },
     "ai_visibility": {
-      "score": 23.1,
-      "score_delta": -6.9,
-      "share_of_voice": 0.13,
+      "score": 22.5,
+      "score_delta": -0.8,
+      "share_of_voice": 0.154,
       "top_competitor": {
-        "name": "TrailForge",
-        "share_of_voice": 0.29
+        "name": "Summitware",
+        "share_of_voice": 0.141
       },
       "per_engine": [
         {
           "engine": "chatgpt",
-          "visibility_score": 34.7,
-          "share_of_voice": 0.127,
-          "avg_position": 4.4,
-          "change_vs_previous": -4.6
+          "visibility_score": 23.2,
+          "share_of_voice": 0.187,
+          "avg_position": 2.8,
+          "change_vs_previous": 5.9
         },
         {
           "engine": "perplexity",
-          "visibility_score": 9.5,
-          "share_of_voice": 0.146,
-          "avg_position": 1.8,
-          "change_vs_previous": 5.8
+          "visibility_score": 10.3,
+          "share_of_voice": 0.192,
+          "avg_position": 4.3,
+          "change_vs_previous": 0.5
         },
         {
           "engine": "google_aio",
-          "visibility_score": 21.5,
-          "share_of_voice": 0.128,
+          "visibility_score": 15.0,
+          "share_of_voice": 0.108,
           "avg_position": 2.6,
-          "change_vs_previous": -2.1
+          "change_vs_previous": -2.6
         },
         {
           "engine": "copilot",
-          "visibility_score": 39.4,
-          "share_of_voice": 0.032,
-          "avg_position": 1.9,
-          "change_vs_previous": -3.9
+          "visibility_score": 23.6,
+          "share_of_voice": 0.209,
+          "avg_position": 2.9,
+          "change_vs_previous": 6.8
         },
         {
           "engine": "claude",
-          "visibility_score": 10.3,
-          "share_of_voice": 0.217,
-          "avg_position": 2.5,
-          "change_vs_previous": 0.0
+          "visibility_score": 40.6,
+          "share_of_voice": 0.074,
+          "avg_position": 2.9,
+          "change_vs_previous": 0.4
         }
       ],
       "best_mention": {
@@ -490,107 +591,392 @@
       {
         "page_title": "The Complete Tent Buying Guide (2026)",
         "url": "https://northwindoutdoor.com/guides/tent-buying-guide",
-        "citations_count": 9,
-        "percent_change": 0.38
+        "citations_count": 32,
+        "percent_change": -0.06
       },
       {
         "page_title": "Layering 101: Base, Mid, Shell",
         "url": "https://northwindoutdoor.com/guides/layering-101",
-        "citations_count": 13,
-        "percent_change": 0.52
+        "citations_count": 44,
+        "percent_change": 0.03
       }
     ],
     "recommendations": [
       "Refresh the stale guide flagged above and add an FAQ block targeting the AI-cited queries.",
-      "Publish a comparison page targeting \"rain shell jacket men\" to recover lost position.",
-      "Monitor TrailForge's AI share-of-voice gains \u2014 consider a prompt-level content gap analysis next cycle."
+      "Publish a comparison page targeting \"trail running vest\" to recover lost position.",
+      "Monitor Summitware's AI share-of-voice gains \u2014 consider a prompt-level content gap analysis next cycle."
     ],
-    "insights": [
-      {
-        "id": "waterproof-durability",
-        "pillar": "Waterproofing & Durability Claims",
-        "title": "Durability claims are landing, but waterproof-rating detail is thin for Northwind",
-        "mentions": 3,
-        "mentions_total": 10,
-        "sentiment": {
-          "positive": 3,
-          "neutral": 0,
-          "negative": 0
+    "inputs": {
+      "industry": "Outdoor & camping gear",
+      "cms": "wordpress",
+      "cms_label": "WordPress",
+      "recipients": "dana@northwindoutdoor.com, +2 cc",
+      "competitor_brands": [
+        {
+          "name": "TrailForge",
+          "domain": "trailforge.com"
         },
-        "bullets": [
-          {
-            "label": "What's happening",
-            "text": "Northwind is mentioned in 3 of 10 tracked answers about 4-person tent durability, all positive, anchored on the Summit 4's 3000mm rainfly rating."
-          },
-          {
-            "label": "Why it matters",
-            "text": "Durability is the #1 reason cited in AI answers for recommending a tent over a cheaper alternative \u2014 it's the deciding factor, not price."
-          },
-          {
-            "label": "Competitive contrast",
-            "text": "TrailForge appears in 6 of 10 answers with a published waterproof-rating comparison chart; Northwind has no equivalent page."
-          },
-          {
-            "label": "Source mechanism",
-            "text": "Citing sources skew toward OutdoorGearLab and SectionHiker \u2014 both cite spec-sheet comparison tables, which Northwind's product pages lack."
-          }
-        ],
-        "recommendations": [
-          {
-            "title": "Publish a waterproof-rating comparison table on the tent-buying guide",
-            "body": "OutdoorGearLab's tent roundup ranks well because it presents a side-by-side waterproof-rating (mm) and hydrostatic-head table across competitors. Northwind's guide currently only states its own rating in prose. Add a structured comparison table (rainfly mm, floor mm, seam-taping method) so AI engines have a citable, structured source that isn't a third party.",
-            "citation": {
-              "text": "OutdoorGearLab \u2014 Best Tents",
-              "url": "https://outdoorgearlab.com/best-tents"
-            }
-          },
-          {
-            "title": "Add a durability FAQ block to the Summit 4 product page",
-            "body": "SectionHiker's citations come from direct answers to \"how long does this tent last in high wind\" style questions. A product-page FAQ with specific, testable claims (denier count, pole material, field-test conditions) gives AI engines a first-party answer to cite instead of a review site.",
-            "citation": {
-              "text": "SectionHiker \u2014 Northwind Summit 4 Review",
-              "url": "https://sectionhiker.com/summit-4-review"
-            }
-          }
-        ]
+        {
+          "name": "BasecampGear",
+          "domain": "basecampgear.com"
+        },
+        {
+          "name": "Summitware",
+          "domain": "summitware.com"
+        }
+      ],
+      "priority_prompts": [
+        "what's the most durable 4 person tent for backpacking?",
+        "best waterproof hiking boots for wide feet",
+        "how do I choose a sleeping bag temperature rating?"
+      ],
+      "priority_keywords": [
+        "waterproof hiking boots",
+        "4 person tent",
+        "merino wool base layer"
+      ]
+    },
+    "competitive": {
+      "own": {
+        "name": "Northwind Outdoor Co.",
+        "domain": "northwindoutdoor.com",
+        "search_visibility": 0.204,
+        "search_avg_position": 10.0,
+        "keywords_tracked": 409,
+        "geo_share_of_voice": 0.154,
+        "geo_visibility_score": 22.5
       },
-      {
-        "id": "sizing-fit",
-        "pillar": "Sizing & Fit Guidance",
-        "title": "Boot sizing questions skip Northwind entirely",
-        "mentions": 0,
-        "mentions_total": 10,
-        "sentiment": {
-          "positive": 0,
-          "neutral": 0,
-          "negative": 0
+      "competitors": [
+        {
+          "name": "TrailForge",
+          "domain": "trailforge.com",
+          "search_visibility": 0.063,
+          "search_avg_position": 18.8,
+          "keyword_overlap": 0.27,
+          "geo_share_of_voice": 0.052,
+          "geo_visibility_score": 20.0,
+          "geo_top_engine": "chatgpt",
+          "search_gap": 0.141,
+          "geo_gap": 0.102,
+          "leads_search": true,
+          "leads_geo": true
         },
-        "bullets": [
-          {
-            "label": "What's happening",
-            "text": "For \"waterproof hiking boots wide feet\" style prompts, Northwind shows up in 0 of 10 answers \u2014 Merrell, Salomon, and Oboz dominate."
-          },
-          {
-            "label": "Why it matters",
-            "text": "Sizing/fit is one of the highest-intent questions before a purchase; being absent here means losing the recommendation at the final decision step."
-          },
-          {
-            "label": "Source mechanism",
-            "text": "Answers consistently cite REI's fit-guide article and Reddit r/hiking threads \u2014 neither is a brand's own page, meaning the gap is winnable."
-          }
+        {
+          "name": "BasecampGear",
+          "domain": "basecampgear.com",
+          "search_visibility": 0.251,
+          "search_avg_position": 10.8,
+          "keyword_overlap": 0.41,
+          "geo_share_of_voice": 0.041,
+          "geo_visibility_score": 17.8,
+          "geo_top_engine": "perplexity",
+          "search_gap": -0.047,
+          "geo_gap": 0.113,
+          "leads_search": false,
+          "leads_geo": true
+        },
+        {
+          "name": "Summitware",
+          "domain": "summitware.com",
+          "search_visibility": 0.261,
+          "search_avg_position": 15.9,
+          "keyword_overlap": 0.35,
+          "geo_share_of_voice": 0.141,
+          "geo_visibility_score": 36.2,
+          "geo_top_engine": "claude",
+          "search_gap": -0.057,
+          "geo_gap": 0.013,
+          "leads_search": false,
+          "leads_geo": true
+        }
+      ],
+      "summary": {
+        "behind_on_geo": [],
+        "behind_on_search": [
+          "BasecampGear",
+          "Summitware"
         ],
-        "recommendations": [
-          {
-            "title": "Publish a wide-fit sizing guide for the boot line",
-            "body": "REI's fit-guide ranks because it gives concrete last-width measurements and a \"if you wear X in brand Y, try size Z\" conversion table. Northwind has no sizing content beyond a generic size chart \u2014 adding brand-to-brand conversions would give AI engines a reason to cite Northwind directly for wide-fit queries.",
-            "citation": {
-              "text": "REI Co-op \u2014 Hiking Boot Fit Guide",
-              "url": "https://rei.com/learn/expert-advice/hiking-boots"
-            }
-          }
-        ]
+        "ahead_of_all_geo": true
       }
-    ]
+    },
+    "category": {
+      "category": "Outdoor & camping gear",
+      "own_share": 0.13,
+      "own_share_delta": 0.041,
+      "own_rank": 3,
+      "brands_tracked": 21,
+      "named_competitors": [
+        {
+          "name": "TrailForge",
+          "share": 0.297
+        },
+        {
+          "name": "BasecampGear",
+          "share": 0.212
+        },
+        {
+          "name": "Summitware",
+          "share": 0.093
+        }
+      ],
+      "long_tail_share": 0.268,
+      "total_category_prompts": 977,
+      "total_category_keywords": 5703,
+      "pillars": [
+        {
+          "id": "waterproof-durability",
+          "pillar": "Waterproofing & Durability Claims",
+          "title": "Durability claims are landing, but waterproof-rating detail is thin for Northwind",
+          "search": {
+            "clicks": 4695,
+            "impressions": 80744,
+            "avg_position": 17.1,
+            "semrush_position": 16.7,
+            "queries": [
+              "4 person tent",
+              "rain shell jacket men",
+              "gore-tex boots women"
+            ]
+          },
+          "geo": {
+            "visibility_score": 21.7,
+            "category_avg": 16.9,
+            "vs_category": 4.8,
+            "mentions": 3,
+            "mentions_total": 10
+          },
+          "conversion": {
+            "sessions": 7297,
+            "conversions": 238,
+            "conversion_rate": 0.0326,
+            "revenue": 11883.97,
+            "conversions_delta_pct": 561.1
+          },
+          "owned_page": {
+            "title": "The Complete Tent Buying Guide (2026)",
+            "slug": "guides/tent-buying-guide",
+            "last_modified": "2026-05-02T00:00:00"
+          },
+          "verdict": "winning",
+          "bullets": [
+            {
+              "label": "What's happening",
+              "text": "Northwind is mentioned in 3 of 10 tracked answers about 4-person tent durability, all positive, anchored on the Summit 4's 3000mm rainfly rating."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Durability is the #1 reason cited in AI answers for recommending a tent over a cheaper alternative \u2014 it's the deciding factor, not price."
+            },
+            {
+              "label": "Competitive contrast",
+              "text": "TrailForge appears in 6 of 10 answers with a published waterproof-rating comparison chart; Northwind has no equivalent page."
+            },
+            {
+              "label": "Source mechanism",
+              "text": "Citing sources skew toward OutdoorGearLab and SectionHiker \u2014 both cite spec-sheet comparison tables, which Northwind's product pages lack."
+            }
+          ],
+          "recommendations": [
+            {
+              "title": "Publish a waterproof-rating comparison table on the tent-buying guide",
+              "body": "OutdoorGearLab's tent roundup ranks well because it presents a side-by-side waterproof-rating (mm) and hydrostatic-head table across competitors. Northwind's guide currently only states its own rating in prose. Add a structured comparison table (rainfly mm, floor mm, seam-taping method) so AI engines have a citable, structured source that isn't a third party.",
+              "citation": {
+                "text": "OutdoorGearLab \u2014 Best Tents",
+                "url": "https://outdoorgearlab.com/best-tents"
+              }
+            },
+            {
+              "title": "Add a durability FAQ block to the Summit 4 product page",
+              "body": "SectionHiker's citations come from direct answers to \"how long does this tent last in high wind\" style questions. A product-page FAQ with specific, testable claims (denier count, pole material, field-test conditions) gives AI engines a first-party answer to cite instead of a review site.",
+              "citation": {
+                "text": "SectionHiker \u2014 Northwind Summit 4 Review",
+                "url": "https://sectionhiker.com/summit-4-review"
+              }
+            }
+          ]
+        },
+        {
+          "id": "sizing-fit",
+          "pillar": "Sizing & Fit Guidance",
+          "title": "Boot sizing questions skip Northwind entirely",
+          "search": {
+            "clicks": 4742,
+            "impressions": 74431,
+            "avg_position": 14.8,
+            "semrush_position": 27.0,
+            "queries": [
+              "waterproof hiking boots",
+              "gore-tex boots women"
+            ]
+          },
+          "geo": {
+            "visibility_score": 0.0,
+            "category_avg": 20.6,
+            "vs_category": -20.6,
+            "mentions": 0,
+            "mentions_total": 10
+          },
+          "conversion": {
+            "sessions": 916,
+            "conversions": 22,
+            "conversion_rate": 0.024,
+            "revenue": 997.95,
+            "conversions_delta_pct": -94.1
+          },
+          "owned_page": null,
+          "verdict": "losing",
+          "bullets": [
+            {
+              "label": "What's happening",
+              "text": "For \"waterproof hiking boots wide feet\" style prompts, Northwind shows up in 0 of 10 answers \u2014 Merrell, Salomon, and Oboz dominate."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Sizing/fit is one of the highest-intent questions before a purchase; being absent here means losing the recommendation at the final decision step."
+            },
+            {
+              "label": "Source mechanism",
+              "text": "Answers consistently cite REI's fit-guide article and Reddit r/hiking threads \u2014 neither is a brand's own page, meaning the gap is winnable."
+            }
+          ],
+          "recommendations": [
+            {
+              "title": "Publish a wide-fit sizing guide for the boot line",
+              "body": "REI's fit-guide ranks because it gives concrete last-width measurements and a \"if you wear X in brand Y, try size Z\" conversion table. Northwind has no sizing content beyond a generic size chart \u2014 adding brand-to-brand conversions would give AI engines a reason to cite Northwind directly for wide-fit queries.",
+              "citation": {
+                "text": "REI Co-op \u2014 Hiking Boot Fit Guide",
+                "url": "https://rei.com/learn/expert-advice/hiking-boots"
+              }
+            }
+          ]
+        },
+        {
+          "id": "layering-systems",
+          "pillar": "Layering & Base-Layer Systems",
+          "title": "Layering content converts well but is losing AI ground",
+          "search": {
+            "clicks": 2133,
+            "impressions": 43182,
+            "avg_position": 17.8,
+            "semrush_position": 14.0,
+            "queries": [
+              "merino wool base layer",
+              "trail running vest"
+            ]
+          },
+          "geo": {
+            "visibility_score": 13.0,
+            "category_avg": 16.8,
+            "vs_category": -3.8,
+            "mentions": 2,
+            "mentions_total": 10
+          },
+          "conversion": {
+            "sessions": 4372,
+            "conversions": 164,
+            "conversion_rate": 0.0375,
+            "revenue": 7245.45,
+            "conversions_delta_pct": 19.7
+          },
+          "owned_page": {
+            "title": "Layering 101: Base, Mid, Shell",
+            "slug": "guides/layering-101",
+            "last_modified": "2025-03-18T00:00:00"
+          },
+          "verdict": "losing",
+          "bullets": [
+            {
+              "label": "What's happening",
+              "text": "Layering 101 still earns citations, but mentions dropped to 2 of 10 tracked answers as newer competitor guides published this year."
+            },
+            {
+              "label": "Why it matters",
+              "text": "This pillar drives the highest on-site conversion rate of any topic \u2014 losing AI visibility here costs more per lost mention than elsewhere."
+            },
+            {
+              "label": "Source mechanism",
+              "text": "The page hasn't been updated since March 2025; competing guides cite current-season fabric tech that Northwind's guide doesn't mention."
+            }
+          ],
+          "recommendations": [
+            {
+              "title": "Refresh Layering 101 with current-season fabric technology",
+              "body": "The guide predates this season's fabric releases, which competing cited guides cover. A refresh adding current merino blends and synthetic alternatives would restore the page's citation relevance without rebuilding it from scratch.",
+              "citation": {
+                "text": "Northwind \u2014 Layering 101",
+                "url": "https://northwindoutdoor.com/guides/layering-101"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "content_recommendations": {
+      "cms": "WordPress",
+      "can_draft": true,
+      "new_content": [
+        {
+          "pillar": "Sizing & Fit Guidance",
+          "pillar_id": "sizing-fit",
+          "title": "Publish a wide-fit sizing guide for the boot line",
+          "body": "REI's fit-guide ranks because it gives concrete last-width measurements and a \"if you wear X in brand Y, try size Z\" conversion table. Northwind has no sizing content beyond a generic size chart \u2014 adding brand-to-brand conversions would give AI engines a reason to cite Northwind directly for wide-fit queries.",
+          "citation": {
+            "text": "REI Co-op \u2014 Hiking Boot Fit Guide",
+            "url": "https://rei.com/learn/expert-advice/hiking-boots"
+          },
+          "geo_visibility": 0.0,
+          "vs_category": -20.6,
+          "conversions": 22,
+          "cms": "WordPress",
+          "action": "Create draft in WordPress",
+          "can_draft": true
+        }
+      ],
+      "existing_content": [
+        {
+          "pillar": "Layering & Base-Layer Systems",
+          "pillar_id": "layering-systems",
+          "title": "Refresh Layering 101 with current-season fabric technology",
+          "body": "The guide predates this season's fabric releases, which competing cited guides cover. A refresh adding current merino blends and synthetic alternatives would restore the page's citation relevance without rebuilding it from scratch.",
+          "citation": {
+            "text": "Northwind \u2014 Layering 101",
+            "url": "https://northwindoutdoor.com/guides/layering-101"
+          },
+          "geo_visibility": 13.0,
+          "vs_category": -3.8,
+          "conversions": 164,
+          "cms": "WordPress",
+          "action": "Create draft in WordPress",
+          "can_draft": true,
+          "target_page": {
+            "title": "Layering 101: Base, Mid, Shell",
+            "slug": "guides/layering-101",
+            "last_modified": "2025-03-18T00:00:00"
+          }
+        },
+        {
+          "pillar": "Waterproofing & Durability Claims",
+          "pillar_id": "waterproof-durability",
+          "title": "Publish a waterproof-rating comparison table on the tent-buying guide",
+          "body": "OutdoorGearLab's tent roundup ranks well because it presents a side-by-side waterproof-rating (mm) and hydrostatic-head table across competitors. Northwind's guide currently only states its own rating in prose. Add a structured comparison table (rainfly mm, floor mm, seam-taping method) so AI engines have a citable, structured source that isn't a third party.",
+          "citation": {
+            "text": "OutdoorGearLab \u2014 Best Tents",
+            "url": "https://outdoorgearlab.com/best-tents"
+          },
+          "geo_visibility": 21.7,
+          "vs_category": 4.8,
+          "conversions": 238,
+          "cms": "WordPress",
+          "action": "Create draft in WordPress",
+          "can_draft": true,
+          "target_page": {
+            "title": "The Complete Tent Buying Guide (2026)",
+            "slug": "guides/tent-buying-guide",
+            "last_modified": "2026-05-02T00:00:00"
+          }
+        }
+      ]
+    }
   },
   "basecamp": {
     "client_name": "Basecamp Gear",
@@ -600,83 +986,83 @@
     "summary": [
       {
         "src": "GSC",
-        "text": "Organic clicks grew 40.3% vs the prior period."
+        "text": "Organic clicks grew 61.1% vs the prior period."
       },
       {
         "src": "GA4",
-        "text": "Organic-driven conversions are up 76.4% ($46,463 in attributed revenue this period)."
+        "text": "Organic-driven conversions are down 4.3% ($50,193 in attributed revenue this period)."
       },
       {
         "src": "Semrush",
-        "text": "Domain Authority Score slipped to 28 (-22)."
+        "text": "Domain Authority Score slipped to 32 (-8)."
       },
       {
         "src": "AI Toolkit",
-        "text": "AI search visibility dipped to 21.2 (-1.5) \u2014 Basecamp Gear holds 10% share of voice vs Northwind Outdoor Co. at 24%."
+        "text": "AI search visibility rose to 24.6 (+0.9) \u2014 Basecamp Gear holds 11% share of voice vs Summitware at 28%."
       }
     ],
     "gsc": {
-      "clicks": 11996,
-      "clicks_delta_pct": 40.3,
-      "impressions": 278771,
-      "impressions_delta_pct": 45.6,
-      "avg_position": 13.5,
-      "position_delta": 0.2
+      "clicks": 14537,
+      "clicks_delta_pct": 61.1,
+      "impressions": 268405,
+      "impressions_delta_pct": 28.6,
+      "avg_position": 10.6,
+      "position_delta": 5.4
     },
     "ga4": {
-      "sessions": 38828,
-      "sessions_delta_pct": 26.3,
-      "conversions": 764,
-      "conversions_delta_pct": 76.4,
-      "revenue": 46463.38
+      "sessions": 23985,
+      "sessions_delta_pct": -35.7,
+      "conversions": 932,
+      "conversions_delta_pct": -4.3,
+      "revenue": 50193.17
     },
     "backlinks": {
-      "ascore": 28,
-      "ascore_delta": -22
+      "ascore": 32,
+      "ascore_delta": -8
     },
     "ai_visibility": {
-      "score": 21.2,
-      "score_delta": -1.5,
-      "share_of_voice": 0.1,
+      "score": 24.6,
+      "score_delta": 0.9,
+      "share_of_voice": 0.107,
       "top_competitor": {
-        "name": "Northwind Outdoor Co.",
-        "share_of_voice": 0.24
+        "name": "Summitware",
+        "share_of_voice": 0.283
       },
       "per_engine": [
         {
           "engine": "chatgpt",
-          "visibility_score": 17.8,
-          "share_of_voice": 0.171,
-          "avg_position": 1.6,
-          "change_vs_previous": 6.9
+          "visibility_score": 10.7,
+          "share_of_voice": 0.128,
+          "avg_position": 4.5,
+          "change_vs_previous": 7.2
         },
         {
           "engine": "perplexity",
-          "visibility_score": 39.7,
-          "share_of_voice": 0.07,
-          "avg_position": 2.8,
-          "change_vs_previous": -1.0
+          "visibility_score": 26.6,
+          "share_of_voice": 0.119,
+          "avg_position": 3.8,
+          "change_vs_previous": 8.1
         },
         {
           "engine": "google_aio",
-          "visibility_score": 14.5,
-          "share_of_voice": 0.077,
-          "avg_position": 1.3,
-          "change_vs_previous": 7.1
+          "visibility_score": 31.8,
+          "share_of_voice": 0.055,
+          "avg_position": 1.7,
+          "change_vs_previous": -4.1
         },
         {
           "engine": "copilot",
-          "visibility_score": 9.5,
-          "share_of_voice": 0.099,
-          "avg_position": 4.3,
-          "change_vs_previous": 7.8
+          "visibility_score": 16.4,
+          "share_of_voice": 0.174,
+          "avg_position": 3.1,
+          "change_vs_previous": -3.7
         },
         {
           "engine": "claude",
-          "visibility_score": 24.4,
-          "share_of_voice": 0.081,
-          "avg_position": 4.6,
-          "change_vs_previous": 4.1
+          "visibility_score": 37.7,
+          "share_of_voice": 0.061,
+          "avg_position": 4.1,
+          "change_vs_previous": -4.9
         }
       ],
       "best_mention": {
@@ -689,95 +1075,378 @@
       {
         "page_title": "Assisted-Braking Belay Devices Compared",
         "url": "https://basecampgear.com/guides/belay-devices-compared",
-        "citations_count": 11,
-        "percent_change": 0.14
+        "citations_count": 34,
+        "percent_change": 0.48
       },
       {
         "page_title": "How to Size a Climbing Harness",
         "url": "https://basecampgear.com/guides/harness-sizing",
-        "citations_count": 38,
-        "percent_change": 0.5
+        "citations_count": 12,
+        "percent_change": 0.1
       }
     ],
     "recommendations": [
       "Refresh the stale guide flagged above and add an FAQ block targeting the AI-cited queries.",
-      "Publish a comparison page targeting \"ice axe self arrest\" to recover lost position.",
-      "Monitor Northwind Outdoor Co.'s AI share-of-voice gains \u2014 consider a prompt-level content gap analysis next cycle."
+      "Publish a comparison page targeting \"sleeping pad r-value\" to recover lost position.",
+      "Monitor Summitware's AI share-of-voice gains \u2014 consider a prompt-level content gap analysis next cycle."
     ],
-    "insights": [
-      {
-        "id": "beginner-safety",
-        "pillar": "Safety & Certification Claims",
-        "title": "Basecamp leads beginner belay questions, but harness certification detail is missing",
-        "mentions": 4,
-        "mentions_total": 10,
-        "sentiment": {
-          "positive": 4,
-          "neutral": 0,
-          "negative": 0
+    "inputs": {
+      "industry": "Climbing & mountaineering gear",
+      "cms": "webflow",
+      "cms_label": "Webflow",
+      "recipients": "marco@basecampgear.com, +1 cc",
+      "competitor_brands": [
+        {
+          "name": "Northwind Outdoor Co.",
+          "domain": "northwindoutdoor.com"
         },
-        "bullets": [
-          {
-            "label": "What's happening",
-            "text": "Basecamp's Halo belay device is mentioned in 4 of 10 answers about beginner-friendly belay gear, all positive."
-          },
-          {
-            "label": "Why it matters",
-            "text": "Safety-adjacent gear questions are high-trust moments \u2014 an AI engine naming a brand here carries more weight than a generic \"best gear\" list."
-          },
-          {
-            "label": "Competitive contrast",
-            "text": "Petzl and Black Diamond dominate harness-certification questions specifically (UIAA/CE standards) \u2014 Basecamp isn't cited there at all."
-          },
-          {
-            "label": "Source mechanism",
-            "text": "Citing sources for harness questions lean on manufacturer spec sheets \u2014 a gap Basecamp's product pages don't currently fill."
-          }
-        ],
-        "recommendations": [
-          {
-            "title": "Publish UIAA/CE certification details on every harness product page",
-            "body": "Petzl's product pages are cited because they state certification standards and test-load figures directly on the page. Basecamp's harness pages currently omit this \u2014 adding a standardized certification block would make them citable for safety-specific prompts.",
-            "citation": {
-              "text": "Petzl \u2014 Harness Safety Standards",
-              "url": "https://petzl.com/US/en/Sport/harnesses"
-            }
-          }
-        ]
+        {
+          "name": "TrailForge",
+          "domain": "trailforge.com"
+        },
+        {
+          "name": "Summitware",
+          "domain": "summitware.com"
+        }
+      ],
+      "priority_prompts": [
+        "best belay device for a beginner climber?",
+        "lightest 60L backpacking pack",
+        "what harness certification should I look for?"
+      ],
+      "priority_keywords": [
+        "climbing harness beginner",
+        "belay device assisted braking",
+        "60l backpacking pack"
+      ]
+    },
+    "competitive": {
+      "own": {
+        "name": "Basecamp Gear",
+        "domain": "basecampgear.com",
+        "search_visibility": 0.125,
+        "search_avg_position": 12.4,
+        "keywords_tracked": 420,
+        "geo_share_of_voice": 0.107,
+        "geo_visibility_score": 24.6
       },
-      {
-        "id": "weight-packability",
-        "pillar": "Weight & Packability",
-        "title": "Pack-weight comparisons skip Basecamp's 60L line",
-        "mentions": 1,
-        "mentions_total": 10,
-        "sentiment": {
-          "positive": 1,
-          "neutral": 0,
-          "negative": 0
+      "competitors": [
+        {
+          "name": "Northwind Outdoor Co.",
+          "domain": "northwindoutdoor.com",
+          "search_visibility": 0.142,
+          "search_avg_position": 19.0,
+          "keyword_overlap": 0.63,
+          "geo_share_of_voice": 0.044,
+          "geo_visibility_score": 11.5,
+          "geo_top_engine": "chatgpt",
+          "search_gap": -0.017,
+          "geo_gap": 0.063,
+          "leads_search": false,
+          "leads_geo": true
         },
-        "bullets": [
-          {
-            "label": "What's happening",
-            "text": "For \"lightest 60L backpacking pack\" prompts, Basecamp appears once, versus Osprey and Gregory appearing in most answers."
-          },
-          {
-            "label": "Source mechanism",
-            "text": "Answers cite a recurring \"pack weight class\" table format (base weight, max load, fabric denier) that Basecamp's own pages don't publish."
-          }
+        {
+          "name": "TrailForge",
+          "domain": "trailforge.com",
+          "search_visibility": 0.248,
+          "search_avg_position": 11.7,
+          "keyword_overlap": 0.36,
+          "geo_share_of_voice": 0.156,
+          "geo_visibility_score": 30.4,
+          "geo_top_engine": "copilot",
+          "search_gap": -0.123,
+          "geo_gap": -0.049,
+          "leads_search": false,
+          "leads_geo": false
+        },
+        {
+          "name": "Summitware",
+          "domain": "summitware.com",
+          "search_visibility": 0.098,
+          "search_avg_position": 11.8,
+          "keyword_overlap": 0.54,
+          "geo_share_of_voice": 0.283,
+          "geo_visibility_score": 18.1,
+          "geo_top_engine": "google_aio",
+          "search_gap": 0.027,
+          "geo_gap": -0.176,
+          "leads_search": true,
+          "leads_geo": false
+        }
+      ],
+      "summary": {
+        "behind_on_geo": [
+          "TrailForge",
+          "Summitware"
         ],
-        "recommendations": [
-          {
-            "title": "Add a base-weight comparison table to the 60L pack product page",
-            "body": "Competing product pages state base weight, max recommended load, and fabric denier in a scannable table. Publishing the same structured data for Basecamp's 60L line gives AI engines a first-party number to cite instead of defaulting to Osprey/Gregory.",
-            "citation": {
-              "text": "Osprey \u2014 Pack Weight Comparison",
-              "url": "https://osprey.com/us/en/packweight"
-            }
-          }
-        ]
+        "behind_on_search": [
+          "Northwind Outdoor Co.",
+          "TrailForge"
+        ],
+        "ahead_of_all_geo": false
       }
-    ]
+    },
+    "category": {
+      "category": "Climbing & mountaineering gear",
+      "own_share": 0.161,
+      "own_share_delta": 0.0,
+      "own_rank": 2,
+      "brands_tracked": 11,
+      "named_competitors": [
+        {
+          "name": "Northwind Outdoor Co.",
+          "share": 0.138
+        },
+        {
+          "name": "TrailForge",
+          "share": 0.156
+        },
+        {
+          "name": "Summitware",
+          "share": 0.122
+        }
+      ],
+      "long_tail_share": 0.423,
+      "total_category_prompts": 1551,
+      "total_category_keywords": 7792,
+      "pillars": [
+        {
+          "id": "beginner-safety",
+          "pillar": "Safety & Certification Claims",
+          "title": "Basecamp leads beginner belay questions, but harness certification detail is missing",
+          "search": {
+            "clicks": 3262,
+            "impressions": 46187,
+            "avg_position": 7.2,
+            "semrush_position": 14.0,
+            "queries": [
+              "belay device assisted braking",
+              "climbing harness beginner"
+            ]
+          },
+          "geo": {
+            "visibility_score": 25.9,
+            "category_avg": 25.4,
+            "vs_category": 0.5,
+            "mentions": 4,
+            "mentions_total": 10
+          },
+          "conversion": {
+            "sessions": 10052,
+            "conversions": 111,
+            "conversion_rate": 0.011,
+            "revenue": 4988.21,
+            "conversions_delta_pct": -61.6
+          },
+          "owned_page": {
+            "title": "Assisted-Braking Belay Devices Compared",
+            "slug": "guides/belay-devices-compared",
+            "last_modified": "2026-06-10T00:00:00"
+          },
+          "verdict": "winning",
+          "bullets": [
+            {
+              "label": "What's happening",
+              "text": "Basecamp's Halo belay device is mentioned in 4 of 10 answers about beginner-friendly belay gear, all positive."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Safety-adjacent gear questions are high-trust moments \u2014 an AI engine naming a brand here carries more weight than a generic \"best gear\" list."
+            },
+            {
+              "label": "Competitive contrast",
+              "text": "Petzl and Black Diamond dominate harness-certification questions specifically (UIAA/CE standards) \u2014 Basecamp isn't cited there at all."
+            },
+            {
+              "label": "Source mechanism",
+              "text": "Citing sources for harness questions lean on manufacturer spec sheets \u2014 a gap Basecamp's product pages don't currently fill."
+            }
+          ],
+          "recommendations": [
+            {
+              "title": "Publish UIAA/CE certification details on every harness product page",
+              "body": "Petzl's product pages are cited because they state certification standards and test-load figures directly on the page. Basecamp's harness pages currently omit this \u2014 adding a standardized certification block would make them citable for safety-specific prompts.",
+              "citation": {
+                "text": "Petzl \u2014 Harness Safety Standards",
+                "url": "https://petzl.com/US/en/Sport/harnesses"
+              }
+            }
+          ]
+        },
+        {
+          "id": "weight-packability",
+          "pillar": "Weight & Packability",
+          "title": "Pack-weight comparisons skip Basecamp's 60L line",
+          "search": {
+            "clicks": 1565,
+            "impressions": 22402,
+            "avg_position": 19.1,
+            "semrush_position": 20.5,
+            "queries": [
+              "60l backpacking pack",
+              "sleeping pad r-value"
+            ]
+          },
+          "geo": {
+            "visibility_score": 7.1,
+            "category_avg": 24.8,
+            "vs_category": -17.7,
+            "mentions": 1,
+            "mentions_total": 10
+          },
+          "conversion": {
+            "sessions": 1042,
+            "conversions": 35,
+            "conversion_rate": 0.0336,
+            "revenue": 2134.76,
+            "conversions_delta_pct": -57.3
+          },
+          "owned_page": null,
+          "verdict": "losing",
+          "bullets": [
+            {
+              "label": "What's happening",
+              "text": "For \"lightest 60L backpacking pack\" prompts, Basecamp appears once, versus Osprey and Gregory appearing in most answers."
+            },
+            {
+              "label": "Source mechanism",
+              "text": "Answers cite a recurring \"pack weight class\" table format (base weight, max load, fabric denier) that Basecamp's own pages don't publish."
+            }
+          ],
+          "recommendations": [
+            {
+              "title": "Add a base-weight comparison table to the 60L pack product page",
+              "body": "Competing product pages state base weight, max recommended load, and fabric denier in a scannable table. Publishing the same structured data for Basecamp's 60L line gives AI engines a first-party number to cite instead of defaulting to Osprey/Gregory.",
+              "citation": {
+                "text": "Osprey \u2014 Pack Weight Comparison",
+                "url": "https://osprey.com/us/en/packweight"
+              }
+            }
+          ]
+        },
+        {
+          "id": "winter-technical",
+          "pillar": "Winter & Technical Gear",
+          "title": "Ice-axe and crampon content is stale and losing citations",
+          "search": {
+            "clicks": 3336,
+            "impressions": 65173,
+            "avg_position": 14.9,
+            "semrush_position": 20.0,
+            "queries": [
+              "ice axe self arrest",
+              "crampons for hiking boots"
+            ]
+          },
+          "geo": {
+            "visibility_score": 0.0,
+            "category_avg": 16.4,
+            "vs_category": -16.4,
+            "mentions": 0,
+            "mentions_total": 10
+          },
+          "conversion": {
+            "sessions": 11999,
+            "conversions": 178,
+            "conversion_rate": 0.0148,
+            "revenue": 7761.12,
+            "conversions_delta_pct": 368.4
+          },
+          "owned_page": {
+            "title": "Ice Axe Buying Guide (2020)",
+            "slug": "blog/ice-axe-guide-2020",
+            "last_modified": "2020-12-01T00:00:00"
+          },
+          "verdict": "losing",
+          "bullets": [
+            {
+              "label": "What's happening",
+              "text": "Basecamp appears in 0 of 10 tracked winter-technical answers despite owning a guide on the topic."
+            },
+            {
+              "label": "Source mechanism",
+              "text": "The existing guide dates from 2020 and references discontinued products \u2014 AI engines favour current guides from Petzl and Black Diamond."
+            }
+          ],
+          "recommendations": [
+            {
+              "title": "Rewrite the ice-axe guide against the current product line",
+              "body": "The 2020 guide still references discontinued models, which makes it a poor citation candidate. A rewrite against the current line, with self-arrest technique detail, would make the page competitive for a pillar Basecamp currently forfeits entirely.",
+              "citation": {
+                "text": "Basecamp \u2014 Ice Axe Buying Guide (2020)",
+                "url": "https://basecampgear.com/blog/ice-axe-guide-2020"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "content_recommendations": {
+      "cms": "Webflow",
+      "can_draft": false,
+      "new_content": [
+        {
+          "pillar": "Weight & Packability",
+          "pillar_id": "weight-packability",
+          "title": "Add a base-weight comparison table to the 60L pack product page",
+          "body": "Competing product pages state base weight, max recommended load, and fabric denier in a scannable table. Publishing the same structured data for Basecamp's 60L line gives AI engines a first-party number to cite instead of defaulting to Osprey/Gregory.",
+          "citation": {
+            "text": "Osprey \u2014 Pack Weight Comparison",
+            "url": "https://osprey.com/us/en/packweight"
+          },
+          "geo_visibility": 7.1,
+          "vs_category": -17.7,
+          "conversions": 35,
+          "cms": "Webflow",
+          "action": "Brief for Webflow",
+          "can_draft": false
+        }
+      ],
+      "existing_content": [
+        {
+          "pillar": "Winter & Technical Gear",
+          "pillar_id": "winter-technical",
+          "title": "Rewrite the ice-axe guide against the current product line",
+          "body": "The 2020 guide still references discontinued models, which makes it a poor citation candidate. A rewrite against the current line, with self-arrest technique detail, would make the page competitive for a pillar Basecamp currently forfeits entirely.",
+          "citation": {
+            "text": "Basecamp \u2014 Ice Axe Buying Guide (2020)",
+            "url": "https://basecampgear.com/blog/ice-axe-guide-2020"
+          },
+          "geo_visibility": 0.0,
+          "vs_category": -16.4,
+          "conversions": 178,
+          "cms": "Webflow",
+          "action": "Brief for Webflow",
+          "can_draft": false,
+          "target_page": {
+            "title": "Ice Axe Buying Guide (2020)",
+            "slug": "blog/ice-axe-guide-2020",
+            "last_modified": "2020-12-01T00:00:00"
+          }
+        },
+        {
+          "pillar": "Safety & Certification Claims",
+          "pillar_id": "beginner-safety",
+          "title": "Publish UIAA/CE certification details on every harness product page",
+          "body": "Petzl's product pages are cited because they state certification standards and test-load figures directly on the page. Basecamp's harness pages currently omit this \u2014 adding a standardized certification block would make them citable for safety-specific prompts.",
+          "citation": {
+            "text": "Petzl \u2014 Harness Safety Standards",
+            "url": "https://petzl.com/US/en/Sport/harnesses"
+          },
+          "geo_visibility": 25.9,
+          "vs_category": 0.5,
+          "conversions": 111,
+          "cms": "Webflow",
+          "action": "Brief for Webflow",
+          "can_draft": false,
+          "target_page": {
+            "title": "Assisted-Braking Belay Devices Compared",
+            "slug": "guides/belay-devices-compared",
+            "last_modified": "2026-06-10T00:00:00"
+          }
+        }
+      ]
+    }
   },
   "alpine": {
     "client_name": "Alpine Supply Co.",
@@ -787,83 +1456,83 @@
     "summary": [
       {
         "src": "GSC",
-        "text": "Organic clicks grew 19.8% vs the prior period."
+        "text": "Organic clicks fell 28.8% vs the prior period."
       },
       {
         "src": "GA4",
-        "text": "Organic-driven conversions are down 9.4% ($17,565 in attributed revenue this period)."
+        "text": "Organic-driven conversions are up 1.9% ($15,480 in attributed revenue this period)."
       },
       {
         "src": "Semrush",
-        "text": "Domain Authority Score slipped to 37 (-4)."
+        "text": "Domain Authority Score slipped to 28 (-13)."
       },
       {
         "src": "AI Toolkit",
-        "text": "AI search visibility rose to 28.8 (+9.4) \u2014 Alpine Supply Co. holds 13% share of voice vs TrailForge at 31%."
+        "text": "AI search visibility dipped to 19.3 (-10.5) \u2014 Alpine Supply Co. holds 9% share of voice vs TrailForge at 18%."
       }
     ],
     "gsc": {
-      "clicks": 18204,
-      "clicks_delta_pct": 19.8,
-      "impressions": 333486,
-      "impressions_delta_pct": 31.8,
-      "avg_position": 14.7,
-      "position_delta": 1.5
+      "clicks": 12357,
+      "clicks_delta_pct": -28.8,
+      "impressions": 232618,
+      "impressions_delta_pct": -18.5,
+      "avg_position": 14.6,
+      "position_delta": 0.5
     },
     "ga4": {
-      "sessions": 29159,
-      "sessions_delta_pct": -23.8,
-      "conversions": 326,
-      "conversions_delta_pct": -9.4,
-      "revenue": 17565.3
+      "sessions": 47300,
+      "sessions_delta_pct": 52.1,
+      "conversions": 375,
+      "conversions_delta_pct": 1.9,
+      "revenue": 15480.42
     },
     "backlinks": {
-      "ascore": 37,
-      "ascore_delta": -4
+      "ascore": 28,
+      "ascore_delta": -13
     },
     "ai_visibility": {
-      "score": 28.8,
-      "score_delta": 9.4,
-      "share_of_voice": 0.129,
+      "score": 19.3,
+      "score_delta": -10.5,
+      "share_of_voice": 0.091,
       "top_competitor": {
         "name": "TrailForge",
-        "share_of_voice": 0.31
+        "share_of_voice": 0.185
       },
       "per_engine": [
         {
           "engine": "chatgpt",
-          "visibility_score": 21.0,
-          "share_of_voice": 0.102,
-          "avg_position": 3.1,
-          "change_vs_previous": 5.4
+          "visibility_score": 17.9,
+          "share_of_voice": 0.151,
+          "avg_position": 3.3,
+          "change_vs_previous": -5.7
         },
         {
           "engine": "perplexity",
-          "visibility_score": 29.2,
-          "share_of_voice": 0.16,
-          "avg_position": 1.6,
-          "change_vs_previous": -5.0
+          "visibility_score": 31.9,
+          "share_of_voice": 0.1,
+          "avg_position": 2.6,
+          "change_vs_previous": 6.9
         },
         {
           "engine": "google_aio",
-          "visibility_score": 29.0,
-          "share_of_voice": 0.153,
-          "avg_position": 3.1,
-          "change_vs_previous": -2.8
+          "visibility_score": 10.4,
+          "share_of_voice": 0.038,
+          "avg_position": 2.2,
+          "change_vs_previous": 7.5
         },
         {
           "engine": "copilot",
-          "visibility_score": 37.6,
-          "share_of_voice": 0.049,
-          "avg_position": 2.2,
-          "change_vs_previous": -0.5
+          "visibility_score": 25.2,
+          "share_of_voice": 0.105,
+          "avg_position": 2.9,
+          "change_vs_previous": 1.4
         },
         {
           "engine": "claude",
-          "visibility_score": 27.4,
-          "share_of_voice": 0.18,
-          "avg_position": 3.5,
-          "change_vs_previous": 6.3
+          "visibility_score": 11.1,
+          "share_of_voice": 0.062,
+          "avg_position": 4.3,
+          "change_vs_previous": 6.1
         }
       ],
       "best_mention": {
@@ -876,95 +1545,389 @@
       {
         "page_title": "Choosing Ski Goggle Lens Tints",
         "url": "https://alpinesupply.co/guides/goggle-lens-tints",
-        "citations_count": 45,
-        "percent_change": 0.07
+        "citations_count": 29,
+        "percent_change": 0.37
       },
       {
         "page_title": "Avalanche Safety Gear Checklist",
         "url": "https://alpinesupply.co/guides/avalanche-safety-checklist",
-        "citations_count": 53,
-        "percent_change": 0.41
+        "citations_count": 60,
+        "percent_change": -0.04
       }
     ],
     "recommendations": [
       "Refresh the stale guide flagged above and add an FAQ block targeting the AI-cited queries.",
-      "Publish a comparison page targeting \"thermal base layer women\" to recover lost position.",
+      "Publish a comparison page targeting \"snowshoes for deep powder\" to recover lost position.",
       "Monitor TrailForge's AI share-of-voice gains \u2014 consider a prompt-level content gap analysis next cycle."
     ],
-    "insights": [
-      {
-        "id": "flat-light-goggles",
-        "pillar": "Lens & Tint Guidance",
-        "title": "Alpine Supply owns the flat-light goggle conversation",
-        "mentions": 6,
-        "mentions_total": 10,
-        "sentiment": {
-          "positive": 6,
-          "neutral": 0,
-          "negative": 0
+    "inputs": {
+      "industry": "Ski & snow sports equipment",
+      "cms": "contentful",
+      "cms_label": "Contentful",
+      "recipients": "jules@alpinesupply.co",
+      "competitor_brands": [
+        {
+          "name": "TrailForge",
+          "domain": "trailforge.com"
         },
-        "bullets": [
-          {
-            "label": "What's happening",
-            "text": "Alpine Supply's Contrast+ lens is named in 6 of 10 flat-light-goggle answers, ahead of Smith and Oakley."
-          },
-          {
-            "label": "Why it matters",
-            "text": "Flat-light conditions are a recurring, specific pain point \u2014 owning this niche question builds durable share of voice, not just one-off mentions."
-          },
-          {
-            "label": "Competitive contrast",
-            "text": "Smith and Oakley are mentioned more often overall, but not specifically for flat-light \u2014 Alpine Supply's specificity is the edge."
-          },
-          {
-            "label": "Source mechanism",
-            "text": "Citations trace back to Alpine Supply's own lens-tint guide \u2014 a rare case of a first-party page winning the citation, worth reinforcing."
-          }
-        ],
-        "recommendations": [
-          {
-            "title": "Expand the lens-tint guide with more condition-specific detail",
-            "body": "The existing guide is already the top-cited source for flat-light lens questions. Add sections for other specific conditions (bluebird days, night skiing, mixed cloud cover) to extend the same first-party-citation advantage to adjacent queries.",
-            "citation": {
-              "text": "Alpine Supply Co. \u2014 Goggle Lens Tint Guide",
-              "url": "https://alpinesupply.co/guides/goggle-lens-tints"
-            }
-          }
-        ]
+        {
+          "name": "Northwind Outdoor Co.",
+          "domain": "northwindoutdoor.com"
+        },
+        {
+          "name": "BasecampGear",
+          "domain": "basecampgear.com"
+        }
+      ],
+      "priority_prompts": [
+        "best goggles for flat light conditions skiing?",
+        "how do I pick backcountry ski boots?",
+        "where can I rent an avalanche beacon?"
+      ],
+      "priority_keywords": [
+        "goggles for flat light",
+        "backcountry ski boots",
+        "ski jacket waterproof rating"
+      ]
+    },
+    "competitive": {
+      "own": {
+        "name": "Alpine Supply Co.",
+        "domain": "alpinesupply.co",
+        "search_visibility": 0.106,
+        "search_avg_position": 14.5,
+        "keywords_tracked": 333,
+        "geo_share_of_voice": 0.091,
+        "geo_visibility_score": 19.3
       },
-      {
-        "id": "avalanche-safety",
-        "pillar": "Cold-Weather Safety Gear",
-        "title": "Avalanche beacon rental questions favor local shops over Alpine Supply",
-        "mentions": 0,
-        "mentions_total": 10,
-        "sentiment": {
-          "positive": 0,
-          "neutral": 0,
-          "negative": 0
+      "competitors": [
+        {
+          "name": "TrailForge",
+          "domain": "trailforge.com",
+          "search_visibility": 0.271,
+          "search_avg_position": 9.1,
+          "keyword_overlap": 0.39,
+          "geo_share_of_voice": 0.185,
+          "geo_visibility_score": 10.3,
+          "geo_top_engine": "perplexity",
+          "search_gap": -0.165,
+          "geo_gap": -0.094,
+          "leads_search": false,
+          "leads_geo": false
         },
-        "bullets": [
-          {
-            "label": "What's happening",
-            "text": "\"Avalanche beacon rental\" prompts return local gear shop chains, not Alpine Supply, in every tracked answer."
-          },
-          {
-            "label": "Source mechanism",
-            "text": "Answers cite location-based rental listings \u2014 a different intent (rent-nearby) than Alpine Supply's buy-online model, which is likely unwinnable without a rental/partner-locator page."
-          }
+        {
+          "name": "Northwind Outdoor Co.",
+          "domain": "northwindoutdoor.com",
+          "search_visibility": 0.203,
+          "search_avg_position": 10.2,
+          "keyword_overlap": 0.46,
+          "geo_share_of_voice": 0.061,
+          "geo_visibility_score": 24.2,
+          "geo_top_engine": "claude",
+          "search_gap": -0.097,
+          "geo_gap": 0.03,
+          "leads_search": false,
+          "leads_geo": true
+        },
+        {
+          "name": "BasecampGear",
+          "domain": "basecampgear.com",
+          "search_visibility": 0.209,
+          "search_avg_position": 18.7,
+          "keyword_overlap": 0.51,
+          "geo_share_of_voice": 0.142,
+          "geo_visibility_score": 30.2,
+          "geo_top_engine": "chatgpt",
+          "search_gap": -0.103,
+          "geo_gap": -0.051,
+          "leads_search": false,
+          "leads_geo": false
+        }
+      ],
+      "summary": {
+        "behind_on_geo": [
+          "TrailForge",
+          "BasecampGear"
         ],
-        "recommendations": [
-          {
-            "title": "Publish a rental-partner locator page",
-            "body": "AI engines are answering a \"where can I rent this near me\" question, which an e-commerce-only site structurally can't win outright. A page listing partner shops that rent Alpine Supply-brand beacons would at least make the brand citable inside that local-intent answer.",
-            "citation": {
-              "text": "REI \u2014 Avalanche Safety Gear Rental",
-              "url": "https://rei.com/rentals/avalanche-safety"
-            }
-          }
-        ]
+        "behind_on_search": [
+          "TrailForge",
+          "Northwind Outdoor Co.",
+          "BasecampGear"
+        ],
+        "ahead_of_all_geo": false
       }
-    ]
+    },
+    "category": {
+      "category": "Ski & snow sports equipment",
+      "own_share": 0.164,
+      "own_share_delta": 0.017,
+      "own_rank": 5,
+      "brands_tracked": 18,
+      "named_competitors": [
+        {
+          "name": "TrailForge",
+          "share": 0.133
+        },
+        {
+          "name": "Northwind Outdoor Co.",
+          "share": 0.251
+        },
+        {
+          "name": "BasecampGear",
+          "share": 0.103
+        }
+      ],
+      "long_tail_share": 0.349,
+      "total_category_prompts": 1174,
+      "total_category_keywords": 7176,
+      "pillars": [
+        {
+          "id": "flat-light-goggles",
+          "pillar": "Lens & Tint Guidance",
+          "title": "Alpine Supply owns the flat-light goggle conversation",
+          "search": {
+            "clicks": 1791,
+            "impressions": 28082,
+            "avg_position": 17.4,
+            "semrush_position": 16.0,
+            "queries": [
+              "goggles for flat light"
+            ]
+          },
+          "geo": {
+            "visibility_score": 45.2,
+            "category_avg": 26.1,
+            "vs_category": 19.1,
+            "mentions": 6,
+            "mentions_total": 10
+          },
+          "conversion": {
+            "sessions": 1387,
+            "conversions": 40,
+            "conversion_rate": 0.0288,
+            "revenue": 2218.03,
+            "conversions_delta_pct": -66.4
+          },
+          "owned_page": {
+            "title": "Choosing Ski Goggle Lens Tints",
+            "slug": "guides/goggle-lens-tints",
+            "last_modified": "2026-06-28T00:00:00"
+          },
+          "verdict": "winning",
+          "bullets": [
+            {
+              "label": "What's happening",
+              "text": "Alpine Supply's Contrast+ lens is named in 6 of 10 flat-light-goggle answers, ahead of Smith and Oakley."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Flat-light conditions are a recurring, specific pain point \u2014 owning this niche question builds durable share of voice, not just one-off mentions."
+            },
+            {
+              "label": "Competitive contrast",
+              "text": "Smith and Oakley are mentioned more often overall, but not specifically for flat-light \u2014 Alpine Supply's specificity is the edge."
+            },
+            {
+              "label": "Source mechanism",
+              "text": "Citations trace back to Alpine Supply's own lens-tint guide \u2014 a rare case of a first-party page winning the citation, worth reinforcing."
+            }
+          ],
+          "recommendations": [
+            {
+              "title": "Expand the lens-tint guide with more condition-specific detail",
+              "body": "The existing guide is already the top-cited source for flat-light lens questions. Add sections for other specific conditions (bluebird days, night skiing, mixed cloud cover) to extend the same first-party-citation advantage to adjacent queries.",
+              "citation": {
+                "text": "Alpine Supply Co. \u2014 Goggle Lens Tint Guide",
+                "url": "https://alpinesupply.co/guides/goggle-lens-tints"
+              }
+            }
+          ]
+        },
+        {
+          "id": "avalanche-safety",
+          "pillar": "Cold-Weather Safety Gear",
+          "title": "Avalanche beacon rental questions favor local shops over Alpine Supply",
+          "search": {
+            "clicks": 1859,
+            "impressions": 24340,
+            "avg_position": 19.6,
+            "semrush_position": 14.0,
+            "queries": [
+              "avalanche beacon rental"
+            ]
+          },
+          "geo": {
+            "visibility_score": 0.0,
+            "category_avg": 24.0,
+            "vs_category": -24.0,
+            "mentions": 0,
+            "mentions_total": 10
+          },
+          "conversion": {
+            "sessions": 5533,
+            "conversions": 196,
+            "conversion_rate": 0.0354,
+            "revenue": 8903.35,
+            "conversions_delta_pct": 21.7
+          },
+          "owned_page": {
+            "title": "Avalanche Safety Gear Checklist",
+            "slug": "guides/avalanche-safety-checklist",
+            "last_modified": "2026-04-02T00:00:00"
+          },
+          "verdict": "losing",
+          "bullets": [
+            {
+              "label": "What's happening",
+              "text": "\"Avalanche beacon rental\" prompts return local gear shop chains, not Alpine Supply, in every tracked answer."
+            },
+            {
+              "label": "Source mechanism",
+              "text": "Answers cite location-based rental listings \u2014 a different intent (rent-nearby) than Alpine Supply's buy-online model, which is likely unwinnable without a rental/partner-locator page."
+            }
+          ],
+          "recommendations": [
+            {
+              "title": "Publish a rental-partner locator page",
+              "body": "AI engines are answering a \"where can I rent this near me\" question, which an e-commerce-only site structurally can't win outright. A page listing partner shops that rent Alpine Supply-brand beacons would at least make the brand citable inside that local-intent answer.",
+              "citation": {
+                "text": "REI \u2014 Avalanche Safety Gear Rental",
+                "url": "https://rei.com/rentals/avalanche-safety"
+              }
+            }
+          ]
+        },
+        {
+          "id": "boot-fit",
+          "pillar": "Boot Fit & Touring Setup",
+          "title": "Backcountry boot-fit content is gaining but under-cited",
+          "search": {
+            "clicks": 1580,
+            "impressions": 41320,
+            "avg_position": 14.2,
+            "semrush_position": 14.0,
+            "queries": [
+              "backcountry ski boots",
+              "ski touring bindings"
+            ]
+          },
+          "geo": {
+            "visibility_score": 14.6,
+            "category_avg": 16.0,
+            "vs_category": -1.4,
+            "mentions": 2,
+            "mentions_total": 10
+          },
+          "conversion": {
+            "sessions": 1175,
+            "conversions": 35,
+            "conversion_rate": 0.0298,
+            "revenue": 2040.86,
+            "conversions_delta_pct": -25.5
+          },
+          "owned_page": {
+            "title": "Backcountry Boot Fit Guide",
+            "slug": "blog/boot-fit-guide",
+            "last_modified": "2026-07-13T00:00:00"
+          },
+          "verdict": "losing",
+          "bullets": [
+            {
+              "label": "What's happening",
+              "text": "The newly published boot-fit guide has started earning mentions (2 of 10) within weeks of publishing."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Boot fit is the highest-consideration purchase in the category \u2014 early AI traction here is worth reinforcing before competitors respond."
+            },
+            {
+              "label": "Source mechanism",
+              "text": "Answers cite shell-fit and last-width measurements; the guide covers fit process but not per-model measurements."
+            }
+          ],
+          "recommendations": [
+            {
+              "title": "Add per-model last-width and shell-fit measurements to the boot-fit guide",
+              "body": "The guide explains the fit process well but stops short of the per-model numbers AI answers actually cite. Adding a measurements table per boot model would convert early traction into a durable citation position.",
+              "citation": {
+                "text": "Alpine Supply \u2014 Backcountry Boot Fit Guide",
+                "url": "https://alpinesupply.co/blog/boot-fit-guide"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "content_recommendations": {
+      "cms": "Contentful",
+      "can_draft": false,
+      "new_content": [],
+      "existing_content": [
+        {
+          "pillar": "Cold-Weather Safety Gear",
+          "pillar_id": "avalanche-safety",
+          "title": "Publish a rental-partner locator page",
+          "body": "AI engines are answering a \"where can I rent this near me\" question, which an e-commerce-only site structurally can't win outright. A page listing partner shops that rent Alpine Supply-brand beacons would at least make the brand citable inside that local-intent answer.",
+          "citation": {
+            "text": "REI \u2014 Avalanche Safety Gear Rental",
+            "url": "https://rei.com/rentals/avalanche-safety"
+          },
+          "geo_visibility": 0.0,
+          "vs_category": -24.0,
+          "conversions": 196,
+          "cms": "Contentful",
+          "action": "Brief for Contentful",
+          "can_draft": false,
+          "target_page": {
+            "title": "Avalanche Safety Gear Checklist",
+            "slug": "guides/avalanche-safety-checklist",
+            "last_modified": "2026-04-02T00:00:00"
+          }
+        },
+        {
+          "pillar": "Boot Fit & Touring Setup",
+          "pillar_id": "boot-fit",
+          "title": "Add per-model last-width and shell-fit measurements to the boot-fit guide",
+          "body": "The guide explains the fit process well but stops short of the per-model numbers AI answers actually cite. Adding a measurements table per boot model would convert early traction into a durable citation position.",
+          "citation": {
+            "text": "Alpine Supply \u2014 Backcountry Boot Fit Guide",
+            "url": "https://alpinesupply.co/blog/boot-fit-guide"
+          },
+          "geo_visibility": 14.6,
+          "vs_category": -1.4,
+          "conversions": 35,
+          "cms": "Contentful",
+          "action": "Brief for Contentful",
+          "can_draft": false,
+          "target_page": {
+            "title": "Backcountry Boot Fit Guide",
+            "slug": "blog/boot-fit-guide",
+            "last_modified": "2026-07-13T00:00:00"
+          }
+        },
+        {
+          "pillar": "Lens & Tint Guidance",
+          "pillar_id": "flat-light-goggles",
+          "title": "Expand the lens-tint guide with more condition-specific detail",
+          "body": "The existing guide is already the top-cited source for flat-light lens questions. Add sections for other specific conditions (bluebird days, night skiing, mixed cloud cover) to extend the same first-party-citation advantage to adjacent queries.",
+          "citation": {
+            "text": "Alpine Supply Co. \u2014 Goggle Lens Tint Guide",
+            "url": "https://alpinesupply.co/guides/goggle-lens-tints"
+          },
+          "geo_visibility": 45.2,
+          "vs_category": 19.1,
+          "conversions": 40,
+          "cms": "Contentful",
+          "action": "Brief for Contentful",
+          "can_draft": false,
+          "target_page": {
+            "title": "Choosing Ski Goggle Lens Tints",
+            "slug": "guides/goggle-lens-tints",
+            "last_modified": "2026-06-28T00:00:00"
+          }
+        }
+      ]
+    }
   }
 }
 </script>
@@ -1030,20 +1993,83 @@
       </div>`;
   }
 
+  // ---- Configure screen: prefill the form from the selected client's stored inputs ----
+  let formCompetitors = [];
+  let formKeywords = [];
+
+  function renderChips(containerId, list, onRemove) {
+    document.getElementById(containerId).innerHTML = list.map((v, i) =>
+      `<span class="chip">${esc(v)}<span class="x" role="button" tabindex="0"
+        onclick="${onRemove}(${i})" onkeydown="if(event.key==='Enter')${onRemove}(${i})"
+        aria-label="Remove ${esc(v)}">×</span></span>`).join('')
+      || '<span class="hint" style="margin:0;">None added yet.</span>';
+  }
+  function addCompetitor() {
+    const el = document.getElementById('in-competitor');
+    const v = el.value.trim();
+    if (!v) return;
+    formCompetitors.push(v); el.value = '';
+    renderChips('in-competitors', formCompetitors, 'removeCompetitor');
+  }
+  function removeCompetitor(i) {
+    formCompetitors.splice(i, 1);
+    renderChips('in-competitors', formCompetitors, 'removeCompetitor');
+  }
+  function addKeyword() {
+    const el = document.getElementById('in-keyword');
+    const v = el.value.trim();
+    if (!v) return;
+    formKeywords.push(v); el.value = '';
+    renderChips('in-keywords', formKeywords, 'removeKeyword');
+  }
+  function removeKeyword(i) {
+    formKeywords.splice(i, 1);
+    renderChips('in-keywords', formKeywords, 'removeKeyword');
+  }
+  const CMS_READONLY_NOTE = {
+    wordpress: 'Drafts can be pushed directly.',
+    webflow: 'Read-only — recommendations produce briefs.',
+    contentful: 'Read-only — recommendations produce briefs.',
+  };
+  function updateCmsHint() {
+    const v = document.getElementById('in-cms').value;
+    document.getElementById('cms-hint').textContent = CMS_READONLY_NOTE[v] || '';
+  }
+
   function renderClientContext(clientKey) {
     const data = REPORT_DATA[clientKey];
     if (!data) return;
+    const inputs = data.inputs || {};
 
     const configTitle = document.getElementById('config-title');
     if (configTitle) configTitle.textContent = `${data.client_name} — report configuration`;
-    const configPeriod = document.getElementById('config-period');
-    if (configPeriod) configPeriod.textContent = `${data.period_label}, 2026 (${data.cadence}, auto-rolling)`;
+    const setVal = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
+    setVal('in-brand', data.client_name);
+    setVal('in-industry', inputs.industry || '');
+    setVal('in-cadence', data.cadence || 'monthly');
+    setVal('in-recipients', inputs.recipients || '');
+    setVal('in-prompts', (inputs.priority_prompts || []).join('\n'));
+    setVal('in-cms', inputs.cms || 'wordpress');
+    updateCmsHint();
+
+    formCompetitors = (inputs.competitor_brands || []).map(c => c.name);
+    formKeywords = (inputs.priority_keywords || []).slice();
+    if (document.getElementById('in-competitors')) {
+      renderChips('in-competitors', formCompetitors, 'removeCompetitor');
+      renderChips('in-keywords', formKeywords, 'removeKeyword');
+    }
+
     const configGsc = document.getElementById('config-gsc');
     if (configGsc) configGsc.textContent = `sc-domain:${data.domain}`;
     const genTitle = document.getElementById('generating-title');
     if (genTitle) genTitle.textContent = `Building the draft — ${data.client_name}`;
 
     if (document.getElementById('review').classList.contains('active')) renderReport(data);
+  }
+
+  function showTab(name) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.dataset.tab === name));
+    document.querySelectorAll('.report-tabs button').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
   }
 
   function renderReport(data) {
@@ -1082,13 +2108,6 @@
       tooltip: `${e.engine}: visibility ${e.visibility_score}, ${Math.round(e.share_of_voice * 100)}% share of voice, avg. position ${e.avg_position}, ${pct(e.change_vs_previous)} vs prior`,
     })), v => v.toFixed(1));
 
-    const sovChart = barChart('Share of voice: us vs top competitor', [
-      { label: data.client_name, value: Math.round(ai.share_of_voice * 100), color: 'var(--accent)',
-        tooltip: `${data.client_name}: ${Math.round(ai.share_of_voice * 100)}% share of voice` },
-      { label: ai.top_competitor.name, value: Math.round(ai.top_competitor.share_of_voice * 100), color: 'var(--chart-muted)',
-        tooltip: `${ai.top_competitor.name}: ${Math.round(ai.top_competitor.share_of_voice * 100)}% share of voice` },
-    ], v => v + '%');
-
     const aiHtml = `
       <div class="quote">"${esc(ai.best_mention.response_excerpt)}" — ${esc(ai.best_mention.ai_engine)}, ${esc(ai.best_mention.sentiment)}</div>
       <h4 style="font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);margin:14px 0 6px;">Most-cited pages in AI answers</h4>
@@ -1096,17 +2115,125 @@
         ${data.ai_citations.map(c => `<li><a href="${esc(c.url)}">${esc(c.page_title)}</a> — ${c.citations_count} citations (${pct(c.percent_change * 100, 0)})</li>`).join('')}
       </ul>`;
 
-    const insightsHtml = (data.insights || []).map(ins => `
+    // ---------- TAB 1: Competitive ----------
+    const cv = data.competitive;
+    const geoCompChart = barChart('AI share of voice — us vs competitors',
+      [{ label: cv.own.name, value: +(cv.own.geo_share_of_voice * 100).toFixed(1), color: 'var(--accent)',
+         tooltip: `${cv.own.name} (us): ${(cv.own.geo_share_of_voice * 100).toFixed(1)}% AI share of voice` }]
+      .concat(cv.competitors.map((r, i) => ({
+        label: r.name, value: +(r.geo_share_of_voice * 100).toFixed(1),
+        color: `var(--series-${(i % 5) + 1})`,
+        tooltip: `${r.name}: ${(r.geo_share_of_voice * 100).toFixed(1)}% AI share of voice, top engine ${r.geo_top_engine}`,
+      }))), v => v + '%');
+
+    const searchCompChart = barChart('Traditional search visibility — us vs competitors',
+      [{ label: cv.own.name, value: +(cv.own.search_visibility * 100).toFixed(1), color: 'var(--accent)',
+         tooltip: `${cv.own.name} (us): ${(cv.own.search_visibility * 100).toFixed(1)}% SERP visibility` }]
+      .concat(cv.competitors.map((r, i) => ({
+        label: r.name, value: +(r.search_visibility * 100).toFixed(1),
+        color: `var(--series-${(i % 5) + 1})`,
+        tooltip: `${r.name}: ${(r.search_visibility * 100).toFixed(1)}% SERP visibility, avg. position ${r.search_avg_position}`,
+      }))), v => v + '%');
+
+    const compRows = cv.competitors.map(r => `
+      <tr>
+        <td>${esc(r.name)}</td>
+        <td>${(r.search_visibility * 100).toFixed(1)}%</td>
+        <td>${r.search_avg_position}</td>
+        <td>${(r.geo_share_of_voice * 100).toFixed(1)}%</td>
+        <td style="text-transform:capitalize;">${esc(r.geo_top_engine.replace('_', ' '))}</td>
+        <td>${Math.round(r.keyword_overlap * 100)}%</td>
+        <td><span class="badge ${r.leads_geo ? 'win' : 'loss'}">${r.leads_geo ? 'We lead' : 'We trail'}</span></td>
+      </tr>`).join('');
+
+    const behind = cv.summary.behind_on_geo;
+    const competitiveHtml = `
+      <p style="color:var(--ink-soft);font-size:12.5px;">How ${esc(data.client_name)} stacks up against the tracked
+      competitor set — traditional search and AI search side by side.</p>
+      ${geoCompChart}
+      ${searchCompChart}
+      <h4 style="font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);margin:16px 0 6px;">Head-to-head detail</h4>
+      <div style="overflow-x:auto;">
+        <table class="metrics">
+          <tr><th>Competitor</th><th>Search vis.</th><th>Avg. pos</th><th>AI SoV</th><th>Top engine</th><th>Kw overlap</th><th>AI standing</th></tr>
+          ${compRows}
+        </table>
+      </div>
+      <p style="margin-top:10px;">${behind.length
+        ? `<strong>Trailing on AI search vs:</strong> ${esc(behind.join(', '))}.`
+        : '<strong>Leading every tracked competitor on AI share of voice this period.</strong>'}</p>`;
+
+    // ---------- TAB 2: Category ----------
+    const cat = data.category;
+    const catShareChart = barChart(`Category share of voice — ${cat.category}`,
+      [{ label: data.client_name, value: +(cat.own_share * 100).toFixed(1), color: 'var(--accent)',
+         tooltip: `${data.client_name} (us): ${(cat.own_share * 100).toFixed(1)}% of category` }]
+      .concat(cat.named_competitors.map((c, i) => ({
+        label: c.name, value: +(c.share * 100).toFixed(1), color: `var(--series-${(i % 5) + 1})`,
+        tooltip: `${c.name}: ${(c.share * 100).toFixed(1)}% of category`,
+      })))
+      .concat([{ label: 'All other brands', value: +(cat.long_tail_share * 100).toFixed(1),
+                 color: 'var(--chart-muted)', tooltip: `Long tail: ${(cat.long_tail_share * 100).toFixed(1)}%` }]),
+      v => v + '%');
+
+    const pillarCards = cat.pillars.map(p => {
+      const s = p.search, geo = p.geo, conv = p.conversion;
+      return `
       <div class="insight-card">
-        <div class="updated">Pillar: ${esc(ins.pillar)} · ${ins.mentions} of ${ins.mentions_total} tracked answers</div>
-        <h4>${esc(ins.title)}</h4>
+        <div class="updated">Pillar: ${esc(p.pillar)} · ${geo.mentions} of ${geo.mentions_total} tracked answers
+          · <span class="badge ${p.verdict === 'winning' ? 'win' : 'loss'}">${p.verdict === 'winning' ? 'Winning' : 'Losing'} vs category avg</span></div>
+        <h4>${esc(p.title)}</h4>
+        <div class="pillar-metrics">
+          <div class="pillar-metric"><div class="pm-label">Search clicks</div><div class="pm-value">${s.clicks.toLocaleString()}</div><div class="pm-sub">avg. pos ${s.avg_position ?? '—'}</div></div>
+          <div class="pillar-metric"><div class="pm-label">Semrush pos</div><div class="pm-value">${s.semrush_position ?? '—'}</div><div class="pm-sub">${s.queries.length} tracked kw</div></div>
+          <div class="pillar-metric"><div class="pm-label">AI visibility</div><div class="pm-value">${geo.visibility_score}</div><div class="pm-sub ${deltaClass(geo.vs_category)}">${pct(geo.vs_category)} vs cat. avg</div></div>
+          <div class="pillar-metric"><div class="pm-label">Sessions</div><div class="pm-value">${conv.sessions.toLocaleString()}</div><div class="pm-sub">GA4, pillar pages</div></div>
+          <div class="pillar-metric"><div class="pm-label">Conversions</div><div class="pm-value">${conv.conversions.toLocaleString()}</div><div class="pm-sub">${(conv.conversion_rate * 100).toFixed(2)}% CVR</div></div>
+        </div>
+        <div class="flow-arrow">search → AI visibility → on-site conversion</div>
         <ul>
-          ${ins.bullets.map(b => `<li><strong>${esc(b.label)}:</strong> ${esc(b.text)}</li>`).join('')}
+          ${p.bullets.map(b => `<li><strong>${esc(b.label)}:</strong> ${esc(b.text)}</li>`).join('')}
         </ul>
         <div class="card-actions">
-          <button class="btn" onclick="openRecommendations('${data.client_name.replace(/'/g, "\\'")}', '${esc(ins.id)}')">View recommendations</button>
+          <button class="btn" onclick="openRecommendations('${esc(p.id)}')">View recommendations</button>
         </div>
-      </div>`).join('');
+      </div>`;
+    }).join('');
+
+    const categoryHtml = `
+      <p style="color:var(--ink-soft);font-size:12.5px;">Position within <strong>${esc(cat.category)}</strong> —
+      ${cat.brands_tracked} brands tracked across ${cat.total_category_prompts.toLocaleString()} category prompts
+      and ${cat.total_category_keywords.toLocaleString()} keywords.</p>
+      <div class="kpi-row">
+        ${kpiTile('Category share', (cat.own_share * 100).toFixed(1) + '%', cat.own_share_delta * 100)}
+        ${kpiTile('Category rank', '#' + cat.own_rank + ' of ' + cat.brands_tracked, null)}
+        ${kpiTile('Category prompts', cat.total_category_prompts.toLocaleString(), null)}
+      </div>
+      ${catShareChart}
+      <h4 style="font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);margin:16px 0 8px;">Topic pillars</h4>
+      ${pillarCards || '<p>No topic pillars tracked yet for this client.</p>'}`;
+
+    // ---------- Content recommendations ----------
+    const cr = data.content_recommendations;
+    const recItem = (item, showTarget) => `
+      <div class="rec-card">
+        <h5>${esc(item.title)} <span class="badge cms">${esc(item.action)}</span></h5>
+        <p style="margin-bottom:6px;"><span class="badge ${item.vs_category >= 0 ? 'win' : 'loss'}">${esc(item.pillar)}</span></p>
+        ${showTarget && item.target_page ? `<p style="margin-bottom:6px;"><em>Target page:</em> ${esc(item.target_page.title)} — last updated ${esc(item.target_page.last_modified.slice(0, 10))}</p>` : ''}
+        <p>${esc(item.body)}</p>
+        <div class="citation">Reference: <a href="${esc(item.citation.url)}" target="_blank" rel="noopener">${esc(item.citation.text)}</a></div>
+      </div>`;
+
+    const contentRecsHtml = `
+      <p style="color:var(--ink-soft);font-size:12.5px;">Routed to <strong>${esc(cr.cms)}</strong>.
+      ${cr.can_draft ? 'Drafts can be created directly via the CMS API.'
+                     : 'This CMS is read-only in Atlas, so these are briefs for an editor to action.'}</p>
+      <h4 style="font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);margin:14px 0 8px;">New content — gaps with no owning page</h4>
+      ${cr.new_content.length ? cr.new_content.map(i => recItem(i, false)).join('')
+                              : '<p style="font-size:13px;color:var(--ink-soft);">No uncovered pillars this period.</p>'}
+      <h4 style="font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);margin:18px 0 8px;">Existing content — refresh / expand</h4>
+      ${cr.existing_content.length ? cr.existing_content.map(i => recItem(i, true)).join('')
+                                   : '<p style="font-size:13px;color:var(--ink-soft);">No refresh candidates this period.</p>'}`;
 
     const recsHtml = data.recommendations.map((r, i) => `${i + 1}. ${esc(r)}`).join('<br>');
 
@@ -1117,23 +2244,31 @@
       ${summaryHtml}
       ${gscDetailHtml}
       <p style="margin-top:8px;">Domain Authority Score: <strong>${bl.ascore}</strong> (${bl.ascore_delta >= 0 ? '+' : ''}${bl.ascore_delta})</p>
-      <h3>AI search visibility</h3>
+
+      <div class="report-tabs" role="tablist">
+        <button data-tab="competitive" class="active" onclick="showTab('competitive')" role="tab">Competitive</button>
+        <button data-tab="category" onclick="showTab('category')" role="tab">Category</button>
+      </div>
+      <div class="tab-panel active" data-tab="competitive" role="tabpanel">${competitiveHtml}</div>
+      <div class="tab-panel" data-tab="category" role="tabpanel">${categoryHtml}</div>
+
+      <h3>AI search visibility — by engine</h3>
       ${engineChart}
-      ${sovChart}
       ${aiHtml}
-      <h3>Insights</h3>
-      <p style="color:var(--ink-soft); font-size:12.5px; margin-top:-4px;">Turn AI-visibility mentions into actionable content moves, by topic.</p>
-      ${insightsHtml || '<p>No topic-level insights tracked yet for this client.</p>'}
+
+      <h3>Content recommendations</h3>
+      ${contentRecsHtml}
+
       <h3>Recommended next actions</h3>
       <p class="editable" contenteditable="true">${recsHtml}</p>
     `;
 
-    // stash for the recommendations panel
-    window.__currentInsights = data.insights || [];
+    // stash for the recommendations slide-over
+    window.__currentPillars = (data.category && data.category.pillars) || [];
   }
 
-  function openRecommendations(clientName, insightId) {
-    const insight = (window.__currentInsights || []).find(i => i.id === insightId);
+  function openRecommendations(pillarId) {
+    const insight = (window.__currentPillars || []).find(i => i.id === pillarId);
     if (!insight) return;
     document.getElementById('recs-title').textContent = `Recommendations — ${insight.pillar}`;
     document.getElementById('recs-body').innerHTML = insight.recommendations.map(r => `

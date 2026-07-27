@@ -1,159 +1,162 @@
 {
   "gsc": {
-    "clicks": 18204,
-    "clicks_delta_pct": 19.8,
-    "impressions": 333486,
-    "impressions_delta_pct": 31.8,
-    "ctr": 0.0546,
-    "avg_position": 14.7,
-    "position_delta": -1.5
+    "clicks": 12357,
+    "clicks_delta_pct": -28.8,
+    "impressions": 232618,
+    "impressions_delta_pct": -18.5,
+    "ctr": 0.0531,
+    "avg_position": 14.6,
+    "position_delta": -0.5
   },
   "ga4": {
-    "sessions": 29159,
-    "sessions_delta_pct": -23.8,
-    "conversions": 326,
-    "conversions_delta_pct": -9.4,
-    "revenue": 17565.3
+    "sessions": 47300,
+    "sessions_delta_pct": 52.1,
+    "conversions": 375,
+    "conversions_delta_pct": 1.9,
+    "revenue": 15480.42
   },
   "rankings": {
     "top_gainers": [
       {
-        "Ph": "backcountry ski boots",
-        "Po": 10,
-        "Pp": 16,
-        "Pd": -6,
-        "Nq": 4300,
-        "Cp": 3.18,
-        "Ur": "https://alpinesupply.co/backcountry-ski-boots",
-        "Tr": 0.0123,
-        "Tc": 138.02,
-        "Fp": "ai_overview",
-        "Fk": 2
+        "Ph": "goggles for flat light",
+        "Po": 16,
+        "Pp": 21,
+        "Pd": -5,
+        "Nq": 2600,
+        "Cp": 1.11,
+        "Ur": "https://alpinesupply.co/goggles-for-flat-light",
+        "Tr": 0.0181,
+        "Tc": 20.9,
+        "Fp": "featured_snippet",
+        "Fk": 1
       },
       {
-        "Ph": "snowshoes for deep powder",
-        "Po": 40,
-        "Pp": 45,
-        "Pd": -5,
-        "Nq": 2100,
-        "Cp": 1.93,
-        "Ur": "https://alpinesupply.co/snowshoes-for-deep-powder",
-        "Tr": 0.0678,
-        "Tc": 22.21,
-        "Fp": "people_also_ask",
-        "Fk": 2
+        "Ph": "thermal base layer women",
+        "Po": 29,
+        "Pp": 31,
+        "Pd": -2,
+        "Nq": 5900,
+        "Cp": 2.36,
+        "Ur": "https://alpinesupply.co/thermal-base-layer-women",
+        "Tr": 0.0237,
+        "Tc": 114.29,
+        "Fp": "none",
+        "Fk": 1
       },
       {
         "Ph": "ski touring bindings",
-        "Po": 30,
-        "Pp": 33,
-        "Pd": -3,
+        "Po": 9,
+        "Pp": 11,
+        "Pd": -2,
         "Nq": 3400,
-        "Cp": 1.66,
+        "Cp": 1.71,
         "Ur": "https://alpinesupply.co/ski-touring-bindings",
-        "Tr": 0.0115,
-        "Tc": 137.5,
-        "Fp": "people_also_ask",
-        "Fk": 1
+        "Tr": 0.0218,
+        "Tc": 84.4,
+        "Fp": "featured_snippet",
+        "Fk": 0
       }
     ],
     "top_losers": [
       {
-        "Ph": "heated socks battery",
-        "Po": 12,
-        "Pp": 9,
-        "Pd": 3,
-        "Nq": 1900,
-        "Cp": 2.0,
-        "Ur": "https://alpinesupply.co/heated-socks-battery",
-        "Tr": 0.0286,
-        "Tc": 91.39,
+        "Ph": "backcountry ski boots",
+        "Po": 19,
+        "Pp": 17,
+        "Pd": 2,
+        "Nq": 4300,
+        "Cp": 0.82,
+        "Ur": "https://alpinesupply.co/backcountry-ski-boots",
+        "Tr": 0.0484,
+        "Tc": 115.38,
         "Fp": "people_also_ask",
-        "Fk": 3
+        "Fk": 0
       },
       {
-        "Ph": "ski pole length chart",
-        "Po": 26,
-        "Pp": 21,
-        "Pd": 5,
-        "Nq": 970,
-        "Cp": 1.95,
-        "Ur": "https://alpinesupply.co/ski-pole-length-chart",
-        "Tr": 0.0557,
-        "Tc": 53.05,
-        "Fp": "featured_snippet",
+        "Ph": "heated socks battery",
+        "Po": 39,
+        "Pp": 35,
+        "Pd": 4,
+        "Nq": 1900,
+        "Cp": 2.65,
+        "Ur": "https://alpinesupply.co/heated-socks-battery",
+        "Tr": 0.0507,
+        "Tc": 99.62,
+        "Fp": "people_also_ask",
         "Fk": 2
       },
       {
-        "Ph": "thermal base layer women",
-        "Po": 7,
-        "Pp": 1,
-        "Pd": 6,
-        "Nq": 5900,
-        "Cp": 2.12,
-        "Ur": "https://alpinesupply.co/thermal-base-layer-women",
-        "Tr": 0.0092,
-        "Tc": 268.87,
-        "Fp": "ai_overview",
+        "Ph": "snowshoes for deep powder",
+        "Po": 29,
+        "Pp": 24,
+        "Pd": 5,
+        "Nq": 2100,
+        "Cp": 1.68,
+        "Ur": "https://alpinesupply.co/snowshoes-for-deep-powder",
+        "Tr": 0.0841,
+        "Tc": 38.05,
+        "Fp": "people_also_ask",
         "Fk": 1
       }
     ]
   },
   "backlinks": {
-    "ascore": 37,
-    "ascore_delta": -4,
-    "total": 8136
+    "ascore": 28,
+    "ascore_delta": -13,
+    "total": 8793
   },
   "ai_visibility": {
-    "score": 28.8,
-    "score_delta": 9.4,
-    "share_of_voice": 0.129,
+    "score": 19.3,
+    "score_delta": -10.5,
+    "share_of_voice": 0.091,
     "top_competitor": {
       "name": "TrailForge",
-      "share_of_voice": 0.31,
-      "change_vs_previous": 0.03,
+      "domain": "trailforge.com",
+      "share_of_voice": 0.185,
+      "visibility_score": 10.3,
+      "mention_rate": 0.362,
+      "change_vs_previous": 0.06,
       "top_engine": "perplexity"
     },
     "per_engine": [
       {
         "engine": "chatgpt",
-        "visibility_score": 21.0,
-        "share_of_voice": 0.102,
-        "mention_rate": 0.155,
-        "avg_position": 3.1,
-        "change_vs_previous": 5.4
+        "visibility_score": 17.9,
+        "share_of_voice": 0.151,
+        "mention_rate": 0.192,
+        "avg_position": 3.3,
+        "change_vs_previous": -5.7
       },
       {
         "engine": "perplexity",
-        "visibility_score": 29.2,
-        "share_of_voice": 0.16,
-        "mention_rate": 0.331,
-        "avg_position": 1.6,
-        "change_vs_previous": -5.0
+        "visibility_score": 31.9,
+        "share_of_voice": 0.1,
+        "mention_rate": 0.213,
+        "avg_position": 2.6,
+        "change_vs_previous": 6.9
       },
       {
         "engine": "google_aio",
-        "visibility_score": 29.0,
-        "share_of_voice": 0.153,
-        "mention_rate": 0.059,
-        "avg_position": 3.1,
-        "change_vs_previous": -2.8
+        "visibility_score": 10.4,
+        "share_of_voice": 0.038,
+        "mention_rate": 0.24,
+        "avg_position": 2.2,
+        "change_vs_previous": 7.5
       },
       {
         "engine": "copilot",
-        "visibility_score": 37.6,
-        "share_of_voice": 0.049,
-        "mention_rate": 0.063,
-        "avg_position": 2.2,
-        "change_vs_previous": -0.5
+        "visibility_score": 25.2,
+        "share_of_voice": 0.105,
+        "mention_rate": 0.172,
+        "avg_position": 2.9,
+        "change_vs_previous": 1.4
       },
       {
         "engine": "claude",
-        "visibility_score": 27.4,
-        "share_of_voice": 0.18,
-        "mention_rate": 0.29,
-        "avg_position": 3.5,
-        "change_vs_previous": 6.3
+        "visibility_score": 11.1,
+        "share_of_voice": 0.062,
+        "mention_rate": 0.116,
+        "avg_position": 4.3,
+        "change_vs_previous": 6.1
       }
     ],
     "best_mention": {
@@ -176,66 +179,403 @@
     {
       "url": "https://alpinesupply.co/guides/goggle-lens-tints",
       "page_title": "Choosing Ski Goggle Lens Tints",
-      "citations_count": 45,
-      "avg_citation_position": 1.8,
+      "citations_count": 29,
+      "avg_citation_position": 2.8,
       "change_vs_previous": {
-        "citations_count_delta": -5,
-        "percent_change": 0.07,
+        "citations_count_delta": 12,
+        "percent_change": 0.37,
         "trend": "positive"
       }
     },
     {
       "url": "https://alpinesupply.co/guides/avalanche-safety-checklist",
       "page_title": "Avalanche Safety Gear Checklist",
-      "citations_count": 53,
-      "avg_citation_position": 3.3,
+      "citations_count": 60,
+      "avg_citation_position": 2.4,
       "change_vs_previous": {
-        "citations_count_delta": 5,
-        "percent_change": 0.41,
+        "citations_count_delta": 20,
+        "percent_change": -0.04,
         "trend": "positive"
       }
     }
   ],
+  "cms": {
+    "cms": "contentful",
+    "label": "Contentful",
+    "can_draft": false,
+    "published": [
+      {
+        "title": "Early-Season Snow Report: What to Bring",
+        "url": "https://alpinesupply.co/blog/early-season-snow-report",
+        "modified": "2026-07-16T09:00:00"
+      },
+      {
+        "title": "Backcountry Boot Fit Guide",
+        "url": "https://alpinesupply.co/blog/boot-fit-guide",
+        "modified": "2026-07-13T09:00:00"
+      },
+      {
+        "title": "Layering for -20F Days",
+        "url": "https://alpinesupply.co/blog/layering-extreme-cold",
+        "modified": "2026-07-09T09:00:00"
+      }
+    ],
+    "stale": []
+  },
   "content_published": [
     {
-      "id": 4000,
-      "title": {
-        "rendered": "Early-Season Snow Report: What to Bring"
-      },
-      "date": "2026-07-16T09:00:00",
-      "modified": "2026-07-16T09:00:00",
-      "status": "publish",
-      "link": "https://alpinesupply.co/blog/early-season-snow-report",
-      "categories": [
-        12
-      ]
+      "title": "Early-Season Snow Report: What to Bring",
+      "url": "https://alpinesupply.co/blog/early-season-snow-report",
+      "modified": "2026-07-16T09:00:00"
     },
     {
-      "id": 4001,
-      "title": {
-        "rendered": "Backcountry Boot Fit Guide"
-      },
-      "date": "2026-07-13T09:00:00",
-      "modified": "2026-07-13T09:00:00",
-      "status": "publish",
-      "link": "https://alpinesupply.co/blog/boot-fit-guide",
-      "categories": [
-        12
-      ]
+      "title": "Backcountry Boot Fit Guide",
+      "url": "https://alpinesupply.co/blog/boot-fit-guide",
+      "modified": "2026-07-13T09:00:00"
     },
     {
-      "id": 4002,
-      "title": {
-        "rendered": "Layering for -20F Days"
-      },
-      "date": "2026-07-09T09:00:00",
-      "modified": "2026-07-09T09:00:00",
-      "status": "publish",
-      "link": "https://alpinesupply.co/blog/layering-extreme-cold",
-      "categories": [
-        12
-      ]
+      "title": "Layering for -20F Days",
+      "url": "https://alpinesupply.co/blog/layering-extreme-cold",
+      "modified": "2026-07-09T09:00:00"
     }
   ],
-  "stale_content": []
+  "stale_content": [],
+  "competitive": {
+    "own": {
+      "name": "Alpine Supply Co.",
+      "domain": "alpinesupply.co",
+      "search_visibility": 0.106,
+      "search_avg_position": 14.5,
+      "keywords_tracked": 333,
+      "geo_share_of_voice": 0.091,
+      "geo_visibility_score": 19.3
+    },
+    "competitors": [
+      {
+        "name": "TrailForge",
+        "domain": "trailforge.com",
+        "search_visibility": 0.271,
+        "search_avg_position": 9.1,
+        "keyword_overlap": 0.39,
+        "geo_share_of_voice": 0.185,
+        "geo_visibility_score": 10.3,
+        "geo_top_engine": "perplexity",
+        "search_gap": -0.165,
+        "geo_gap": -0.094,
+        "leads_search": false,
+        "leads_geo": false
+      },
+      {
+        "name": "Northwind Outdoor Co.",
+        "domain": "northwindoutdoor.com",
+        "search_visibility": 0.203,
+        "search_avg_position": 10.2,
+        "keyword_overlap": 0.46,
+        "geo_share_of_voice": 0.061,
+        "geo_visibility_score": 24.2,
+        "geo_top_engine": "claude",
+        "search_gap": -0.097,
+        "geo_gap": 0.03,
+        "leads_search": false,
+        "leads_geo": true
+      },
+      {
+        "name": "BasecampGear",
+        "domain": "basecampgear.com",
+        "search_visibility": 0.209,
+        "search_avg_position": 18.7,
+        "keyword_overlap": 0.51,
+        "geo_share_of_voice": 0.142,
+        "geo_visibility_score": 30.2,
+        "geo_top_engine": "chatgpt",
+        "search_gap": -0.103,
+        "geo_gap": -0.051,
+        "leads_search": false,
+        "leads_geo": false
+      }
+    ],
+    "summary": {
+      "behind_on_geo": [
+        "TrailForge",
+        "BasecampGear"
+      ],
+      "behind_on_search": [
+        "TrailForge",
+        "Northwind Outdoor Co.",
+        "BasecampGear"
+      ],
+      "ahead_of_all_geo": false
+    }
+  },
+  "category": {
+    "category": "Ski & snow sports equipment",
+    "own_share": 0.164,
+    "own_share_delta": 0.017,
+    "own_rank": 5,
+    "brands_tracked": 18,
+    "named_competitors": [
+      {
+        "name": "TrailForge",
+        "share": 0.133
+      },
+      {
+        "name": "Northwind Outdoor Co.",
+        "share": 0.251
+      },
+      {
+        "name": "BasecampGear",
+        "share": 0.103
+      }
+    ],
+    "long_tail_share": 0.349,
+    "total_category_prompts": 1174,
+    "total_category_keywords": 7176,
+    "pillars": [
+      {
+        "id": "flat-light-goggles",
+        "pillar": "Lens & Tint Guidance",
+        "title": "Alpine Supply owns the flat-light goggle conversation",
+        "search": {
+          "clicks": 1791,
+          "impressions": 28082,
+          "avg_position": 17.4,
+          "semrush_position": 16.0,
+          "queries": [
+            "goggles for flat light"
+          ]
+        },
+        "geo": {
+          "visibility_score": 45.2,
+          "category_avg": 26.1,
+          "vs_category": 19.1,
+          "mentions": 6,
+          "mentions_total": 10
+        },
+        "conversion": {
+          "sessions": 1387,
+          "conversions": 40,
+          "conversion_rate": 0.0288,
+          "revenue": 2218.03,
+          "conversions_delta_pct": -66.4
+        },
+        "owned_page": {
+          "title": "Choosing Ski Goggle Lens Tints",
+          "slug": "guides/goggle-lens-tints",
+          "last_modified": "2026-06-28T00:00:00"
+        },
+        "verdict": "winning",
+        "bullets": [
+          {
+            "label": "What's happening",
+            "text": "Alpine Supply's Contrast+ lens is named in 6 of 10 flat-light-goggle answers, ahead of Smith and Oakley."
+          },
+          {
+            "label": "Why it matters",
+            "text": "Flat-light conditions are a recurring, specific pain point \u2014 owning this niche question builds durable share of voice, not just one-off mentions."
+          },
+          {
+            "label": "Competitive contrast",
+            "text": "Smith and Oakley are mentioned more often overall, but not specifically for flat-light \u2014 Alpine Supply's specificity is the edge."
+          },
+          {
+            "label": "Source mechanism",
+            "text": "Citations trace back to Alpine Supply's own lens-tint guide \u2014 a rare case of a first-party page winning the citation, worth reinforcing."
+          }
+        ],
+        "recommendations": [
+          {
+            "title": "Expand the lens-tint guide with more condition-specific detail",
+            "body": "The existing guide is already the top-cited source for flat-light lens questions. Add sections for other specific conditions (bluebird days, night skiing, mixed cloud cover) to extend the same first-party-citation advantage to adjacent queries.",
+            "citation": {
+              "text": "Alpine Supply Co. \u2014 Goggle Lens Tint Guide",
+              "url": "https://alpinesupply.co/guides/goggle-lens-tints"
+            }
+          }
+        ]
+      },
+      {
+        "id": "avalanche-safety",
+        "pillar": "Cold-Weather Safety Gear",
+        "title": "Avalanche beacon rental questions favor local shops over Alpine Supply",
+        "search": {
+          "clicks": 1859,
+          "impressions": 24340,
+          "avg_position": 19.6,
+          "semrush_position": 14.0,
+          "queries": [
+            "avalanche beacon rental"
+          ]
+        },
+        "geo": {
+          "visibility_score": 0.0,
+          "category_avg": 24.0,
+          "vs_category": -24.0,
+          "mentions": 0,
+          "mentions_total": 10
+        },
+        "conversion": {
+          "sessions": 5533,
+          "conversions": 196,
+          "conversion_rate": 0.0354,
+          "revenue": 8903.35,
+          "conversions_delta_pct": 21.7
+        },
+        "owned_page": {
+          "title": "Avalanche Safety Gear Checklist",
+          "slug": "guides/avalanche-safety-checklist",
+          "last_modified": "2026-04-02T00:00:00"
+        },
+        "verdict": "losing",
+        "bullets": [
+          {
+            "label": "What's happening",
+            "text": "\"Avalanche beacon rental\" prompts return local gear shop chains, not Alpine Supply, in every tracked answer."
+          },
+          {
+            "label": "Source mechanism",
+            "text": "Answers cite location-based rental listings \u2014 a different intent (rent-nearby) than Alpine Supply's buy-online model, which is likely unwinnable without a rental/partner-locator page."
+          }
+        ],
+        "recommendations": [
+          {
+            "title": "Publish a rental-partner locator page",
+            "body": "AI engines are answering a \"where can I rent this near me\" question, which an e-commerce-only site structurally can't win outright. A page listing partner shops that rent Alpine Supply-brand beacons would at least make the brand citable inside that local-intent answer.",
+            "citation": {
+              "text": "REI \u2014 Avalanche Safety Gear Rental",
+              "url": "https://rei.com/rentals/avalanche-safety"
+            }
+          }
+        ]
+      },
+      {
+        "id": "boot-fit",
+        "pillar": "Boot Fit & Touring Setup",
+        "title": "Backcountry boot-fit content is gaining but under-cited",
+        "search": {
+          "clicks": 1580,
+          "impressions": 41320,
+          "avg_position": 14.2,
+          "semrush_position": 14.0,
+          "queries": [
+            "backcountry ski boots",
+            "ski touring bindings"
+          ]
+        },
+        "geo": {
+          "visibility_score": 14.6,
+          "category_avg": 16.0,
+          "vs_category": -1.4,
+          "mentions": 2,
+          "mentions_total": 10
+        },
+        "conversion": {
+          "sessions": 1175,
+          "conversions": 35,
+          "conversion_rate": 0.0298,
+          "revenue": 2040.86,
+          "conversions_delta_pct": -25.5
+        },
+        "owned_page": {
+          "title": "Backcountry Boot Fit Guide",
+          "slug": "blog/boot-fit-guide",
+          "last_modified": "2026-07-13T00:00:00"
+        },
+        "verdict": "losing",
+        "bullets": [
+          {
+            "label": "What's happening",
+            "text": "The newly published boot-fit guide has started earning mentions (2 of 10) within weeks of publishing."
+          },
+          {
+            "label": "Why it matters",
+            "text": "Boot fit is the highest-consideration purchase in the category \u2014 early AI traction here is worth reinforcing before competitors respond."
+          },
+          {
+            "label": "Source mechanism",
+            "text": "Answers cite shell-fit and last-width measurements; the guide covers fit process but not per-model measurements."
+          }
+        ],
+        "recommendations": [
+          {
+            "title": "Add per-model last-width and shell-fit measurements to the boot-fit guide",
+            "body": "The guide explains the fit process well but stops short of the per-model numbers AI answers actually cite. Adding a measurements table per boot model would convert early traction into a durable citation position.",
+            "citation": {
+              "text": "Alpine Supply \u2014 Backcountry Boot Fit Guide",
+              "url": "https://alpinesupply.co/blog/boot-fit-guide"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "content_recommendations": {
+    "cms": "Contentful",
+    "can_draft": false,
+    "new_content": [],
+    "existing_content": [
+      {
+        "pillar": "Cold-Weather Safety Gear",
+        "pillar_id": "avalanche-safety",
+        "title": "Publish a rental-partner locator page",
+        "body": "AI engines are answering a \"where can I rent this near me\" question, which an e-commerce-only site structurally can't win outright. A page listing partner shops that rent Alpine Supply-brand beacons would at least make the brand citable inside that local-intent answer.",
+        "citation": {
+          "text": "REI \u2014 Avalanche Safety Gear Rental",
+          "url": "https://rei.com/rentals/avalanche-safety"
+        },
+        "geo_visibility": 0.0,
+        "vs_category": -24.0,
+        "conversions": 196,
+        "cms": "Contentful",
+        "action": "Brief for Contentful",
+        "can_draft": false,
+        "target_page": {
+          "title": "Avalanche Safety Gear Checklist",
+          "slug": "guides/avalanche-safety-checklist",
+          "last_modified": "2026-04-02T00:00:00"
+        }
+      },
+      {
+        "pillar": "Boot Fit & Touring Setup",
+        "pillar_id": "boot-fit",
+        "title": "Add per-model last-width and shell-fit measurements to the boot-fit guide",
+        "body": "The guide explains the fit process well but stops short of the per-model numbers AI answers actually cite. Adding a measurements table per boot model would convert early traction into a durable citation position.",
+        "citation": {
+          "text": "Alpine Supply \u2014 Backcountry Boot Fit Guide",
+          "url": "https://alpinesupply.co/blog/boot-fit-guide"
+        },
+        "geo_visibility": 14.6,
+        "vs_category": -1.4,
+        "conversions": 35,
+        "cms": "Contentful",
+        "action": "Brief for Contentful",
+        "can_draft": false,
+        "target_page": {
+          "title": "Backcountry Boot Fit Guide",
+          "slug": "blog/boot-fit-guide",
+          "last_modified": "2026-07-13T00:00:00"
+        }
+      },
+      {
+        "pillar": "Lens & Tint Guidance",
+        "pillar_id": "flat-light-goggles",
+        "title": "Expand the lens-tint guide with more condition-specific detail",
+        "body": "The existing guide is already the top-cited source for flat-light lens questions. Add sections for other specific conditions (bluebird days, night skiing, mixed cloud cover) to extend the same first-party-citation advantage to adjacent queries.",
+        "citation": {
+          "text": "Alpine Supply Co. \u2014 Goggle Lens Tint Guide",
+          "url": "https://alpinesupply.co/guides/goggle-lens-tints"
+        },
+        "geo_visibility": 45.2,
+        "vs_category": 19.1,
+        "conversions": 40,
+        "cms": "Contentful",
+        "action": "Brief for Contentful",
+        "can_draft": false,
+        "target_page": {
+          "title": "Choosing Ski Goggle Lens Tints",
+          "slug": "guides/goggle-lens-tints",
+          "last_modified": "2026-06-28T00:00:00"
+        }
+      }
+    ]
+  }
 }

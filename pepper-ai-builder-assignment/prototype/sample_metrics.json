@@ -1,159 +1,162 @@
 {
   "gsc": {
-    "clicks": 12688,
-    "clicks_delta_pct": -7.0,
-    "impressions": 236388,
-    "impressions_delta_pct": -5.5,
-    "ctr": 0.0537,
-    "avg_position": 12.0,
-    "position_delta": 3.5
+    "clicks": 14737,
+    "clicks_delta_pct": -12.2,
+    "impressions": 295233,
+    "impressions_delta_pct": -6.6,
+    "ctr": 0.0499,
+    "avg_position": 16.0,
+    "position_delta": -1.8
   },
   "ga4": {
-    "sessions": 26926,
-    "sessions_delta_pct": 30.1,
-    "conversions": 938,
-    "conversions_delta_pct": -14.1,
-    "revenue": 47600.67
+    "sessions": 45192,
+    "sessions_delta_pct": 122.4,
+    "conversions": 375,
+    "conversions_delta_pct": -57.0,
+    "revenue": 18365.29
   },
   "rankings": {
     "top_gainers": [
       {
-        "Ph": "4 person tent",
-        "Po": 4,
-        "Pp": 9,
-        "Pd": -5,
-        "Nq": 6600,
-        "Cp": 2.61,
-        "Ur": "https://northwindoutdoor.com/4-person-tent",
-        "Tr": 0.0246,
-        "Tc": 154.68,
+        "Ph": "hiking poles carbon",
+        "Po": 31,
+        "Pp": 33,
+        "Pd": -2,
+        "Nq": 1900,
+        "Cp": 0.91,
+        "Ur": "https://northwindoutdoor.com/hiking-poles-carbon",
+        "Tr": 0.0891,
+        "Tc": 63.23,
         "Fp": "people_also_ask",
         "Fk": 0
-      },
-      {
-        "Ph": "down sleeping bag 20f",
-        "Po": 19,
-        "Pp": 24,
-        "Pd": -5,
-        "Nq": 2400,
-        "Cp": 3.16,
-        "Ur": "https://northwindoutdoor.com/down-sleeping-bag-20f",
-        "Tr": 0.0381,
-        "Tc": 130.56,
-        "Fp": "people_also_ask",
-        "Fk": 3
       },
       {
         "Ph": "merino wool base layer",
-        "Po": 39,
-        "Pp": 43,
-        "Pd": -4,
+        "Po": 4,
+        "Pp": 5,
+        "Pd": -1,
         "Nq": 4400,
-        "Cp": 3.19,
+        "Cp": 1.63,
         "Ur": "https://northwindoutdoor.com/merino-wool-base-layer",
-        "Tr": 0.0647,
-        "Tc": 239.14,
+        "Tr": 0.0385,
+        "Tc": 97.09,
         "Fp": "ai_overview",
-        "Fk": 0
+        "Fk": 2
+      },
+      {
+        "Ph": "rain shell jacket men",
+        "Po": 16,
+        "Pp": 17,
+        "Pd": -1,
+        "Nq": 5400,
+        "Cp": 0.94,
+        "Ur": "https://northwindoutdoor.com/rain-shell-jacket-men",
+        "Tr": 0.0086,
+        "Tc": 299.49,
+        "Fp": "featured_snippet",
+        "Fk": 2
       }
     ],
     "top_losers": [
       {
-        "Ph": "insulated water bottle",
-        "Po": 34,
-        "Pp": 31,
-        "Pd": 3,
-        "Nq": 9900,
-        "Cp": 1.78,
-        "Ur": "https://northwindoutdoor.com/insulated-water-bottle",
-        "Tr": 0.0695,
-        "Tc": 252.72,
-        "Fp": "ai_overview",
-        "Fk": 0
-      },
-      {
-        "Ph": "hiking poles carbon",
-        "Po": 10,
-        "Pp": 5,
+        "Ph": "4 person tent",
+        "Po": 6,
+        "Pp": 1,
         "Pd": 5,
-        "Nq": 1900,
-        "Cp": 1.11,
-        "Ur": "https://northwindoutdoor.com/hiking-poles-carbon",
-        "Tr": 0.0139,
-        "Tc": 99.08,
-        "Fp": "none",
-        "Fk": 0
+        "Nq": 6600,
+        "Cp": 2.36,
+        "Ur": "https://northwindoutdoor.com/4-person-tent",
+        "Tr": 0.0562,
+        "Tc": 328.06,
+        "Fp": "featured_snippet",
+        "Fk": 1
       },
       {
-        "Ph": "rain shell jacket men",
+        "Ph": "insulated water bottle",
+        "Po": 19,
+        "Pp": 13,
+        "Pd": 6,
+        "Nq": 9900,
+        "Cp": 2.97,
+        "Ur": "https://northwindoutdoor.com/insulated-water-bottle",
+        "Tr": 0.01,
+        "Tc": 553.79,
+        "Fp": "none",
+        "Fk": 2
+      },
+      {
+        "Ph": "trail running vest",
         "Po": 24,
         "Pp": 18,
         "Pd": 6,
-        "Nq": 5400,
-        "Cp": 2.72,
-        "Ur": "https://northwindoutdoor.com/rain-shell-jacket-men",
-        "Tr": 0.0413,
-        "Tc": 269.45,
-        "Fp": "featured_snippet",
-        "Fk": 2
+        "Nq": 1300,
+        "Cp": 2.95,
+        "Ur": "https://northwindoutdoor.com/trail-running-vest",
+        "Tr": 0.0661,
+        "Tc": 49.96,
+        "Fp": "people_also_ask",
+        "Fk": 1
       }
     ]
   },
   "backlinks": {
-    "ascore": 37,
-    "ascore_delta": -4,
-    "total": 5304
+    "ascore": 43,
+    "ascore_delta": 1,
+    "total": 7391
   },
   "ai_visibility": {
-    "score": 23.1,
-    "score_delta": -6.9,
-    "share_of_voice": 0.13,
+    "score": 22.5,
+    "score_delta": -0.8,
+    "share_of_voice": 0.154,
     "top_competitor": {
-      "name": "TrailForge",
-      "share_of_voice": 0.29,
-      "change_vs_previous": 0.03,
-      "top_engine": "chatgpt"
+      "name": "Summitware",
+      "domain": "summitware.com",
+      "share_of_voice": 0.141,
+      "visibility_score": 36.2,
+      "mention_rate": 0.116,
+      "change_vs_previous": 0.056,
+      "top_engine": "claude"
     },
     "per_engine": [
       {
         "engine": "chatgpt",
-        "visibility_score": 34.7,
-        "share_of_voice": 0.127,
-        "mention_rate": 0.334,
-        "avg_position": 4.4,
-        "change_vs_previous": -4.6
+        "visibility_score": 23.2,
+        "share_of_voice": 0.187,
+        "mention_rate": 0.093,
+        "avg_position": 2.8,
+        "change_vs_previous": 5.9
       },
       {
         "engine": "perplexity",
-        "visibility_score": 9.5,
-        "share_of_voice": 0.146,
-        "mention_rate": 0.285,
-        "avg_position": 1.8,
-        "change_vs_previous": 5.8
+        "visibility_score": 10.3,
+        "share_of_voice": 0.192,
+        "mention_rate": 0.091,
+        "avg_position": 4.3,
+        "change_vs_previous": 0.5
       },
       {
         "engine": "google_aio",
-        "visibility_score": 21.5,
-        "share_of_voice": 0.128,
-        "mention_rate": 0.053,
+        "visibility_score": 15.0,
+        "share_of_voice": 0.108,
+        "mention_rate": 0.219,
         "avg_position": 2.6,
-        "change_vs_previous": -2.1
+        "change_vs_previous": -2.6
       },
       {
         "engine": "copilot",
-        "visibility_score": 39.4,
-        "share_of_voice": 0.032,
-        "mention_rate": 0.067,
-        "avg_position": 1.9,
-        "change_vs_previous": -3.9
+        "visibility_score": 23.6,
+        "share_of_voice": 0.209,
+        "mention_rate": 0.144,
+        "avg_position": 2.9,
+        "change_vs_previous": 6.8
       },
       {
         "engine": "claude",
-        "visibility_score": 10.3,
-        "share_of_voice": 0.217,
-        "mention_rate": 0.325,
-        "avg_position": 2.5,
-        "change_vs_previous": 0.0
+        "visibility_score": 40.6,
+        "share_of_voice": 0.074,
+        "mention_rate": 0.326,
+        "avg_position": 2.9,
+        "change_vs_previous": 0.4
       }
     ],
     "best_mention": {
@@ -176,62 +179,408 @@
     {
       "url": "https://northwindoutdoor.com/guides/tent-buying-guide",
       "page_title": "The Complete Tent Buying Guide (2026)",
-      "citations_count": 9,
-      "avg_citation_position": 1.8,
+      "citations_count": 32,
+      "avg_citation_position": 2.9,
       "change_vs_previous": {
-        "citations_count_delta": 14,
-        "percent_change": 0.38,
+        "citations_count_delta": 18,
+        "percent_change": -0.06,
         "trend": "positive"
       }
     },
     {
       "url": "https://northwindoutdoor.com/guides/layering-101",
       "page_title": "Layering 101: Base, Mid, Shell",
-      "citations_count": 13,
-      "avg_citation_position": 2.1,
+      "citations_count": 44,
+      "avg_citation_position": 3.4,
       "change_vs_previous": {
-        "citations_count_delta": 19,
-        "percent_change": 0.52,
+        "citations_count_delta": 3,
+        "percent_change": 0.03,
         "trend": "positive"
       }
     }
   ],
+  "cms": {
+    "cms": "wordpress",
+    "label": "WordPress",
+    "can_draft": true,
+    "published": [
+      {
+        "title": "5 Layering Mistakes Beginners Make",
+        "url": "https://northwindoutdoor.com/blog/layering-mistakes",
+        "modified": "2026-07-08T09:00:00"
+      },
+      {
+        "title": "Gear Checklist: 3-Day Backcountry Trip",
+        "url": "https://northwindoutdoor.com/blog/gear-checklist",
+        "modified": "2026-07-01T09:00:00"
+      }
+    ],
+    "stale": [
+      {
+        "title": "Best Tents Under $200 (2022)",
+        "url": "https://northwindoutdoor.com/blog/tents-under-200",
+        "modified": "2022-11-02T00:00:00"
+      }
+    ]
+  },
   "content_published": [
     {
-      "id": 4000,
-      "title": {
-        "rendered": "5 Layering Mistakes Beginners Make"
-      },
-      "date": "2026-07-08T09:00:00",
-      "modified": "2026-07-08T09:00:00",
-      "status": "publish",
-      "link": "https://northwindoutdoor.com/blog/layering-mistakes",
-      "categories": [
-        12
-      ]
+      "title": "5 Layering Mistakes Beginners Make",
+      "url": "https://northwindoutdoor.com/blog/layering-mistakes",
+      "modified": "2026-07-08T09:00:00"
     },
     {
-      "id": 4001,
-      "title": {
-        "rendered": "Gear Checklist: 3-Day Backcountry Trip"
-      },
-      "date": "2026-07-01T09:00:00",
-      "modified": "2026-07-01T09:00:00",
-      "status": "publish",
-      "link": "https://northwindoutdoor.com/blog/gear-checklist",
-      "categories": [
-        12
-      ]
+      "title": "Gear Checklist: 3-Day Backcountry Trip",
+      "url": "https://northwindoutdoor.com/blog/gear-checklist",
+      "modified": "2026-07-01T09:00:00"
     }
   ],
   "stale_content": [
     {
-      "id": 2000,
-      "title": {
-        "rendered": "Best Tents Under $200 (2022)"
-      },
-      "modified": "2022-11-02T00:00:00",
-      "link": "https://northwindoutdoor.com/blog/tents-under-200"
+      "title": "Best Tents Under $200 (2022)",
+      "url": "https://northwindoutdoor.com/blog/tents-under-200",
+      "modified": "2022-11-02T00:00:00"
     }
-  ]
+  ],
+  "competitive": {
+    "own": {
+      "name": "Northwind Outdoor Co.",
+      "domain": "northwindoutdoor.com",
+      "search_visibility": 0.204,
+      "search_avg_position": 10.0,
+      "keywords_tracked": 409,
+      "geo_share_of_voice": 0.154,
+      "geo_visibility_score": 22.5
+    },
+    "competitors": [
+      {
+        "name": "TrailForge",
+        "domain": "trailforge.com",
+        "search_visibility": 0.063,
+        "search_avg_position": 18.8,
+        "keyword_overlap": 0.27,
+        "geo_share_of_voice": 0.052,
+        "geo_visibility_score": 20.0,
+        "geo_top_engine": "chatgpt",
+        "search_gap": 0.141,
+        "geo_gap": 0.102,
+        "leads_search": true,
+        "leads_geo": true
+      },
+      {
+        "name": "BasecampGear",
+        "domain": "basecampgear.com",
+        "search_visibility": 0.251,
+        "search_avg_position": 10.8,
+        "keyword_overlap": 0.41,
+        "geo_share_of_voice": 0.041,
+        "geo_visibility_score": 17.8,
+        "geo_top_engine": "perplexity",
+        "search_gap": -0.047,
+        "geo_gap": 0.113,
+        "leads_search": false,
+        "leads_geo": true
+      },
+      {
+        "name": "Summitware",
+        "domain": "summitware.com",
+        "search_visibility": 0.261,
+        "search_avg_position": 15.9,
+        "keyword_overlap": 0.35,
+        "geo_share_of_voice": 0.141,
+        "geo_visibility_score": 36.2,
+        "geo_top_engine": "claude",
+        "search_gap": -0.057,
+        "geo_gap": 0.013,
+        "leads_search": false,
+        "leads_geo": true
+      }
+    ],
+    "summary": {
+      "behind_on_geo": [],
+      "behind_on_search": [
+        "BasecampGear",
+        "Summitware"
+      ],
+      "ahead_of_all_geo": true
+    }
+  },
+  "category": {
+    "category": "Outdoor & camping gear",
+    "own_share": 0.13,
+    "own_share_delta": 0.041,
+    "own_rank": 3,
+    "brands_tracked": 21,
+    "named_competitors": [
+      {
+        "name": "TrailForge",
+        "share": 0.297
+      },
+      {
+        "name": "BasecampGear",
+        "share": 0.212
+      },
+      {
+        "name": "Summitware",
+        "share": 0.093
+      }
+    ],
+    "long_tail_share": 0.268,
+    "total_category_prompts": 977,
+    "total_category_keywords": 5703,
+    "pillars": [
+      {
+        "id": "waterproof-durability",
+        "pillar": "Waterproofing & Durability Claims",
+        "title": "Durability claims are landing, but waterproof-rating detail is thin for Northwind",
+        "search": {
+          "clicks": 4695,
+          "impressions": 80744,
+          "avg_position": 17.1,
+          "semrush_position": 16.7,
+          "queries": [
+            "4 person tent",
+            "rain shell jacket men",
+            "gore-tex boots women"
+          ]
+        },
+        "geo": {
+          "visibility_score": 21.7,
+          "category_avg": 16.9,
+          "vs_category": 4.8,
+          "mentions": 3,
+          "mentions_total": 10
+        },
+        "conversion": {
+          "sessions": 7297,
+          "conversions": 238,
+          "conversion_rate": 0.0326,
+          "revenue": 11883.97,
+          "conversions_delta_pct": 561.1
+        },
+        "owned_page": {
+          "title": "The Complete Tent Buying Guide (2026)",
+          "slug": "guides/tent-buying-guide",
+          "last_modified": "2026-05-02T00:00:00"
+        },
+        "verdict": "winning",
+        "bullets": [
+          {
+            "label": "What's happening",
+            "text": "Northwind is mentioned in 3 of 10 tracked answers about 4-person tent durability, all positive, anchored on the Summit 4's 3000mm rainfly rating."
+          },
+          {
+            "label": "Why it matters",
+            "text": "Durability is the #1 reason cited in AI answers for recommending a tent over a cheaper alternative \u2014 it's the deciding factor, not price."
+          },
+          {
+            "label": "Competitive contrast",
+            "text": "TrailForge appears in 6 of 10 answers with a published waterproof-rating comparison chart; Northwind has no equivalent page."
+          },
+          {
+            "label": "Source mechanism",
+            "text": "Citing sources skew toward OutdoorGearLab and SectionHiker \u2014 both cite spec-sheet comparison tables, which Northwind's product pages lack."
+          }
+        ],
+        "recommendations": [
+          {
+            "title": "Publish a waterproof-rating comparison table on the tent-buying guide",
+            "body": "OutdoorGearLab's tent roundup ranks well because it presents a side-by-side waterproof-rating (mm) and hydrostatic-head table across competitors. Northwind's guide currently only states its own rating in prose. Add a structured comparison table (rainfly mm, floor mm, seam-taping method) so AI engines have a citable, structured source that isn't a third party.",
+            "citation": {
+              "text": "OutdoorGearLab \u2014 Best Tents",
+              "url": "https://outdoorgearlab.com/best-tents"
+            }
+          },
+          {
+            "title": "Add a durability FAQ block to the Summit 4 product page",
+            "body": "SectionHiker's citations come from direct answers to \"how long does this tent last in high wind\" style questions. A product-page FAQ with specific, testable claims (denier count, pole material, field-test conditions) gives AI engines a first-party answer to cite instead of a review site.",
+            "citation": {
+              "text": "SectionHiker \u2014 Northwind Summit 4 Review",
+              "url": "https://sectionhiker.com/summit-4-review"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sizing-fit",
+        "pillar": "Sizing & Fit Guidance",
+        "title": "Boot sizing questions skip Northwind entirely",
+        "search": {
+          "clicks": 4742,
+          "impressions": 74431,
+          "avg_position": 14.8,
+          "semrush_position": 27.0,
+          "queries": [
+            "waterproof hiking boots",
+            "gore-tex boots women"
+          ]
+        },
+        "geo": {
+          "visibility_score": 0.0,
+          "category_avg": 20.6,
+          "vs_category": -20.6,
+          "mentions": 0,
+          "mentions_total": 10
+        },
+        "conversion": {
+          "sessions": 916,
+          "conversions": 22,
+          "conversion_rate": 0.024,
+          "revenue": 997.95,
+          "conversions_delta_pct": -94.1
+        },
+        "owned_page": null,
+        "verdict": "losing",
+        "bullets": [
+          {
+            "label": "What's happening",
+            "text": "For \"waterproof hiking boots wide feet\" style prompts, Northwind shows up in 0 of 10 answers \u2014 Merrell, Salomon, and Oboz dominate."
+          },
+          {
+            "label": "Why it matters",
+            "text": "Sizing/fit is one of the highest-intent questions before a purchase; being absent here means losing the recommendation at the final decision step."
+          },
+          {
+            "label": "Source mechanism",
+            "text": "Answers consistently cite REI's fit-guide article and Reddit r/hiking threads \u2014 neither is a brand's own page, meaning the gap is winnable."
+          }
+        ],
+        "recommendations": [
+          {
+            "title": "Publish a wide-fit sizing guide for the boot line",
+            "body": "REI's fit-guide ranks because it gives concrete last-width measurements and a \"if you wear X in brand Y, try size Z\" conversion table. Northwind has no sizing content beyond a generic size chart \u2014 adding brand-to-brand conversions would give AI engines a reason to cite Northwind directly for wide-fit queries.",
+            "citation": {
+              "text": "REI Co-op \u2014 Hiking Boot Fit Guide",
+              "url": "https://rei.com/learn/expert-advice/hiking-boots"
+            }
+          }
+        ]
+      },
+      {
+        "id": "layering-systems",
+        "pillar": "Layering & Base-Layer Systems",
+        "title": "Layering content converts well but is losing AI ground",
+        "search": {
+          "clicks": 2133,
+          "impressions": 43182,
+          "avg_position": 17.8,
+          "semrush_position": 14.0,
+          "queries": [
+            "merino wool base layer",
+            "trail running vest"
+          ]
+        },
+        "geo": {
+          "visibility_score": 13.0,
+          "category_avg": 16.8,
+          "vs_category": -3.8,
+          "mentions": 2,
+          "mentions_total": 10
+        },
+        "conversion": {
+          "sessions": 4372,
+          "conversions": 164,
+          "conversion_rate": 0.0375,
+          "revenue": 7245.45,
+          "conversions_delta_pct": 19.7
+        },
+        "owned_page": {
+          "title": "Layering 101: Base, Mid, Shell",
+          "slug": "guides/layering-101",
+          "last_modified": "2025-03-18T00:00:00"
+        },
+        "verdict": "losing",
+        "bullets": [
+          {
+            "label": "What's happening",
+            "text": "Layering 101 still earns citations, but mentions dropped to 2 of 10 tracked answers as newer competitor guides published this year."
+          },
+          {
+            "label": "Why it matters",
+            "text": "This pillar drives the highest on-site conversion rate of any topic \u2014 losing AI visibility here costs more per lost mention than elsewhere."
+          },
+          {
+            "label": "Source mechanism",
+            "text": "The page hasn't been updated since March 2025; competing guides cite current-season fabric tech that Northwind's guide doesn't mention."
+          }
+        ],
+        "recommendations": [
+          {
+            "title": "Refresh Layering 101 with current-season fabric technology",
+            "body": "The guide predates this season's fabric releases, which competing cited guides cover. A refresh adding current merino blends and synthetic alternatives would restore the page's citation relevance without rebuilding it from scratch.",
+            "citation": {
+              "text": "Northwind \u2014 Layering 101",
+              "url": "https://northwindoutdoor.com/guides/layering-101"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "content_recommendations": {
+    "cms": "WordPress",
+    "can_draft": true,
+    "new_content": [
+      {
+        "pillar": "Sizing & Fit Guidance",
+        "pillar_id": "sizing-fit",
+        "title": "Publish a wide-fit sizing guide for the boot line",
+        "body": "REI's fit-guide ranks because it gives concrete last-width measurements and a \"if you wear X in brand Y, try size Z\" conversion table. Northwind has no sizing content beyond a generic size chart \u2014 adding brand-to-brand conversions would give AI engines a reason to cite Northwind directly for wide-fit queries.",
+        "citation": {
+          "text": "REI Co-op \u2014 Hiking Boot Fit Guide",
+          "url": "https://rei.com/learn/expert-advice/hiking-boots"
+        },
+        "geo_visibility": 0.0,
+        "vs_category": -20.6,
+        "conversions": 22,
+        "cms": "WordPress",
+        "action": "Create draft in WordPress",
+        "can_draft": true
+      }
+    ],
+    "existing_content": [
+      {
+        "pillar": "Layering & Base-Layer Systems",
+        "pillar_id": "layering-systems",
+        "title": "Refresh Layering 101 with current-season fabric technology",
+        "body": "The guide predates this season's fabric releases, which competing cited guides cover. A refresh adding current merino blends and synthetic alternatives would restore the page's citation relevance without rebuilding it from scratch.",
+        "citation": {
+          "text": "Northwind \u2014 Layering 101",
+          "url": "https://northwindoutdoor.com/guides/layering-101"
+        },
+        "geo_visibility": 13.0,
+        "vs_category": -3.8,
+        "conversions": 164,
+        "cms": "WordPress",
+        "action": "Create draft in WordPress",
+        "can_draft": true,
+        "target_page": {
+          "title": "Layering 101: Base, Mid, Shell",
+          "slug": "guides/layering-101",
+          "last_modified": "2025-03-18T00:00:00"
+        }
+      },
+      {
+        "pillar": "Waterproofing & Durability Claims",
+        "pillar_id": "waterproof-durability",
+        "title": "Publish a waterproof-rating comparison table on the tent-buying guide",
+        "body": "OutdoorGearLab's tent roundup ranks well because it presents a side-by-side waterproof-rating (mm) and hydrostatic-head table across competitors. Northwind's guide currently only states its own rating in prose. Add a structured comparison table (rainfly mm, floor mm, seam-taping method) so AI engines have a citable, structured source that isn't a third party.",
+        "citation": {
+          "text": "OutdoorGearLab \u2014 Best Tents",
+          "url": "https://outdoorgearlab.com/best-tents"
+        },
+        "geo_visibility": 21.7,
+        "vs_category": 4.8,
+        "conversions": 238,
+        "cms": "WordPress",
+        "action": "Create draft in WordPress",
+        "can_draft": true,
+        "target_page": {
+          "title": "The Complete Tent Buying Guide (2026)",
+          "slug": "guides/tent-buying-guide",
+          "last_modified": "2026-05-02T00:00:00"
+        }
+      }
+    ]
+  }
 }

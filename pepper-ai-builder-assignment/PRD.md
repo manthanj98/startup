@@ -112,14 +112,45 @@ Atlas's position with Semrush AI Toolkit already in-house.
 
 ## 5. Functional requirements
 
-### 5.1 Client report configuration (one-time per client)
-- Connected sources: GSC site URL, GA4 property, Semrush domain + competitor domains, CMS
-  (WordPress/Webflow/Contentful) connection.
-- Cadence: weekly or monthly, tied to each source's real data lag (GSC: 24–48h; GA4: near
+### 5.1 Client report configuration — the CSM input page (one-time per client)
+
+This is a real input surface, not a settings display. The CSM supplies the judgment the APIs
+can't infer, and Atlas reuses it every cycle:
+
+- **Brand** — the client's name as it should be matched in AI responses.
+- **Industry / category** — defines the category the brand is benchmarked within, and therefore
+  the prompt/keyword universe the Category view measures share against.
+- **Key competitor brands** — a managed list (add/remove). These, not an algorithmic guess, drive
+  the head-to-head Competitive view. The CSM knows who the client actually considers a rival,
+  which is often not who ranks adjacent to them.
+- **Priority prompts** — the questions the CSM believes matter, tracked across ChatGPT,
+  Perplexity, Google AI Overviews, Copilot, and Claude.
+- **Priority keywords** — weighted first in traditional-search reporting and pillar assembly.
+- **CMS** — WordPress, Webflow, or Contentful; determines where content recommendations are
+  routed and whether they can be pushed as drafts (see §5.6).
+- **Cadence** — weekly or monthly, tied to each source's real data lag (GSC: 24–48h; GA4: near
   real-time) so the period boundary never includes unstable data.
-- KPIs of record: which metrics this specific client cares about (e.g., conversions vs. AI share
-  of voice vs. backlink growth) — drives what leads the executive summary.
-- Recipients and a brand/template choice (logo, color) for the client-facing render.
+- **Recipients** and a brand/template choice (logo, color) for the client-facing render.
+
+### 5.1b The two analysis views
+
+Both the CSM review screen and the client-facing deliverable present the analysis as two tabs.
+Each tab spans the same four layers end-to-end — traditional search (GSC + Semrush) → AI search
+(Semrush AI) → on-site conversion (GA4) — so the report answers "did visibility turn into
+business result?", not just "what were the numbers per tool?". They differ in how they slice it:
+
+**Tab 1 — Competitive position.** One row per CSM-named competitor brand: SERP visibility, average
+position, keyword overlap, AI share of voice, AI visibility score, and which engine that
+competitor is strongest on. Each row is badged lead/trail on both search and GEO, so the CSM can
+see where the client is losing ground and on which surface.
+
+**Tab 2 — Category performance.** A category-share header (share of voice, rank within the
+category, prompts/keywords tracked, and the long tail of unnamed brands), then a per-topic-pillar
+breakdown. Each pillar shows its search clicks and position, its Semrush position, its AI
+visibility against the category average, and the GA4 sessions and conversions attributable to that
+pillar's pages — with a winning/losing verdict versus the category average. Pillar AI visibility is
+derived from the pillar's mention rate, so a topic with no AI mentions can never report a healthy
+score.
 
 ### 5.2 Generation pipeline (triggered on schedule or on-demand)
 1. **Fetch** — pull current period + prior period (for deltas) from every connected source.
@@ -151,6 +182,22 @@ Atlas's position with Semrush AI Toolkit already in-house.
 - Every sent report and its action items are stored so the next cycle's draft can reference
   resolved/unresolved items and avoid repeating a recommendation the client already acted on.
 
+### 5.6 Content recommendations (CMS-routed)
+
+Every pillar in the Category view resolves to an action, split into the two buckets a content team
+actually works from:
+
+- **New content** — pillars with no owning page where the brand is absent or weak. Produces a
+  proposed new page with the reasoning and the third-party source currently winning the citation.
+- **Existing content** — pillars that own a page which is stale or underperforming. Produces a
+  refresh brief naming the target page and its last-modified date.
+
+Both are sorted worst-gap-first (largest shortfall against the category average) and routed to the
+client's configured CMS. WordPress exposes a documented write endpoint (`POST /wp/v2/posts`), so
+those recommendations can be pushed as drafts. Webflow and Contentful are read-only in the
+documented API set, so they produce a brief for an editor to action — the UI states which applies
+rather than implying a write path that doesn't exist.
+
 ## 6. Data source → report section mapping
 
 | Report section | Source · endpoint | Key fields used |
@@ -163,14 +210,27 @@ Atlas's position with Semrush AI Toolkit already in-house.
 | AI search visibility (headline) | Semrush AI `ai_visibility_overview` | visibility_score, share_of_voice, per_engine[], sentiment, top_competing_brands[] |
 | AI mention evidence / quotes | Semrush AI `ai_prompt_mentions` | prompt_text, response_excerpt, sentiment, citation_urls |
 | Most AI-cited pages | Semrush AI `ai_citation_tracking` | url, page_title, citations_count, change_vs_previous |
-| Content published this period | WordPress `GET /wp/v2/posts` (or Webflow items/live, Contentful entries) | title, date, link |
-| Stale-content flags | WordPress `GET /wp/v2/posts` with `modified_before` | title, modified, link |
+| Competitive tab — search head-to-head | Semrush Position Tracking API (`competitors[]`) | visibility, avg position, keyword overlap, keywords tracked |
+| Competitive tab — GEO head-to-head | Semrush AI `ai_visibility_overview.top_competing_brands[]` | share_of_voice, visibility_score, mention_rate, top_engine |
+| Category tab — category share header | Semrush `domain_organic` + Semrush AI, rolled up to category | own share, rank, named-competitor shares, long tail |
+| Category tab — per-pillar search | GSC `searchanalytics.query` + Semrush `domain_organic`, filtered to the pillar's queries | clicks, impressions, position, Po |
+| Category tab — per-pillar GEO | Semrush AI `ai_visibility_overview` / `ai_prompt_mentions` per pillar | visibility_score, mentions, vs category average |
+| Category tab — per-pillar conversion | GA4 `properties.runReport` with `landingPage` dimension, grouped by pillar | sessions, conversions, conversionRate, revenue |
+| Content published this period | WordPress `GET /wp/v2/posts`, Webflow `GET /v2/collections/{id}/items/live`, or Contentful `GET /entries` — per the client's configured CMS | title, modified, link |
+| Stale-content flags | Same CMS endpoint filtered by modification date (`modified_before` on WP) | title, modified, link |
+| New-content drafting (WordPress only) | WordPress `POST /wp/v2/posts` | title, content, status=draft |
 
 Endpoints intentionally **not** used in v1: GSC `urlInspection`/`sitemaps`/`mobileFriendlyTest`
 (per-URL technical diagnostics belong in an audit product, not a recurring performance report),
-Semrush `phrase_organic`/`phrase_kdi` (SERP/keyword-research tools, not reporting), Contentful
-`tags` and WordPress/Contentful write endpoints (no write path needed — this product only reads
-and drafts, it doesn't publish content).
+Semrush `phrase_organic`/`phrase_kdi` (SERP/keyword-research tools, not reporting), and Contentful
+`tags` (taxonomy management, not measurement).
+
+**A note on CMS write access.** Only WordPress exposes a documented write endpoint. Webflow's
+listed endpoint is read-only (`items/live`), and Contentful's listed endpoints are Content Delivery
+API reads. So content recommendations are *drafted into* WordPress but *briefed for* Webflow and
+Contentful. The product states which applies per client rather than implying a write path that the
+data layer can't honor. Closing that gap means adding the Webflow CMS write API and Contentful's
+Content Management API — see §7.
 
 ## 7. What's missing from the documented data (and what we'd add)
 
@@ -190,6 +250,15 @@ The 7 sources cover performance data well but not the report *product* itself:
 5. **PDF/branded-export renderer** — the report needs to leave Atlas as more than a link (some
    clients still forward a PDF to their own leadership). A rendering service (e.g., a headless
    Chromium export) sits downstream of the assembled report.
+6. **Webflow CMS write API + Contentful Content Management API** — the documented endpoints for
+   both are read-only, so content recommendations for those clients stop at a brief. Adding the
+   write APIs would give Webflow and Contentful clients the same draft-into-CMS path WordPress
+   already has, and is the single highest-leverage addition to the data layer for this product.
+7. **Category/industry prompt-set definition** — the Category view benchmarks a brand against its
+   category, which presumes a curated prompt and keyword universe per industry. Semrush AI supplies
+   per-brand tracking but not "here is the canonical prompt set for outdoor gear." Atlas would
+   maintain these as first-party category definitions, seeded from the CSM's industry selection and
+   priority prompts, then expanded from observed competitor co-mentions.
 
 None of these require a new *data* source category — they're config/storage/delivery plumbing
 Atlas doesn't need Semrush or Google to provide.

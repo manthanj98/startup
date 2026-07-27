@@ -4,7 +4,11 @@ Each function returns realistic-shaped data matching the documented output field
 No real network calls are made — this simulates what Atlas's data layer already exposes.
 
 Three sample clients are defined so the dashboard, config, and review screens each show
-genuinely different data per brand, not one dataset reused everywhere.
+genuinely different data per brand, not one dataset reused everywhere. Each client is on a
+different CMS (WordPress / Webflow / Contentful) so all three CMS sources get exercised.
+
+Client dicts also carry the CSM-entered inputs (industry, competitor brands, priority prompts
+and keywords) that the Configure screen collects — these drive both analysis views.
 """
 import random
 from datetime import date, timedelta
@@ -23,6 +27,21 @@ CLIENTS = {
         "semrush_database": "us",
         "cadence": "monthly",
         "ai_brand": "northwind",
+        # --- CSM-entered inputs (Configure screen) ---
+        "industry": "Outdoor & camping gear",
+        "cms": "wordpress",
+        "recipients": "dana@northwindoutdoor.com, +2 cc",
+        "competitor_brands": [
+            {"name": "TrailForge", "domain": "trailforge.com"},
+            {"name": "BasecampGear", "domain": "basecampgear.com"},
+            {"name": "Summitware", "domain": "summitware.com"},
+        ],
+        "priority_prompts": [
+            "what's the most durable 4 person tent for backpacking?",
+            "best waterproof hiking boots for wide feet",
+            "how do I choose a sleeping bag temperature rating?",
+        ],
+        "priority_keywords": ["waterproof hiking boots", "4 person tent", "merino wool base layer"],
         "competitors": ["trailforge.com", "basecampgear.com", "summitware.com"],
         "top_competitor": {"name": "TrailForge", "share_of_voice": 0.29, "top_engine": "chatgpt"},
         "queries": [
@@ -56,12 +75,15 @@ CLIENTS = {
         "stale_content": [
             ("Best Tents Under $200 (2022)", "blog/tents-under-200", "2022-11-02T00:00:00"),
         ],
-        "insight_pillars": [
+        "category_pillars": [
             {
                 "id": "waterproof-durability",
                 "pillar": "Waterproofing & Durability Claims",
                 "title": "Durability claims are landing, but waterproof-rating detail is thin for Northwind",
                 "mentions": 3, "mentions_total": 10,
+                "queries": ["4 person tent", "rain shell jacket men", "gore-tex boots women"],
+                "owned_page": {"title": "The Complete Tent Buying Guide (2026)", "slug": "guides/tent-buying-guide",
+                                "last_modified": "2026-05-02T00:00:00"},
                 "sentiment": {"positive": 3, "neutral": 0, "negative": 0},
                 "bullets": [
                     {"label": "What's happening", "text": "Northwind is mentioned in 3 of 10 tracked answers about "
@@ -94,6 +116,8 @@ CLIENTS = {
                 "pillar": "Sizing & Fit Guidance",
                 "title": "Boot sizing questions skip Northwind entirely",
                 "mentions": 0, "mentions_total": 10,
+                "queries": ["waterproof hiking boots", "gore-tex boots women"],
+                "owned_page": None,
                 "sentiment": {"positive": 0, "neutral": 0, "negative": 0},
                 "bullets": [
                     {"label": "What's happening", "text": "For \"waterproof hiking boots wide feet\" style prompts, "
@@ -112,6 +136,31 @@ CLIENTS = {
                      "citation": {"text": "REI Co-op — Hiking Boot Fit Guide", "url": "https://rei.com/learn/expert-advice/hiking-boots"}},
                 ],
             },
+            {
+                "id": "layering-systems",
+                "pillar": "Layering & Base-Layer Systems",
+                "title": "Layering content converts well but is losing AI ground",
+                "mentions": 2, "mentions_total": 10,
+                "queries": ["merino wool base layer", "trail running vest"],
+                "owned_page": {"title": "Layering 101: Base, Mid, Shell", "slug": "guides/layering-101",
+                                "last_modified": "2025-03-18T00:00:00"},
+                "sentiment": {"positive": 1, "neutral": 1, "negative": 0},
+                "bullets": [
+                    {"label": "What's happening", "text": "Layering 101 still earns citations, but mentions dropped "
+                     "to 2 of 10 tracked answers as newer competitor guides published this year."},
+                    {"label": "Why it matters", "text": "This pillar drives the highest on-site conversion rate of "
+                     "any topic — losing AI visibility here costs more per lost mention than elsewhere."},
+                    {"label": "Source mechanism", "text": "The page hasn't been updated since March 2025; competing "
+                     "guides cite current-season fabric tech that Northwind's guide doesn't mention."},
+                ],
+                "recommendations": [
+                    {"title": "Refresh Layering 101 with current-season fabric technology",
+                     "body": "The guide predates this season's fabric releases, which competing cited guides cover. "
+                              "A refresh adding current merino blends and synthetic alternatives would restore the "
+                              "page's citation relevance without rebuilding it from scratch.",
+                     "citation": {"text": "Northwind — Layering 101", "url": "https://northwindoutdoor.com/guides/layering-101"}},
+                ],
+            },
         ],
     },
     "basecamp": {
@@ -122,6 +171,20 @@ CLIENTS = {
         "semrush_database": "us",
         "cadence": "monthly",
         "ai_brand": "basecamp",
+        "industry": "Climbing & mountaineering gear",
+        "cms": "webflow",
+        "recipients": "marco@basecampgear.com, +1 cc",
+        "competitor_brands": [
+            {"name": "Northwind Outdoor Co.", "domain": "northwindoutdoor.com"},
+            {"name": "TrailForge", "domain": "trailforge.com"},
+            {"name": "Summitware", "domain": "summitware.com"},
+        ],
+        "priority_prompts": [
+            "best belay device for a beginner climber?",
+            "lightest 60L backpacking pack",
+            "what harness certification should I look for?",
+        ],
+        "priority_keywords": ["climbing harness beginner", "belay device assisted braking", "60l backpacking pack"],
         "competitors": ["northwindoutdoor.com", "trailforge.com", "summitware.com"],
         "top_competitor": {"name": "Northwind Outdoor Co.", "share_of_voice": 0.24, "top_engine": "google_aio"},
         "queries": [
@@ -155,12 +218,15 @@ CLIENTS = {
             ("Top 5 Crash Pads of 2021", "blog/crash-pads-2021", "2021-09-14T00:00:00"),
             ("Ice Axe Buying Guide (2020)", "blog/ice-axe-guide-2020", "2020-12-01T00:00:00"),
         ],
-        "insight_pillars": [
+        "category_pillars": [
             {
                 "id": "beginner-safety",
                 "pillar": "Safety & Certification Claims",
                 "title": "Basecamp leads beginner belay questions, but harness certification detail is missing",
                 "mentions": 4, "mentions_total": 10,
+                "queries": ["belay device assisted braking", "climbing harness beginner"],
+                "owned_page": {"title": "Assisted-Braking Belay Devices Compared", "slug": "guides/belay-devices-compared",
+                                "last_modified": "2026-06-10T00:00:00"},
                 "sentiment": {"positive": 4, "neutral": 0, "negative": 0},
                 "bullets": [
                     {"label": "What's happening", "text": "Basecamp's Halo belay device is mentioned in 4 of 10 "
@@ -186,6 +252,8 @@ CLIENTS = {
                 "pillar": "Weight & Packability",
                 "title": "Pack-weight comparisons skip Basecamp's 60L line",
                 "mentions": 1, "mentions_total": 10,
+                "queries": ["60l backpacking pack", "sleeping pad r-value"],
+                "owned_page": None,
                 "sentiment": {"positive": 1, "neutral": 0, "negative": 0},
                 "bullets": [
                     {"label": "What's happening", "text": "For \"lightest 60L backpacking pack\" prompts, Basecamp "
@@ -201,6 +269,29 @@ CLIENTS = {
                      "citation": {"text": "Osprey — Pack Weight Comparison", "url": "https://osprey.com/us/en/packweight"}},
                 ],
             },
+            {
+                "id": "winter-technical",
+                "pillar": "Winter & Technical Gear",
+                "title": "Ice-axe and crampon content is stale and losing citations",
+                "mentions": 0, "mentions_total": 10,
+                "queries": ["ice axe self arrest", "crampons for hiking boots"],
+                "owned_page": {"title": "Ice Axe Buying Guide (2020)", "slug": "blog/ice-axe-guide-2020",
+                                "last_modified": "2020-12-01T00:00:00"},
+                "sentiment": {"positive": 0, "neutral": 0, "negative": 0},
+                "bullets": [
+                    {"label": "What's happening", "text": "Basecamp appears in 0 of 10 tracked winter-technical "
+                     "answers despite owning a guide on the topic."},
+                    {"label": "Source mechanism", "text": "The existing guide dates from 2020 and references "
+                     "discontinued products — AI engines favour current guides from Petzl and Black Diamond."},
+                ],
+                "recommendations": [
+                    {"title": "Rewrite the ice-axe guide against the current product line",
+                     "body": "The 2020 guide still references discontinued models, which makes it a poor citation "
+                              "candidate. A rewrite against the current line, with self-arrest technique detail, "
+                              "would make the page competitive for a pillar Basecamp currently forfeits entirely.",
+                     "citation": {"text": "Basecamp — Ice Axe Buying Guide (2020)", "url": "https://basecampgear.com/blog/ice-axe-guide-2020"}},
+                ],
+            },
         ],
     },
     "alpine": {
@@ -211,6 +302,20 @@ CLIENTS = {
         "semrush_database": "us",
         "cadence": "weekly",
         "ai_brand": "alpine supply",
+        "industry": "Ski & snow sports equipment",
+        "cms": "contentful",
+        "recipients": "jules@alpinesupply.co",
+        "competitor_brands": [
+            {"name": "TrailForge", "domain": "trailforge.com"},
+            {"name": "Northwind Outdoor Co.", "domain": "northwindoutdoor.com"},
+            {"name": "BasecampGear", "domain": "basecampgear.com"},
+        ],
+        "priority_prompts": [
+            "best goggles for flat light conditions skiing?",
+            "how do I pick backcountry ski boots?",
+            "where can I rent an avalanche beacon?",
+        ],
+        "priority_keywords": ["goggles for flat light", "backcountry ski boots", "ski jacket waterproof rating"],
         "competitors": ["northwindoutdoor.com", "trailforge.com", "basecampgear.com"],
         "top_competitor": {"name": "TrailForge", "share_of_voice": 0.31, "top_engine": "perplexity"},
         "queries": [
@@ -243,12 +348,15 @@ CLIENTS = {
             ("Layering for -20F Days", "blog/layering-extreme-cold", "2026-07-09T09:00:00"),
         ],
         "stale_content": [],
-        "insight_pillars": [
+        "category_pillars": [
             {
                 "id": "flat-light-goggles",
                 "pillar": "Lens & Tint Guidance",
                 "title": "Alpine Supply owns the flat-light goggle conversation",
                 "mentions": 6, "mentions_total": 10,
+                "queries": ["goggles for flat light"],
+                "owned_page": {"title": "Choosing Ski Goggle Lens Tints", "slug": "guides/goggle-lens-tints",
+                                "last_modified": "2026-06-28T00:00:00"},
                 "sentiment": {"positive": 6, "neutral": 0, "negative": 0},
                 "bullets": [
                     {"label": "What's happening", "text": "Alpine Supply's Contrast+ lens is named in 6 of 10 "
@@ -273,6 +381,9 @@ CLIENTS = {
                 "pillar": "Cold-Weather Safety Gear",
                 "title": "Avalanche beacon rental questions favor local shops over Alpine Supply",
                 "mentions": 0, "mentions_total": 10,
+                "queries": ["avalanche beacon rental"],
+                "owned_page": {"title": "Avalanche Safety Gear Checklist", "slug": "guides/avalanche-safety-checklist",
+                                "last_modified": "2026-04-02T00:00:00"},
                 "sentiment": {"positive": 0, "neutral": 0, "negative": 0},
                 "bullets": [
                     {"label": "What's happening", "text": "\"Avalanche beacon rental\" prompts return local gear "
@@ -288,6 +399,31 @@ CLIENTS = {
                               "that rent Alpine Supply-brand beacons would at least make the brand citable inside "
                               "that local-intent answer.",
                      "citation": {"text": "REI — Avalanche Safety Gear Rental", "url": "https://rei.com/rentals/avalanche-safety"}},
+                ],
+            },
+            {
+                "id": "boot-fit",
+                "pillar": "Boot Fit & Touring Setup",
+                "title": "Backcountry boot-fit content is gaining but under-cited",
+                "mentions": 2, "mentions_total": 10,
+                "queries": ["backcountry ski boots", "ski touring bindings"],
+                "owned_page": {"title": "Backcountry Boot Fit Guide", "slug": "blog/boot-fit-guide",
+                                "last_modified": "2026-07-13T00:00:00"},
+                "sentiment": {"positive": 2, "neutral": 0, "negative": 0},
+                "bullets": [
+                    {"label": "What's happening", "text": "The newly published boot-fit guide has started earning "
+                     "mentions (2 of 10) within weeks of publishing."},
+                    {"label": "Why it matters", "text": "Boot fit is the highest-consideration purchase in the "
+                     "category — early AI traction here is worth reinforcing before competitors respond."},
+                    {"label": "Source mechanism", "text": "Answers cite shell-fit and last-width measurements; the "
+                     "guide covers fit process but not per-model measurements."},
+                ],
+                "recommendations": [
+                    {"title": "Add per-model last-width and shell-fit measurements to the boot-fit guide",
+                     "body": "The guide explains the fit process well but stops short of the per-model numbers "
+                              "AI answers actually cite. Adding a measurements table per boot model would convert "
+                              "early traction into a durable citation position.",
+                     "citation": {"text": "Alpine Supply — Backcountry Boot Fit Guide", "url": "https://alpinesupply.co/blog/boot-fit-guide"}},
                 ],
             },
         ],
@@ -332,6 +468,27 @@ def ga4_run_report(client, start=PERIOD_START, end=PERIOD_END, seed_offset=0):
     }
 
 
+def ga4_by_landing_page_group(client, seed_offset=0):
+    """GA4 runReport with a landingPage dimension, rolled up to the pillar that owns each page.
+
+    This is what ties AI/search visibility to on-site conversion: each pillar's tracked pages
+    contribute the sessions and conversions attributed to that topic.
+    """
+    random.seed(hash((client["domain"], seed_offset, "ga4group")) % (2**31))
+    groups = {}
+    for pillar in client["category_pillars"]:
+        sessions = random.randint(900, 12000)
+        conv_rate = random.uniform(0.008, 0.041)
+        conversions = max(int(sessions * conv_rate), 1)
+        groups[pillar["id"]] = {
+            "sessions": sessions,
+            "conversions": conversions,
+            "conversion_rate": round(conversions / sessions, 4),
+            "revenue": round(conversions * random.uniform(38, 61), 2),
+        }
+    return groups
+
+
 # ---------- Semrush: domain_organic ----------
 def semrush_domain_organic(client, seed_offset=0):
     random.seed(hash((client["domain"], seed_offset, "domorg")) % (2**31))
@@ -371,6 +528,31 @@ def semrush_position_tracking(client, seed_offset=0):
     return {"visibility": visibility, "competitors": competitor_rows}
 
 
+def semrush_competitor_comparison(client, seed_offset=0):
+    """Per-competitor traditional-search standing (Position Tracking competitors[] shape).
+
+    Returns our own visibility plus, for each named competitor brand, their SERP visibility,
+    tracked-keyword count, and how many of those keywords overlap with ours.
+    """
+    random.seed(hash((client["domain"], seed_offset, "compcmp")) % (2**31))
+    own = {
+        "name": client["name"], "domain": client["domain"],
+        "visibility": round(random.uniform(0.08, 0.22), 3),
+        "keywords_tracked": random.randint(280, 620),
+        "avg_position": round(random.uniform(8.0, 19.0), 1),
+    }
+    rivals = []
+    for c in client["competitor_brands"]:
+        rivals.append({
+            "name": c["name"], "domain": c["domain"],
+            "visibility": round(random.uniform(0.05, 0.28), 3),
+            "keywords_tracked": random.randint(240, 780),
+            "avg_position": round(random.uniform(6.0, 21.0), 1),
+            "keyword_overlap": round(random.uniform(0.22, 0.71), 2),
+        })
+    return {"own": own, "competitors": rivals}
+
+
 # ---------- Semrush AI: ai_visibility_overview ----------
 def semrush_ai_visibility_overview(client, seed_offset=0):
     random.seed(hash((client["ai_brand"], seed_offset, "aivis")) % (2**31))
@@ -400,6 +582,70 @@ def semrush_ai_visibility_overview(client, seed_offset=0):
              "top_engine": tc["top_engine"]},
         ],
     }
+
+
+def ai_visibility_by_competitor(client, seed_offset=0):
+    """Widened ai_visibility_overview.top_competing_brands[] — GEO standing per named competitor."""
+    random.seed(hash((client["ai_brand"], seed_offset, "aicomp")) % (2**31))
+    rows = []
+    for c in client["competitor_brands"]:
+        rows.append({
+            "name": c["name"], "domain": c["domain"],
+            "share_of_voice": round(random.uniform(0.04, 0.31), 3),
+            "visibility_score": round(random.uniform(9, 44), 1),
+            "mention_rate": round(random.uniform(0.06, 0.38), 3),
+            "change_vs_previous": round(random.uniform(-0.05, 0.07), 3),
+            "top_engine": random.choice(["chatgpt", "perplexity", "google_aio", "copilot", "claude"]),
+        })
+    return rows
+
+
+def semrush_category_share(client, seed_offset=0):
+    """Category-wide share of voice across the whole field, not just named competitors.
+
+    Feeds the Category tab header: how much of the category's tracked prompt/keyword space
+    this brand holds, versus the named field and the long tail of everyone else.
+    """
+    random.seed(hash((client["domain"], seed_offset, "catshare")) % (2**31))
+    own_share = round(random.uniform(0.06, 0.21), 3)
+    named = []
+    remaining = 1.0 - own_share
+    for c in client["competitor_brands"]:
+        s = round(min(remaining * random.uniform(0.12, 0.38), remaining), 3)
+        remaining = max(remaining - s, 0)
+        named.append({"name": c["name"], "share": s})
+    return {
+        "category": client["industry"],
+        "own_share": own_share,
+        "named_competitors": named,
+        "long_tail_share": round(max(remaining, 0), 3),
+        "total_category_prompts": random.randint(600, 1800),
+        "total_category_keywords": random.randint(2400, 9000),
+        "own_rank": random.randint(2, 5),
+        "brands_tracked": random.randint(9, 24),
+    }
+
+
+def ai_visibility_by_pillar(client, seed_offset=0):
+    """Per-pillar GEO standing — the AI half of each Category-tab pillar row.
+
+    visibility_score is derived from the pillar's actual mention rate rather than drawn
+    independently, so a pillar with 0 of 10 mentions can never report a healthy score (and
+    can never be badged 'winning' against the category average).
+    """
+    random.seed(hash((client["ai_brand"], seed_offset, "aipillar")) % (2**31))
+    out = {}
+    for p in client["category_pillars"]:
+        mention_rate = p["mentions"] / p["mentions_total"] if p["mentions_total"] else 0
+        # Mention rate sets the base; a small jitter keeps the numbers from looking synthetic.
+        visibility = mention_rate * 100 * random.uniform(0.62, 0.78)
+        out[p["id"]] = {
+            "visibility_score": round(max(visibility, 0.0), 1),
+            "category_avg_visibility": round(random.uniform(14, 30), 1),
+            "mentions": p["mentions"],
+            "mentions_total": p["mentions_total"],
+        }
+    return out
 
 
 # ---------- Semrush AI: ai_prompt_mentions ----------
@@ -453,13 +699,58 @@ def wordpress_stale_posts(client):
     ]
 
 
+# ---------- CMS: Webflow live items ----------
+def webflow_list_live_items(client):
+    return {
+        "items": [
+            {"id": f"wf{i:04d}", "cmsLocaleId": "en", "lastPublished": dt, "lastUpdated": dt,
+             "isDraft": False, "isArchived": False,
+             "fieldData": {"name": title, "slug": slug}}
+            for i, (title, slug, dt) in enumerate(client["content_published"])
+        ]
+    }
+
+
 # ---------- CMS: Contentful entries ----------
 def contentful_entries(client, content_type="guide", limit=10):
-    return {
-        "total": 1,
-        "items": [{
-            "sys": {"id": "3xQabc", "contentType": {"sys": {"id": content_type}},
-                    "updatedAt": "2026-07-14T00:00:00Z", "publishedAt": "2026-07-15T00:00:00Z"},
-            "fields": {"title": f"{client['name']} — Content Roadmap Snapshot"},
-        }],
-    }
+    items = []
+    for i, (title, slug, dt) in enumerate(client["content_published"]):
+        items.append({
+            "sys": {"id": f"cf{i:04d}", "contentType": {"sys": {"id": content_type}},
+                    "updatedAt": dt, "publishedAt": dt, "version": 4, "revision": 2},
+            "fields": {"title": title, "slug": slug},
+        })
+    return {"total": len(items), "skip": 0, "limit": limit, "items": items}
+
+
+# ---------- CMS: normalized dispatch ----------
+CMS_LABEL = {"wordpress": "WordPress", "webflow": "Webflow", "contentful": "Contentful"}
+# Only WordPress exposes a documented write endpoint (POST /wp/v2/posts). Webflow and
+# Contentful are read-only in the workbook, so their recommendations produce briefs, not drafts.
+CMS_CAN_DRAFT = {"wordpress": True, "webflow": False, "contentful": False}
+
+
+def cms_list_content(client):
+    """Read the client's CMS and return one normalized shape, so downstream code is CMS-agnostic."""
+    cms = client["cms"]
+    if cms == "wordpress":
+        published = [{"title": p["title"]["rendered"], "url": p["link"], "modified": p["modified"]}
+                     for p in wordpress_list_posts(client)]
+        stale = [{"title": p["title"]["rendered"], "url": p["link"], "modified": p["modified"]}
+                 for p in wordpress_stale_posts(client)]
+    elif cms == "webflow":
+        published = [{"title": it["fieldData"]["name"],
+                      "url": f"https://{client['domain']}/{it['fieldData']['slug']}",
+                      "modified": it["lastUpdated"]}
+                     for it in webflow_list_live_items(client)["items"]]
+        stale = [{"title": t, "url": f"https://{client['domain']}/{s}", "modified": d}
+                 for t, s, d in client["stale_content"]]
+    else:  # contentful
+        published = [{"title": it["fields"]["title"],
+                      "url": f"https://{client['domain']}/{it['fields']['slug']}",
+                      "modified": it["sys"]["updatedAt"]}
+                     for it in contentful_entries(client)["items"]]
+        stale = [{"title": t, "url": f"https://{client['domain']}/{s}", "modified": d}
+                 for t, s, d in client["stale_content"]]
+    return {"cms": cms, "label": CMS_LABEL[cms], "can_draft": CMS_CAN_DRAFT[cms],
+            "published": published, "stale": stale}
