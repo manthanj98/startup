@@ -259,6 +259,28 @@
   .rec-card p { font-size: 12.5px; color: var(--ink-soft); line-height: 1.55; margin: 0 0 8px; }
   .rec-card .citation { font-size: 11.5px; }
   .rec-card .citation a { color: var(--accent-ink); }
+  .draft-preview { font-size: 12.5px; color: var(--ink-soft); line-height: 1.55;
+                   border-left: 2px solid var(--line); padding-left: 10px; margin: 8px 0 10px; }
+
+  /* --- Draft article viewer (slide-over) --- */
+  .draft-meta { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin-bottom: 14px;
+                background: var(--paper); display: flex; flex-direction: column; gap: 8px; }
+  .draft-meta-row { display: grid; grid-template-columns: 120px 1fr; gap: 10px; font-size: 12px;
+                    align-items: baseline; }
+  .draft-meta-row > span:first-child { color: var(--ink-soft); text-transform: uppercase;
+                                       letter-spacing: 0.04em; font-size: 10px; font-weight: 700; }
+  .draft-meta-row code { font-size: 11.5px; background: var(--accent-soft); color: var(--accent-ink);
+                         padding: 1px 5px; border-radius: 4px; }
+  .draft-meta-row .chip { font-size: 11px; padding: 2px 8px; }
+  .draft-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+  .draft-actions .btn:disabled { opacity: .7; cursor: default; }
+  .draft-body { border-top: 1px solid var(--line); padding-top: 14px; }
+  .draft-body h1 { font-size: 18px; margin: 0 0 12px; letter-spacing: -0.01em; text-wrap: balance; }
+  .draft-body h2 { font-size: 13.5px; margin: 18px 0 6px; }
+  .draft-body p { font-size: 13px; line-height: 1.65; margin: 0 0 10px; color: var(--ink); }
+  .draft-body .faq-q { font-weight: 700; margin-bottom: 4px; }
+  .draft-body ul { font-size: 13px; line-height: 1.6; padding-left: 18px; margin: 0; }
+  .draft-body a { color: var(--accent-ink); }
   @media (prefers-reduced-motion: reduce) { .recs-panel, .recs-overlay { transition: none; } }
 
   @media (max-width: 720px) {
@@ -502,83 +524,83 @@
     "summary": [
       {
         "src": "GSC",
-        "text": "Organic clicks fell 12.2% vs the prior period."
+        "text": "Organic clicks fell 10.5% vs the prior period."
       },
       {
         "src": "GA4",
-        "text": "Organic-driven conversions are down 57.0% ($18,365 in attributed revenue this period)."
+        "text": "Organic-driven conversions are up 26.1% ($44,132 in attributed revenue this period)."
       },
       {
         "src": "Semrush",
-        "text": "Domain Authority Score climbed to 43 (+1)."
+        "text": "Domain Authority Score climbed to 33 (+4)."
       },
       {
         "src": "AI Toolkit",
-        "text": "AI search visibility dipped to 22.5 (-0.8) \u2014 Northwind Outdoor Co. holds 15% share of voice vs Summitware at 14%."
+        "text": "AI search visibility dipped to 16.9 (-1.4) \u2014 Northwind Outdoor Co. holds 14% share of voice vs Summitware at 22%."
       }
     ],
     "gsc": {
-      "clicks": 14737,
-      "clicks_delta_pct": -12.2,
-      "impressions": 295233,
-      "impressions_delta_pct": -6.6,
-      "avg_position": 16.0,
-      "position_delta": 1.8
+      "clicks": 12252,
+      "clicks_delta_pct": -10.5,
+      "impressions": 263254,
+      "impressions_delta_pct": 20.4,
+      "avg_position": 15.8,
+      "position_delta": 0.7
     },
     "ga4": {
-      "sessions": 45192,
-      "sessions_delta_pct": 122.4,
-      "conversions": 375,
-      "conversions_delta_pct": -57.0,
-      "revenue": 18365.29
+      "sessions": 30345,
+      "sessions_delta_pct": -10.8,
+      "conversions": 875,
+      "conversions_delta_pct": 26.1,
+      "revenue": 44132.08
     },
     "backlinks": {
-      "ascore": 43,
-      "ascore_delta": 1
+      "ascore": 33,
+      "ascore_delta": 4
     },
     "ai_visibility": {
-      "score": 22.5,
-      "score_delta": -0.8,
-      "share_of_voice": 0.154,
+      "score": 16.9,
+      "score_delta": -1.4,
+      "share_of_voice": 0.143,
       "top_competitor": {
         "name": "Summitware",
-        "share_of_voice": 0.141
+        "share_of_voice": 0.222
       },
       "per_engine": [
         {
           "engine": "chatgpt",
-          "visibility_score": 23.2,
-          "share_of_voice": 0.187,
-          "avg_position": 2.8,
-          "change_vs_previous": 5.9
+          "visibility_score": 12.9,
+          "share_of_voice": 0.173,
+          "avg_position": 2.4,
+          "change_vs_previous": 1.5
         },
         {
           "engine": "perplexity",
-          "visibility_score": 10.3,
-          "share_of_voice": 0.192,
-          "avg_position": 4.3,
-          "change_vs_previous": 0.5
+          "visibility_score": 8.2,
+          "share_of_voice": 0.213,
+          "avg_position": 1.3,
+          "change_vs_previous": 2.9
         },
         {
           "engine": "google_aio",
-          "visibility_score": 15.0,
-          "share_of_voice": 0.108,
-          "avg_position": 2.6,
-          "change_vs_previous": -2.6
+          "visibility_score": 28.1,
+          "share_of_voice": 0.111,
+          "avg_position": 3.7,
+          "change_vs_previous": 6.1
         },
         {
           "engine": "copilot",
-          "visibility_score": 23.6,
-          "share_of_voice": 0.209,
-          "avg_position": 2.9,
-          "change_vs_previous": 6.8
+          "visibility_score": 14.1,
+          "share_of_voice": 0.141,
+          "avg_position": 2.1,
+          "change_vs_previous": 3.7
         },
         {
           "engine": "claude",
-          "visibility_score": 40.6,
-          "share_of_voice": 0.074,
-          "avg_position": 2.9,
-          "change_vs_previous": 0.4
+          "visibility_score": 21.0,
+          "share_of_voice": 0.077,
+          "avg_position": 4.7,
+          "change_vs_previous": -0.8
         }
       ],
       "best_mention": {
@@ -591,19 +613,19 @@
       {
         "page_title": "The Complete Tent Buying Guide (2026)",
         "url": "https://northwindoutdoor.com/guides/tent-buying-guide",
-        "citations_count": 32,
-        "percent_change": -0.06
+        "citations_count": 39,
+        "percent_change": 0.3
       },
       {
         "page_title": "Layering 101: Base, Mid, Shell",
         "url": "https://northwindoutdoor.com/guides/layering-101",
-        "citations_count": 44,
-        "percent_change": 0.03
+        "citations_count": 7,
+        "percent_change": 0.17
       }
     ],
     "recommendations": [
       "Refresh the stale guide flagged above and add an FAQ block targeting the AI-cited queries.",
-      "Publish a comparison page targeting \"trail running vest\" to recover lost position.",
+      "Publish a comparison page targeting \"rain shell jacket men\" to recover lost position.",
       "Monitor Summitware's AI share-of-voice gains \u2014 consider a prompt-level content gap analysis next cycle."
     ],
     "inputs": {
@@ -640,98 +662,98 @@
       "own": {
         "name": "Northwind Outdoor Co.",
         "domain": "northwindoutdoor.com",
-        "search_visibility": 0.204,
-        "search_avg_position": 10.0,
-        "keywords_tracked": 409,
-        "geo_share_of_voice": 0.154,
-        "geo_visibility_score": 22.5
+        "search_visibility": 0.194,
+        "search_avg_position": 16.8,
+        "keywords_tracked": 531,
+        "geo_share_of_voice": 0.143,
+        "geo_visibility_score": 16.9
       },
       "competitors": [
         {
           "name": "TrailForge",
           "domain": "trailforge.com",
-          "search_visibility": 0.063,
-          "search_avg_position": 18.8,
-          "keyword_overlap": 0.27,
-          "geo_share_of_voice": 0.052,
-          "geo_visibility_score": 20.0,
-          "geo_top_engine": "chatgpt",
-          "search_gap": 0.141,
-          "geo_gap": 0.102,
+          "search_visibility": 0.18,
+          "search_avg_position": 6.9,
+          "keyword_overlap": 0.39,
+          "geo_share_of_voice": 0.09,
+          "geo_visibility_score": 28.8,
+          "geo_top_engine": "copilot",
+          "search_gap": 0.014,
+          "geo_gap": 0.053,
           "leads_search": true,
           "leads_geo": true
         },
         {
           "name": "BasecampGear",
           "domain": "basecampgear.com",
-          "search_visibility": 0.251,
-          "search_avg_position": 10.8,
-          "keyword_overlap": 0.41,
-          "geo_share_of_voice": 0.041,
-          "geo_visibility_score": 17.8,
-          "geo_top_engine": "perplexity",
-          "search_gap": -0.047,
-          "geo_gap": 0.113,
-          "leads_search": false,
-          "leads_geo": true
+          "search_visibility": 0.189,
+          "search_avg_position": 12.1,
+          "keyword_overlap": 0.5,
+          "geo_share_of_voice": 0.21,
+          "geo_visibility_score": 29.1,
+          "geo_top_engine": "chatgpt",
+          "search_gap": 0.005,
+          "geo_gap": -0.067,
+          "leads_search": true,
+          "leads_geo": false
         },
         {
           "name": "Summitware",
           "domain": "summitware.com",
-          "search_visibility": 0.261,
-          "search_avg_position": 15.9,
-          "keyword_overlap": 0.35,
-          "geo_share_of_voice": 0.141,
-          "geo_visibility_score": 36.2,
+          "search_visibility": 0.163,
+          "search_avg_position": 10.2,
+          "keyword_overlap": 0.56,
+          "geo_share_of_voice": 0.222,
+          "geo_visibility_score": 23.6,
           "geo_top_engine": "claude",
-          "search_gap": -0.057,
-          "geo_gap": 0.013,
-          "leads_search": false,
-          "leads_geo": true
+          "search_gap": 0.031,
+          "geo_gap": -0.079,
+          "leads_search": true,
+          "leads_geo": false
         }
       ],
       "summary": {
-        "behind_on_geo": [],
-        "behind_on_search": [
+        "behind_on_geo": [
           "BasecampGear",
           "Summitware"
         ],
-        "ahead_of_all_geo": true
+        "behind_on_search": [],
+        "ahead_of_all_geo": false
       }
     },
     "category": {
       "category": "Outdoor & camping gear",
-      "own_share": 0.13,
-      "own_share_delta": 0.041,
-      "own_rank": 3,
-      "brands_tracked": 21,
+      "own_share": 0.139,
+      "own_share_delta": 0.027,
+      "own_rank": 4,
+      "brands_tracked": 12,
       "named_competitors": [
         {
           "name": "TrailForge",
-          "share": 0.297
+          "share": 0.32
         },
         {
           "name": "BasecampGear",
-          "share": 0.212
+          "share": 0.106
         },
         {
           "name": "Summitware",
-          "share": 0.093
+          "share": 0.077
         }
       ],
-      "long_tail_share": 0.268,
-      "total_category_prompts": 977,
-      "total_category_keywords": 5703,
+      "long_tail_share": 0.358,
+      "total_category_prompts": 1157,
+      "total_category_keywords": 2852,
       "pillars": [
         {
           "id": "waterproof-durability",
           "pillar": "Waterproofing & Durability Claims",
           "title": "Durability claims are landing, but waterproof-rating detail is thin for Northwind",
           "search": {
-            "clicks": 4695,
-            "impressions": 80744,
-            "avg_position": 17.1,
-            "semrush_position": 16.7,
+            "clicks": 4798,
+            "impressions": 69381,
+            "avg_position": 18.6,
+            "semrush_position": 25.7,
             "queries": [
               "4 person tent",
               "rain shell jacket men",
@@ -739,25 +761,25 @@
             ]
           },
           "geo": {
-            "visibility_score": 21.7,
-            "category_avg": 16.9,
-            "vs_category": 4.8,
+            "visibility_score": 21.9,
+            "category_avg": 27.2,
+            "vs_category": -5.3,
             "mentions": 3,
             "mentions_total": 10
           },
           "conversion": {
-            "sessions": 7297,
-            "conversions": 238,
-            "conversion_rate": 0.0326,
-            "revenue": 11883.97,
-            "conversions_delta_pct": 561.1
+            "sessions": 3370,
+            "conversions": 94,
+            "conversion_rate": 0.0279,
+            "revenue": 5056.41,
+            "conversions_delta_pct": -51.5
           },
           "owned_page": {
             "title": "The Complete Tent Buying Guide (2026)",
             "slug": "guides/tent-buying-guide",
             "last_modified": "2026-05-02T00:00:00"
           },
-          "verdict": "winning",
+          "verdict": "losing",
           "bullets": [
             {
               "label": "What's happening",
@@ -800,10 +822,10 @@
           "pillar": "Sizing & Fit Guidance",
           "title": "Boot sizing questions skip Northwind entirely",
           "search": {
-            "clicks": 4742,
-            "impressions": 74431,
-            "avg_position": 14.8,
-            "semrush_position": 27.0,
+            "clicks": 1875,
+            "impressions": 65710,
+            "avg_position": 15.6,
+            "semrush_position": 29.0,
             "queries": [
               "waterproof hiking boots",
               "gore-tex boots women"
@@ -811,17 +833,17 @@
           },
           "geo": {
             "visibility_score": 0.0,
-            "category_avg": 20.6,
-            "vs_category": -20.6,
+            "category_avg": 17.6,
+            "vs_category": -17.6,
             "mentions": 0,
             "mentions_total": 10
           },
           "conversion": {
-            "sessions": 916,
-            "conversions": 22,
-            "conversion_rate": 0.024,
-            "revenue": 997.95,
-            "conversions_delta_pct": -94.1
+            "sessions": 11635,
+            "conversions": 366,
+            "conversion_rate": 0.0315,
+            "revenue": 18777.7,
+            "conversions_delta_pct": 454.5
           },
           "owned_page": null,
           "verdict": "losing",
@@ -855,10 +877,10 @@
           "pillar": "Layering & Base-Layer Systems",
           "title": "Layering content converts well but is losing AI ground",
           "search": {
-            "clicks": 2133,
-            "impressions": 43182,
-            "avg_position": 17.8,
-            "semrush_position": 14.0,
+            "clicks": 1795,
+            "impressions": 68450,
+            "avg_position": 12.8,
+            "semrush_position": 23.5,
             "queries": [
               "merino wool base layer",
               "trail running vest"
@@ -866,17 +888,17 @@
           },
           "geo": {
             "visibility_score": 13.0,
-            "category_avg": 16.8,
-            "vs_category": -3.8,
+            "category_avg": 20.1,
+            "vs_category": -7.1,
             "mentions": 2,
             "mentions_total": 10
           },
           "conversion": {
-            "sessions": 4372,
-            "conversions": 164,
-            "conversion_rate": 0.0375,
-            "revenue": 7245.45,
-            "conversions_delta_pct": 19.7
+            "sessions": 9020,
+            "conversions": 251,
+            "conversion_rate": 0.0278,
+            "revenue": 12745.8,
+            "conversions_delta_pct": 73.1
           },
           "owned_page": {
             "title": "Layering 101: Base, Mid, Shell",
@@ -925,11 +947,72 @@
             "url": "https://rei.com/learn/expert-advice/hiking-boots"
           },
           "geo_visibility": 0.0,
-          "vs_category": -20.6,
-          "conversions": 22,
+          "vs_category": -17.6,
+          "conversions": 366,
           "cms": "WordPress",
           "action": "Create draft in WordPress",
-          "can_draft": true
+          "can_draft": true,
+          "draft": {
+            "mode": "new",
+            "title": "Hiking Boot Fit for Wide Feet: Last Widths and Brand-to-Brand Sizing",
+            "slug": "guides/wide-fit-hiking-boot-sizing",
+            "meta_description": "Last-width measurements by model, how to measure your own foot width, and a conversion table for switching between hiking boot brands.",
+            "angle": "Win the highest-intent pre-purchase question with concrete measurements and a brand-conversion table \u2014 the gap no brand currently owns.",
+            "sections": [
+              {
+                "heading": "How to measure your foot width at home",
+                "body": "Stand on a sheet of paper at the end of the day, when your feet are at their largest, and trace around each foot with the pencil held vertical. Measure the widest point across the ball of the foot. Compare that figure to the last widths below rather than to a letter width, which is not standardised across manufacturers and tells you very little on its own."
+              },
+              {
+                "heading": "Last width by model",
+                "body": "A last is the form a boot is built around, and its width at the forefoot is the number that decides whether a boot fits a wide foot. The table lists forefoot last width in millimetres for each model in our range at a men's US 10 and a women's US 8, with the equivalent figures for commonly cross-shopped boots from other brands."
+              },
+              {
+                "heading": "Switching from another brand",
+                "body": "Sizing rarely transfers cleanly between manufacturers. If a brand's standard width fits you snugly at the forefoot, you generally want the next width up when switching, not a longer size \u2014 going up in length to gain width leaves excess room at the heel, which is what causes blisters on descent."
+              },
+              {
+                "heading": "Signs a boot is too narrow",
+                "body": "Numbness across the top of the forefoot, hotspots on the outside of the little toe, and toenail bruising after descents all indicate width rather than length problems. Lacing adjustments will not fix a last that is too narrow."
+              }
+            ],
+            "faq": [
+              {
+                "q": "Should I size up in length to get a wider hiking boot?",
+                "a": "No. Sizing up adds heel volume and lets the foot slide forward on descents. Look for a wide-width version of the same size instead."
+              },
+              {
+                "q": "Do hiking boots stretch to fit wider feet?",
+                "a": "Leather uppers relax slightly with use; synthetic uppers essentially do not. Neither meaningfully changes the last width the boot was built on."
+              },
+              {
+                "q": "How much toe room should a hiking boot have?",
+                "a": "About a thumb's width between your longest toe and the end of the boot, checked while standing with the boot laced and your weight forward."
+              }
+            ],
+            "target_keywords": [
+              "waterproof hiking boots",
+              "gore-tex boots women"
+            ],
+            "target_prompts": [
+              "best waterproof hiking boots for wide feet"
+            ],
+            "internal_links": [
+              {
+                "title": "The Complete Tent Buying Guide (2026)",
+                "url": "https://northwindoutdoor.com/guides/tent-buying-guide"
+              },
+              {
+                "title": "Layering 101: Base, Mid, Shell",
+                "url": "https://northwindoutdoor.com/guides/layering-101"
+              }
+            ],
+            "schema": "FAQPage + Article",
+            "word_count": 319,
+            "cms": "WordPress",
+            "can_draft": true,
+            "publish_action": "POST /wp/v2/posts (status=draft)"
+          }
         }
       ],
       "existing_content": [
@@ -943,11 +1026,68 @@
             "url": "https://northwindoutdoor.com/guides/layering-101"
           },
           "geo_visibility": 13.0,
-          "vs_category": -3.8,
-          "conversions": 164,
+          "vs_category": -7.1,
+          "conversions": 251,
           "cms": "WordPress",
           "action": "Create draft in WordPress",
           "can_draft": true,
+          "draft": {
+            "mode": "refresh",
+            "title": "Layering 101: Base, Mid, Shell \u2014 2026 Fabric Update",
+            "slug": "guides/layering-101",
+            "meta_description": "An updated guide to the three-layer system, covering current merino blends, synthetic alternatives, and when each one is the right choice.",
+            "angle": "Refresh the existing guide with current-season fabric technology so it regains citation relevance against newer competitor guides.",
+            "sections": [
+              {
+                "heading": "The three-layer system, briefly",
+                "body": "Base layers move moisture off the skin, mid layers trap warm air, and shells block wind and water. The system works because each layer does one job well; a single heavy garment cannot adapt as your output changes through a day."
+              },
+              {
+                "heading": "Current merino blends (updated for 2026)",
+                "body": "Pure merino remains the best option for odour resistance and next-to-skin comfort, but current blends pair it with a nylon or Tencel core to address its main weakness \u2014 durability. A 17.5-micron merino blended at around 12% nylon roughly doubles abrasion life against pure merino of the same weight, with no measurable loss in warmth."
+              },
+              {
+                "heading": "When to choose synthetic over merino",
+                "body": "Synthetics dry faster and cost less, which makes them the better base layer for high-output activity where you will sweat heavily and re-wear less often. Merino wins for multi-day trips, cold-weather use, and anywhere odour matters more than dry time."
+              },
+              {
+                "heading": "Matching layers to conditions",
+                "body": "Below freezing with low output calls for a heavyweight base and an insulated mid; above freezing with high output usually means a lightweight base and no mid at all, carrying the shell instead. The most common mistake is starting warm \u2014 begin slightly cold and let output close the gap."
+              }
+            ],
+            "faq": [
+              {
+                "q": "Can I wear a merino base layer multiple days without washing?",
+                "a": "Yes. Merino's odour resistance comes from its fibre structure, and most people get several days of use before washing is needed."
+              },
+              {
+                "q": "Do I need a mid layer in summer?",
+                "a": "Usually not while moving, but carrying a light fleece is worth the weight for stops and for exposed ridgelines where wind chill changes quickly."
+              },
+              {
+                "q": "What weight base layer should I buy first?",
+                "a": "A midweight (roughly 200 g/m\u00b2) covers the widest range of conditions and is the most versatile single purchase."
+              }
+            ],
+            "target_keywords": [
+              "merino wool base layer",
+              "trail running vest"
+            ],
+            "target_prompts": [
+              "what's the most durable 4 person tent for backpacking?"
+            ],
+            "internal_links": [
+              {
+                "title": "The Complete Tent Buying Guide (2026)",
+                "url": "https://northwindoutdoor.com/guides/tent-buying-guide"
+              }
+            ],
+            "schema": "FAQPage + Article",
+            "word_count": 276,
+            "cms": "WordPress",
+            "can_draft": true,
+            "publish_action": "POST /wp/v2/posts (status=draft)"
+          },
           "target_page": {
             "title": "Layering 101: Base, Mid, Shell",
             "slug": "guides/layering-101",
@@ -963,12 +1103,71 @@
             "text": "OutdoorGearLab \u2014 Best Tents",
             "url": "https://outdoorgearlab.com/best-tents"
           },
-          "geo_visibility": 21.7,
-          "vs_category": 4.8,
-          "conversions": 238,
+          "geo_visibility": 21.9,
+          "vs_category": -5.3,
+          "conversions": 94,
           "cms": "WordPress",
           "action": "Create draft in WordPress",
           "can_draft": true,
+          "draft": {
+            "mode": "refresh",
+            "title": "Tent Waterproof Ratings Explained: How to Compare Rainfly and Floor mm",
+            "slug": "guides/tent-waterproof-ratings-explained",
+            "meta_description": "What hydrostatic head ratings actually mean, how rainfly and floor numbers differ, and a side-by-side comparison of common 4-person tents.",
+            "angle": "Answer the comparison question directly, with a table AI engines can cite, instead of stating our own rating in prose.",
+            "sections": [
+              {
+                "heading": "What a waterproof rating actually measures",
+                "body": "A tent's waterproof rating is a hydrostatic head measurement: the height in millimetres of a water column the fabric holds before it leaks. A 3000mm rainfly withstands a 3000mm column. The number matters less as an absolute threshold than as a comparison point \u2014 most three-season tents sit between 1500mm and 3000mm, and the difference shows up in sustained rain, not drizzle."
+              },
+              {
+                "heading": "Why rainfly and floor ratings differ",
+                "body": "Floors are almost always rated higher than rainflies, and for a mechanical reason: a rainfly sheds water that runs off it, while a floor sits under your body weight in whatever pooled water the site collects. Pressure from a knee or elbow drives water through fabric that would otherwise hold. A tent with a 3000mm fly and a 1200mm floor will wet out from below long before the fly fails."
+              },
+              {
+                "heading": "4-person tent ratings compared",
+                "body": "The table below lists rainfly rating, floor rating, and seam-taping method across commonly cross-shopped 4-person tents, so the comparison is on one page rather than spread across manufacturer sites. Seam taping is included because an untaped seam undoes a high fabric rating \u2014 the fabric holds and the needle holes do not."
+              },
+              {
+                "heading": "What rating you actually need",
+                "body": "For summer weekends in settled weather, 1500mm is sufficient. For shoulder season, multi-day trips, or anywhere with sustained rain, 3000mm on the fly with a fully taped 5000mm floor is the practical target. Above that you are mostly paying for fabric weight you have to carry."
+              }
+            ],
+            "faq": [
+              {
+                "q": "Is a 3000mm tent waterproof enough for heavy rain?",
+                "a": "Yes for sustained three-season rain, provided the seams are taped and the floor is rated higher than the fly. Fly rating alone does not determine performance."
+              },
+              {
+                "q": "Does a higher waterproof rating mean a heavier tent?",
+                "a": "Usually, but not proportionally. Coating thickness adds weight, though modern silicone-polyurethane treatments reach 3000mm at close to the weight of older 1500mm fabrics."
+              },
+              {
+                "q": "How long does a tent's waterproof coating last?",
+                "a": "Typically 5\u20138 seasons of regular use. Coatings degrade from UV exposure and from being packed away damp, not from rain itself."
+              }
+            ],
+            "target_keywords": [
+              "4 person tent",
+              "rain shell jacket men",
+              "gore-tex boots women"
+            ],
+            "target_prompts": [
+              "what's the most durable 4 person tent for backpacking?",
+              "best waterproof hiking boots for wide feet"
+            ],
+            "internal_links": [
+              {
+                "title": "Layering 101: Base, Mid, Shell",
+                "url": "https://northwindoutdoor.com/guides/layering-101"
+              }
+            ],
+            "schema": "FAQPage + Article",
+            "word_count": 326,
+            "cms": "WordPress",
+            "can_draft": true,
+            "publish_action": "POST /wp/v2/posts (status=draft)"
+          },
           "target_page": {
             "title": "The Complete Tent Buying Guide (2026)",
             "slug": "guides/tent-buying-guide",
@@ -986,83 +1185,83 @@
     "summary": [
       {
         "src": "GSC",
-        "text": "Organic clicks grew 61.1% vs the prior period."
+        "text": "Organic clicks grew 2.2% vs the prior period."
       },
       {
         "src": "GA4",
-        "text": "Organic-driven conversions are down 4.3% ($50,193 in attributed revenue this period)."
+        "text": "Organic-driven conversions are up 162.8% ($54,917 in attributed revenue this period)."
       },
       {
         "src": "Semrush",
-        "text": "Domain Authority Score slipped to 32 (-8)."
+        "text": "Domain Authority Score climbed to 52 (+0)."
       },
       {
         "src": "AI Toolkit",
-        "text": "AI search visibility rose to 24.6 (+0.9) \u2014 Basecamp Gear holds 11% share of voice vs Summitware at 28%."
+        "text": "AI search visibility dipped to 26.4 (-1.7) \u2014 Basecamp Gear holds 9% share of voice vs Northwind Outdoor Co. at 11%."
       }
     ],
     "gsc": {
-      "clicks": 14537,
-      "clicks_delta_pct": 61.1,
-      "impressions": 268405,
-      "impressions_delta_pct": 28.6,
-      "avg_position": 10.6,
-      "position_delta": 5.4
+      "clicks": 14455,
+      "clicks_delta_pct": 2.2,
+      "impressions": 289827,
+      "impressions_delta_pct": 13.9,
+      "avg_position": 14.0,
+      "position_delta": 1.0
     },
     "ga4": {
-      "sessions": 23985,
-      "sessions_delta_pct": -35.7,
-      "conversions": 932,
-      "conversions_delta_pct": -4.3,
-      "revenue": 50193.17
+      "sessions": 41853,
+      "sessions_delta_pct": -14.5,
+      "conversions": 1046,
+      "conversions_delta_pct": 162.8,
+      "revenue": 54917.41
     },
     "backlinks": {
-      "ascore": 32,
-      "ascore_delta": -8
+      "ascore": 52,
+      "ascore_delta": 0
     },
     "ai_visibility": {
-      "score": 24.6,
-      "score_delta": 0.9,
-      "share_of_voice": 0.107,
+      "score": 26.4,
+      "score_delta": -1.7,
+      "share_of_voice": 0.088,
       "top_competitor": {
-        "name": "Summitware",
-        "share_of_voice": 0.283
+        "name": "Northwind Outdoor Co.",
+        "share_of_voice": 0.108
       },
       "per_engine": [
         {
           "engine": "chatgpt",
-          "visibility_score": 10.7,
-          "share_of_voice": 0.128,
-          "avg_position": 4.5,
-          "change_vs_previous": 7.2
+          "visibility_score": 33.8,
+          "share_of_voice": 0.047,
+          "avg_position": 2.6,
+          "change_vs_previous": 3.5
         },
         {
           "engine": "perplexity",
-          "visibility_score": 26.6,
-          "share_of_voice": 0.119,
-          "avg_position": 3.8,
-          "change_vs_previous": 8.1
+          "visibility_score": 32.9,
+          "share_of_voice": 0.056,
+          "avg_position": 2.6,
+          "change_vs_previous": 7.3
         },
         {
           "engine": "google_aio",
-          "visibility_score": 31.8,
-          "share_of_voice": 0.055,
-          "avg_position": 1.7,
-          "change_vs_previous": -4.1
+          "visibility_score": 13.4,
+          "share_of_voice": 0.068,
+          "avg_position": 2.9,
+          "change_vs_previous": 6.7
         },
         {
           "engine": "copilot",
-          "visibility_score": 16.4,
-          "share_of_voice": 0.174,
-          "avg_position": 3.1,
-          "change_vs_previous": -3.7
+          "visibility_score": 37.1,
+          "share_of_voice": 0.15,
+          "avg_position": 1.5,
+          "change_vs_previous": -0.9
         },
         {
           "engine": "claude",
-          "visibility_score": 37.7,
-          "share_of_voice": 0.061,
-          "avg_position": 4.1,
-          "change_vs_previous": -4.9
+          "visibility_score": 14.8,
+          "share_of_voice": 0.118,
+          "avg_position": 1.7,
+          "change_vs_previous": 1.4
         }
       ],
       "best_mention": {
@@ -1075,20 +1274,20 @@
       {
         "page_title": "Assisted-Braking Belay Devices Compared",
         "url": "https://basecampgear.com/guides/belay-devices-compared",
-        "citations_count": 34,
-        "percent_change": 0.48
+        "citations_count": 7,
+        "percent_change": 0.21
       },
       {
         "page_title": "How to Size a Climbing Harness",
         "url": "https://basecampgear.com/guides/harness-sizing",
-        "citations_count": 12,
-        "percent_change": 0.1
+        "citations_count": 58,
+        "percent_change": 0.55
       }
     ],
     "recommendations": [
       "Refresh the stale guide flagged above and add an FAQ block targeting the AI-cited queries.",
-      "Publish a comparison page targeting \"sleeping pad r-value\" to recover lost position.",
-      "Monitor Summitware's AI share-of-voice gains \u2014 consider a prompt-level content gap analysis next cycle."
+      "Publish a comparison page targeting \"bouldering crash pad\" to recover lost position.",
+      "Monitor Northwind Outdoor Co.'s AI share-of-voice gains \u2014 consider a prompt-level content gap analysis next cycle."
     ],
     "inputs": {
       "industry": "Climbing & mountaineering gear",
@@ -1124,126 +1323,126 @@
       "own": {
         "name": "Basecamp Gear",
         "domain": "basecampgear.com",
-        "search_visibility": 0.125,
-        "search_avg_position": 12.4,
-        "keywords_tracked": 420,
-        "geo_share_of_voice": 0.107,
-        "geo_visibility_score": 24.6
+        "search_visibility": 0.166,
+        "search_avg_position": 12.5,
+        "keywords_tracked": 315,
+        "geo_share_of_voice": 0.088,
+        "geo_visibility_score": 26.4
       },
       "competitors": [
         {
           "name": "Northwind Outdoor Co.",
           "domain": "northwindoutdoor.com",
-          "search_visibility": 0.142,
-          "search_avg_position": 19.0,
-          "keyword_overlap": 0.63,
-          "geo_share_of_voice": 0.044,
-          "geo_visibility_score": 11.5,
-          "geo_top_engine": "chatgpt",
-          "search_gap": -0.017,
-          "geo_gap": 0.063,
-          "leads_search": false,
-          "leads_geo": true
-        },
-        {
-          "name": "TrailForge",
-          "domain": "trailforge.com",
-          "search_visibility": 0.248,
-          "search_avg_position": 11.7,
-          "keyword_overlap": 0.36,
-          "geo_share_of_voice": 0.156,
-          "geo_visibility_score": 30.4,
-          "geo_top_engine": "copilot",
-          "search_gap": -0.123,
-          "geo_gap": -0.049,
+          "search_visibility": 0.178,
+          "search_avg_position": 18.4,
+          "keyword_overlap": 0.35,
+          "geo_share_of_voice": 0.108,
+          "geo_visibility_score": 25.1,
+          "geo_top_engine": "google_aio",
+          "search_gap": -0.012,
+          "geo_gap": -0.02,
           "leads_search": false,
           "leads_geo": false
         },
         {
+          "name": "TrailForge",
+          "domain": "trailforge.com",
+          "search_visibility": 0.11,
+          "search_avg_position": 13.2,
+          "keyword_overlap": 0.7,
+          "geo_share_of_voice": 0.066,
+          "geo_visibility_score": 31.5,
+          "geo_top_engine": "chatgpt",
+          "search_gap": 0.056,
+          "geo_gap": 0.022,
+          "leads_search": true,
+          "leads_geo": true
+        },
+        {
           "name": "Summitware",
           "domain": "summitware.com",
-          "search_visibility": 0.098,
-          "search_avg_position": 11.8,
-          "keyword_overlap": 0.54,
-          "geo_share_of_voice": 0.283,
-          "geo_visibility_score": 18.1,
-          "geo_top_engine": "google_aio",
-          "search_gap": 0.027,
-          "geo_gap": -0.176,
-          "leads_search": true,
+          "search_visibility": 0.246,
+          "search_avg_position": 11.7,
+          "keyword_overlap": 0.28,
+          "geo_share_of_voice": 0.094,
+          "geo_visibility_score": 34.7,
+          "geo_top_engine": "perplexity",
+          "search_gap": -0.08,
+          "geo_gap": -0.006,
+          "leads_search": false,
           "leads_geo": false
         }
       ],
       "summary": {
         "behind_on_geo": [
-          "TrailForge",
+          "Northwind Outdoor Co.",
           "Summitware"
         ],
         "behind_on_search": [
           "Northwind Outdoor Co.",
-          "TrailForge"
+          "Summitware"
         ],
         "ahead_of_all_geo": false
       }
     },
     "category": {
       "category": "Climbing & mountaineering gear",
-      "own_share": 0.161,
-      "own_share_delta": 0.0,
+      "own_share": 0.092,
+      "own_share_delta": -0.024,
       "own_rank": 2,
-      "brands_tracked": 11,
+      "brands_tracked": 22,
       "named_competitors": [
         {
           "name": "Northwind Outdoor Co.",
-          "share": 0.138
-        },
-        {
-          "name": "TrailForge",
           "share": 0.156
         },
         {
+          "name": "TrailForge",
+          "share": 0.183
+        },
+        {
           "name": "Summitware",
-          "share": 0.122
+          "share": 0.158
         }
       ],
-      "long_tail_share": 0.423,
-      "total_category_prompts": 1551,
-      "total_category_keywords": 7792,
+      "long_tail_share": 0.411,
+      "total_category_prompts": 1635,
+      "total_category_keywords": 7856,
       "pillars": [
         {
           "id": "beginner-safety",
           "pillar": "Safety & Certification Claims",
           "title": "Basecamp leads beginner belay questions, but harness certification detail is missing",
           "search": {
-            "clicks": 3262,
-            "impressions": 46187,
-            "avg_position": 7.2,
-            "semrush_position": 14.0,
+            "clicks": 2920,
+            "impressions": 74186,
+            "avg_position": 12.2,
+            "semrush_position": 35.0,
             "queries": [
               "belay device assisted braking",
               "climbing harness beginner"
             ]
           },
           "geo": {
-            "visibility_score": 25.9,
-            "category_avg": 25.4,
-            "vs_category": 0.5,
+            "visibility_score": 28.4,
+            "category_avg": 28.4,
+            "vs_category": 0.0,
             "mentions": 4,
             "mentions_total": 10
           },
           "conversion": {
-            "sessions": 10052,
-            "conversions": 111,
-            "conversion_rate": 0.011,
-            "revenue": 4988.21,
-            "conversions_delta_pct": -61.6
+            "sessions": 3960,
+            "conversions": 79,
+            "conversion_rate": 0.0199,
+            "revenue": 3524.31,
+            "conversions_delta_pct": -47.0
           },
           "owned_page": {
             "title": "Assisted-Braking Belay Devices Compared",
             "slug": "guides/belay-devices-compared",
             "last_modified": "2026-06-10T00:00:00"
           },
-          "verdict": "winning",
+          "verdict": "losing",
           "bullets": [
             {
               "label": "What's happening",
@@ -1278,28 +1477,28 @@
           "pillar": "Weight & Packability",
           "title": "Pack-weight comparisons skip Basecamp's 60L line",
           "search": {
-            "clicks": 1565,
-            "impressions": 22402,
-            "avg_position": 19.1,
-            "semrush_position": 20.5,
+            "clicks": 1628,
+            "impressions": 52418,
+            "avg_position": 12.2,
+            "semrush_position": 5.5,
             "queries": [
               "60l backpacking pack",
               "sleeping pad r-value"
             ]
           },
           "geo": {
-            "visibility_score": 7.1,
-            "category_avg": 24.8,
-            "vs_category": -17.7,
+            "visibility_score": 7.5,
+            "category_avg": 24.3,
+            "vs_category": -16.8,
             "mentions": 1,
             "mentions_total": 10
           },
           "conversion": {
-            "sessions": 1042,
-            "conversions": 35,
-            "conversion_rate": 0.0336,
-            "revenue": 2134.76,
-            "conversions_delta_pct": -57.3
+            "sessions": 10066,
+            "conversions": 169,
+            "conversion_rate": 0.0168,
+            "revenue": 9189.24,
+            "conversions_delta_pct": 344.7
           },
           "owned_page": null,
           "verdict": "losing",
@@ -1329,10 +1528,10 @@
           "pillar": "Winter & Technical Gear",
           "title": "Ice-axe and crampon content is stale and losing citations",
           "search": {
-            "clicks": 3336,
-            "impressions": 65173,
-            "avg_position": 14.9,
-            "semrush_position": 20.0,
+            "clicks": 3724,
+            "impressions": 57635,
+            "avg_position": 6.4,
+            "semrush_position": 23.0,
             "queries": [
               "ice axe self arrest",
               "crampons for hiking boots"
@@ -1340,17 +1539,17 @@
           },
           "geo": {
             "visibility_score": 0.0,
-            "category_avg": 16.4,
-            "vs_category": -16.4,
+            "category_avg": 29.1,
+            "vs_category": -29.1,
             "mentions": 0,
             "mentions_total": 10
           },
           "conversion": {
-            "sessions": 11999,
-            "conversions": 178,
-            "conversion_rate": 0.0148,
-            "revenue": 7761.12,
-            "conversions_delta_pct": 368.4
+            "sessions": 4343,
+            "conversions": 106,
+            "conversion_rate": 0.0244,
+            "revenue": 6068.77,
+            "conversions_delta_pct": -57.3
           },
           "owned_page": {
             "title": "Ice Axe Buying Guide (2020)",
@@ -1394,12 +1593,73 @@
             "text": "Osprey \u2014 Pack Weight Comparison",
             "url": "https://osprey.com/us/en/packweight"
           },
-          "geo_visibility": 7.1,
-          "vs_category": -17.7,
-          "conversions": 35,
+          "geo_visibility": 7.5,
+          "vs_category": -16.8,
+          "conversions": 169,
           "cms": "Webflow",
-          "action": "Brief for Webflow",
-          "can_draft": false
+          "action": "Draft for Webflow",
+          "can_draft": false,
+          "draft": {
+            "mode": "new",
+            "title": "60L Pack Weight Compared: Base Weight, Max Load, and Fabric Denier",
+            "slug": "guides/60l-pack-weight-comparison",
+            "meta_description": "Base weight, maximum recommended load, and fabric denier compared across 60-litre backpacking packs, with guidance on the trade-offs.",
+            "angle": "Publish the structured weight-class data competitors' pages already provide, so 'lightest 60L pack' prompts have a Basecamp source.",
+            "sections": [
+              {
+                "heading": "Base weight versus carried weight",
+                "body": "A pack's base weight is what it weighs empty, with the lid and hipbelt attached and nothing inside. It is the only number that compares cleanly across packs, because carried weight depends entirely on what you put in. Most 60-litre packs sit between 1.4 kg and 2.2 kg empty."
+              },
+              {
+                "heading": "The weight-versus-durability trade",
+                "body": "Fabric denier \u2014 the thickness of the yarn \u2014 is where most of the weight difference comes from. A 100D nylon pack body saves several hundred grams over a 400D body of the same volume, and abrades through noticeably faster against rock. Neither is wrong; they suit different trip profiles."
+              },
+              {
+                "heading": "Maximum recommended load",
+                "body": "Every pack has a load above which the suspension stops transferring weight to the hips effectively. Ultralight frameless packs top out around 15 kg; framed 60-litre packs typically handle 20\u201325 kg. Exceeding it does not break the pack, but the weight ends up on your shoulders."
+              },
+              {
+                "heading": "60L pack specifications compared",
+                "body": "The table lists base weight, maximum recommended load, main-body denier, and frame type for each 60-litre pack in the range, alongside commonly cross-shopped models, so the comparison sits on one page."
+              }
+            ],
+            "faq": [
+              {
+                "q": "What is a good base weight for a 60L backpacking pack?",
+                "a": "Around 1.5 kg is light for the category, 1.8\u20132.0 kg is typical, and above 2.2 kg usually indicates a heavier-duty suspension or fabric."
+              },
+              {
+                "q": "Does a lighter pack carry less comfortably?",
+                "a": "Above roughly 18 kg, yes \u2014 lighter packs achieve their weight partly by simplifying the frame, which is what transfers load to the hips."
+              },
+              {
+                "q": "Is 100D fabric durable enough for backpacking?",
+                "a": "For trail use, yes. For regular off-trail travel or scrambling against rock, a higher-denier body will last considerably longer."
+              }
+            ],
+            "target_keywords": [
+              "60l backpacking pack",
+              "sleeping pad r-value"
+            ],
+            "target_prompts": [
+              "lightest 60L backpacking pack"
+            ],
+            "internal_links": [
+              {
+                "title": "Assisted-Braking Belay Devices Compared",
+                "url": "https://basecampgear.com/guides/belay-devices-compared"
+              },
+              {
+                "title": "Ice Axe Buying Guide (2020)",
+                "url": "https://basecampgear.com/blog/ice-axe-guide-2020"
+              }
+            ],
+            "schema": "FAQPage + Article",
+            "word_count": 267,
+            "cms": "Webflow",
+            "can_draft": false,
+            "publish_action": "Copy into Webflow \u2014 no write endpoint available"
+          }
         }
       ],
       "existing_content": [
@@ -1413,11 +1673,69 @@
             "url": "https://basecampgear.com/blog/ice-axe-guide-2020"
           },
           "geo_visibility": 0.0,
-          "vs_category": -16.4,
-          "conversions": 178,
+          "vs_category": -29.1,
+          "conversions": 106,
           "cms": "Webflow",
-          "action": "Brief for Webflow",
+          "action": "Draft for Webflow",
           "can_draft": false,
+          "draft": {
+            "mode": "refresh",
+            "title": "Ice Axe Buying Guide: Length, Type, and Self-Arrest",
+            "slug": "guides/ice-axe-buying-guide",
+            "meta_description": "How to choose an ice axe by length and type, what the certification ratings mean, and how self-arrest technique affects your choice.",
+            "angle": "Replace the 2020 guide, which references discontinued models and has stopped earning citations entirely.",
+            "sections": [
+              {
+                "heading": "Choosing a length",
+                "body": "For general mountaineering, stand with the axe held at your side: the spike should reach roughly your ankle bone. That works out to about 60 cm for most people between 170 cm and 180 cm tall. Shorter axes suit steeper technical ground; longer axes are more useful as a walking aid on low-angle terrain."
+              },
+              {
+                "heading": "B-rated versus T-rated",
+                "body": "A B (basic) rating indicates a shaft tested to a lower load, suitable for general mountaineering. A T (technical) rating indicates a stronger shaft intended for steep ice and anchor use. For glacier travel and snow slopes, B-rated is appropriate; for anything where the axe becomes an anchor, choose T."
+              },
+              {
+                "heading": "Self-arrest and why the pick shape matters",
+                "body": "Self-arrest is the technique of stopping a slide by driving the pick into the snow while controlling the shaft against your body. A classically curved pick engages progressively and is more forgiving; an aggressively reverse-curved technical pick bites harder and is more likely to be torn from your grip. For an axe you may need to arrest with, the classic curve is the safer choice."
+              },
+              {
+                "heading": "Practising before you need it",
+                "body": "Self-arrest is not intuitive and cannot be learned in the moment. Practise on a safe, run-out slope with no rocks below, from all four positions: feet first on your front and back, and head first on your front and back. The head-first positions are the ones that matter and the ones people skip."
+              }
+            ],
+            "faq": [
+              {
+                "q": "What length ice axe do I need for general mountaineering?",
+                "a": "Around 60 cm suits most people of average height. Held at your side, the spike should reach roughly your ankle."
+              },
+              {
+                "q": "Can you self-arrest with a technical ice axe?",
+                "a": "It is possible but harder \u2014 reverse-curve picks bite aggressively and can be wrenched out of your hands. A classic curve is more forgiving."
+              },
+              {
+                "q": "Do I need a leash on an ice axe?",
+                "a": "For glacier travel a leash prevents loss in a crevasse fall. On steep ground many climbers go leashless to switch hands freely; it is a trade-off, not a rule."
+              }
+            ],
+            "target_keywords": [
+              "ice axe self arrest",
+              "crampons for hiking boots"
+            ],
+            "target_prompts": [
+              "best belay device for a beginner climber?",
+              "what harness certification should I look for?"
+            ],
+            "internal_links": [
+              {
+                "title": "Assisted-Braking Belay Devices Compared",
+                "url": "https://basecampgear.com/guides/belay-devices-compared"
+              }
+            ],
+            "schema": "FAQPage + Article",
+            "word_count": 322,
+            "cms": "Webflow",
+            "can_draft": false,
+            "publish_action": "Copy into Webflow \u2014 no write endpoint available"
+          },
           "target_page": {
             "title": "Ice Axe Buying Guide (2020)",
             "slug": "blog/ice-axe-guide-2020",
@@ -1433,12 +1751,70 @@
             "text": "Petzl \u2014 Harness Safety Standards",
             "url": "https://petzl.com/US/en/Sport/harnesses"
           },
-          "geo_visibility": 25.9,
-          "vs_category": 0.5,
-          "conversions": 111,
+          "geo_visibility": 28.4,
+          "vs_category": 0.0,
+          "conversions": 79,
           "cms": "Webflow",
-          "action": "Brief for Webflow",
+          "action": "Draft for Webflow",
           "can_draft": false,
+          "draft": {
+            "mode": "refresh",
+            "title": "Climbing Harness Certification: What UIAA and CE Ratings Mean",
+            "slug": "guides/harness-certification-standards",
+            "meta_description": "How UIAA 105 and EN 12277 harness certification works, what the test loads mean, and how to read the rating label on your harness.",
+            "angle": "Publish the certification detail that competitors' spec sheets currently own, so safety-standard prompts have a Basecamp source to cite.",
+            "sections": [
+              {
+                "heading": "The two standards that matter",
+                "body": "Climbing harnesses sold in Europe carry EN 12277 certification; UIAA 105 is a parallel standard from the international climbing federation with broadly equivalent requirements. A harness meeting either has passed static strength and drop testing under defined conditions \u2014 the label is not decorative."
+              },
+              {
+                "heading": "What the test loads actually represent",
+                "body": "A Type C sit harness must hold 15 kN applied through the tie-in points without failure. For context, a hard factor-two fall on a dynamic rope generates well under 12 kN at the harness. The margin exists because certification tests a new harness in controlled conditions, and real harnesses age, abrade, and get loaded at angles the test does not reproduce."
+              },
+              {
+                "heading": "Harness types A through D",
+                "body": "Type A is a full-body harness, Type B is a full-body harness sized for children under 40 kg, Type C is the standard sit harness most climbers use, and Type D is a chest harness intended only for use with a Type C. The type appears on the label alongside the standard number."
+              },
+              {
+                "heading": "Reading the label on your harness",
+                "body": "Every certified harness carries the standard, the type, the manufacture date, and a serial or batch number, usually on a sewn tag inside the waist belt. The manufacture date matters: most manufacturers specify a maximum service life of ten years from manufacture regardless of use."
+              }
+            ],
+            "faq": [
+              {
+                "q": "Is a UIAA-certified harness safer than a CE-certified one?",
+                "a": "No. The requirements are broadly equivalent, and most harnesses carry both. Either certification indicates the harness passed defined strength testing."
+              },
+              {
+                "q": "How long is a climbing harness rated for?",
+                "a": "Most manufacturers specify up to ten years from the manufacture date, and less with heavy use. Retire immediately after any significant fall or visible damage."
+              },
+              {
+                "q": "What does 15 kN mean in practical terms?",
+                "a": "Roughly 1,500 kg of force. It is well above what a climbing fall generates, which is why the failure point in a real system is rarely the harness."
+              }
+            ],
+            "target_keywords": [
+              "belay device assisted braking",
+              "climbing harness beginner"
+            ],
+            "target_prompts": [
+              "best belay device for a beginner climber?",
+              "what harness certification should I look for?"
+            ],
+            "internal_links": [
+              {
+                "title": "Ice Axe Buying Guide (2020)",
+                "url": "https://basecampgear.com/blog/ice-axe-guide-2020"
+              }
+            ],
+            "schema": "FAQPage + Article",
+            "word_count": 301,
+            "cms": "Webflow",
+            "can_draft": false,
+            "publish_action": "Copy into Webflow \u2014 no write endpoint available"
+          },
           "target_page": {
             "title": "Assisted-Braking Belay Devices Compared",
             "slug": "guides/belay-devices-compared",
@@ -1456,83 +1832,83 @@
     "summary": [
       {
         "src": "GSC",
-        "text": "Organic clicks fell 28.8% vs the prior period."
+        "text": "Organic clicks grew 16.9% vs the prior period."
       },
       {
         "src": "GA4",
-        "text": "Organic-driven conversions are up 1.9% ($15,480 in attributed revenue this period)."
+        "text": "Organic-driven conversions are up 46.3% ($36,582 in attributed revenue this period)."
       },
       {
         "src": "Semrush",
-        "text": "Domain Authority Score slipped to 28 (-13)."
+        "text": "Domain Authority Score climbed to 43 (+2)."
       },
       {
         "src": "AI Toolkit",
-        "text": "AI search visibility dipped to 19.3 (-10.5) \u2014 Alpine Supply Co. holds 9% share of voice vs TrailForge at 18%."
+        "text": "AI search visibility dipped to 25.0 (-3.6) \u2014 Alpine Supply Co. holds 8% share of voice vs Northwind Outdoor Co. at 31%."
       }
     ],
     "gsc": {
-      "clicks": 12357,
-      "clicks_delta_pct": -28.8,
-      "impressions": 232618,
-      "impressions_delta_pct": -18.5,
-      "avg_position": 14.6,
-      "position_delta": 0.5
+      "clicks": 14907,
+      "clicks_delta_pct": 16.9,
+      "impressions": 292639,
+      "impressions_delta_pct": 21.1,
+      "avg_position": 12.0,
+      "position_delta": 2.9
     },
     "ga4": {
-      "sessions": 47300,
-      "sessions_delta_pct": 52.1,
-      "conversions": 375,
-      "conversions_delta_pct": 1.9,
-      "revenue": 15480.42
+      "sessions": 28200,
+      "sessions_delta_pct": 18.0,
+      "conversions": 853,
+      "conversions_delta_pct": 46.3,
+      "revenue": 36582.21
     },
     "backlinks": {
-      "ascore": 28,
-      "ascore_delta": -13
+      "ascore": 43,
+      "ascore_delta": 2
     },
     "ai_visibility": {
-      "score": 19.3,
-      "score_delta": -10.5,
-      "share_of_voice": 0.091,
+      "score": 25.0,
+      "score_delta": -3.6,
+      "share_of_voice": 0.078,
       "top_competitor": {
-        "name": "TrailForge",
-        "share_of_voice": 0.185
+        "name": "Northwind Outdoor Co.",
+        "share_of_voice": 0.309
       },
       "per_engine": [
         {
           "engine": "chatgpt",
-          "visibility_score": 17.9,
-          "share_of_voice": 0.151,
-          "avg_position": 3.3,
-          "change_vs_previous": -5.7
+          "visibility_score": 24.7,
+          "share_of_voice": 0.066,
+          "avg_position": 2.7,
+          "change_vs_previous": 2.2
         },
         {
           "engine": "perplexity",
-          "visibility_score": 31.9,
-          "share_of_voice": 0.1,
-          "avg_position": 2.6,
-          "change_vs_previous": 6.9
+          "visibility_score": 17.1,
+          "share_of_voice": 0.043,
+          "avg_position": 3.1,
+          "change_vs_previous": -5.8
         },
         {
           "engine": "google_aio",
-          "visibility_score": 10.4,
-          "share_of_voice": 0.038,
-          "avg_position": 2.2,
-          "change_vs_previous": 7.5
+          "visibility_score": 15.0,
+          "share_of_voice": 0.083,
+          "avg_position": 2.8,
+          "change_vs_previous": -0.8
         },
         {
           "engine": "copilot",
-          "visibility_score": 25.2,
-          "share_of_voice": 0.105,
-          "avg_position": 2.9,
-          "change_vs_previous": 1.4
+          "visibility_score": 32.8,
+          "share_of_voice": 0.106,
+          "avg_position": 4.0,
+          "change_vs_previous": 3.3
         },
         {
           "engine": "claude",
-          "visibility_score": 11.1,
-          "share_of_voice": 0.062,
-          "avg_position": 4.3,
-          "change_vs_previous": 6.1
+          "visibility_score": 35.2,
+          "share_of_voice": 0.094,
+          "avg_position": 1.4,
+          "change_vs_previous": 5.7
         }
       ],
       "best_mention": {
@@ -1545,20 +1921,20 @@
       {
         "page_title": "Choosing Ski Goggle Lens Tints",
         "url": "https://alpinesupply.co/guides/goggle-lens-tints",
-        "citations_count": 29,
+        "citations_count": 48,
         "percent_change": 0.37
       },
       {
         "page_title": "Avalanche Safety Gear Checklist",
         "url": "https://alpinesupply.co/guides/avalanche-safety-checklist",
-        "citations_count": 60,
-        "percent_change": -0.04
+        "citations_count": 54,
+        "percent_change": 0.09
       }
     ],
     "recommendations": [
       "Refresh the stale guide flagged above and add an FAQ block targeting the AI-cited queries.",
-      "Publish a comparison page targeting \"snowshoes for deep powder\" to recover lost position.",
-      "Monitor TrailForge's AI share-of-voice gains \u2014 consider a prompt-level content gap analysis next cycle."
+      "Publish a comparison page targeting \"ski jacket waterproof rating\" to recover lost position.",
+      "Monitor Northwind Outdoor Co.'s AI share-of-voice gains \u2014 consider a prompt-level content gap analysis next cycle."
     ],
     "inputs": {
       "industry": "Ski & snow sports equipment",
@@ -1594,52 +1970,52 @@
       "own": {
         "name": "Alpine Supply Co.",
         "domain": "alpinesupply.co",
-        "search_visibility": 0.106,
-        "search_avg_position": 14.5,
-        "keywords_tracked": 333,
-        "geo_share_of_voice": 0.091,
-        "geo_visibility_score": 19.3
+        "search_visibility": 0.189,
+        "search_avg_position": 14.9,
+        "keywords_tracked": 419,
+        "geo_share_of_voice": 0.078,
+        "geo_visibility_score": 25.0
       },
       "competitors": [
         {
           "name": "TrailForge",
           "domain": "trailforge.com",
-          "search_visibility": 0.271,
-          "search_avg_position": 9.1,
-          "keyword_overlap": 0.39,
-          "geo_share_of_voice": 0.185,
-          "geo_visibility_score": 10.3,
-          "geo_top_engine": "perplexity",
-          "search_gap": -0.165,
-          "geo_gap": -0.094,
-          "leads_search": false,
+          "search_visibility": 0.118,
+          "search_avg_position": 19.0,
+          "keyword_overlap": 0.38,
+          "geo_share_of_voice": 0.13,
+          "geo_visibility_score": 22.6,
+          "geo_top_engine": "claude",
+          "search_gap": 0.071,
+          "geo_gap": -0.052,
+          "leads_search": true,
           "leads_geo": false
         },
         {
           "name": "Northwind Outdoor Co.",
           "domain": "northwindoutdoor.com",
-          "search_visibility": 0.203,
-          "search_avg_position": 10.2,
-          "keyword_overlap": 0.46,
-          "geo_share_of_voice": 0.061,
-          "geo_visibility_score": 24.2,
+          "search_visibility": 0.193,
+          "search_avg_position": 13.6,
+          "keyword_overlap": 0.5,
+          "geo_share_of_voice": 0.309,
+          "geo_visibility_score": 16.4,
           "geo_top_engine": "claude",
-          "search_gap": -0.097,
-          "geo_gap": 0.03,
+          "search_gap": -0.004,
+          "geo_gap": -0.231,
           "leads_search": false,
-          "leads_geo": true
+          "leads_geo": false
         },
         {
           "name": "BasecampGear",
           "domain": "basecampgear.com",
-          "search_visibility": 0.209,
-          "search_avg_position": 18.7,
-          "keyword_overlap": 0.51,
-          "geo_share_of_voice": 0.142,
+          "search_visibility": 0.201,
+          "search_avg_position": 12.9,
+          "keyword_overlap": 0.43,
+          "geo_share_of_voice": 0.303,
           "geo_visibility_score": 30.2,
-          "geo_top_engine": "chatgpt",
-          "search_gap": -0.103,
-          "geo_gap": -0.051,
+          "geo_top_engine": "claude",
+          "search_gap": -0.012,
+          "geo_gap": -0.225,
           "leads_search": false,
           "leads_geo": false
         }
@@ -1647,10 +2023,10 @@
       "summary": {
         "behind_on_geo": [
           "TrailForge",
+          "Northwind Outdoor Co.",
           "BasecampGear"
         ],
         "behind_on_search": [
-          "TrailForge",
           "Northwind Outdoor Co.",
           "BasecampGear"
         ],
@@ -1659,54 +2035,54 @@
     },
     "category": {
       "category": "Ski & snow sports equipment",
-      "own_share": 0.164,
-      "own_share_delta": 0.017,
-      "own_rank": 5,
-      "brands_tracked": 18,
+      "own_share": 0.073,
+      "own_share_delta": -0.063,
+      "own_rank": 3,
+      "brands_tracked": 23,
       "named_competitors": [
         {
           "name": "TrailForge",
-          "share": 0.133
+          "share": 0.181
         },
         {
           "name": "Northwind Outdoor Co.",
-          "share": 0.251
+          "share": 0.272
         },
         {
           "name": "BasecampGear",
-          "share": 0.103
+          "share": 0.102
         }
       ],
-      "long_tail_share": 0.349,
-      "total_category_prompts": 1174,
-      "total_category_keywords": 7176,
+      "long_tail_share": 0.372,
+      "total_category_prompts": 1279,
+      "total_category_keywords": 6823,
       "pillars": [
         {
           "id": "flat-light-goggles",
           "pillar": "Lens & Tint Guidance",
           "title": "Alpine Supply owns the flat-light goggle conversation",
           "search": {
-            "clicks": 1791,
-            "impressions": 28082,
-            "avg_position": 17.4,
-            "semrush_position": 16.0,
+            "clicks": 1455,
+            "impressions": 20623,
+            "avg_position": 6.7,
+            "semrush_position": 29.0,
             "queries": [
               "goggles for flat light"
             ]
           },
           "geo": {
-            "visibility_score": 45.2,
-            "category_avg": 26.1,
-            "vs_category": 19.1,
+            "visibility_score": 41.4,
+            "category_avg": 15.3,
+            "vs_category": 26.1,
             "mentions": 6,
             "mentions_total": 10
           },
           "conversion": {
-            "sessions": 1387,
-            "conversions": 40,
-            "conversion_rate": 0.0288,
-            "revenue": 2218.03,
-            "conversions_delta_pct": -66.4
+            "sessions": 2444,
+            "conversions": 39,
+            "conversion_rate": 0.016,
+            "revenue": 2370.17,
+            "conversions_delta_pct": 0.0
           },
           "owned_page": {
             "title": "Choosing Ski Goggle Lens Tints",
@@ -1748,9 +2124,9 @@
           "pillar": "Cold-Weather Safety Gear",
           "title": "Avalanche beacon rental questions favor local shops over Alpine Supply",
           "search": {
-            "clicks": 1859,
-            "impressions": 24340,
-            "avg_position": 19.6,
+            "clicks": 352,
+            "impressions": 6470,
+            "avg_position": 14.9,
             "semrush_position": 14.0,
             "queries": [
               "avalanche beacon rental"
@@ -1758,17 +2134,17 @@
           },
           "geo": {
             "visibility_score": 0.0,
-            "category_avg": 24.0,
-            "vs_category": -24.0,
+            "category_avg": 22.2,
+            "vs_category": -22.2,
             "mentions": 0,
             "mentions_total": 10
           },
           "conversion": {
-            "sessions": 5533,
-            "conversions": 196,
-            "conversion_rate": 0.0354,
-            "revenue": 8903.35,
-            "conversions_delta_pct": 21.7
+            "sessions": 2694,
+            "conversions": 93,
+            "conversion_rate": 0.0345,
+            "revenue": 4860.9,
+            "conversions_delta_pct": -23.1
           },
           "owned_page": {
             "title": "Avalanche Safety Gear Checklist",
@@ -1802,28 +2178,28 @@
           "pillar": "Boot Fit & Touring Setup",
           "title": "Backcountry boot-fit content is gaining but under-cited",
           "search": {
-            "clicks": 1580,
-            "impressions": 41320,
-            "avg_position": 14.2,
-            "semrush_position": 14.0,
+            "clicks": 2691,
+            "impressions": 62396,
+            "avg_position": 14.8,
+            "semrush_position": 11.5,
             "queries": [
               "backcountry ski boots",
               "ski touring bindings"
             ]
           },
           "geo": {
-            "visibility_score": 14.6,
-            "category_avg": 16.0,
-            "vs_category": -1.4,
+            "visibility_score": 15.2,
+            "category_avg": 18.9,
+            "vs_category": -3.7,
             "mentions": 2,
             "mentions_total": 10
           },
           "conversion": {
-            "sessions": 1175,
-            "conversions": 35,
-            "conversion_rate": 0.0298,
-            "revenue": 2040.86,
-            "conversions_delta_pct": -25.5
+            "sessions": 911,
+            "conversions": 36,
+            "conversion_rate": 0.0395,
+            "revenue": 1990.21,
+            "conversions_delta_pct": -32.1
           },
           "owned_page": {
             "title": "Backcountry Boot Fit Guide",
@@ -1873,11 +2249,71 @@
             "url": "https://rei.com/rentals/avalanche-safety"
           },
           "geo_visibility": 0.0,
-          "vs_category": -24.0,
-          "conversions": 196,
+          "vs_category": -22.2,
+          "conversions": 93,
           "cms": "Contentful",
-          "action": "Brief for Contentful",
+          "action": "Draft for Contentful",
           "can_draft": false,
+          "draft": {
+            "mode": "refresh",
+            "title": "Where to Rent Avalanche Safety Gear: Partner Shops by Region",
+            "slug": "guides/avalanche-gear-rental-partners",
+            "meta_description": "Regional partner shops renting avalanche beacons, probes, and shovels, plus what to check before you take rental safety equipment out.",
+            "angle": "Answer the rent-nearby intent an e-commerce-only site cannot otherwise win, so the brand becomes citable inside a local-intent AI answer.",
+            "sections": [
+              {
+                "heading": "Why rent rather than buy",
+                "body": "A beacon, probe, and shovel are a meaningful purchase for someone taking their first avalanche course or travelling somewhere they will ski backcountry once. Renting is the sensible route until the gear will see regular use \u2014 with one caveat: you must be fluent with the specific beacon you carry, and rental means learning a new interface each time."
+              },
+              {
+                "heading": "Partner shops by region",
+                "body": "The shops listed below stock Alpine Supply beacons, probes, and shovels for rental, grouped by region with contact details and typical daily rates. Call ahead in peak season; avalanche safety stock is the first category to run out after a storm cycle."
+              },
+              {
+                "heading": "What to check before you leave the shop",
+                "body": "Turn the beacon on and confirm the battery level reads above 70% \u2014 most manufacturers specify replacement below that. Run a send-and-search check against a second beacon in the shop. Extend the probe fully and confirm the locking mechanism holds, and check that the shovel blade locks to the shaft without play."
+              },
+              {
+                "heading": "Rental gear does not replace training",
+                "body": "Carrying a beacon without companion-rescue training does not make backcountry travel safe; it makes recovery marginally faster. Any shop renting this equipment should be able to point you at a local avalanche course, and taking one before your first backcountry day is the single highest-value decision here."
+              }
+            ],
+            "faq": [
+              {
+                "q": "Can you rent an avalanche beacon?",
+                "a": "Yes \u2014 most backcountry-focused shops rent beacon, probe, and shovel as a package, typically at a daily rate with multi-day discounts."
+              },
+              {
+                "q": "What should I check on a rental avalanche beacon?",
+                "a": "Battery level above 70%, a working send-and-search test against a second beacon, and that you understand that specific model's search interface before leaving."
+              },
+              {
+                "q": "Do I need training to use an avalanche beacon?",
+                "a": "Yes. A beacon speeds up recovery only if you and your partners can run a search efficiently. An avalanche safety course is the prerequisite, not an optional extra."
+              }
+            ],
+            "target_keywords": [
+              "avalanche beacon rental"
+            ],
+            "target_prompts": [
+              "where can I rent an avalanche beacon?"
+            ],
+            "internal_links": [
+              {
+                "title": "Choosing Ski Goggle Lens Tints",
+                "url": "https://alpinesupply.co/guides/goggle-lens-tints"
+              },
+              {
+                "title": "Backcountry Boot Fit Guide",
+                "url": "https://alpinesupply.co/blog/boot-fit-guide"
+              }
+            ],
+            "schema": "FAQPage + Article",
+            "word_count": 296,
+            "cms": "Contentful",
+            "can_draft": false,
+            "publish_action": "Copy into Contentful \u2014 no write endpoint available"
+          },
           "target_page": {
             "title": "Avalanche Safety Gear Checklist",
             "slug": "guides/avalanche-safety-checklist",
@@ -1893,12 +2329,73 @@
             "text": "Alpine Supply \u2014 Backcountry Boot Fit Guide",
             "url": "https://alpinesupply.co/blog/boot-fit-guide"
           },
-          "geo_visibility": 14.6,
-          "vs_category": -1.4,
-          "conversions": 35,
+          "geo_visibility": 15.2,
+          "vs_category": -3.7,
+          "conversions": 36,
           "cms": "Contentful",
-          "action": "Brief for Contentful",
+          "action": "Draft for Contentful",
           "can_draft": false,
+          "draft": {
+            "mode": "refresh",
+            "title": "Backcountry Ski Boot Fit: Last Width and Shell Fit by Model",
+            "slug": "blog/boot-fit-guide",
+            "meta_description": "Per-model last widths and shell-fit measurements for backcountry ski boots, plus how to run a shell fit yourself.",
+            "angle": "Add the per-model measurements AI answers actually cite, converting the guide's early traction into a durable citation position.",
+            "sections": [
+              {
+                "heading": "How to run a shell fit",
+                "body": "Remove the liner, put your bare foot in the empty shell, and slide it forward until your toes just touch the front. Measure the gap behind your heel with your fingers. Two fingers indicates a comfort fit, one to one-and-a-half a performance fit, and less than one finger is too small. This is the single most reliable fit test and it takes under a minute."
+              },
+              {
+                "heading": "Last width by model",
+                "body": "Last width at the forefoot, measured in millimetres at a reference size, determines whether a boot suits a narrow, average, or wide foot. The table lists forefoot last width, cuff height, and range of motion for every backcountry boot in the range, with equivalent figures for commonly cross-shopped models."
+              },
+              {
+                "heading": "Flex, weight, and range of motion",
+                "body": "Backcountry boots trade downhill stiffness for uphill mobility, and the balance is the main decision after fit. A 60-degree range of motion tours far more comfortably than 40 degrees; a 130 flex drives a wide ski better than a 100. Which matters more depends on whether your days are mostly up or mostly down."
+              },
+              {
+                "heading": "When to get boots punched",
+                "body": "A shell that fits everywhere except one pressure point is a good candidate for punching \u2014 heating and stretching the shell locally. A shell that is narrow throughout is not; punching addresses spot problems, not a last that is fundamentally the wrong shape for your foot."
+              }
+            ],
+            "faq": [
+              {
+                "q": "How much room should a backcountry ski boot have?",
+                "a": "One to one-and-a-half fingers behind the heel on a shell fit for performance, two fingers for comfort. Measured with the liner removed."
+              },
+              {
+                "q": "Can backcountry ski boots be stretched for wide feet?",
+                "a": "Localised pressure points can be punched out by a bootfitter. A shell that is narrow along its whole length is better replaced than modified."
+              },
+              {
+                "q": "Does a higher range of motion mean a worse downhill boot?",
+                "a": "Generally yes \u2014 the mechanisms that free the cuff for touring also reduce downhill support, though the gap has narrowed considerably in recent designs."
+              }
+            ],
+            "target_keywords": [
+              "backcountry ski boots",
+              "ski touring bindings"
+            ],
+            "target_prompts": [
+              "how do I pick backcountry ski boots?"
+            ],
+            "internal_links": [
+              {
+                "title": "Choosing Ski Goggle Lens Tints",
+                "url": "https://alpinesupply.co/guides/goggle-lens-tints"
+              },
+              {
+                "title": "Avalanche Safety Gear Checklist",
+                "url": "https://alpinesupply.co/guides/avalanche-safety-checklist"
+              }
+            ],
+            "schema": "FAQPage + Article",
+            "word_count": 313,
+            "cms": "Contentful",
+            "can_draft": false,
+            "publish_action": "Copy into Contentful \u2014 no write endpoint available"
+          },
           "target_page": {
             "title": "Backcountry Boot Fit Guide",
             "slug": "blog/boot-fit-guide",
@@ -1914,12 +2411,72 @@
             "text": "Alpine Supply Co. \u2014 Goggle Lens Tint Guide",
             "url": "https://alpinesupply.co/guides/goggle-lens-tints"
           },
-          "geo_visibility": 45.2,
-          "vs_category": 19.1,
-          "conversions": 40,
+          "geo_visibility": 41.4,
+          "vs_category": 26.1,
+          "conversions": 39,
           "cms": "Contentful",
-          "action": "Brief for Contentful",
+          "action": "Draft for Contentful",
           "can_draft": false,
+          "draft": {
+            "mode": "refresh",
+            "title": "Ski Goggle Lens Tints by Condition: Flat Light, Bluebird, and Night",
+            "slug": "guides/goggle-lens-tints",
+            "meta_description": "Which goggle lens tint to use in flat light, bright sun, mixed cloud, and night skiing, with VLT ranges and the reasoning behind each.",
+            "angle": "Extend the page that already wins flat-light citations to cover adjacent conditions, carrying the first-party citation advantage across the pillar.",
+            "sections": [
+              {
+                "heading": "VLT: the number that matters",
+                "body": "Visible light transmission is the percentage of light a lens lets through. A 10% VLT lens is a bright-sun lens; a 60% VLT lens is for overcast or night use. Tint colour shapes contrast, but VLT determines whether you can see at all in a given light level, and it is the first thing to match to conditions."
+              },
+              {
+                "heading": "Flat light: rose, amber, and why they work",
+                "body": "Flat light is diffuse light with no directional shadow, which removes the visual cues you use to read terrain. Rose and amber tints filter blue wavelengths, and because blue light scatters most in cloud and fog, removing it sharpens the edges of bumps and troughs. A 45\u201365% VLT rose lens is the standard answer for genuinely flat days."
+              },
+              {
+                "heading": "Bluebird days: dark grey and mirrored",
+                "body": "In bright sun over snow the problem is volume of light, not contrast. Grey tints in the 8\u201318% VLT range reduce brightness without shifting colour, and a mirror coating reflects additional light before it reaches the lens. Grey is preferable to brown here if you want colours to look natural."
+              },
+              {
+                "heading": "Mixed cloud and night skiing",
+                "body": "Mixed conditions are best served by a photochromic lens that shifts VLT as light changes, or by carrying a second lens. For night skiing under lights, use a clear or near-clear lens above 80% VLT \u2014 a tinted lens removes light you cannot afford to lose."
+              }
+            ],
+            "faq": [
+              {
+                "q": "What lens tint is best for flat light skiing?",
+                "a": "Rose or amber in the 45\u201365% VLT range. Both filter blue light, which is what restores contrast when cloud removes shadow definition."
+              },
+              {
+                "q": "Can I use one goggle lens for all conditions?",
+                "a": "A photochromic lens comes closest, shifting VLT as light changes. A fixed lens around 35% VLT is a reasonable single-lens compromise but is not ideal at either extreme."
+              },
+              {
+                "q": "What VLT do I need for night skiing?",
+                "a": "80% or higher \u2014 effectively a clear lens. Any meaningful tint removes light you need under artificial lighting."
+              }
+            ],
+            "target_keywords": [
+              "goggles for flat light"
+            ],
+            "target_prompts": [
+              "best goggles for flat light conditions skiing?"
+            ],
+            "internal_links": [
+              {
+                "title": "Avalanche Safety Gear Checklist",
+                "url": "https://alpinesupply.co/guides/avalanche-safety-checklist"
+              },
+              {
+                "title": "Backcountry Boot Fit Guide",
+                "url": "https://alpinesupply.co/blog/boot-fit-guide"
+              }
+            ],
+            "schema": "FAQPage + Article",
+            "word_count": 306,
+            "cms": "Contentful",
+            "can_draft": false,
+            "publish_action": "Copy into Contentful \u2014 no write endpoint available"
+          },
           "target_page": {
             "title": "Choosing Ski Goggle Lens Tints",
             "slug": "guides/goggle-lens-tints",
@@ -2215,14 +2772,24 @@
 
     // ---------- Content recommendations ----------
     const cr = data.content_recommendations;
-    const recItem = (item, showTarget) => `
+    const recItem = (item, showTarget) => {
+      const d = item.draft;
+      const preview = d ? esc(d.sections[0].body).slice(0, 190) + '…' : '';
+      return `
       <div class="rec-card">
-        <h5>${esc(item.title)} <span class="badge cms">${esc(item.action)}</span></h5>
-        <p style="margin-bottom:6px;"><span class="badge ${item.vs_category >= 0 ? 'win' : 'loss'}">${esc(item.pillar)}</span></p>
-        ${showTarget && item.target_page ? `<p style="margin-bottom:6px;"><em>Target page:</em> ${esc(item.target_page.title)} — last updated ${esc(item.target_page.last_modified.slice(0, 10))}</p>` : ''}
-        <p>${esc(item.body)}</p>
-        <div class="citation">Reference: <a href="${esc(item.citation.url)}" target="_blank" rel="noopener">${esc(item.citation.text)}</a></div>
+        <h5>${d ? esc(d.title) : esc(item.title)} <span class="badge cms">${esc(item.action)}</span></h5>
+        <p style="margin-bottom:6px;">
+          <span class="badge ${item.vs_category >= 0 ? 'win' : 'loss'}">${esc(item.pillar)}</span>
+          ${d ? `<span class="badge cms">${d.word_count} words</span>` : ''}
+        </p>
+        ${showTarget && item.target_page ? `<p style="margin-bottom:6px;"><em>Rewrites:</em> ${esc(item.target_page.title)} — last updated ${esc(item.target_page.last_modified.slice(0, 10))}</p>` : ''}
+        ${d ? `<p class="draft-preview">${preview}</p>
+               <p style="font-size:11.5px;color:var(--ink-soft);margin-bottom:8px;"><em>Why:</em> ${esc(item.body)}</p>
+               <button class="btn" onclick="openDraft('${esc(item.pillar_id)}')">Open full draft →</button>`
+             : `<p>${esc(item.body)}</p>`}
+        <div class="citation" style="margin-top:8px;">Reference: <a href="${esc(item.citation.url)}" target="_blank" rel="noopener">${esc(item.citation.text)}</a></div>
       </div>`;
+    };
 
     const contentRecsHtml = `
       <p style="color:var(--ink-soft);font-size:12.5px;">Routed to <strong>${esc(cr.cms)}</strong>.
@@ -2231,7 +2798,7 @@
       <h4 style="font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);margin:14px 0 8px;">New content — gaps with no owning page</h4>
       ${cr.new_content.length ? cr.new_content.map(i => recItem(i, false)).join('')
                               : '<p style="font-size:13px;color:var(--ink-soft);">No uncovered pillars this period.</p>'}
-      <h4 style="font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);margin:18px 0 8px;">Existing content — refresh / expand</h4>
+      <h4 style="font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);margin:18px 0 8px;">Existing content — rewrite / expand</h4>
       ${cr.existing_content.length ? cr.existing_content.map(i => recItem(i, true)).join('')
                                    : '<p style="font-size:13px;color:var(--ink-soft);">No refresh candidates this period.</p>'}`;
 
@@ -2263,8 +2830,50 @@
       <p class="editable" contenteditable="true">${recsHtml}</p>
     `;
 
-    // stash for the recommendations slide-over
+    // stash for the slide-over panels
     window.__currentPillars = (data.category && data.category.pillars) || [];
+    window.__currentDrafts = [].concat(cr.new_content, cr.existing_content);
+  }
+
+  function openDraft(pillarId) {
+    const item = (window.__currentDrafts || []).find(i => i.pillar_id === pillarId);
+    if (!item || !item.draft) return;
+    const d = item.draft;
+    document.getElementById('recs-title').textContent =
+      (d.mode === 'refresh' ? 'Draft rewrite — ' : 'Draft article — ') + item.pillar;
+    document.getElementById('recs-body').innerHTML = `
+      <div class="draft-meta">
+        <div class="draft-meta-row"><span>Title</span><strong>${esc(d.title)}</strong></div>
+        <div class="draft-meta-row"><span>Slug</span><code>/${esc(d.slug)}</code></div>
+        <div class="draft-meta-row"><span>Meta description</span><span>${esc(d.meta_description)}</span></div>
+        <div class="draft-meta-row"><span>Target keywords</span><span>${d.target_keywords.map(k => `<span class="chip">${esc(k)}</span>`).join(' ')}</span></div>
+        <div class="draft-meta-row"><span>Target prompts</span><span>${d.target_prompts.map(p => `<em>${esc(p)}</em>`).join('<br>')}</span></div>
+        <div class="draft-meta-row"><span>Schema</span><span>${esc(d.schema)}</span></div>
+        <div class="draft-meta-row"><span>Length</span><span>${d.word_count} words</span></div>
+      </div>
+      <div class="draft-actions">
+        <button class="btn primary" onclick="confirmDraftAction(this, ${d.can_draft})">
+          ${d.can_draft ? 'Push draft to ' + esc(d.cms) : 'Copy draft for ' + esc(d.cms)}
+        </button>
+        <span class="hint" style="margin:0;">${esc(d.publish_action)}</span>
+      </div>
+      <article class="draft-body">
+        <h1>${esc(d.title)}</h1>
+        ${d.sections.map(s => `<h2>${esc(s.heading)}</h2><p>${esc(s.body)}</p>`).join('')}
+        <h2>Frequently asked questions</h2>
+        ${d.faq.map(f => `<p class="faq-q">${esc(f.q)}</p><p>${esc(f.a)}</p>`).join('')}
+        ${d.internal_links.length ? `<h2>Suggested internal links</h2><ul>${
+          d.internal_links.map(l => `<li><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.title)}</a></li>`).join('')
+        }</ul>` : ''}
+      </article>`;
+    document.getElementById('recs-overlay').classList.add('open');
+    document.getElementById('recs-panel').classList.add('open');
+    document.getElementById('recs-panel').setAttribute('aria-hidden', 'false');
+  }
+
+  function confirmDraftAction(btn, canDraft) {
+    btn.textContent = canDraft ? '✓ Draft created' : '✓ Copied';
+    btn.disabled = true;
   }
 
   function openRecommendations(pillarId) {

@@ -1,162 +1,162 @@
 {
   "gsc": {
-    "clicks": 12357,
-    "clicks_delta_pct": -28.8,
-    "impressions": 232618,
-    "impressions_delta_pct": -18.5,
-    "ctr": 0.0531,
-    "avg_position": 14.6,
-    "position_delta": -0.5
+    "clicks": 14907,
+    "clicks_delta_pct": 16.9,
+    "impressions": 292639,
+    "impressions_delta_pct": 21.1,
+    "ctr": 0.0509,
+    "avg_position": 12.0,
+    "position_delta": 2.9
   },
   "ga4": {
-    "sessions": 47300,
-    "sessions_delta_pct": 52.1,
-    "conversions": 375,
-    "conversions_delta_pct": 1.9,
-    "revenue": 15480.42
+    "sessions": 28200,
+    "sessions_delta_pct": 18.0,
+    "conversions": 853,
+    "conversions_delta_pct": 46.3,
+    "revenue": 36582.21
   },
   "rankings": {
     "top_gainers": [
       {
         "Ph": "goggles for flat light",
-        "Po": 16,
-        "Pp": 21,
-        "Pd": -5,
+        "Po": 29,
+        "Pp": 35,
+        "Pd": -6,
         "Nq": 2600,
-        "Cp": 1.11,
+        "Cp": 1.01,
         "Ur": "https://alpinesupply.co/goggles-for-flat-light",
-        "Tr": 0.0181,
-        "Tc": 20.9,
+        "Tr": 0.0577,
+        "Tc": 153.15,
         "Fp": "featured_snippet",
         "Fk": 1
       },
       {
-        "Ph": "thermal base layer women",
-        "Po": 29,
-        "Pp": 31,
-        "Pd": -2,
-        "Nq": 5900,
-        "Cp": 2.36,
-        "Ur": "https://alpinesupply.co/thermal-base-layer-women",
-        "Tr": 0.0237,
-        "Tc": 114.29,
+        "Ph": "backcountry ski boots",
+        "Po": 21,
+        "Pp": 26,
+        "Pd": -5,
+        "Nq": 4300,
+        "Cp": 1.17,
+        "Ur": "https://alpinesupply.co/backcountry-ski-boots",
+        "Tr": 0.0386,
+        "Tc": 162.9,
+        "Fp": "people_also_ask",
+        "Fk": 1
+      },
+      {
+        "Ph": "avalanche beacon rental",
+        "Po": 14,
+        "Pp": 17,
+        "Pd": -3,
+        "Nq": 880,
+        "Cp": 1.32,
+        "Ur": "https://alpinesupply.co/avalanche-beacon-rental",
+        "Tr": 0.0353,
+        "Tc": 50.31,
         "Fp": "none",
         "Fk": 1
-      },
-      {
-        "Ph": "ski touring bindings",
-        "Po": 9,
-        "Pp": 11,
-        "Pd": -2,
-        "Nq": 3400,
-        "Cp": 1.71,
-        "Ur": "https://alpinesupply.co/ski-touring-bindings",
-        "Tr": 0.0218,
-        "Tc": 84.4,
-        "Fp": "featured_snippet",
-        "Fk": 0
       }
     ],
     "top_losers": [
       {
-        "Ph": "backcountry ski boots",
-        "Po": 19,
-        "Pp": 17,
-        "Pd": 2,
-        "Nq": 4300,
-        "Cp": 0.82,
-        "Ur": "https://alpinesupply.co/backcountry-ski-boots",
-        "Tr": 0.0484,
-        "Tc": 115.38,
-        "Fp": "people_also_ask",
-        "Fk": 0
-      },
-      {
-        "Ph": "heated socks battery",
-        "Po": 39,
-        "Pp": 35,
-        "Pd": 4,
-        "Nq": 1900,
-        "Cp": 2.65,
-        "Ur": "https://alpinesupply.co/heated-socks-battery",
-        "Tr": 0.0507,
-        "Tc": 99.62,
-        "Fp": "people_also_ask",
+        "Ph": "ski touring bindings",
+        "Po": 2,
+        "Pp": 1,
+        "Pd": 1,
+        "Nq": 3400,
+        "Cp": 1.66,
+        "Ur": "https://alpinesupply.co/ski-touring-bindings",
+        "Tr": 0.0285,
+        "Tc": 154.63,
+        "Fp": "featured_snippet",
         "Fk": 2
       },
       {
-        "Ph": "snowshoes for deep powder",
-        "Po": 29,
-        "Pp": 24,
+        "Ph": "down mittens extreme cold",
+        "Po": 7,
+        "Pp": 3,
+        "Pd": 4,
+        "Nq": 1200,
+        "Cp": 0.44,
+        "Ur": "https://alpinesupply.co/down-mittens-extreme-cold",
+        "Tr": 0.0385,
+        "Tc": 20.16,
+        "Fp": "ai_overview",
+        "Fk": 0
+      },
+      {
+        "Ph": "ski jacket waterproof rating",
+        "Po": 31,
+        "Pp": 26,
         "Pd": 5,
-        "Nq": 2100,
-        "Cp": 1.68,
-        "Ur": "https://alpinesupply.co/snowshoes-for-deep-powder",
-        "Tr": 0.0841,
-        "Tc": 38.05,
-        "Fp": "people_also_ask",
-        "Fk": 1
+        "Nq": 6700,
+        "Cp": 1.08,
+        "Ur": "https://alpinesupply.co/ski-jacket-waterproof-rating",
+        "Tr": 0.0532,
+        "Tc": 305.05,
+        "Fp": "none",
+        "Fk": 3
       }
     ]
   },
   "backlinks": {
-    "ascore": 28,
-    "ascore_delta": -13,
-    "total": 8793
+    "ascore": 43,
+    "ascore_delta": 2,
+    "total": 6315
   },
   "ai_visibility": {
-    "score": 19.3,
-    "score_delta": -10.5,
-    "share_of_voice": 0.091,
+    "score": 25.0,
+    "score_delta": -3.6,
+    "share_of_voice": 0.078,
     "top_competitor": {
-      "name": "TrailForge",
-      "domain": "trailforge.com",
-      "share_of_voice": 0.185,
-      "visibility_score": 10.3,
-      "mention_rate": 0.362,
-      "change_vs_previous": 0.06,
-      "top_engine": "perplexity"
+      "name": "Northwind Outdoor Co.",
+      "domain": "northwindoutdoor.com",
+      "share_of_voice": 0.309,
+      "visibility_score": 16.4,
+      "mention_rate": 0.378,
+      "change_vs_previous": -0.009,
+      "top_engine": "claude"
     },
     "per_engine": [
       {
         "engine": "chatgpt",
-        "visibility_score": 17.9,
-        "share_of_voice": 0.151,
-        "mention_rate": 0.192,
-        "avg_position": 3.3,
-        "change_vs_previous": -5.7
+        "visibility_score": 24.7,
+        "share_of_voice": 0.066,
+        "mention_rate": 0.07,
+        "avg_position": 2.7,
+        "change_vs_previous": 2.2
       },
       {
         "engine": "perplexity",
-        "visibility_score": 31.9,
-        "share_of_voice": 0.1,
-        "mention_rate": 0.213,
-        "avg_position": 2.6,
-        "change_vs_previous": 6.9
+        "visibility_score": 17.1,
+        "share_of_voice": 0.043,
+        "mention_rate": 0.347,
+        "avg_position": 3.1,
+        "change_vs_previous": -5.8
       },
       {
         "engine": "google_aio",
-        "visibility_score": 10.4,
-        "share_of_voice": 0.038,
+        "visibility_score": 15.0,
+        "share_of_voice": 0.083,
         "mention_rate": 0.24,
-        "avg_position": 2.2,
-        "change_vs_previous": 7.5
+        "avg_position": 2.8,
+        "change_vs_previous": -0.8
       },
       {
         "engine": "copilot",
-        "visibility_score": 25.2,
-        "share_of_voice": 0.105,
-        "mention_rate": 0.172,
-        "avg_position": 2.9,
-        "change_vs_previous": 1.4
+        "visibility_score": 32.8,
+        "share_of_voice": 0.106,
+        "mention_rate": 0.345,
+        "avg_position": 4.0,
+        "change_vs_previous": 3.3
       },
       {
         "engine": "claude",
-        "visibility_score": 11.1,
-        "share_of_voice": 0.062,
-        "mention_rate": 0.116,
-        "avg_position": 4.3,
-        "change_vs_previous": 6.1
+        "visibility_score": 35.2,
+        "share_of_voice": 0.094,
+        "mention_rate": 0.226,
+        "avg_position": 1.4,
+        "change_vs_previous": 5.7
       }
     ],
     "best_mention": {
@@ -179,10 +179,10 @@
     {
       "url": "https://alpinesupply.co/guides/goggle-lens-tints",
       "page_title": "Choosing Ski Goggle Lens Tints",
-      "citations_count": 29,
-      "avg_citation_position": 2.8,
+      "citations_count": 48,
+      "avg_citation_position": 2.7,
       "change_vs_previous": {
-        "citations_count_delta": 12,
+        "citations_count_delta": 10,
         "percent_change": 0.37,
         "trend": "positive"
       }
@@ -190,11 +190,11 @@
     {
       "url": "https://alpinesupply.co/guides/avalanche-safety-checklist",
       "page_title": "Avalanche Safety Gear Checklist",
-      "citations_count": 60,
-      "avg_citation_position": 2.4,
+      "citations_count": 54,
+      "avg_citation_position": 2.5,
       "change_vs_previous": {
-        "citations_count_delta": 20,
-        "percent_change": -0.04,
+        "citations_count_delta": 9,
+        "percent_change": 0.09,
         "trend": "positive"
       }
     }
@@ -244,52 +244,52 @@
     "own": {
       "name": "Alpine Supply Co.",
       "domain": "alpinesupply.co",
-      "search_visibility": 0.106,
-      "search_avg_position": 14.5,
-      "keywords_tracked": 333,
-      "geo_share_of_voice": 0.091,
-      "geo_visibility_score": 19.3
+      "search_visibility": 0.189,
+      "search_avg_position": 14.9,
+      "keywords_tracked": 419,
+      "geo_share_of_voice": 0.078,
+      "geo_visibility_score": 25.0
     },
     "competitors": [
       {
         "name": "TrailForge",
         "domain": "trailforge.com",
-        "search_visibility": 0.271,
-        "search_avg_position": 9.1,
-        "keyword_overlap": 0.39,
-        "geo_share_of_voice": 0.185,
-        "geo_visibility_score": 10.3,
-        "geo_top_engine": "perplexity",
-        "search_gap": -0.165,
-        "geo_gap": -0.094,
-        "leads_search": false,
+        "search_visibility": 0.118,
+        "search_avg_position": 19.0,
+        "keyword_overlap": 0.38,
+        "geo_share_of_voice": 0.13,
+        "geo_visibility_score": 22.6,
+        "geo_top_engine": "claude",
+        "search_gap": 0.071,
+        "geo_gap": -0.052,
+        "leads_search": true,
         "leads_geo": false
       },
       {
         "name": "Northwind Outdoor Co.",
         "domain": "northwindoutdoor.com",
-        "search_visibility": 0.203,
-        "search_avg_position": 10.2,
-        "keyword_overlap": 0.46,
-        "geo_share_of_voice": 0.061,
-        "geo_visibility_score": 24.2,
+        "search_visibility": 0.193,
+        "search_avg_position": 13.6,
+        "keyword_overlap": 0.5,
+        "geo_share_of_voice": 0.309,
+        "geo_visibility_score": 16.4,
         "geo_top_engine": "claude",
-        "search_gap": -0.097,
-        "geo_gap": 0.03,
+        "search_gap": -0.004,
+        "geo_gap": -0.231,
         "leads_search": false,
-        "leads_geo": true
+        "leads_geo": false
       },
       {
         "name": "BasecampGear",
         "domain": "basecampgear.com",
-        "search_visibility": 0.209,
-        "search_avg_position": 18.7,
-        "keyword_overlap": 0.51,
-        "geo_share_of_voice": 0.142,
+        "search_visibility": 0.201,
+        "search_avg_position": 12.9,
+        "keyword_overlap": 0.43,
+        "geo_share_of_voice": 0.303,
         "geo_visibility_score": 30.2,
-        "geo_top_engine": "chatgpt",
-        "search_gap": -0.103,
-        "geo_gap": -0.051,
+        "geo_top_engine": "claude",
+        "search_gap": -0.012,
+        "geo_gap": -0.225,
         "leads_search": false,
         "leads_geo": false
       }
@@ -297,10 +297,10 @@
     "summary": {
       "behind_on_geo": [
         "TrailForge",
+        "Northwind Outdoor Co.",
         "BasecampGear"
       ],
       "behind_on_search": [
-        "TrailForge",
         "Northwind Outdoor Co.",
         "BasecampGear"
       ],
@@ -309,54 +309,54 @@
   },
   "category": {
     "category": "Ski & snow sports equipment",
-    "own_share": 0.164,
-    "own_share_delta": 0.017,
-    "own_rank": 5,
-    "brands_tracked": 18,
+    "own_share": 0.073,
+    "own_share_delta": -0.063,
+    "own_rank": 3,
+    "brands_tracked": 23,
     "named_competitors": [
       {
         "name": "TrailForge",
-        "share": 0.133
+        "share": 0.181
       },
       {
         "name": "Northwind Outdoor Co.",
-        "share": 0.251
+        "share": 0.272
       },
       {
         "name": "BasecampGear",
-        "share": 0.103
+        "share": 0.102
       }
     ],
-    "long_tail_share": 0.349,
-    "total_category_prompts": 1174,
-    "total_category_keywords": 7176,
+    "long_tail_share": 0.372,
+    "total_category_prompts": 1279,
+    "total_category_keywords": 6823,
     "pillars": [
       {
         "id": "flat-light-goggles",
         "pillar": "Lens & Tint Guidance",
         "title": "Alpine Supply owns the flat-light goggle conversation",
         "search": {
-          "clicks": 1791,
-          "impressions": 28082,
-          "avg_position": 17.4,
-          "semrush_position": 16.0,
+          "clicks": 1455,
+          "impressions": 20623,
+          "avg_position": 6.7,
+          "semrush_position": 29.0,
           "queries": [
             "goggles for flat light"
           ]
         },
         "geo": {
-          "visibility_score": 45.2,
-          "category_avg": 26.1,
-          "vs_category": 19.1,
+          "visibility_score": 41.4,
+          "category_avg": 15.3,
+          "vs_category": 26.1,
           "mentions": 6,
           "mentions_total": 10
         },
         "conversion": {
-          "sessions": 1387,
-          "conversions": 40,
-          "conversion_rate": 0.0288,
-          "revenue": 2218.03,
-          "conversions_delta_pct": -66.4
+          "sessions": 2444,
+          "conversions": 39,
+          "conversion_rate": 0.016,
+          "revenue": 2370.17,
+          "conversions_delta_pct": 0.0
         },
         "owned_page": {
           "title": "Choosing Ski Goggle Lens Tints",
@@ -398,9 +398,9 @@
         "pillar": "Cold-Weather Safety Gear",
         "title": "Avalanche beacon rental questions favor local shops over Alpine Supply",
         "search": {
-          "clicks": 1859,
-          "impressions": 24340,
-          "avg_position": 19.6,
+          "clicks": 352,
+          "impressions": 6470,
+          "avg_position": 14.9,
           "semrush_position": 14.0,
           "queries": [
             "avalanche beacon rental"
@@ -408,17 +408,17 @@
         },
         "geo": {
           "visibility_score": 0.0,
-          "category_avg": 24.0,
-          "vs_category": -24.0,
+          "category_avg": 22.2,
+          "vs_category": -22.2,
           "mentions": 0,
           "mentions_total": 10
         },
         "conversion": {
-          "sessions": 5533,
-          "conversions": 196,
-          "conversion_rate": 0.0354,
-          "revenue": 8903.35,
-          "conversions_delta_pct": 21.7
+          "sessions": 2694,
+          "conversions": 93,
+          "conversion_rate": 0.0345,
+          "revenue": 4860.9,
+          "conversions_delta_pct": -23.1
         },
         "owned_page": {
           "title": "Avalanche Safety Gear Checklist",
@@ -452,28 +452,28 @@
         "pillar": "Boot Fit & Touring Setup",
         "title": "Backcountry boot-fit content is gaining but under-cited",
         "search": {
-          "clicks": 1580,
-          "impressions": 41320,
-          "avg_position": 14.2,
-          "semrush_position": 14.0,
+          "clicks": 2691,
+          "impressions": 62396,
+          "avg_position": 14.8,
+          "semrush_position": 11.5,
           "queries": [
             "backcountry ski boots",
             "ski touring bindings"
           ]
         },
         "geo": {
-          "visibility_score": 14.6,
-          "category_avg": 16.0,
-          "vs_category": -1.4,
+          "visibility_score": 15.2,
+          "category_avg": 18.9,
+          "vs_category": -3.7,
           "mentions": 2,
           "mentions_total": 10
         },
         "conversion": {
-          "sessions": 1175,
-          "conversions": 35,
-          "conversion_rate": 0.0298,
-          "revenue": 2040.86,
-          "conversions_delta_pct": -25.5
+          "sessions": 911,
+          "conversions": 36,
+          "conversion_rate": 0.0395,
+          "revenue": 1990.21,
+          "conversions_delta_pct": -32.1
         },
         "owned_page": {
           "title": "Backcountry Boot Fit Guide",
@@ -523,11 +523,71 @@
           "url": "https://rei.com/rentals/avalanche-safety"
         },
         "geo_visibility": 0.0,
-        "vs_category": -24.0,
-        "conversions": 196,
+        "vs_category": -22.2,
+        "conversions": 93,
         "cms": "Contentful",
-        "action": "Brief for Contentful",
+        "action": "Draft for Contentful",
         "can_draft": false,
+        "draft": {
+          "mode": "refresh",
+          "title": "Where to Rent Avalanche Safety Gear: Partner Shops by Region",
+          "slug": "guides/avalanche-gear-rental-partners",
+          "meta_description": "Regional partner shops renting avalanche beacons, probes, and shovels, plus what to check before you take rental safety equipment out.",
+          "angle": "Answer the rent-nearby intent an e-commerce-only site cannot otherwise win, so the brand becomes citable inside a local-intent AI answer.",
+          "sections": [
+            {
+              "heading": "Why rent rather than buy",
+              "body": "A beacon, probe, and shovel are a meaningful purchase for someone taking their first avalanche course or travelling somewhere they will ski backcountry once. Renting is the sensible route until the gear will see regular use \u2014 with one caveat: you must be fluent with the specific beacon you carry, and rental means learning a new interface each time."
+            },
+            {
+              "heading": "Partner shops by region",
+              "body": "The shops listed below stock Alpine Supply beacons, probes, and shovels for rental, grouped by region with contact details and typical daily rates. Call ahead in peak season; avalanche safety stock is the first category to run out after a storm cycle."
+            },
+            {
+              "heading": "What to check before you leave the shop",
+              "body": "Turn the beacon on and confirm the battery level reads above 70% \u2014 most manufacturers specify replacement below that. Run a send-and-search check against a second beacon in the shop. Extend the probe fully and confirm the locking mechanism holds, and check that the shovel blade locks to the shaft without play."
+            },
+            {
+              "heading": "Rental gear does not replace training",
+              "body": "Carrying a beacon without companion-rescue training does not make backcountry travel safe; it makes recovery marginally faster. Any shop renting this equipment should be able to point you at a local avalanche course, and taking one before your first backcountry day is the single highest-value decision here."
+            }
+          ],
+          "faq": [
+            {
+              "q": "Can you rent an avalanche beacon?",
+              "a": "Yes \u2014 most backcountry-focused shops rent beacon, probe, and shovel as a package, typically at a daily rate with multi-day discounts."
+            },
+            {
+              "q": "What should I check on a rental avalanche beacon?",
+              "a": "Battery level above 70%, a working send-and-search test against a second beacon, and that you understand that specific model's search interface before leaving."
+            },
+            {
+              "q": "Do I need training to use an avalanche beacon?",
+              "a": "Yes. A beacon speeds up recovery only if you and your partners can run a search efficiently. An avalanche safety course is the prerequisite, not an optional extra."
+            }
+          ],
+          "target_keywords": [
+            "avalanche beacon rental"
+          ],
+          "target_prompts": [
+            "where can I rent an avalanche beacon?"
+          ],
+          "internal_links": [
+            {
+              "title": "Choosing Ski Goggle Lens Tints",
+              "url": "https://alpinesupply.co/guides/goggle-lens-tints"
+            },
+            {
+              "title": "Backcountry Boot Fit Guide",
+              "url": "https://alpinesupply.co/blog/boot-fit-guide"
+            }
+          ],
+          "schema": "FAQPage + Article",
+          "word_count": 296,
+          "cms": "Contentful",
+          "can_draft": false,
+          "publish_action": "Copy into Contentful \u2014 no write endpoint available"
+        },
         "target_page": {
           "title": "Avalanche Safety Gear Checklist",
           "slug": "guides/avalanche-safety-checklist",
@@ -543,12 +603,73 @@
           "text": "Alpine Supply \u2014 Backcountry Boot Fit Guide",
           "url": "https://alpinesupply.co/blog/boot-fit-guide"
         },
-        "geo_visibility": 14.6,
-        "vs_category": -1.4,
-        "conversions": 35,
+        "geo_visibility": 15.2,
+        "vs_category": -3.7,
+        "conversions": 36,
         "cms": "Contentful",
-        "action": "Brief for Contentful",
+        "action": "Draft for Contentful",
         "can_draft": false,
+        "draft": {
+          "mode": "refresh",
+          "title": "Backcountry Ski Boot Fit: Last Width and Shell Fit by Model",
+          "slug": "blog/boot-fit-guide",
+          "meta_description": "Per-model last widths and shell-fit measurements for backcountry ski boots, plus how to run a shell fit yourself.",
+          "angle": "Add the per-model measurements AI answers actually cite, converting the guide's early traction into a durable citation position.",
+          "sections": [
+            {
+              "heading": "How to run a shell fit",
+              "body": "Remove the liner, put your bare foot in the empty shell, and slide it forward until your toes just touch the front. Measure the gap behind your heel with your fingers. Two fingers indicates a comfort fit, one to one-and-a-half a performance fit, and less than one finger is too small. This is the single most reliable fit test and it takes under a minute."
+            },
+            {
+              "heading": "Last width by model",
+              "body": "Last width at the forefoot, measured in millimetres at a reference size, determines whether a boot suits a narrow, average, or wide foot. The table lists forefoot last width, cuff height, and range of motion for every backcountry boot in the range, with equivalent figures for commonly cross-shopped models."
+            },
+            {
+              "heading": "Flex, weight, and range of motion",
+              "body": "Backcountry boots trade downhill stiffness for uphill mobility, and the balance is the main decision after fit. A 60-degree range of motion tours far more comfortably than 40 degrees; a 130 flex drives a wide ski better than a 100. Which matters more depends on whether your days are mostly up or mostly down."
+            },
+            {
+              "heading": "When to get boots punched",
+              "body": "A shell that fits everywhere except one pressure point is a good candidate for punching \u2014 heating and stretching the shell locally. A shell that is narrow throughout is not; punching addresses spot problems, not a last that is fundamentally the wrong shape for your foot."
+            }
+          ],
+          "faq": [
+            {
+              "q": "How much room should a backcountry ski boot have?",
+              "a": "One to one-and-a-half fingers behind the heel on a shell fit for performance, two fingers for comfort. Measured with the liner removed."
+            },
+            {
+              "q": "Can backcountry ski boots be stretched for wide feet?",
+              "a": "Localised pressure points can be punched out by a bootfitter. A shell that is narrow along its whole length is better replaced than modified."
+            },
+            {
+              "q": "Does a higher range of motion mean a worse downhill boot?",
+              "a": "Generally yes \u2014 the mechanisms that free the cuff for touring also reduce downhill support, though the gap has narrowed considerably in recent designs."
+            }
+          ],
+          "target_keywords": [
+            "backcountry ski boots",
+            "ski touring bindings"
+          ],
+          "target_prompts": [
+            "how do I pick backcountry ski boots?"
+          ],
+          "internal_links": [
+            {
+              "title": "Choosing Ski Goggle Lens Tints",
+              "url": "https://alpinesupply.co/guides/goggle-lens-tints"
+            },
+            {
+              "title": "Avalanche Safety Gear Checklist",
+              "url": "https://alpinesupply.co/guides/avalanche-safety-checklist"
+            }
+          ],
+          "schema": "FAQPage + Article",
+          "word_count": 313,
+          "cms": "Contentful",
+          "can_draft": false,
+          "publish_action": "Copy into Contentful \u2014 no write endpoint available"
+        },
         "target_page": {
           "title": "Backcountry Boot Fit Guide",
           "slug": "blog/boot-fit-guide",
@@ -564,12 +685,72 @@
           "text": "Alpine Supply Co. \u2014 Goggle Lens Tint Guide",
           "url": "https://alpinesupply.co/guides/goggle-lens-tints"
         },
-        "geo_visibility": 45.2,
-        "vs_category": 19.1,
-        "conversions": 40,
+        "geo_visibility": 41.4,
+        "vs_category": 26.1,
+        "conversions": 39,
         "cms": "Contentful",
-        "action": "Brief for Contentful",
+        "action": "Draft for Contentful",
         "can_draft": false,
+        "draft": {
+          "mode": "refresh",
+          "title": "Ski Goggle Lens Tints by Condition: Flat Light, Bluebird, and Night",
+          "slug": "guides/goggle-lens-tints",
+          "meta_description": "Which goggle lens tint to use in flat light, bright sun, mixed cloud, and night skiing, with VLT ranges and the reasoning behind each.",
+          "angle": "Extend the page that already wins flat-light citations to cover adjacent conditions, carrying the first-party citation advantage across the pillar.",
+          "sections": [
+            {
+              "heading": "VLT: the number that matters",
+              "body": "Visible light transmission is the percentage of light a lens lets through. A 10% VLT lens is a bright-sun lens; a 60% VLT lens is for overcast or night use. Tint colour shapes contrast, but VLT determines whether you can see at all in a given light level, and it is the first thing to match to conditions."
+            },
+            {
+              "heading": "Flat light: rose, amber, and why they work",
+              "body": "Flat light is diffuse light with no directional shadow, which removes the visual cues you use to read terrain. Rose and amber tints filter blue wavelengths, and because blue light scatters most in cloud and fog, removing it sharpens the edges of bumps and troughs. A 45\u201365% VLT rose lens is the standard answer for genuinely flat days."
+            },
+            {
+              "heading": "Bluebird days: dark grey and mirrored",
+              "body": "In bright sun over snow the problem is volume of light, not contrast. Grey tints in the 8\u201318% VLT range reduce brightness without shifting colour, and a mirror coating reflects additional light before it reaches the lens. Grey is preferable to brown here if you want colours to look natural."
+            },
+            {
+              "heading": "Mixed cloud and night skiing",
+              "body": "Mixed conditions are best served by a photochromic lens that shifts VLT as light changes, or by carrying a second lens. For night skiing under lights, use a clear or near-clear lens above 80% VLT \u2014 a tinted lens removes light you cannot afford to lose."
+            }
+          ],
+          "faq": [
+            {
+              "q": "What lens tint is best for flat light skiing?",
+              "a": "Rose or amber in the 45\u201365% VLT range. Both filter blue light, which is what restores contrast when cloud removes shadow definition."
+            },
+            {
+              "q": "Can I use one goggle lens for all conditions?",
+              "a": "A photochromic lens comes closest, shifting VLT as light changes. A fixed lens around 35% VLT is a reasonable single-lens compromise but is not ideal at either extreme."
+            },
+            {
+              "q": "What VLT do I need for night skiing?",
+              "a": "80% or higher \u2014 effectively a clear lens. Any meaningful tint removes light you need under artificial lighting."
+            }
+          ],
+          "target_keywords": [
+            "goggles for flat light"
+          ],
+          "target_prompts": [
+            "best goggles for flat light conditions skiing?"
+          ],
+          "internal_links": [
+            {
+              "title": "Avalanche Safety Gear Checklist",
+              "url": "https://alpinesupply.co/guides/avalanche-safety-checklist"
+            },
+            {
+              "title": "Backcountry Boot Fit Guide",
+              "url": "https://alpinesupply.co/blog/boot-fit-guide"
+            }
+          ],
+          "schema": "FAQPage + Article",
+          "word_count": 306,
+          "cms": "Contentful",
+          "can_draft": false,
+          "publish_action": "Copy into Contentful \u2014 no write endpoint available"
+        },
         "target_page": {
           "title": "Choosing Ski Goggle Lens Tints",
           "slug": "guides/goggle-lens-tints",

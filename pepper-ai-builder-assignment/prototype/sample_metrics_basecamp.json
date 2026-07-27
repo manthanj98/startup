@@ -1,149 +1,162 @@
 {
   "gsc": {
-    "clicks": 14537,
-    "clicks_delta_pct": 61.1,
-    "impressions": 268405,
-    "impressions_delta_pct": 28.6,
-    "ctr": 0.0542,
-    "avg_position": 10.6,
-    "position_delta": 5.4
+    "clicks": 14455,
+    "clicks_delta_pct": 2.2,
+    "impressions": 289827,
+    "impressions_delta_pct": 13.9,
+    "ctr": 0.0499,
+    "avg_position": 14.0,
+    "position_delta": 1.0
   },
   "ga4": {
-    "sessions": 23985,
-    "sessions_delta_pct": -35.7,
-    "conversions": 932,
-    "conversions_delta_pct": -4.3,
-    "revenue": 50193.17
+    "sessions": 41853,
+    "sessions_delta_pct": -14.5,
+    "conversions": 1046,
+    "conversions_delta_pct": 162.8,
+    "revenue": 54917.41
   },
   "rankings": {
     "top_gainers": [
       {
-        "Ph": "crampons for hiking boots",
-        "Po": 25,
-        "Pp": 30,
-        "Pd": -5,
-        "Nq": 1600,
-        "Cp": 1.36,
-        "Ur": "https://basecampgear.com/crampons-for-hiking-boots",
-        "Tr": 0.0151,
-        "Tc": 40.97,
-        "Fp": "featured_snippet",
+        "Ph": "sleeping pad r-value",
+        "Po": 6,
+        "Pp": 12,
+        "Pd": -6,
+        "Nq": 2900,
+        "Cp": 1.25,
+        "Ur": "https://basecampgear.com/sleeping-pad-r-value",
+        "Tr": 0.0645,
+        "Tc": 102.06,
+        "Fp": "ai_overview",
         "Fk": 3
       },
       {
         "Ph": "carabiner set aluminum",
-        "Po": 36,
-        "Pp": 40,
-        "Pd": -4,
+        "Po": 16,
+        "Pp": 19,
+        "Pd": -3,
         "Nq": 3200,
-        "Cp": 2.98,
+        "Cp": 0.48,
         "Ur": "https://basecampgear.com/carabiner-set-aluminum",
-        "Tr": 0.0865,
-        "Tc": 202.51,
-        "Fp": "people_also_ask",
+        "Tr": 0.0258,
+        "Tc": 167.76,
+        "Fp": "featured_snippet",
+        "Fk": 3
+      },
+      {
+        "Ph": "rope bag climbing",
+        "Po": 24,
+        "Pp": 27,
+        "Pd": -3,
+        "Nq": 880,
+        "Cp": 1.95,
+        "Ur": "https://basecampgear.com/rope-bag-climbing",
+        "Tr": 0.0732,
+        "Tc": 36.13,
+        "Fp": "none",
         "Fk": 0
       }
     ],
     "top_losers": [
       {
-        "Ph": "rope bag climbing",
-        "Po": 5,
-        "Pp": 1,
-        "Pd": 4,
-        "Nq": 880,
-        "Cp": 1.53,
-        "Ur": "https://basecampgear.com/rope-bag-climbing",
-        "Tr": 0.0468,
-        "Tc": 50.54,
+        "Ph": "climbing harness beginner",
+        "Po": 39,
+        "Pp": 37,
+        "Pd": 2,
+        "Nq": 8100,
+        "Cp": 1.8,
+        "Ur": "https://basecampgear.com/climbing-harness-beginner",
+        "Tr": 0.0246,
+        "Tc": 365.77,
         "Fp": "ai_overview",
         "Fk": 2
       },
       {
-        "Ph": "belay device assisted braking",
-        "Po": 20,
-        "Pp": 15,
-        "Pd": 5,
-        "Nq": 1300,
-        "Cp": 3.01,
-        "Ur": "https://basecampgear.com/belay-device-assisted-braking",
-        "Tr": 0.0715,
-        "Tc": 39.01,
-        "Fp": "none",
-        "Fk": 2
+        "Ph": "ice axe self arrest",
+        "Po": 16,
+        "Pp": 13,
+        "Pd": 3,
+        "Nq": 590,
+        "Cp": 2.35,
+        "Ur": "https://basecampgear.com/ice-axe-self-arrest",
+        "Tr": 0.0476,
+        "Tc": 9.65,
+        "Fp": "ai_overview",
+        "Fk": 3
       },
       {
-        "Ph": "sleeping pad r-value",
-        "Po": 8,
-        "Pp": 2,
+        "Ph": "bouldering crash pad",
+        "Po": 24,
+        "Pp": 18,
         "Pd": 6,
-        "Nq": 2900,
-        "Cp": 0.4,
-        "Ur": "https://basecampgear.com/sleeping-pad-r-value",
-        "Tr": 0.0133,
-        "Tc": 57.25,
-        "Fp": "ai_overview",
-        "Fk": 1
+        "Nq": 2200,
+        "Cp": 1.74,
+        "Ur": "https://basecampgear.com/bouldering-crash-pad",
+        "Tr": 0.0535,
+        "Tc": 48.22,
+        "Fp": "people_also_ask",
+        "Fk": 2
       }
     ]
   },
   "backlinks": {
-    "ascore": 32,
-    "ascore_delta": -8,
-    "total": 5303
+    "ascore": 52,
+    "ascore_delta": 0,
+    "total": 7311
   },
   "ai_visibility": {
-    "score": 24.6,
-    "score_delta": 0.9,
-    "share_of_voice": 0.107,
+    "score": 26.4,
+    "score_delta": -1.7,
+    "share_of_voice": 0.088,
     "top_competitor": {
-      "name": "Summitware",
-      "domain": "summitware.com",
-      "share_of_voice": 0.283,
-      "visibility_score": 18.1,
-      "mention_rate": 0.077,
-      "change_vs_previous": -0.041,
+      "name": "Northwind Outdoor Co.",
+      "domain": "northwindoutdoor.com",
+      "share_of_voice": 0.108,
+      "visibility_score": 25.1,
+      "mention_rate": 0.301,
+      "change_vs_previous": 0.016,
       "top_engine": "google_aio"
     },
     "per_engine": [
       {
         "engine": "chatgpt",
-        "visibility_score": 10.7,
-        "share_of_voice": 0.128,
-        "mention_rate": 0.303,
-        "avg_position": 4.5,
-        "change_vs_previous": 7.2
+        "visibility_score": 33.8,
+        "share_of_voice": 0.047,
+        "mention_rate": 0.197,
+        "avg_position": 2.6,
+        "change_vs_previous": 3.5
       },
       {
         "engine": "perplexity",
-        "visibility_score": 26.6,
-        "share_of_voice": 0.119,
-        "mention_rate": 0.104,
-        "avg_position": 3.8,
-        "change_vs_previous": 8.1
+        "visibility_score": 32.9,
+        "share_of_voice": 0.056,
+        "mention_rate": 0.325,
+        "avg_position": 2.6,
+        "change_vs_previous": 7.3
       },
       {
         "engine": "google_aio",
-        "visibility_score": 31.8,
-        "share_of_voice": 0.055,
-        "mention_rate": 0.171,
-        "avg_position": 1.7,
-        "change_vs_previous": -4.1
+        "visibility_score": 13.4,
+        "share_of_voice": 0.068,
+        "mention_rate": 0.25,
+        "avg_position": 2.9,
+        "change_vs_previous": 6.7
       },
       {
         "engine": "copilot",
-        "visibility_score": 16.4,
-        "share_of_voice": 0.174,
-        "mention_rate": 0.326,
-        "avg_position": 3.1,
-        "change_vs_previous": -3.7
+        "visibility_score": 37.1,
+        "share_of_voice": 0.15,
+        "mention_rate": 0.085,
+        "avg_position": 1.5,
+        "change_vs_previous": -0.9
       },
       {
         "engine": "claude",
-        "visibility_score": 37.7,
-        "share_of_voice": 0.061,
-        "mention_rate": 0.284,
-        "avg_position": 4.1,
-        "change_vs_previous": -4.9
+        "visibility_score": 14.8,
+        "share_of_voice": 0.118,
+        "mention_rate": 0.22,
+        "avg_position": 1.7,
+        "change_vs_previous": 1.4
       }
     ],
     "best_mention": {
@@ -166,22 +179,22 @@
     {
       "url": "https://basecampgear.com/guides/belay-devices-compared",
       "page_title": "Assisted-Braking Belay Devices Compared",
-      "citations_count": 34,
-      "avg_citation_position": 3.3,
+      "citations_count": 7,
+      "avg_citation_position": 2.1,
       "change_vs_previous": {
-        "citations_count_delta": 14,
-        "percent_change": 0.48,
+        "citations_count_delta": -5,
+        "percent_change": 0.21,
         "trend": "positive"
       }
     },
     {
       "url": "https://basecampgear.com/guides/harness-sizing",
       "page_title": "How to Size a Climbing Harness",
-      "citations_count": 12,
-      "avg_citation_position": 2.5,
+      "citations_count": 58,
+      "avg_citation_position": 2.0,
       "change_vs_previous": {
-        "citations_count_delta": 20,
-        "percent_change": 0.1,
+        "citations_count_delta": 10,
+        "percent_change": 0.55,
         "trend": "positive"
       }
     }
@@ -233,126 +246,126 @@
     "own": {
       "name": "Basecamp Gear",
       "domain": "basecampgear.com",
-      "search_visibility": 0.125,
-      "search_avg_position": 12.4,
-      "keywords_tracked": 420,
-      "geo_share_of_voice": 0.107,
-      "geo_visibility_score": 24.6
+      "search_visibility": 0.166,
+      "search_avg_position": 12.5,
+      "keywords_tracked": 315,
+      "geo_share_of_voice": 0.088,
+      "geo_visibility_score": 26.4
     },
     "competitors": [
       {
         "name": "Northwind Outdoor Co.",
         "domain": "northwindoutdoor.com",
-        "search_visibility": 0.142,
-        "search_avg_position": 19.0,
-        "keyword_overlap": 0.63,
-        "geo_share_of_voice": 0.044,
-        "geo_visibility_score": 11.5,
-        "geo_top_engine": "chatgpt",
-        "search_gap": -0.017,
-        "geo_gap": 0.063,
-        "leads_search": false,
-        "leads_geo": true
-      },
-      {
-        "name": "TrailForge",
-        "domain": "trailforge.com",
-        "search_visibility": 0.248,
-        "search_avg_position": 11.7,
-        "keyword_overlap": 0.36,
-        "geo_share_of_voice": 0.156,
-        "geo_visibility_score": 30.4,
-        "geo_top_engine": "copilot",
-        "search_gap": -0.123,
-        "geo_gap": -0.049,
+        "search_visibility": 0.178,
+        "search_avg_position": 18.4,
+        "keyword_overlap": 0.35,
+        "geo_share_of_voice": 0.108,
+        "geo_visibility_score": 25.1,
+        "geo_top_engine": "google_aio",
+        "search_gap": -0.012,
+        "geo_gap": -0.02,
         "leads_search": false,
         "leads_geo": false
       },
       {
+        "name": "TrailForge",
+        "domain": "trailforge.com",
+        "search_visibility": 0.11,
+        "search_avg_position": 13.2,
+        "keyword_overlap": 0.7,
+        "geo_share_of_voice": 0.066,
+        "geo_visibility_score": 31.5,
+        "geo_top_engine": "chatgpt",
+        "search_gap": 0.056,
+        "geo_gap": 0.022,
+        "leads_search": true,
+        "leads_geo": true
+      },
+      {
         "name": "Summitware",
         "domain": "summitware.com",
-        "search_visibility": 0.098,
-        "search_avg_position": 11.8,
-        "keyword_overlap": 0.54,
-        "geo_share_of_voice": 0.283,
-        "geo_visibility_score": 18.1,
-        "geo_top_engine": "google_aio",
-        "search_gap": 0.027,
-        "geo_gap": -0.176,
-        "leads_search": true,
+        "search_visibility": 0.246,
+        "search_avg_position": 11.7,
+        "keyword_overlap": 0.28,
+        "geo_share_of_voice": 0.094,
+        "geo_visibility_score": 34.7,
+        "geo_top_engine": "perplexity",
+        "search_gap": -0.08,
+        "geo_gap": -0.006,
+        "leads_search": false,
         "leads_geo": false
       }
     ],
     "summary": {
       "behind_on_geo": [
-        "TrailForge",
+        "Northwind Outdoor Co.",
         "Summitware"
       ],
       "behind_on_search": [
         "Northwind Outdoor Co.",
-        "TrailForge"
+        "Summitware"
       ],
       "ahead_of_all_geo": false
     }
   },
   "category": {
     "category": "Climbing & mountaineering gear",
-    "own_share": 0.161,
-    "own_share_delta": 0.0,
+    "own_share": 0.092,
+    "own_share_delta": -0.024,
     "own_rank": 2,
-    "brands_tracked": 11,
+    "brands_tracked": 22,
     "named_competitors": [
       {
         "name": "Northwind Outdoor Co.",
-        "share": 0.138
-      },
-      {
-        "name": "TrailForge",
         "share": 0.156
       },
       {
+        "name": "TrailForge",
+        "share": 0.183
+      },
+      {
         "name": "Summitware",
-        "share": 0.122
+        "share": 0.158
       }
     ],
-    "long_tail_share": 0.423,
-    "total_category_prompts": 1551,
-    "total_category_keywords": 7792,
+    "long_tail_share": 0.411,
+    "total_category_prompts": 1635,
+    "total_category_keywords": 7856,
     "pillars": [
       {
         "id": "beginner-safety",
         "pillar": "Safety & Certification Claims",
         "title": "Basecamp leads beginner belay questions, but harness certification detail is missing",
         "search": {
-          "clicks": 3262,
-          "impressions": 46187,
-          "avg_position": 7.2,
-          "semrush_position": 14.0,
+          "clicks": 2920,
+          "impressions": 74186,
+          "avg_position": 12.2,
+          "semrush_position": 35.0,
           "queries": [
             "belay device assisted braking",
             "climbing harness beginner"
           ]
         },
         "geo": {
-          "visibility_score": 25.9,
-          "category_avg": 25.4,
-          "vs_category": 0.5,
+          "visibility_score": 28.4,
+          "category_avg": 28.4,
+          "vs_category": 0.0,
           "mentions": 4,
           "mentions_total": 10
         },
         "conversion": {
-          "sessions": 10052,
-          "conversions": 111,
-          "conversion_rate": 0.011,
-          "revenue": 4988.21,
-          "conversions_delta_pct": -61.6
+          "sessions": 3960,
+          "conversions": 79,
+          "conversion_rate": 0.0199,
+          "revenue": 3524.31,
+          "conversions_delta_pct": -47.0
         },
         "owned_page": {
           "title": "Assisted-Braking Belay Devices Compared",
           "slug": "guides/belay-devices-compared",
           "last_modified": "2026-06-10T00:00:00"
         },
-        "verdict": "winning",
+        "verdict": "losing",
         "bullets": [
           {
             "label": "What's happening",
@@ -387,28 +400,28 @@
         "pillar": "Weight & Packability",
         "title": "Pack-weight comparisons skip Basecamp's 60L line",
         "search": {
-          "clicks": 1565,
-          "impressions": 22402,
-          "avg_position": 19.1,
-          "semrush_position": 20.5,
+          "clicks": 1628,
+          "impressions": 52418,
+          "avg_position": 12.2,
+          "semrush_position": 5.5,
           "queries": [
             "60l backpacking pack",
             "sleeping pad r-value"
           ]
         },
         "geo": {
-          "visibility_score": 7.1,
-          "category_avg": 24.8,
-          "vs_category": -17.7,
+          "visibility_score": 7.5,
+          "category_avg": 24.3,
+          "vs_category": -16.8,
           "mentions": 1,
           "mentions_total": 10
         },
         "conversion": {
-          "sessions": 1042,
-          "conversions": 35,
-          "conversion_rate": 0.0336,
-          "revenue": 2134.76,
-          "conversions_delta_pct": -57.3
+          "sessions": 10066,
+          "conversions": 169,
+          "conversion_rate": 0.0168,
+          "revenue": 9189.24,
+          "conversions_delta_pct": 344.7
         },
         "owned_page": null,
         "verdict": "losing",
@@ -438,10 +451,10 @@
         "pillar": "Winter & Technical Gear",
         "title": "Ice-axe and crampon content is stale and losing citations",
         "search": {
-          "clicks": 3336,
-          "impressions": 65173,
-          "avg_position": 14.9,
-          "semrush_position": 20.0,
+          "clicks": 3724,
+          "impressions": 57635,
+          "avg_position": 6.4,
+          "semrush_position": 23.0,
           "queries": [
             "ice axe self arrest",
             "crampons for hiking boots"
@@ -449,17 +462,17 @@
         },
         "geo": {
           "visibility_score": 0.0,
-          "category_avg": 16.4,
-          "vs_category": -16.4,
+          "category_avg": 29.1,
+          "vs_category": -29.1,
           "mentions": 0,
           "mentions_total": 10
         },
         "conversion": {
-          "sessions": 11999,
-          "conversions": 178,
-          "conversion_rate": 0.0148,
-          "revenue": 7761.12,
-          "conversions_delta_pct": 368.4
+          "sessions": 4343,
+          "conversions": 106,
+          "conversion_rate": 0.0244,
+          "revenue": 6068.77,
+          "conversions_delta_pct": -57.3
         },
         "owned_page": {
           "title": "Ice Axe Buying Guide (2020)",
@@ -503,12 +516,73 @@
           "text": "Osprey \u2014 Pack Weight Comparison",
           "url": "https://osprey.com/us/en/packweight"
         },
-        "geo_visibility": 7.1,
-        "vs_category": -17.7,
-        "conversions": 35,
+        "geo_visibility": 7.5,
+        "vs_category": -16.8,
+        "conversions": 169,
         "cms": "Webflow",
-        "action": "Brief for Webflow",
-        "can_draft": false
+        "action": "Draft for Webflow",
+        "can_draft": false,
+        "draft": {
+          "mode": "new",
+          "title": "60L Pack Weight Compared: Base Weight, Max Load, and Fabric Denier",
+          "slug": "guides/60l-pack-weight-comparison",
+          "meta_description": "Base weight, maximum recommended load, and fabric denier compared across 60-litre backpacking packs, with guidance on the trade-offs.",
+          "angle": "Publish the structured weight-class data competitors' pages already provide, so 'lightest 60L pack' prompts have a Basecamp source.",
+          "sections": [
+            {
+              "heading": "Base weight versus carried weight",
+              "body": "A pack's base weight is what it weighs empty, with the lid and hipbelt attached and nothing inside. It is the only number that compares cleanly across packs, because carried weight depends entirely on what you put in. Most 60-litre packs sit between 1.4 kg and 2.2 kg empty."
+            },
+            {
+              "heading": "The weight-versus-durability trade",
+              "body": "Fabric denier \u2014 the thickness of the yarn \u2014 is where most of the weight difference comes from. A 100D nylon pack body saves several hundred grams over a 400D body of the same volume, and abrades through noticeably faster against rock. Neither is wrong; they suit different trip profiles."
+            },
+            {
+              "heading": "Maximum recommended load",
+              "body": "Every pack has a load above which the suspension stops transferring weight to the hips effectively. Ultralight frameless packs top out around 15 kg; framed 60-litre packs typically handle 20\u201325 kg. Exceeding it does not break the pack, but the weight ends up on your shoulders."
+            },
+            {
+              "heading": "60L pack specifications compared",
+              "body": "The table lists base weight, maximum recommended load, main-body denier, and frame type for each 60-litre pack in the range, alongside commonly cross-shopped models, so the comparison sits on one page."
+            }
+          ],
+          "faq": [
+            {
+              "q": "What is a good base weight for a 60L backpacking pack?",
+              "a": "Around 1.5 kg is light for the category, 1.8\u20132.0 kg is typical, and above 2.2 kg usually indicates a heavier-duty suspension or fabric."
+            },
+            {
+              "q": "Does a lighter pack carry less comfortably?",
+              "a": "Above roughly 18 kg, yes \u2014 lighter packs achieve their weight partly by simplifying the frame, which is what transfers load to the hips."
+            },
+            {
+              "q": "Is 100D fabric durable enough for backpacking?",
+              "a": "For trail use, yes. For regular off-trail travel or scrambling against rock, a higher-denier body will last considerably longer."
+            }
+          ],
+          "target_keywords": [
+            "60l backpacking pack",
+            "sleeping pad r-value"
+          ],
+          "target_prompts": [
+            "lightest 60L backpacking pack"
+          ],
+          "internal_links": [
+            {
+              "title": "Assisted-Braking Belay Devices Compared",
+              "url": "https://basecampgear.com/guides/belay-devices-compared"
+            },
+            {
+              "title": "Ice Axe Buying Guide (2020)",
+              "url": "https://basecampgear.com/blog/ice-axe-guide-2020"
+            }
+          ],
+          "schema": "FAQPage + Article",
+          "word_count": 267,
+          "cms": "Webflow",
+          "can_draft": false,
+          "publish_action": "Copy into Webflow \u2014 no write endpoint available"
+        }
       }
     ],
     "existing_content": [
@@ -522,11 +596,69 @@
           "url": "https://basecampgear.com/blog/ice-axe-guide-2020"
         },
         "geo_visibility": 0.0,
-        "vs_category": -16.4,
-        "conversions": 178,
+        "vs_category": -29.1,
+        "conversions": 106,
         "cms": "Webflow",
-        "action": "Brief for Webflow",
+        "action": "Draft for Webflow",
         "can_draft": false,
+        "draft": {
+          "mode": "refresh",
+          "title": "Ice Axe Buying Guide: Length, Type, and Self-Arrest",
+          "slug": "guides/ice-axe-buying-guide",
+          "meta_description": "How to choose an ice axe by length and type, what the certification ratings mean, and how self-arrest technique affects your choice.",
+          "angle": "Replace the 2020 guide, which references discontinued models and has stopped earning citations entirely.",
+          "sections": [
+            {
+              "heading": "Choosing a length",
+              "body": "For general mountaineering, stand with the axe held at your side: the spike should reach roughly your ankle bone. That works out to about 60 cm for most people between 170 cm and 180 cm tall. Shorter axes suit steeper technical ground; longer axes are more useful as a walking aid on low-angle terrain."
+            },
+            {
+              "heading": "B-rated versus T-rated",
+              "body": "A B (basic) rating indicates a shaft tested to a lower load, suitable for general mountaineering. A T (technical) rating indicates a stronger shaft intended for steep ice and anchor use. For glacier travel and snow slopes, B-rated is appropriate; for anything where the axe becomes an anchor, choose T."
+            },
+            {
+              "heading": "Self-arrest and why the pick shape matters",
+              "body": "Self-arrest is the technique of stopping a slide by driving the pick into the snow while controlling the shaft against your body. A classically curved pick engages progressively and is more forgiving; an aggressively reverse-curved technical pick bites harder and is more likely to be torn from your grip. For an axe you may need to arrest with, the classic curve is the safer choice."
+            },
+            {
+              "heading": "Practising before you need it",
+              "body": "Self-arrest is not intuitive and cannot be learned in the moment. Practise on a safe, run-out slope with no rocks below, from all four positions: feet first on your front and back, and head first on your front and back. The head-first positions are the ones that matter and the ones people skip."
+            }
+          ],
+          "faq": [
+            {
+              "q": "What length ice axe do I need for general mountaineering?",
+              "a": "Around 60 cm suits most people of average height. Held at your side, the spike should reach roughly your ankle."
+            },
+            {
+              "q": "Can you self-arrest with a technical ice axe?",
+              "a": "It is possible but harder \u2014 reverse-curve picks bite aggressively and can be wrenched out of your hands. A classic curve is more forgiving."
+            },
+            {
+              "q": "Do I need a leash on an ice axe?",
+              "a": "For glacier travel a leash prevents loss in a crevasse fall. On steep ground many climbers go leashless to switch hands freely; it is a trade-off, not a rule."
+            }
+          ],
+          "target_keywords": [
+            "ice axe self arrest",
+            "crampons for hiking boots"
+          ],
+          "target_prompts": [
+            "best belay device for a beginner climber?",
+            "what harness certification should I look for?"
+          ],
+          "internal_links": [
+            {
+              "title": "Assisted-Braking Belay Devices Compared",
+              "url": "https://basecampgear.com/guides/belay-devices-compared"
+            }
+          ],
+          "schema": "FAQPage + Article",
+          "word_count": 322,
+          "cms": "Webflow",
+          "can_draft": false,
+          "publish_action": "Copy into Webflow \u2014 no write endpoint available"
+        },
         "target_page": {
           "title": "Ice Axe Buying Guide (2020)",
           "slug": "blog/ice-axe-guide-2020",
@@ -542,12 +674,70 @@
           "text": "Petzl \u2014 Harness Safety Standards",
           "url": "https://petzl.com/US/en/Sport/harnesses"
         },
-        "geo_visibility": 25.9,
-        "vs_category": 0.5,
-        "conversions": 111,
+        "geo_visibility": 28.4,
+        "vs_category": 0.0,
+        "conversions": 79,
         "cms": "Webflow",
-        "action": "Brief for Webflow",
+        "action": "Draft for Webflow",
         "can_draft": false,
+        "draft": {
+          "mode": "refresh",
+          "title": "Climbing Harness Certification: What UIAA and CE Ratings Mean",
+          "slug": "guides/harness-certification-standards",
+          "meta_description": "How UIAA 105 and EN 12277 harness certification works, what the test loads mean, and how to read the rating label on your harness.",
+          "angle": "Publish the certification detail that competitors' spec sheets currently own, so safety-standard prompts have a Basecamp source to cite.",
+          "sections": [
+            {
+              "heading": "The two standards that matter",
+              "body": "Climbing harnesses sold in Europe carry EN 12277 certification; UIAA 105 is a parallel standard from the international climbing federation with broadly equivalent requirements. A harness meeting either has passed static strength and drop testing under defined conditions \u2014 the label is not decorative."
+            },
+            {
+              "heading": "What the test loads actually represent",
+              "body": "A Type C sit harness must hold 15 kN applied through the tie-in points without failure. For context, a hard factor-two fall on a dynamic rope generates well under 12 kN at the harness. The margin exists because certification tests a new harness in controlled conditions, and real harnesses age, abrade, and get loaded at angles the test does not reproduce."
+            },
+            {
+              "heading": "Harness types A through D",
+              "body": "Type A is a full-body harness, Type B is a full-body harness sized for children under 40 kg, Type C is the standard sit harness most climbers use, and Type D is a chest harness intended only for use with a Type C. The type appears on the label alongside the standard number."
+            },
+            {
+              "heading": "Reading the label on your harness",
+              "body": "Every certified harness carries the standard, the type, the manufacture date, and a serial or batch number, usually on a sewn tag inside the waist belt. The manufacture date matters: most manufacturers specify a maximum service life of ten years from manufacture regardless of use."
+            }
+          ],
+          "faq": [
+            {
+              "q": "Is a UIAA-certified harness safer than a CE-certified one?",
+              "a": "No. The requirements are broadly equivalent, and most harnesses carry both. Either certification indicates the harness passed defined strength testing."
+            },
+            {
+              "q": "How long is a climbing harness rated for?",
+              "a": "Most manufacturers specify up to ten years from the manufacture date, and less with heavy use. Retire immediately after any significant fall or visible damage."
+            },
+            {
+              "q": "What does 15 kN mean in practical terms?",
+              "a": "Roughly 1,500 kg of force. It is well above what a climbing fall generates, which is why the failure point in a real system is rarely the harness."
+            }
+          ],
+          "target_keywords": [
+            "belay device assisted braking",
+            "climbing harness beginner"
+          ],
+          "target_prompts": [
+            "best belay device for a beginner climber?",
+            "what harness certification should I look for?"
+          ],
+          "internal_links": [
+            {
+              "title": "Ice Axe Buying Guide (2020)",
+              "url": "https://basecampgear.com/blog/ice-axe-guide-2020"
+            }
+          ],
+          "schema": "FAQPage + Article",
+          "word_count": 301,
+          "cms": "Webflow",
+          "can_draft": false,
+          "publish_action": "Copy into Webflow \u2014 no write endpoint available"
+        },
         "target_page": {
           "title": "Assisted-Braking Belay Devices Compared",
           "slug": "guides/belay-devices-compared",

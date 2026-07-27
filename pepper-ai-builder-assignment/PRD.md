@@ -105,9 +105,12 @@ Atlas's position with Semrush AI Toolkit already in-house.
    one-click "Generate report" action — I don't hunt for the data myself.
 3. As a CS manager, I review an AI-drafted report where every claim is traceable to a source metric,
    edit anything that's off, regenerate a section I don't like, and add a personal note before sending.
-4. As a CS manager, I approve and send in one action, and the system remembers what I sent for next
+4. As a CS manager, when the report flags a content gap, I get a **finished draft article** for it —
+   title, meta, body, FAQ, internal links — not a note telling me to go write one. I review it and
+   push it to the client's CMS, or hand it to the client's content team as-is.
+5. As a CS manager, I approve and send in one action, and the system remembers what I sent for next
    cycle's continuity ("last time we recommended X — here's what happened").
-5. As a client, I receive a report that reads like a person wrote it for me specifically, with the
+6. As a client, I receive a report that reads like a person wrote it for me specifically, with the
    AI-search-visibility section giving me a metric I can't get from my own GA4 dashboard.
 
 ## 5. Functional requirements
@@ -182,20 +185,34 @@ score.
 - Every sent report and its action items are stored so the next cycle's draft can reference
   resolved/unresolved items and avoid repeating a recommendation the client already acted on.
 
-### 5.6 Content recommendations (CMS-routed)
+### 5.6 Drafted articles (CMS-routed)
 
-Every pillar in the Category view resolves to an action, split into the two buckets a content team
-actually works from:
+Every pillar in the Category view resolves to a **finished draft article**, not a suggestion to
+write one. A recommendation that says "publish a wide-fit sizing guide" still leaves the whole job
+undone; the product's output is the draft itself, ready to review and publish. Drafts are split
+into the two buckets a content team works from:
 
-- **New content** — pillars with no owning page where the brand is absent or weak. Produces a
-  proposed new page with the reasoning and the third-party source currently winning the citation.
+- **New content** — pillars with no owning page where the brand is absent or weak. Produces a new
+  article drafted from scratch.
 - **Existing content** — pillars that own a page which is stale or underperforming. Produces a
-  refresh brief naming the target page and its last-modified date.
+  rewrite, naming the target page and its last-modified date.
 
-Both are sorted worst-gap-first (largest shortfall against the category average) and routed to the
-client's configured CMS. WordPress exposes a documented write endpoint (`POST /wp/v2/posts`), so
-those recommendations can be pushed as drafts. Webflow and Contentful are read-only in the
-documented API set, so they produce a brief for an editor to action — the UI states which applies
+Each draft contains: title, slug, meta description, body sections with headings, an FAQ block
+written against the tracked AI prompts, suggested internal links, and the schema types to emit.
+
+**What's drafted versus what's computed.** The prose comes from an LLM drafting call
+(`report_builder.DRAFT_PROMPT_TEMPLATE`), which receives the pillar's metrics, the competitor gap,
+and the sources currently winning the citation. Everything around it is computed from live data
+rather than authored: target keywords come from the pillar's own tracked queries, target prompts
+from the CSM's priority list, internal links from other pillars' owned pages, and word count from
+the drafted body. The drafting prompt explicitly forbids inventing product specifications —
+it must leave a marked placeholder where a real measurement is needed, since a fabricated spec in
+a published article is materially worse than a gap.
+
+Drafts are sorted worst-gap-first (largest shortfall against the category average) and routed to
+the client's configured CMS. WordPress exposes a documented write endpoint (`POST /wp/v2/posts`),
+so those drafts can be pushed straight in as drafts. Webflow and Contentful are read-only in the
+documented API set, so the draft is delivered for an editor to paste — the UI states which applies
 rather than implying a write path that doesn't exist.
 
 ## 6. Data source → report section mapping
@@ -218,7 +235,7 @@ rather than implying a write path that doesn't exist.
 | Category tab — per-pillar conversion | GA4 `properties.runReport` with `landingPage` dimension, grouped by pillar | sessions, conversions, conversionRate, revenue |
 | Content published this period | WordPress `GET /wp/v2/posts`, Webflow `GET /v2/collections/{id}/items/live`, or Contentful `GET /entries` — per the client's configured CMS | title, modified, link |
 | Stale-content flags | Same CMS endpoint filtered by modification date (`modified_before` on WP) | title, modified, link |
-| New-content drafting (WordPress only) | WordPress `POST /wp/v2/posts` | title, content, status=draft |
+| Drafted article push (WordPress only) | WordPress `POST /wp/v2/posts` | title, content, excerpt, slug, meta, status=draft |
 
 Endpoints intentionally **not** used in v1: GSC `urlInspection`/`sitemaps`/`mobileFriendlyTest`
 (per-URL technical diagnostics belong in an audit product, not a recurring performance report),

@@ -20,6 +20,7 @@ import json
 import re
 from pathlib import Path
 import mock_sources as src
+import draft_content as drafts
 
 
 def pct_change(new, old):
@@ -232,15 +233,64 @@ def build_category_view(client, cur, prior):
     }
 
 
+def build_draft_article(client, pillar, cms, all_pillars):
+    """Compose a ready-to-publish draft article for a pillar.
+
+    The prose comes from the drafting step (an LLM call in production — see
+    DRAFT_PROMPT_TEMPLATE; authored in draft_content.py here so the prototype needs no API
+    key). Everything else is computed from live pillar data: target keywords come from the
+    pillar's own tracked queries, target prompts from the CSM's priority list, internal links
+    from other pillars' owned pages, and word count from the drafted body.
+    """
+    seed = drafts.DRAFTS.get(pillar["id"])
+    if not seed:
+        return None
+
+    body_words = sum(len(s["body"].split()) for s in seed["sections"])
+    faq_words = sum(len(f["q"].split()) + len(f["a"].split()) for f in seed["faq"])
+
+    # Internal links: other pillars that already own a page are the natural link targets.
+    internal_links = [
+        {"title": op["title"], "url": f"https://{client['domain']}/{op['slug']}"}
+        for other in all_pillars if other["id"] != pillar["id"]
+        for op in [other.get("owned_page")] if op
+    ]
+
+    # Which of the CSM's priority prompts this draft is written to answer.
+    pillar_terms = {w.lower() for q in pillar["search"]["queries"] for w in q.split()}
+    target_prompts = [pr for pr in client["priority_prompts"]
+                      if pillar_terms & {w.lower().strip("?,") for w in pr.split()}]
+
+    is_refresh = pillar["owned_page"] is not None
+    return {
+        "mode": "refresh" if is_refresh else "new",
+        "title": seed["title"],
+        "slug": seed["slug"],
+        "meta_description": seed["meta_description"],
+        "angle": seed["angle"],
+        "sections": seed["sections"],
+        "faq": seed["faq"],
+        "target_keywords": pillar["search"]["queries"],
+        "target_prompts": target_prompts or client["priority_prompts"][:1],
+        "internal_links": internal_links,
+        "schema": "FAQPage + Article",
+        "word_count": body_words + faq_words,
+        "cms": cms["label"],
+        "can_draft": cms["can_draft"],
+        "publish_action": (f"POST /wp/v2/posts (status=draft)" if cms["can_draft"]
+                            else f"Copy into {cms['label']} — no write endpoint available"),
+    }
+
+
 def build_content_recommendations(client, category_view, cms):
-    """Split recommendations into the two buckets the CSM actually acts on.
+    """Split drafted articles into the two buckets the CSM actually acts on.
 
-    New content   — pillars with no owning page where we're absent/weak: propose a new page.
-    Existing content — pillars that own a page which is stale or underperforming: propose a refresh.
+    New content   — pillars with no owning page where we're absent/weak: a new article, drafted.
+    Existing content — pillars that own a page which is stale or underperforming: a rewrite, drafted.
 
-    Each item is routed to the client's CMS. WordPress exposes POST /wp/v2/posts, so those can be
-    pushed as drafts; Webflow and Contentful are read-only in the documented API set, so they
-    produce a brief for a human to paste in.
+    Each item carries the finished draft, routed to the client's CMS. WordPress exposes
+    POST /wp/v2/posts, so those can be pushed as drafts; Webflow and Contentful are read-only in
+    the documented API set, so the draft is delivered for an editor to paste in.
     """
     new_content, existing_content = [], []
     for p in category_view["pillars"]:
@@ -254,8 +304,9 @@ def build_content_recommendations(client, category_view, cms):
             "vs_category": p["geo"]["vs_category"],
             "conversions": p["conversion"]["conversions"],
             "cms": cms["label"],
-            "action": "Create draft in " + cms["label"] if cms["can_draft"] else "Brief for " + cms["label"],
+            "action": "Create draft in " + cms["label"] if cms["can_draft"] else "Draft for " + cms["label"],
             "can_draft": cms["can_draft"],
+            "draft": build_draft_article(client, p, cms, category_view["pillars"]),
         }
         if p["owned_page"]:
             item["target_page"] = p["owned_page"]
@@ -323,6 +374,34 @@ DATA:
 
 PRIOR REPORT ACTION ITEMS (for continuity, mention if resolved):
 {prior_action_items}
+"""
+
+
+DRAFT_PROMPT_TEMPLATE = """Write a publish-ready article draft for {client_name} ({industry}).
+
+TOPIC PILLAR: {pillar}
+WHY THIS ARTICLE: {angle}
+
+The brand currently appears in {mentions} of {mentions_total} tracked AI answers for this topic \
+(visibility {visibility} vs a category average of {category_avg}). These are the sources winning \
+the citation instead, and what makes them citable:
+{competing_sources}
+
+TARGET KEYWORDS (from tracked search data): {target_keywords}
+TARGET PROMPTS (the AI questions this must answer): {target_prompts}
+
+Requirements:
+- Open by answering the target question directly in the first two sentences. AI engines cite \
+passages that resolve the query, not preambles.
+- Structure content so each section answers one specific question, with a descriptive H2.
+- Where competitors win citations with structured data (comparison tables, measurements, \
+specifications), include the equivalent structured block rather than describing it in prose.
+- Add an FAQ section targeting the exact phrasing of the target prompts above.
+- State concrete, checkable figures. Do not invent product specifications — leave a clearly \
+marked placeholder where a real measurement is needed.
+- Neutral, useful tone. No marketing superlatives; they reduce citation likelihood.
+
+Return: title, slug, meta description, sections (heading + body), and FAQ pairs.
 """
 
 
@@ -444,25 +523,51 @@ def render_markdown(client, m, insights):
                  ("Drafts can be created directly via the CMS API.*" if cr["can_draft"]
                   else "This CMS is read-only in Atlas, so these are briefs for an editor to action.*") + "\n")
 
+    def render_draft(item, index, is_refresh):
+        d = item.get("draft")
+        tp = item.get("target_page") or {}
+        out = [f"#### {index}. {item['pillar']} — {item['action']}"]
+        if is_refresh and tp:
+            out.append(f"*Rewrites:* {tp['title']} (last updated {tp['last_modified'][:10]})")
+        out.append(f"*Why:* {item['body']}")
+        out.append(f"*Reference:* [{item['citation']['text']}]({item['citation']['url']})\n")
+        if not d:
+            return out
+        out.append(f"<details><summary><strong>Draft article — {d['title']}</strong> "
+                   f"({d['word_count']} words, {d['publish_action']})</summary>\n")
+        out.append(f"**Title:** {d['title']}  ")
+        out.append(f"**Slug:** `/{d['slug']}`  ")
+        out.append(f"**Meta description:** {d['meta_description']}  ")
+        out.append(f"**Target keywords:** {', '.join(d['target_keywords'])}  ")
+        out.append(f"**Target prompts:** {'; '.join(d['target_prompts'])}  ")
+        out.append(f"**Schema:** {d['schema']}\n")
+        out.append("---\n")
+        out.append(f"# {d['title']}\n")
+        for s in d["sections"]:
+            out.append(f"## {s['heading']}\n")
+            out.append(f"{s['body']}\n")
+        out.append("## Frequently asked questions\n")
+        for f in d["faq"]:
+            out.append(f"**{f['q']}**\n")
+            out.append(f"{f['a']}\n")
+        if d["internal_links"]:
+            out.append("**Suggested internal links:** " +
+                       ", ".join(f"[{l['title']}]({l['url']})" for l in d["internal_links"]) + "\n")
+        out.append("</details>\n")
+        return out
+
     lines.append("### New content (gaps with no owning page)")
     if cr["new_content"]:
         for i, item in enumerate(cr["new_content"], 1):
-            lines.append(f"{i}. **{item['title']}** — *{item['pillar']}* ({item['action']})")
-            lines.append(f"   {item['body']}")
-            lines.append(f"   Reference: [{item['citation']['text']}]({item['citation']['url']})")
+            lines.extend(render_draft(item, i, False))
     else:
         lines.append("_No uncovered pillars this period._")
     lines.append("")
 
-    lines.append("### Existing content (refresh / expand)")
+    lines.append("### Existing content (rewrite / expand)")
     if cr["existing_content"]:
         for i, item in enumerate(cr["existing_content"], 1):
-            tp = item.get("target_page") or {}
-            lines.append(f"{i}. **{item['title']}** — *{item['pillar']}* ({item['action']})")
-            if tp:
-                lines.append(f"   Target page: {tp['title']} (last updated {tp['last_modified'][:10]})")
-            lines.append(f"   {item['body']}")
-            lines.append(f"   Reference: [{item['citation']['text']}]({item['citation']['url']})")
+            lines.extend(render_draft(item, i, True))
     else:
         lines.append("_No refresh candidates this period._")
     lines.append("")
